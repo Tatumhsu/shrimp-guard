@@ -1,0 +1,23 @@
+baseURL = "https://shrimp-guard.us.ci"
+languageCode = "zh-tw"
+hasCJKLanguage = true
+locale = "zh-tw"
+title = "Shrimp Guard"
+theme = "PaperMod"
+
+[params]
+  description = "AI 應用趨勢觀察部落格"
+  author = "Chong Chong"
+  keywords = ["AI", "人工智慧", "應用", "趨勢"]
+  themeColor = "#1a1a2e"
+
+  [params.label]
+    text = "Shrimp Guard"
+
+[markup.highlight]
+  codeFences = true
+  noClasses = false
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
