@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>幾何躲避</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+#game-container {
+  position: relative;
+}
+canvas {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 60px rgba(0,200,255,0.15);
+}
+#ui {
+  position: absolute;
+  top: 16px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #fff;
+  font-size: 18px;
+  pointer-events: none;
+}
+#ui span {
+  background: rgba(0,0,0,0.4);
+  padding: 4px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+.score { color: #0ff; }
+.hi { color: #f80; }
+#overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: #fff;
+}
+#overlay h1 { font-size: 2.4em; margin-bottom: 8px; letter-spacing: 2px; }
+#overlay p { color: #aaa; margin-bottom: 28px; font-size: 1.1em; }
+#overlay .final { font-size: 1.4em; color: #0ff; margin-bottom: 16px; }
+#start-btn {
+  background: linear-gradient(135deg, #0ff, #08f);
+  border: none;
+  color: #000;
+  font-size: 1.2em;
+  padding: 12px 40px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: transform 0.15s;
+}
+#start-btn:hover { transform: scale(1.06); }
+#howto {
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+<div id="game-container">
+  <canvas id="c" width="420" height="600"></canvas>
+  <div id="ui">
+    <span class="score">分數: <b id="score">0</b></span>
+    <span class="hi">最高: <b id="hi">0</b></span>
+  </div>
+  <div id="overlay">
+    <h1>幾何躲避</h1>
+    <p>控制方塊，躲開障礙物</p>
+    <div class="final" id="final" style="display:none"></div>
+    <button id="start-btn">開始遊戲</button>
+    <div id="howto">← → 或 A / D 鍵移動　|　空白鍵暫停</div>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const overlay = document.getElementById('overlay');
+const scoreEl = document.getElementById('score');
+const hiEl = document.getElementById('hi');
+const finalEl = document.getElementById('final');
+const startBtn = document.getElementById('start-btn');
+
+let W = canvas.width, H = canvas.height;
+let player, obstacles, score, hi, running, paused, animId;
+let lastTime = 0, elapsed = 0, spawnTimer = 0;
+
+// Load hi score
+try { hi = parseInt(localStorage.getItem('geo_hidodge_hi') || '0'); } catch(e) { hi = 0; }
+hiEl.textContent = hi;
+
+const PLAYER_SIZE = 28;
+
+function reset() {
+  player = { x: W/2 - PLAYER_SIZE/2, y: H - 80, w: PLAYER_SIZE, h: PLAYER_SIZE, speed: 320 };
+  obstacles = [];
+  score = 0;
+  elapsed = 0;
+  spawnTimer = 0;
+  scoreEl.textContent = '0';
+  running = true;
+  paused = false;
+  overlay.style.display = 'none';
+  finalEl.style.display = 'none';
+}
+
+function spawnObstacle() {
+  let w = 30 + Math.random() * 80;
+  let x = Math.random() * (W - w);
+  let type = Math.random();
+  let color;
+  if (type < 0.3) color = '#ff3366';
+  else if (type < 0.6) color = '#ff8800';
+  else if (type < 0.85) color = '#aa00ff';
+  else color = '#00ffcc';
+  obstacles.push({
+    x, y: -60,
+    w, h: 18 + Math.random() * 14,
+    speed: 120 + score * 0.4 + Math.random() * 60,
+    color, alpha: 1
+  });
+}
+
+function collides(a, b) {
+  return a.x < b.x + b.w && a.x + a.w > b.x &&
+         a.y < b.y + b.h && a.y + a.h > b.y;
+}
+
+function update(dt) {
+  if (paused || !running) return;
+  elapsed += dt;
+  spawnTimer += dt;
+  let spawnRate = Math.max(0.3, 1.2 - score * 0.008);
+  if (spawnTimer >= spawnRate) {
+    spawnObstacle();
+    spawnTimer = 0;
+  }
+
+  // Move obstacles
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    obstacles[i].y += obstacles[i].speed * dt;
+    if (obstacles[i].y > H + 50) {
+      obstacles.splice(i, 1);
+      score++;
+      scoreEl.textContent = score;
+    }
+  }
+
+  // Collision
+  for (let ob of obstacles) {
+    if (collides(player, ob)) {
+      running = false;
+      if (score > hi) {
+        hi = score;
+        hiEl.textContent = hi;
+        try { localStorage.setItem('geo_hidodge_hi', hi); } catch(e) {}
+      }
+      finalEl.textContent = `本局 ${score} 分`;
+      finalEl.style.display = 'block';
+      overlay.style.display = 'flex';
+      return;
+    }
+  }
+}
+
+function drawPlayer() {
+  let p = player;
+  ctx.save();
+  ctx.shadowBlur = 20;
+  ctx.shadowColor = '#0ff';
+  ctx.fillStyle = '#0ff';
+  ctx.fillRect(p.x, p.y, p.w, p.h);
+  // inner glow
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.fillRect(p.x+4, p.y+4, p.w-8, p.h-8);
+  ctx.restore();
+}
+
+function drawObstacles() {
+  for (let ob of obstacles) {
+    ctx.save();
+    ctx.shadowBlur = 14;
+    ctx.shadowColor = ob.color;
+    ctx.fillStyle = ob.color;
+    ctx.globalAlpha = ob.alpha;
+    let r = 4;
+    ctx.beginPath();
+    ctx.roundRect(ob.x, ob.y, ob.w, ob.h, r);
+    ctx.fill();
+    // shine
+    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    ctx.beginPath();
+    ctx.roundRect(ob.x+3, ob.y+2, ob.w-6, ob.h/2-2, r-1);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+function drawBg() {
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+  // Grid lines
+  ctx.strokeStyle = 'rgba(0,200,255,0.04)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 40) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let y = 0; y < H; y += 40) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+  // Moving scan line
+  let scanY = (elapsed * 60) % H;
+  let grad = ctx.createLinearGradient(0, scanY-40, 0, scanY);
+  grad.addColorStop(0, 'rgba(0,200,255,0)');
+  grad.addColorStop(1, 'rgba(0,200,255,0.06)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, scanY-40, W, 40);
+}
+
+function loop(ts) {
+  animId = requestAnimationFrame(loop);
+  let dt = Math.min((ts - lastTime) / 1000, 0.05);
+  lastTime = ts;
+  update(dt);
+  drawBg();
+  drawObstacles();
+  if (running || !running) drawPlayer();
+  if (paused) {
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 32px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('已暫停', W/2, H/2);
+  }
+}
+
+// Input
+let keys = {};
+document.addEventListener('keydown', e => {
+  keys[e.code] = true;
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (running && !paused) paused = true;
+    else if (paused) paused = false;
+  }
+});
+document.addEventListener('keyup', e => keys[e.code] = false);
+
+function handleInput(dt) {
+  if (!running || paused) return;
+  if ((keys['ArrowLeft'] || keys['KeyA']) && player.x > 0) {
+    player.x -= player.speed * dt;
+  }
+  if ((keys['ArrowRight'] || keys['KeyD']) && player.x + player.w < W) {
+    player.x += player.speed * dt;
+  }
+}
+
+// Patch loop to include input
+const _loop = loop;
+loop = function(ts) {
+  let dt = Math.min((ts - lastTime) / 1000, 0.05);
+  lastTime = ts;
+  handleInput(dt);
+  update(dt);
+  drawBg();
+  drawObstacles();
+  if (running || !running) drawPlayer();
+  if (paused) {
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 32px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('已暫停', W/2, H/2);
+  }
+  animId = requestAnimationFrame(loop);
+};
+
+// Touch support
+let touching = false, touchX = W/2;
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  touching = true;
+  touchX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+}, { passive: false });
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  touchX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+}, { passive: false });
+canvas.addEventListener('touchend', () => touching = false);
+
+function handleTouch(dt) {
+  if (!touching || !running || paused) return;
+  let targetX = touchX - player.w / 2;
+  let diff = targetX - player.x;
+  if (Math.abs(diff) > 2) {
+    player.x += diff * 10 * dt;
+    player.x = Math.max(0, Math.min(W - player.w, player.x));
+  }
+}
+
+// Override loop again to add touch
+loop = function(ts) {
+  let dt = Math.min((ts - lastTime) / 1000, 0.05);
+  lastTime = ts;
+  handleInput(dt);
+  handleTouch(dt);
+  update(dt);
+  drawBg();
+  drawObstacles();
+  if (running || !running) drawPlayer();
+  if (paused) {
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 32px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('已暫停', W/2, H/2);
+  }
+  animId = requestAnimationFrame(loop);
+};
+
+startBtn.addEventListener('click', () => {
+  reset();
+  if (!animId) lastTime = performance.now(), loop(lastTime);
+});
+
+document.addEventListener('keydown', e => {
+  if (!running && e.code === 'Enter' && overlay.style.display !== 'none') {
+    reset();
+    if (!animId) lastTime = performance.now(), loop(lastTime);
+  }
+});
+
+// Init draw
+drawBg();
+</script>
+</body>
+</html>
