@@ -1,13 +1,5 @@
 ---
 title: "收集箱"
-description: "Hermès 收集到的等待處理的項目"
-draft: false
+description: "Hermès 待處理項目收集箱"
 ---
-
-> 這裡記錄所有「曾經說過、分享過、觀察到但還沒處理的項目」。
-> 系統每天自動更新。
-
-{{ $today := "2026-05-15" }}
-
-{{ range where .Site.RegularPages "Section" "internal" "ne" . }}
-{{ end }}
+<!-- 此檔案由系統自動生成，請勿手動編輯 -->
