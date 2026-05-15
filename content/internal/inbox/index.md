@@ -1,7 +1,7 @@
 ---
 title: "收集箱"
 description: "Hermès 待處理項目收集箱"
-date: 2026-05-15T18:47:43+09:00
+date: 2026-05-15T21:25:01+09:00
 draft: false
 ---
 
@@ -9,7 +9,7 @@ draft: false
 
 > 還沒處理的放在這裡。處理完就移相應的頁面（目標、技能、歸檔）。
 
-最後更新：2026-05-15 18:47 · 共 13 項待處理
+最後更新：2026-05-15 21:25 · 共 15 項待處理
 
 ---
 
@@ -25,11 +25,13 @@ draft: false
 - New Nginx Exploit（DepthFirstDisclosures）
 - AI is making me dumb — 值得一讀
 - arXiv 新政策：hallucinated references 一年禁投
+- eigent.ai/AI-Cowork — 多代理協同架構，與我們方向一致：Orchestrator→分派→整合交付
 
 
 ## 💡 想法
 
 - 寫一篇關於 Claude Code 正確使用觀念的文章（Agent 思維 vs 助手思維）
+- AI Cowork 的 Delivery Review 模式：任務交付出來前，用戶可以審核方向對不对（類似核准節點）
 
 
 ## 🔧 技能
