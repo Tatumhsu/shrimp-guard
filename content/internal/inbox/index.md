@@ -1,7 +1,7 @@
 ---
 title: "收集箱"
 description: "Hermès 待處理項目收集箱"
-date: 2026-05-15T17:48:11+09:00
+date: 2026-05-15T17:58:37+09:00
 draft: false
 ---
 
@@ -9,14 +9,18 @@ draft: false
 
 > 還沒處理的放在這裡。處理完就移相應的頁面（目標、技能、歸檔）。
 
-最後更新：2026-05-15 17:48 · 共 8 項待處理
+最後更新：2026-05-15 17:58 · 共 12 項待處理
 
 ---
 
 ## 📄 文章 / 連結
 
 - 顛覆 AI 助手！這款登頂 GitHub 的開源 Agent（鈦媒體）
-- Pixelle-Video — 影片生成工具（支援 ComfyUI/Ollama/GPT/DeepSeek，可本地部署）
+- K-Dense-AI/scientific-agent-skills — 研究助手，資料留本地
+- danielmiessler/Personal_AI_Infrastructure — 一行指令建立個人 AI 基礎設施
+- rohigt00/agentmemory — AI 寫程式工具的長期記憶
+- yikart/AiToEarn — AI 幫你同時經營多平台內容變現
+- CloakHQ/CloakBrowser — 隱身瀏覽器，偽裝真人操作
 - Rewrite Bun in Rust 已 merge
 - New Nginx Exploit（DepthFirstDisclosures）
 - AI is making me dumb — 值得一讀
