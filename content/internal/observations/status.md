@@ -1,19 +1,19 @@
 ---
 title: "觀測日誌"
 description: "Hermès L2 觀測狀態"
-date: 2026-05-15T21:25:01+09:00
+date: 2026-05-15T23:18:47+09:00
 draft: false
 ---
 
 # L2 觀測狀態
 
-最後更新：2026-05-15 21:25
+最後更新：2026-05-15 23:18
 
 ---
 
 | 觀測項目 | 描述 | 命中次數 | 置信度 | 狀態 |
 |----------|------|----------|--------|------|
-| hn_observation | HN 頭條觀察 | 149 | 60% | confirmed |
+| hn_observation | HN 頭條觀察 | 172 | 60% | confirmed |
 | modal_research_triggered | Modal 深度研究已觸發 | 1 | 40% | in_progress |
 
 ---
