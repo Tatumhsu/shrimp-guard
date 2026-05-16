@@ -1,0 +1,99 @@
+{{- if lt hugo.Version "0.146.0" }}
+{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
+{{- end -}}
+
+<!DOCTYPE html>
+{{- $theme := site.Params.defaultTheme | default "auto" }}
+{{- if eq $theme "dark" }}
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="dark">
+{{- else if eq $theme "light" }}
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="light">
+{{- else }}
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="auto">
+{{- end }}
+
+<head>
+    {{- partial "head.html" . }}
+    <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans TC', -apple-system, sans-serif; }
+
+    #pw-gate {
+        position: fixed; inset: 0; z-index: 9999;
+        background: #0a0a0f;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 1.5rem;
+    }
+    #pw-gate h2 { color: #7dd3fc; font-size: 1.5rem; font-weight: 500; letter-spacing: 0.05em; }
+    #pw-gate input {
+        background: #1a1a2e; border: 1px solid #2a2a4a;
+        color: #e0e0e0; padding: 0.75rem 1.25rem;
+        border-radius: 8px; font-size: 1.1rem;
+        width: 240px; text-align: center; outline: none;
+        transition: border-color 0.2s;
+    }
+    #pw-gate input:focus { border-color: #7dd3fc; }
+    #pw-gate button {
+        background: #7dd3fc; color: #0a0a0f; border: none;
+        padding: 0.6rem 2rem; border-radius: 8px;
+        font-size: 1rem; font-weight: 600; cursor: pointer;
+        transition: opacity 0.2s;
+    }
+    #pw-gate button:hover { opacity: 0.85; }
+    #pw-gate .error { color: #f87171; font-size: 0.9rem; height: 1.2rem; }
+    #pw-gate .hint { color: #6b7280; font-size: 0.8rem; }
+
+    #main-wrapper { display: none; }
+    </style>
+</head>
+
+{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
+<body class="list" id="top">
+{{- else }}
+<body id="top">
+{{- end }}
+
+    <!-- Password gate -->
+    <div id="pw-gate">
+        <h2>🔐 Hermès 內部頁面</h2>
+        <input type="password" id="pw-input" placeholder="輸入密碼" autofocus>
+        <button onclick="checkPw()">進入</button>
+        <div class="error" id="pw-error"></div>
+        <div class="hint">僅限授權使用者</div>
+    </div>
+
+    <!-- Main content (hidden until verified) -->
+    <div id="main-wrapper">
+        {{ partialCached "header.html" . .Page -}}
+        <main class="main">
+            {{- block "main" . }}{{ end }}
+        </main>
+        {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    </div>
+
+    <script>
+    const CORRECT = '198105';
+
+    function checkPw() {
+        var val = document.getElementById('pw-input').value;
+        if (val === CORRECT) {
+            sessionStorage.setItem('hermes_internal_pw', '1');
+            document.getElementById('pw-gate').style.display = 'none';
+            document.getElementById('main-wrapper').style.display = 'block';
+        } else {
+            document.getElementById('pw-error').textContent = '密碼錯誤，請再試一次';
+            document.getElementById('pw-input').value = '';
+            document.getElementById('pw-input').focus();
+        }
+    }
+    document.getElementById('pw-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') checkPw();
+    });
+    if (sessionStorage.getItem('hermes_internal_pw') === '1') {
+        document.getElementById('pw-gate').style.display = 'none';
+        document.getElementById('main-wrapper').style.display = 'block';
+    }
+    </script>
+
+</body>
+</html>
