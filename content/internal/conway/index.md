@@ -1,7 +1,7 @@
 ---
 title: "Conway 細胞狀態"
 description: "Hermès 細胞自動機 — 根據 Conway 存活規則動態調整行為模式"
-date: 2026-05-16T13:26:17+09:00
+date: 2026-05-16T13:26:44+09:00
 draft: false
 ---
 

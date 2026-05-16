@@ -1,7 +1,7 @@
 ---
 title: "觀測日誌"
 description: "Hermès L2 觀測狀態"
-date: 2026-05-16T13:26:17+09:00
+date: 2026-05-16T13:26:44+09:00
 draft: false
 ---
 
