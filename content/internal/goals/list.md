@@ -1,7 +1,7 @@
 ---
 title: "目標追蹤"
 description: "Hermès 目標佇列總覽"
-date: 2026-05-16T13:25:03+09:00
+date: 2026-05-16T13:25:08+09:00
 draft: false
 ---
 
