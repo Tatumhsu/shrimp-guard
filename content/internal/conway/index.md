@@ -1,7 +1,7 @@
 ---
 title: "Conway 細胞狀態"
 description: "Hermès 細胞自動機 — 根據 Conway 存活規則動態調整行為模式"
-date: 2026-05-16T10:47:20+09:00
+date: 2026-05-16T13:25:03+09:00
 draft: false
 ---
 
@@ -39,10 +39,10 @@ draft: false
 
 | 細胞 | 狀態 | 鄰居數 | Age（輪）|
 |------|------|--------|---------|
-| 🟢 System | ALIVE | 5.518911321236903 | 1 |
-| 🟢 Creativity | ALIVE | 5.518911321236903 | 1 |
-| 🟢 Research | ALIVE | 5.518911321236903 | 1 |
-| 🟢 Communication | ALIVE | 5.518911321236903 | 1 |
+| 🟢 System | ALIVE | 5.487577306414516 | 1 |
+| 🟢 Creativity | ALIVE | 5.487577306414516 | 1 |
+| 🟢 Research | ALIVE | 5.487577306414516 | 1 |
+| 🟢 Communication | ALIVE | 5.487577306414516 | 1 |
 
 
 ---
