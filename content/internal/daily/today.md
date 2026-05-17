@@ -1,13 +1,13 @@
 ---
 title: "今日摘要"
 description: "Hermès 系統摘要"
-date: 2026-05-17T03:30:56+09:00
+date: 2026-05-18T03:30:33+09:00
 draft: false
 ---
 
 # Hermès 今日摘要
 
-生成時間：2026-05-17 03:30
+生成時間：2026-05-18 03:30
 
 ---
 
@@ -39,7 +39,7 @@ draft: false
 
 | 觀測項目 | 描述 | 命中次數 | 置信度 | 狀態 |
 |----------|------|----------|--------|------|
-| hn_observation | HN 頭條觀察 | 630 | 60% | confirmed |
+| hn_observation | HN 頭條觀察 | 900 | 60% | confirmed |
 | modal_research_triggered | Modal 深度研究已觸發 | 1 | 40% | in_progress |
 
 ---
