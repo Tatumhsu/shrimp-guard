@@ -3,580 +3,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>台北捷運互動地圖</title>
+<title>台北捷運路線圖</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Noto Sans TC','Helvetica Neue',Arial,sans-serif;
-  background:#f5f0e8;overflow:hidden;height:100vh;width:100vw;
-  touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;
-}
-#header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:linear-gradient(180deg,#f5f0e8 0%,rgba(245,240,232,0.95) 80%,transparent);
-  padding:12px 16px 8px;text-align:center;
-}
-#header h1{font-size:1.3rem;font-weight:900;letter-spacing:-0.02em}
-#header p{font-size:0.7rem;color:#888;margin-top:-2px}
-
-#canvasWrap{
-  position:fixed;top:0;left:0;right:0;bottom:0;
-  overflow:hidden;cursor:grab;
-}
-#canvasWrap:active{cursor:grabbing}
-#mapCanvas{display:block;width:100%;height:100%}
-
-#controls{
-  position:fixed;bottom:24px;right:20px;z-index:100;
-  display:flex;flex-direction:column;gap:6px;
-}
-#controls button{
-  width:44px;height:44px;border-radius:50%;border:none;
-  background:rgba(255,255,255,0.92);font-size:22px;font-weight:700;
-  cursor:pointer;color:#444;box-shadow:0 2px 8px rgba(0,0,0,0.1);
-  backdrop-filter:blur(4px);transition:all 0.1s;
-}
-#controls button:active{transform:scale(0.92)}
-
-#legend{
-  position:fixed;top:52px;left:10px;z-index:100;
-  display:flex;flex-direction:column;gap:4px;
-}
-#legend button{
-  display:flex;align-items:center;gap:6px;
-  border:none;background:rgba(255,255,255,0.85);border-radius:16px;
-  padding:4px 10px 4px 4px;font-size:11px;font-weight:700;
-  cursor:pointer;color:#444;box-shadow:0 1px 4px rgba(0,0,0,0.06);
-  font-family:inherit;transition:all 0.12s;white-space:nowrap;
-}
-#legend button:active{transform:scale(0.95)}
-#legend button .dot{
-  width:14px;height:14px;border-radius:50%;flex-shrink:0;
-  border:2px solid rgba(255,255,255,0.7);
-}
-#legend button.active{box-shadow:0 0 0 2px #333 inset;filter:brightness(1.05)}
-#legend button.hidden{opacity:0.35}
-
-#info{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  z-index:100;display:none;
-  background:rgba(255,252,248,0.96);border-radius:16px;
-  padding:16px 20px;width:min(340px,calc(100vw-32px));
-  box-shadow:0 8px 28px rgba(0,0,0,0.12);border:1px solid rgba(200,190,170,0.3);
-  backdrop-filter:blur(8px);
-}
-#info.show{display:block;animation:up 0.18s ease}
-@keyframes up{from{opacity:0;transform:translateX(-50%) translateY(8px)}}
-#info .close{position:absolute;top:6px;right:10px;border:none;background:none;font-size:18px;cursor:pointer;color:#999}
+body{font-family:'Noto Sans TC','Helvetica Neue',Arial,sans-serif;background:#f5f0e8;overflow:hidden;height:100vh;width:100vw;touch-action:none}
+#wrap{position:fixed;inset:0;overflow:hidden;cursor:grab}
+#wrap:active{cursor:grabbing}
+#c{display:block;width:100%;height:100%}
+#legend{position:fixed;top:50px;left:8px;z-index:10;display:flex;flex-direction:column;gap:3px}
+#legend button{display:flex;align-items:center;gap:5px;border:none;background:rgba(255,255,255,0.88);border-radius:14px;padding:4px 9px 4px 4px;font-size:11px;font-weight:700;cursor:pointer;color:#444;font-family:inherit;box-shadow:0 1px 3px rgba(0,0,0,0.06);white-space:nowrap}
+#legend button .d{width:13px;height:13px;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,0.7)}
+#legend button.on{box-shadow:0 0 0 2px #333 inset}
+#legend button.off{opacity:0.3}
+#info{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:10;display:none;background:rgba(255,252,248,0.96);border-radius:14px;padding:14px 18px;width:min(320px,calc(100vw-28px));box-shadow:0 6px 24px rgba(0,0,0,0.1)}
+#info.show{display:block;animation:fadeIn 0.15s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(6px)}}
+#info .x{position:absolute;top:5px;right:8px;border:none;background:none;font-size:16px;cursor:pointer;color:#999}
 #info h3{font-size:1rem;font-weight:700}
-#info .code{font-size:0.7rem;color:#888;margin-bottom:4px}
-#info .lines{font-size:0.75rem;margin-bottom:8px}
-#info .lines span{display:inline-block;padding:1px 8px;border-radius:10px;color:#fff;font-size:0.65rem;font-weight:700;margin-right:3px}
-#info .poi{font-size:0.75rem;color:#555}
-#info .poi span{display:inline-block;background:#f0ebe3;padding:2px 8px;border-radius:8px;margin:2px 4px 2px 0;font-size:0.7rem}
-
-@media(max-width:640px){
-  #header h1{font-size:1rem}
-  #legend{top:48px;left:6px;gap:3px}
-  #legend button{font-size:10px;padding:3px 8px 3px 3px}
-  #legend button .dot{width:12px;height:12px}
-  #controls{bottom:16px;right:12px}
-  #controls button{width:38px;height:38px;font-size:18px}
-}
+#info .c{font-size:0.7rem;color:#888;margin-bottom:3px}
+#info .l{font-size:0.75rem;margin-bottom:6px}
+#info .l span{display:inline-block;padding:1px 7px;border-radius:9px;color:#fff;font-size:0.65rem;font-weight:700;margin-right:3px}
+#info .p{font-size:0.75rem;color:#555}
+#info .p span{display:inline-block;background:#f0ebe3;padding:2px 8px;border-radius:8px;margin:2px 4px 2px 0;font-size:0.7rem}
+#z{position:fixed;bottom:20px;right:16px;z-index:10;display:flex;flex-direction:column;gap:5px}
+#z button{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);font-size:20px;font-weight:700;cursor:pointer;color:#444;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+#h{position:fixed;top:0;left:0;right:0;z-index:10;background:linear-gradient(180deg,#f5f0e8,transparent);padding:10px 14px 6px;text-align:center;pointer-events:none}
+#h h1{font-size:1.2rem;font-weight:900}
+#h p{font-size:0.65rem;color:#888}
+@media(max-width:640px){#legend{top:44px;left:5px;gap:2px}#legend button{font-size:10px;padding:3px 7px 3px 3px}#legend button .d{width:11px;height:11px}#h h1{font-size:1rem}}
 </style>
 </head>
 <body>
-<div id="header"><h1>🚇 台北捷運</h1><p>拖曳 · 縮放 · 點車站看資訊</p></div>
+<div id="h"><h1>🚇 台北捷運</h1><p>拖曳・縮放・點車站</p></div>
 <div id="legend"></div>
-<div id="canvasWrap"><canvas id="mapCanvas"></canvas></div>
-<div id="controls"><button id="zoomin">＋</button><button id="zoomout">−</button></div>
-<div id="info"><button class="close" id="infoClose">✕</button><h3 id="infoTitle"></h3><div class="code" id="infoCode"></div><div class="lines" id="infoLines"></div><div class="poi" id="infoPoi"></div></div>
+<div id="wrap"><canvas id="c"></canvas></div>
+<div id="z"><button id="zi">＋</button><button id="zo">−</button></div>
+<div id="info"><button class="x" id="ix">✕</button><h3 id="it"></h3><div class="c" id="ic"></div><div class="l" id="il"></div><div class="p" id="ip"></div></div>
 <script>
-// ====== DATA ======
-const COLORS = {
-  BR:'#c8a84e',R:'#e3002c',G:'#008659',O:'#f8b61c',BL:'#0070bd',Y:'#f1c40f'
+// 路線顏色
+const C={BR:'#c8a84e',R:'#e3002c',G:'#008659',O:'#f8b61c',BL:'#0070bd',Y:'#f1c40f'};
+const N={BR:'文湖線',R:'淡水信義線',G:'松山新店線',O:'中和新蘆線',BL:'板南線',Y:'環狀線'};
+
+// 車站資料 — 座標以 grid 為單位，每格 = 30px
+// 以台北車站 (0,0) 為中心，x正=東，y正=南
+const S={
+  // === 淡水信義線 R — 垂直線，從北到南 ===
+  R02:{n:'淡水',x:0,y:-20},R03:{n:'紅樹林',x:0,y:-18},R04:{n:'竹圍',x:0,y:-16},
+  R05:{n:'關渡',x:0,y:-14},R06:{n:'忠義',x:0,y:-12},R07:{n:'復興崗',x:0,y:-10},
+  R08:{n:'北投',x:0,y:-8},R09:{n:'奇岩',x:0,y:-6},R10:{n:'唭哩岸',x:0,y:-4},
+  R11:{n:'石牌',x:0,y:-2},R12:{n:'明德',x:0,y:-1},R13:{n:'芝山',x:0,y:0.5},
+  R14:{n:'士林',x:0,y:2},R15:{n:'劍潭',x:0,y:3.5},R16:{n:'圓山',x:0,y:5},
+  R17:{n:'民權西路',x:0,y:6.5,t:['O']},R18:{n:'雙連',x:0,y:8},R19:{n:'中山',x:0,y:9.5,t:['G']},
+  R20:{n:'台北車站',x:0,y:11,t:['BL']},R21:{n:'台大醫院',x:0.5,y:12.5},
+  R22:{n:'中正紀念堂',x:1,y:14,t:['G']},R23:{n:'東門',x:1.5,y:15.5,t:['O']},
+  R24:{n:'大安森林公園',x:2,y:17},R25:{n:'大安',x:2.5,y:18.5,t:['BR']},
+  R26:{n:'信義安和',x:3,y:20},R27:{n:'台北101/世貿',x:3.5,y:21.5},R28:{n:'象山',x:4,y:23},
+
+  // === 板南線 BL — 水平線，從西到東 ===
+  BL01:{n:'頂埔',x:-12,y:11},BL02:{n:'永寧',x:-10.5,y:11},BL03:{n:'土城',x:-9,y:11},
+  BL04:{n:'海山',x:-7.5,y:11},BL05:{n:'亞東醫院',x:-6,y:11},BL06:{n:'府中',x:-4.5,y:11},
+  BL07:{n:'板橋',x:-3,y:11,t:['Y']},BL08:{n:'新埔',x:-1.5,y:11},BL09:{n:'江子翠',x:0,y:11},
+  BL10:{n:'龍山寺',x:1.5,y:11},BL11:{n:'西門',x:3,y:11,t:['G']},
+  BL12:{n:'台北車站',x:4.5,y:11},BL13:{n:'善導寺',x:6,y:11},BL14:{n:'忠孝新生',x:7.5,y:11,t:['O']},
+  BL15:{n:'忠孝復興',x:9,y:11,t:['BR']},BL16:{n:'忠孝敦化',x:10.5,y:11},BL17:{n:'國父紀念館',x:12,y:11},
+  BL18:{n:'市政府',x:13.5,y:11},BL19:{n:'永春',x:15,y:11},BL20:{n:'後山埤',x:16.5,y:11},
+  BL21:{n:'昆陽',x:18,y:11},BL22:{n:'南港',x:19.5,y:11},BL23:{n:'南港展覽館',x:21,y:11,t:['BR']},
+
+  // === 松山新店線 G — 西北-東南斜線 ===
+  G19:{n:'松山',x:12,y:5},G18:{n:'南京三民',x:10.5,y:6.5},G17:{n:'台北小巨蛋',x:9,y:8},
+  G16:{n:'南京復興',x:7.5,y:9.5,t:['BR']},G15:{n:'松江南京',x:6,y:11,t:['O']},
+  G14:{n:'中山',x:4.5,y:12.5},G13:{n:'北門',x:3,y:14},G12:{n:'西門',x:1.5,y:15.5},
+  G11:{n:'小南門',x:0,y:17},G10:{n:'中正紀念堂',x:-1.5,y:18.5},
+  G09:{n:'古亭',x:-3,y:20,t:['O']},G08:{n:'台電大樓',x:-4.5,y:21.5},G07:{n:'公館',x:-6,y:23},
+  G06:{n:'萬隆',x:-7.5,y:24.5},G05:{n:'景美',x:-9,y:26},G04:{n:'大坪林',x:-10.5,y:27.5,t:['Y']},
+  G03:{n:'七張',x:-12,y:29},G02:{n:'新店區公所',x:-13.5,y:30.5},G01:{n:'新店',x:-15,y:32},
+
+  // === 中和新蘆線 O — 一條從西北下來，一條從西過來 ===
+  O54:{n:'迴龍',x:-12,y:-6},O53:{n:'丹鳳',x:-10.5,y:-4.5},O52:{n:'輔大',x:-9,y:-3},
+  O51:{n:'新莊',x:-7.5,y:-1.5},O50:{n:'頭前庄',x:-6,y:0,t:['Y']},O49:{n:'先嗇宮',x:-4.5,y:1.5},
+  O48:{n:'三重',x:-3,y:3},O47:{n:'菜寮',x:-1.5,y:4.5},O46:{n:'台北橋',x:0,y:6},
+  O45:{n:'大橋頭',x:1.5,y:7.5},O44:{n:'民權西路',x:3,y:9},O43:{n:'中山國小',x:4.5,y:10.5},
+  O42:{n:'行天宮',x:4.5,y:12.5},O41:{n:'松江南京',x:4.5,y:14.5},
+  O40:{n:'忠孝新生',x:4.5,y:16.5},O39:{n:'東門',x:4.5,y:18.5},
+  O38:{n:'古亭',x:4.5,y:20.5},O37:{n:'頂溪',x:4.5,y:22.5},O36:{n:'永安市場',x:4.5,y:24.5},
+  O35:{n:'景安',x:4.5,y:26.5,t:['Y']},O34:{n:'南勢角',x:4.5,y:28.5},
+  // 蘆洲支線
+  O56:{n:'蘆洲',x:-12,y:-2},O55:{n:'三民高中',x:-10.5,y:-0.5},O54b:{n:'徐匯中學',x:-9,y:1},
+  O53b:{n:'三和國中',x:-7.5,y:2.5},O52b:{n:'三重國小',x:-6,y:4},
+  // 蘆洲支線在大橋頭匯合
+
+  // === 文湖線 BR — 從東南到東北 ===
+  BR01:{n:'動物園',x:18,y:28},BR02:{n:'木柵',x:16.5,y:26.5},BR03:{n:'萬芳社區',x:15,y:25},
+  BR04:{n:'萬芳醫院',x:13.5,y:23.5},BR05:{n:'辛亥',x:12,y:22},BR06:{n:'麟光',x:10.5,y:20.5},
+  BR07:{n:'六張犁',x:9,y:19},BR08:{n:'科技大樓',x:7.5,y:17.5},BR09:{n:'大安',x:6,y:16,t:['R']},
+  BR10:{n:'忠孝復興',x:9,y:14.5},BR11:{n:'南京復興',x:12,y:13,t:['G']},
+  BR12:{n:'中山國中',x:12,y:11},BR13:{n:'松山機場',x:12,y:9},
+  BR14:{n:'大直',x:12,y:7},BR15:{n:'劍南路',x:12,y:5},BR16:{n:'西湖',x:12,y:3},
+  BR17:{n:'港墘',x:12,y:1},BR18:{n:'文德',x:12,y:-1},BR19:{n:'內湖',x:12,y:-3},
+  BR20:{n:'大湖公園',x:12,y:-5},BR21:{n:'葫洲',x:12,y:-7},BR22:{n:'東湖',x:12,y:-9},
+  BR23:{n:'南港軟體園區',x:12,y:-11},BR24:{n:'南港展覽館',x:12,y:-13,t:['BL']},
+
+  // === 環狀線 Y — 從北到南，在左側 ===
+  Y01:{n:'新北產業園區',x:-8,y:-6},Y02:{n:'幸福',x:-8,y:-4},Y03:{n:'頭前庄',x:-8,y:-2,t:['O']},
+  Y04:{n:'新埔民生',x:-8,y:0},Y05:{n:'板橋',x:-8,y:2,t:['BL']},Y06:{n:'板新',x:-8,y:4},
+  Y07:{n:'中和',x:-8,y:6},Y08:{n:'橋和',x:-8,y:8},Y09:{n:'中原',x:-8,y:10},
+  Y10:{n:'板南路',x:-8,y:12},Y11:{n:'景安',x:-8,y:14,t:['O']},Y12:{n:'景平',x:-8,y:16},
+  Y13:{n:'秀朗橋',x:-8,y:18},Y14:{n:'十四張',x:-8,y:20},Y15:{n:'大坪林',x:-8,y:22,t:['G']},
+  Y16:{n:'寶斗厝',x:-8,y:24},Y17:{n:'溝子口',x:-8,y:26}
 };
-const LINE_NAMES = {
-  BR:'文湖線',R:'淡水信義線',G:'松山新店線',O:'中和新蘆線',BL:'板南線',Y:'環狀線'
+
+// 路線順序
+const R={
+  R:['R02','R03','R04','R05','R06','R07','R08','R09','R10','R11','R12','R13','R14','R15','R16','R17','R18','R19','R20','R21','R22','R23','R24','R25','R26','R27','R28'],
+  BL:['BL01','BL02','BL03','BL04','BL05','BL06','BL07','BL08','BL09','BL10','BL11','BL12','BL13','BL14','BL15','BL16','BL17','BL18','BL19','BL20','BL21','BL22','BL23'],
+  G:['G19','G18','G17','G16','G15','G14','G13','G12','G11','G10','G09','G08','G07','G06','G05','G04','G03','G02','G01'],
+  O:['O54','O53','O52','O51','O50','O49','O48','O47','O46','O45','O44','O43','O42','O41','O40','O39','O38','O37','O36','O35','O34'],
+  OB:['O56','O55','O54b','O53b','O52b','O45'],
+  BR:['BR01','BR02','BR03','BR04','BR05','BR06','BR07','BR08','BR09','BR10','BR11','BR12','BR13','BR14','BR15','BR16','BR17','BR18','BR19','BR20','BR21','BR22','BR23','BR24'],
+  Y:['Y01','Y02','Y03','Y04','Y05','Y06','Y07','Y08','Y09','Y10','Y11','Y12','Y13','Y14','Y15','Y16','Y17']
 };
 
-const DATA = {
-  stations: {
-    // 文湖線 BR
-    'BR01':{n:'動物園',x:480,y:-280},
-    'BR02':{n:'木柵',x:460,y:-310},
-    'BR03':{n:'萬芳社區',x:440,y:-340},
-    'BR04':{n:'萬芳醫院',x:420,y:-370},
-    'BR05':{n:'辛亥',x:395,y:-390},
-    'BR06':{n:'麟光',x:370,y:-380},
-    'BR07':{n:'六張犁',x:345,y:-365},
-    'BR08':{n:'科技大樓',x:320,y:-350},
-    'BR09':{n:'大安',x:295,y:-335,tr:['R']},
-    'BR10':{n:'忠孝復興',x:270,y:-320,tr:['BL']},
-    'BR11':{n:'南京復興',x:245,y:-305,tr:['G']},
-    'BR12':{n:'中山國中',x:220,y:-290},
-    'BR13':{n:'松山機場',x:195,y:-275},
-    'BR14':{n:'大直',x:170,y:-260},
-    'BR15':{n:'劍南路',x:145,y:-245},
-    'BR16':{n:'西湖',x:120,y:-230},
-    'BR17':{n:'港墘',x:95,y:-215},
-    'BR18':{n:'文德',x:70,y:-200},
-    'BR19':{n:'內湖',x:45,y:-185},
-    'BR20':{n:'大湖公園',x:20,y:-170},
-    'BR21':{n:'葫洲',x:-5,y:-155},
-    'BR22':{n:'東湖',x:-30,y:-140},
-    'BR23':{n:'南港軟體園區',x:-55,y:-125},
-    'BR24':{n:'南港展覽館',x:-80,y:-110,tr:['BL']},
-    // 淡水信義線 R — 直線從北到南
-    'R02':{n:'淡水',x:-340,y:480},
-    'R03':{n:'紅樹林',x:-320,y:450},
-    'R04':{n:'竹圍',x:-300,y:420},
-    'R05':{n:'關渡',x:-280,y:390},
-    'R06':{n:'忠義',x:-260,y:360},
-    'R07':{n:'復興崗',x:-240,y:330},
-    'R08':{n:'北投',x:-220,y:300},
-    'R09':{n:'奇岩',x:-200,y:270},
-    'R10':{n:'唭哩岸',x:-180,y:240},
-    'R11':{n:'石牌',x:-160,y:210},
-    'R12':{n:'明德',x:-140,y:180},
-    'R13':{n:'芝山',x:-120,y:150},
-    'R14':{n:'士林',x:-100,y:120},
-    'R15':{n:'劍潭',x:-80,y:90},
-    'R16':{n:'圓山',x:-60,y:60},
-    'R17':{n:'民權西路',x:-40,y:30,tr:['O']},
-    'R18':{n:'雙連',x:-20,y:0},
-    'R19':{n:'中山',x:0,y:-30,tr:['G']},
-    'R20':{n:'台北車站',x:20,y:-60,tr:['BL']},
-    'R21':{n:'台大醫院',x:40,y:-90},
-    'R22':{n:'中正紀念堂',x:60,y:-120,tr:['G']},
-    'R23':{n:'東門',x:80,y:-150,tr:['O']},
-    'R24':{n:'大安森林公園',x:100,y:-180},
-    'R25':{n:'大安',x:120,y:-210,tr:['BR']},
-    'R26':{n:'信義安和',x:140,y:-240},
-    'R27':{n:'台北101/世貿',x:160,y:-270},
-    'R28':{n:'象山',x:180,y:-300},
-    // 松山新店線 G
-    'G19':{n:'松山',x:340,y:-160},
-    'G18':{n:'南京三民',x:310,y:-185},
-    'G17':{n:'台北小巨蛋',x:280,y:-210},
-    'G16':{n:'南京復興',x:250,y:-235,tr:['BR']},
-    'G15':{n:'松江南京',x:220,y:-260,tr:['O']},
-    'G14':{n:'中山',x:190,y:-285,tr:['R']},
-    'G13':{n:'北門',x:160,y:-310},
-    'G12':{n:'西門',x:130,y:-335,tr:['BL']},
-    'G11':{n:'小南門',x:100,y:-360},
-    'G10':{n:'中正紀念堂',x:70,y:-385,tr:['R']},
-    'G09':{n:'古亭',x:40,y:-410,tr:['O']},
-    'G08':{n:'台電大樓',x:10,y:-435},
-    'G07':{n:'公館',x:-20,y:-460},
-    'G06':{n:'萬隆',x:-50,y:-485},
-    'G05':{n:'景美',x:-80,y:-510},
-    'G04':{n:'大坪林',x:-110,y:-535,tr:['Y']},
-    'G03':{n:'七張',x:-140,y:-560},
-    'G02':{n:'新店區公所',x:-170,y:-585},
-    'G01':{n:'新店',x:-200,y:-610},
-    // 中和新蘆線 O
-    'O54':{n:'迴龍',x:-440,y:340},
-    'O53':{n:'丹鳳',x:-410,y:310},
-    'O52':{n:'輔大',x:-380,y:280},
-    'O51':{n:'新莊',x:-350,y:250},
-    'O50':{n:'頭前庄',x:-320,y:220,tr:['Y']},
-    'O49':{n:'先嗇宮',x:-290,y:190},
-    'O48':{n:'三重',x:-260,y:160},
-    'O47':{n:'菜寮',x:-230,y:130},
-    'O46':{n:'台北橋',x:-200,y:100},
-    'O45':{n:'大橋頭',x:-170,y:70},
-    'O44':{n:'民權西路',x:-140,y:40,tr:['R']},
-    'O43':{n:'中山國小',x:-110,y:10},
-    'O42':{n:'行天宮',x:-80,y:-20},
-    'O41':{n:'松江南京',x:-50,y:-50,tr:['G']},
-    'O40':{n:'忠孝新生',x:-20,y:-80,tr:['BL']},
-    'O39':{n:'東門',x:10,y:-110,tr:['R']},
-    'O38':{n:'古亭',x:40,y:-140,tr:['G']},
-    'O37':{n:'頂溪',x:70,y:-170},
-    'O36':{n:'永安市場',x:100,y:-200},
-    'O35':{n:'景安',x:130,y:-230,tr:['Y']},
-    'O34':{n:'南勢角',x:160,y:-260},
-    // 蘆洲支線
-    'O56':{n:'蘆洲',x:-490,y:280},
-    'O55':{n:'三民高中',x:-460,y:250},
-    'O54b':{n:'徐匯中學',x:-430,y:220},
-    'O53b':{n:'三和國中',x:-400,y:190},
-    'O52b':{n:'三重國小',x:-370,y:160},
-    // 板南線 BL
-    'BL01':{n:'頂埔',x:-480,y:-280},
-    'BL02':{n:'永寧',x:-450,y:-305},
-    'BL03':{n:'土城',x:-420,y:-330},
-    'BL04':{n:'海山',x:-390,y:-355},
-    'BL05':{n:'亞東醫院',x:-360,y:-380},
-    'BL06':{n:'府中',x:-330,y:-405},
-    'BL07':{n:'板橋',x:-300,y:-430,tr:['Y']},
-    'BL08':{n:'新埔',x:-270,y:-455},
-    'BL09':{n:'江子翠',x:-240,y:-480},
-    'BL10':{n:'龍山寺',x:-210,y:-505},
-    'BL11':{n:'西門',x:-180,y:-530,tr:['G']},
-    'BL12':{n:'台北車站',x:-150,y:-555,tr:['R']},
-    'BL13':{n:'善導寺',x:-120,y:-580},
-    'BL14':{n:'忠孝新生',x:-90,y:-605,tr:['O']},
-    'BL15':{n:'忠孝復興',x:-60,y:-630,tr:['BR']},
-    'BL16':{n:'忠孝敦化',x:-30,y:-655},
-    'BL17':{n:'國父紀念館',x:0,y:-680},
-    'BL18':{n:'市政府',x:30,y:-705},
-    'BL19':{n:'永春',x:60,y:-730},
-    'BL20':{n:'後山埤',x:90,y:-755},
-    'BL21':{n:'昆陽',x:120,y:-780},
-    'BL22':{n:'南港',x:150,y:-805},
-    'BL23':{n:'南港展覽館',x:180,y:-830,tr:['BR']},
-    // 環狀線 Y
-    'Y01':{n:'新北產業園區',x:-200,y:440},
-    'Y02':{n:'幸福',x:-180,y:400},
-    'Y03':{n:'頭前庄',x:-160,y:360,tr:['O']},
-    'Y04':{n:'新埔民生',x:-140,y:320},
-    'Y05':{n:'板橋',x:-120,y:280,tr:['BL']},
-    'Y06':{n:'板新',x:-100,y:240},
-    'Y07':{n:'中和',x:-80,y:200},
-    'Y08':{n:'橋和',x:-60,y:160},
-    'Y09':{n:'中原',x:-40,y:120},
-    'Y10':{n:'板南路',x:-20,y:80},
-    'Y11':{n:'景安',x:0,y:40,tr:['O']},
-    'Y12':{n:'景平',x:20,y:0},
-    'Y13':{n:'秀朗橋',x:40,y:-40},
-    'Y14':{n:'十四張',x:60,y:-80},
-    'Y15':{n:'大坪林',x:80,y:-120,tr:['G']},
-    'Y16':{n:'寶斗厝',x:100,y:-160},
-    'Y17':{n:'溝子口',x:120,y:-200}
-  },
-  routes: {
-    BR:['BR01','BR02','BR03','BR04','BR05','BR06','BR07','BR08','BR09','BR10','BR11','BR12','BR13','BR14','BR15','BR16','BR17','BR18','BR19','BR20','BR21','BR22','BR23','BR24'],
-    R:['R02','R03','R04','R05','R06','R07','R08','R09','R10','R11','R12','R13','R14','R15','R16','R17','R18','R19','R20','R21','R22','R23','R24','R25','R26','R27','R28'],
-    G:['G19','G18','G17','G16','G15','G14','G13','G12','G11','G10','G09','G08','G07','G06','G05','G04','G03','G02','G01'],
-    O:['O54','O53','O52','O51','O50','O49','O48','O47','O46','O45','O44','O43','O42','O41','O40','O39','O38','O37','O36','O35','O34'],
-    O_branch:['O56','O55','O54b','O53b','O52b','O45'],
-    BL:['BL01','BL02','BL03','BL04','BL05','BL06','BL07','BL08','BL09','BL10','BL11','BL12','BL13','BL14','BL15','BL16','BL17','BL18','BL19','BL20','BL21','BL22','BL23'],
-    Y:['Y01','Y02','Y03','Y04','Y05','Y06','Y07','Y08','Y09','Y10','Y11','Y12','Y13','Y14','Y15','Y16','Y17']
-  },
-  pois: {
-    'BR09':['大安森林公園'],
-    'BR10':['SOGO忠孝館','東區商圈'],
-    'BR13':['松山機場'],
-    'BR14':['美麗華'],
-    'BR20':['大湖公園'],
-    'R02':['淡水老街','漁人碼頭','紅毛城'],
-    'R08':['北投溫泉'],
-    'R14':['士林夜市','士林官邸'],
-    'R15':['士林夜市'],
-    'R16':['花博公園','北美館'],
-    'R20':['台北車站','京站'],
-    'R22':['中正紀念堂','自由廣場'],
-    'R27':['台北101','信義商圈'],
-    'R28':['象山步道'],
-    'G19':['饒河街夜市','彩虹橋'],
-    'G16':['台北小巨蛋'],
-    'G12':['西門町','西門紅樓'],
-    'G10':['中正紀念堂'],
-    'G09':['師大夜市'],
-    'G07':['台灣大學','公館夜市'],
-    'G01':['碧潭風景區'],
-    'BL11':['西門町'],
-    'BL12':['台北車站'],
-    'BL14':['華山文創園區','光華商場'],
-    'BL15':['東區商圈'],
-    'BL17':['國父紀念館'],
-    'BL18':['信義商圈'],
-    'BL10':['龍山寺','艋舺夜市'],
-    'BL07':['板橋車站'],
-    'O40':['華山文創園區'],
-    'O39':['永康街','東門市場'],
-    'O42':['行天宮'],
-    'O52':['輔仁大學'],
-    'Y05':['板橋車站'],
-    'Y15':['景美夜市']
-  }
-};// ====== RENDER ENGINE ======
-const canvas = document.getElementById('mapCanvas');
-const ctx = canvas.getContext('2d');
-const wrap = document.getElementById('canvasWrap');
+// 景點
+const P={
+  BR09:['大安森林公園'],BR10:['SOGO','東區商圈'],BR13:['松山機場'],BR14:['美麗華'],BR20:['大湖公園'],
+  R02:['淡水老街','漁人碼頭','紅毛城'],R08:['北投溫泉'],R14:['士林夜市','士林官邸'],R16:['花博公園','北美館'],
+  R20:['台北車站','京站'],R22:['中正紀念堂'],R27:['台北101','信義商圈'],R28:['象山步道'],
+  G19:['饒河街夜市','彩虹橋'],G16:['台北小巨蛋'],G12:['西門町','西門紅樓'],G09:['師大夜市'],
+  G07:['台灣大學','公館夜市'],G01:['碧潭風景區'],
+  BL11:['西門町'],BL14:['華山文創','光華商場'],BL17:['國父紀念館'],BL18:['信義商圈'],BL10:['龍山寺','艋舺夜市'],
+  O40:['華山文創'],O39:['永康街','東門市場'],O42:['行天宮'],O52:['輔仁大學'],
+  Y05:['板橋車站'],Y15:['景美夜市']
+};
 
-let W, H;
-let zoom = 1, panX = 0, panY = 0;
-let dragStart = null, isDrag = false;
-let visible = {BR:true,R:true,G:true,O:true,BL:true,Y:true};
-let sel = null;
+// ====== 渲染引擎 ======
+const ca=document.getElementById('c'),cx=ca.getContext('2d');
+const wr=document.getElementById('wrap');
+let W,H,z=1,px=0,py=0,ds=null,dr=false,sl=null;
+let vi={R:true,BL:true,G:true,O:true,BR:true,Y:true};
 
-function resize() {
-  W = canvas.width = wrap.clientWidth;
-  H = canvas.height = wrap.clientHeight;
-  draw();
+const G=30; // grid size in pixels
+
+function rs(){
+  W=ca.width=wr.clientWidth;
+  H=ca.height=wr.clientHeight;
+  drw();
 }
 
-function toScreen(wx, wy) {
-  return [(wx + panX) * zoom + W/2, (wy + panY) * zoom + H/2];
+function ts(wx,wy){
+  return [(wx*G+px)*z+W/2,(wy*G+py)*z+H/2];
 }
 
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-  ctx.save();
+function drw(){
+  cx.clearRect(0,0,W,H);
 
-  // 畫網格
-  ctx.strokeStyle = 'rgba(100,90,70,0.06)';
-  ctx.lineWidth = 1;
-  const gs = 30 * zoom;
-  if (gs > 8) {
-    for (let x = -2000; x < 2000; x += 30) {
-      const [sx] = toScreen(x, 0);
-      ctx.beginPath(); ctx.moveTo(sx, 0); ctx.lineTo(sx, H); ctx.stroke();
+  // 網格
+  cx.strokeStyle='rgba(100,90,70,0.04)';
+  cx.lineWidth=1;
+  const gs=G*z;
+  if(gs>10){
+    for(let x=-30;x<30;x++){
+      const[sx]=ts(x,0);
+      cx.beginPath();cx.moveTo(sx,0);cx.lineTo(sx,H);cx.stroke();
     }
-    for (let y = -2000; y < 2000; y += 30) {
-      const [, sy] = toScreen(0, y);
-      ctx.beginPath(); ctx.moveTo(0, sy); ctx.lineTo(W, sy); ctx.stroke();
+    for(let y=-30;y<30;y++){
+      const[,sy]=ts(0,y);
+      cx.beginPath();cx.moveTo(0,sy);cx.lineTo(W,sy);cx.stroke();
     }
   }
 
-  // 畫路線
-  const order = ['R','G','BL','O','BR','Y'];
-  for (const lid of order) {
-    if (!visible[lid]) continue;
-    const route = DATA.routes[lid];
-    if (!route) continue;
-    const color = COLORS[lid];
-    const stations = route.map(c => DATA.stations[c]).filter(Boolean);
-    if (stations.length < 2) continue;
-
-    // 畫主線 path
-    ctx.beginPath();
-    let first = true;
-    for (const s of stations) {
-      const [sx, sy] = toScreen(s.x, s.y);
-      if (first) { ctx.moveTo(sx, sy); first = false; }
-      else ctx.lineTo(sx, sy);
+  // 路線順序：背景路線先畫
+  const ord=['R','BL','G','O','BR','Y'];
+  for(const lid of ord){
+    if(!vi[lid])continue;
+    const rt=R[lid];if(!rt)continue;
+    const col=C[lid];
+    const sts=rt.map(c=>S[c]).filter(Boolean);
+    if(sts.length<2)continue;
+    cx.beginPath();
+    let f=true;
+    for(const s of sts){
+      const[sx,sy]=ts(s.x,s.y);
+      if(f){cx.moveTo(sx,sy);f=false;}
+      else cx.lineTo(sx,sy);
     }
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 5 * zoom;
-    ctx.globalAlpha = 0.7;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.stroke();
-    ctx.globalAlpha = 1;
+    cx.strokeStyle=col;cx.lineWidth=5*z;cx.globalAlpha=0.65;
+    cx.lineCap='round';cx.lineJoin='round';cx.stroke();
+    cx.globalAlpha=1;
 
     // 蘆洲支線
-    if (lid === 'O') {
-      const branch = DATA.routes.O_branch;
-      if (branch) {
-        ctx.beginPath();
-        first = true;
-        for (const c of branch) {
-          const s = DATA.stations[c];
-          if (!s) continue;
-          const [sx, sy] = toScreen(s.x, s.y);
-          if (first) { ctx.moveTo(sx, sy); first = false; }
-          else ctx.lineTo(sx, sy);
-        }
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 5 * zoom;
-        ctx.globalAlpha = 0.7;
-        ctx.stroke();
-        ctx.globalAlpha = 1;
+    if(lid==='O'&&R.OB){
+      cx.beginPath();f=true;
+      for(const c of R.OB){
+        const s=S[c];if(!s)continue;
+        const[sx,sy]=ts(s.x,s.y);
+        if(f){cx.moveTo(sx,sy);f=false;}
+        else cx.lineTo(sx,sy);
       }
+      cx.strokeStyle=col;cx.lineWidth=5*z;cx.globalAlpha=0.65;cx.stroke();
+      cx.globalAlpha=1;
     }
   }
 
-  // 畫車站（第二遍，在上面）
-  for (const lid of order) {
-    if (!visible[lid]) continue;
-    const route = DATA.routes[lid];
-    if (!route) continue;
-    const color = COLORS[lid];
-    for (const code of route) {
-      const s = DATA.stations[code];
-      if (!s) continue;
-      const [sx, sy] = toScreen(s.x, s.y);
-      const r = s.tr ? (6 * zoom) : (4.5 * zoom);
-      const isSel = sel === code;
+  // 車站圓點（第二層）
+  for(const lid of ord){
+    if(!vi[lid])continue;
+    const rt=R[lid];if(!rt)continue;
+    const col=C[lid];
+    for(const code of rt){
+      const s=S[code];if(!s)continue;
+      const[sx,sy]=ts(s.x,s.y);
+      const r=s.t?6*z:4.5*z;
+      const is=sl===code;
 
-      // 外圈
-      if (isSel) {
-        ctx.beginPath();
-        ctx.arc(sx, sy, r + 3, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,200,0,0.5)';
-        ctx.fill();
+      if(is){
+        cx.beginPath();cx.arc(sx,sy,r+4,0,Math.PI*2);
+        cx.fillStyle='rgba(255,200,0,0.4)';cx.fill();
       }
 
-      // 圓點
-      ctx.beginPath();
-      ctx.arc(sx, sy, Math.max(r, 3), 0, Math.PI * 2);
-      ctx.fillStyle = '#fff';
-      ctx.fill();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = Math.max(2.5 * zoom, 1.5);
-      ctx.stroke();
+      cx.beginPath();cx.arc(sx,sy,Math.max(r,3),0,Math.PI*2);
+      cx.fillStyle='#fff';cx.fill();
+      cx.strokeStyle=col;cx.lineWidth=Math.max(2.5*z,1.5);cx.stroke();
 
       // 站名
-      if (zoom > 0.6) {
-        const fs = Math.max(10 * zoom, 7);
-        const fontSize = Math.min(fs, 14);
-        ctx.font = `500 ${fontSize}px "Noto Sans TC","Helvetica Neue",Arial,sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#333';
-        // 背景
-        const tw = ctx.measureText(s.n).width;
-        const ty = sy - r - 3;
-        ctx.fillStyle = 'rgba(245,240,232,0.7)';
-        ctx.fillRect(sx - tw/2 - 2, ty - fontSize, tw + 4, fontSize + 2);
-        ctx.fillStyle = '#333';
-        ctx.fillText(s.n, sx, ty - 1);
+      if(z>0.5){
+        let fs=Math.min(Math.max(11*z,8),14);
+        cx.font=`500 ${fs}px "Noto Sans TC","Helvetica Neue",Arial,sans-serif`;
+        cx.textAlign='center';
+        const tw=cx.measureText(s.n).width;
+        const ty=sy-r-4;
+        cx.fillStyle='rgba(245,240,232,0.75)';
+        cx.fillRect(sx-tw/2-3,ty-fs,tw+6,fs+3);
+        cx.fillStyle='#333';cx.fillText(s.n,sx,ty-1);
       }
     }
   }
-  ctx.restore();
 }
 
-// ====== INTERACTION ======
-wrap.addEventListener('mousedown', e => {
-  dragStart = {x:e.clientX, y:e.clientY, px:panX, py:panY};
-  isDrag = false;
+// 互動
+wr.addEventListener('mousedown',e=>{ds={x:e.clientX,y:e.clientY,px,py};dr=false;});
+document.addEventListener('mousemove',e=>{
+  if(!ds)return;
+  const dx=e.clientX-ds.x,dy=e.clientY-ds.y;
+  if(Math.abs(dx)>3||Math.abs(dy)>3)dr=true;
+  if(dr){px=ds.px+dx/z;py=ds.py+dy/z;drw();}
 });
-document.addEventListener('mousemove', e => {
-  if (!dragStart) return;
-  const dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
-  if (Math.abs(dx) > 3 || Math.abs(dy) > 3) isDrag = true;
-  if (isDrag) {
-    panX = dragStart.px + dx / zoom;
-    panY = dragStart.py + dy / zoom;
-    draw();
-  }
-});
-document.addEventListener('mouseup', e => {
-  if (dragStart && !isDrag) {
-    // 點擊：找最近車站
-    const mx = (e.clientX - W/2) / zoom - panX;
-    const my = (e.clientY - H/2) / zoom - panY;
-    let best = null, bestDist = 15 / zoom;
-    for (const [code, s] of Object.entries(DATA.stations)) {
-      const dx = s.x - mx, dy = s.y - my;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < bestDist) { bestDist = dist; best = code; }
+document.addEventListener('mouseup',e=>{
+  if(ds&&!dr){
+    const mx=(e.clientX-W/2)/z-px,my=(e.clientY-H/2)/z-py;
+    let b=null,bd=12/z;
+    for(const[k,s]of Object.entries(S)){
+      const d=Math.hypot(s.x*G-mx,s.y*G-my);
+      if(d<bd){bd=d;b=k;}
     }
-    if (best) showStation(best);
-    else hideInfo();
+    if(b)sh(b);else hi();
   }
-  dragStart = null;
+  ds=null;
 });
 
 // 觸控
-let touchStart = null;
-wrap.addEventListener('touchstart', e => {
-  if (e.touches.length === 1) {
-    const t = e.touches[0];
-    touchStart = {x:t.clientX, y:t.clientY, px:panX, py:panY};
-    isDrag = false;
+let ts2=null;
+wr.addEventListener('touchstart',e=>{
+  if(e.touches.length===1){
+    const t=e.touches[0];
+    ts2={x:t.clientX,y:t.clientY,px,py};dr=false;
   }
-}, {passive: true});
-wrap.addEventListener('touchmove', e => {
-  if (e.touches.length === 1 && touchStart) {
-    const t = e.touches[0];
-    const dx = t.clientX - touchStart.x, dy = t.clientY - touchStart.y;
-    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) isDrag = true;
-    if (isDrag) {
-      panX = touchStart.px + dx / zoom;
-      panY = touchStart.py + dy / zoom;
-      draw();
-    }
+},{passive:true});
+wr.addEventListener('touchmove',e=>{
+  if(e.touches.length===1&&ts2){
+    const t=e.touches[0];
+    const dx=t.clientX-ts2.x,dy=t.clientY-ts2.y;
+    if(Math.abs(dx)>3||Math.abs(dy)>3)dr=true;
+    if(dr){px=ts2.px+dx/z;py=ts2.py+dy/z;drw();}
   }
-  // 雙指縮放
-  if (e.touches.length === 2) {
+  if(e.touches.length===2){
     e.preventDefault();
-    const t1 = e.touches[0], t2 = e.touches[1];
-    const dist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
-    if (touchStart && touchStart.dist) {
-      const scale = dist / touchStart.dist;
-      zoom = Math.max(0.3, Math.min(3, touchStart.zoom * scale));
-      draw();
-    } else {
-      touchStart = touchStart || {};
-      touchStart.dist = dist;
-      touchStart.zoom = zoom;
-    }
+    const t1=e.touches[0],t2=e.touches[1];
+    const d=Math.hypot(t1.clientX-t2.clientX,t1.clientY-t2.clientY);
+    if(ts2&&ts2.d){const sc=d/ts2.d;z=Math.max(0.3,Math.min(3,ts2.z*sc));drw();}
+    else{if(!ts2)ts2={};ts2.d=d;ts2.z=z;}
   }
-}, {passive: false});
-wrap.addEventListener('touchend', e => {
-  if (touchStart && !isDrag && e.changedTouches.length === 1) {
-    const t = e.changedTouches[0];
-    const mx = (t.clientX - W/2) / zoom - panX;
-    const my = (t.clientY - H/2) / zoom - panY;
-    let best = null, bestDist = 20 / zoom;
-    for (const [code, s] of Object.entries(DATA.stations)) {
-      const dx = s.x - mx, dy = s.y - my;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < bestDist) { bestDist = dist; best = code; }
+},{passive:false});
+wr.addEventListener('touchend',e=>{
+  if(ts2&&!dr&&e.changedTouches.length===1){
+    const t=e.changedTouches[0];
+    const mx=(t.clientX-W/2)/z-px,my=(t.clientY-H/2)/z-py;
+    let b=null,bd=16/z;
+    for(const[k,s]of Object.entries(S)){
+      const d=Math.hypot(s.x*G-mx,s.y*G-my);
+      if(d<bd){bd=d;b=k;}
     }
-    if (best) showStation(best);
+    if(b)sh(b);
   }
-  touchStart = null;
-}, {passive: true});
+  ts2=null;
+},{passive:true});
 
-// 滾輪縮放
-wrap.addEventListener('wheel', e => {
+wr.addEventListener('wheel',e=>{
   e.preventDefault();
-  const delta = e.deltaY > 0 ? -0.1 : 0.1;
-  zoom = Math.max(0.3, Math.min(3, zoom + delta));
-  draw();
-}, {passive: false});
+  z=Math.max(0.3,Math.min(3,z+(e.deltaY>0?-0.1:0.1)));
+  drw();
+},{passive:false});
 
-// 縮放按鈕
-document.getElementById('zoomin').onclick = () => { zoom = Math.min(3, zoom + 0.15); draw(); };
-document.getElementById('zoomout').onclick = () => { zoom = Math.max(0.3, zoom - 0.15); draw(); };
+zi.onclick=()=>{z=Math.min(3,z+0.15);drw();};
+zo.onclick=()=>{z=Math.max(0.3,z-0.15);drw();};
 
-// ====== INFO ======
-function showStation(code) {
-  sel = code;
-  const s = DATA.stations[code];
-  if (!s) return;
-  document.getElementById('infoTitle').textContent = s.n;
-  document.getElementById('infoCode').textContent = code;
-
-  // 路線
-  let linesHtml = '';
-  const lids = [];
-  for (const [lid, route] of Object.entries(DATA.routes)) {
-    if (route.includes(code)) lids.push(lid);
-    if (lid === 'O_branch' && route.includes(code)) lids.push('O');
+// 資訊
+function sh(code){
+  sl=code;
+  const s=S[code];if(!s)return;
+  it.textContent=s.n;ic.textContent=code;
+  let h='';
+  const ls=[];
+  for(const[lid,rt]of Object.entries(R)){
+    if(rt.includes(code))ls.push(lid);
+    if(lid==='OB'&&rt.includes(code))ls.push('O');
   }
-  for (const lid of [...new Set(lids)]) {
-    linesHtml += `<span style="background:${COLORS[lid]}">${LINE_NAMES[lid]}</span>`;
+  for(const lid of[...new Set(ls)]){
+    h+=`<span style="background:${C[lid]}">${N[lid]}</span>`;
   }
-  document.getElementById('infoLines').innerHTML = linesHtml;
-
-  // 景點
-  const poi = DATA.pois[code];
-  document.getElementById('infoPoi').innerHTML = poi ? '📍 <strong>附近：</strong>' + poi.map(p => `<span>${p}</span>`).join('') : '';
-
-  document.getElementById('info').classList.add('show');
-  draw();
+  il.innerHTML=h;
+  const pp=P[code];
+  ip.innerHTML=pp?'📍<strong>附近：</strong>'+pp.map(p=>`<span>${p}</span>`).join(''):'';
+  info.classList.add('show');drw();
 }
-document.getElementById('infoClose').onclick = hideInfo;
-function hideInfo() {
-  sel = null;
-  document.getElementById('info').classList.remove('show');
-  draw();
-}
+ix.onclick=hi;
+function hi(){sl=null;info.classList.remove('show');drw();}
 
-// ====== LEGEND ======
-const legend = document.getElementById('legend');
-const order = ['R','G','BL','O','BR','Y'];
-for (const lid of order) {
-  const btn = document.createElement('button');
-  btn.innerHTML = `<span class="dot" style="background:${COLORS[lid]}"></span>${LINE_NAMES[lid]}`;
-  btn.dataset.line = lid;
-  btn.classList.add('active');
-  btn.onclick = () => {
-    visible[lid] = !visible[lid];
-    btn.classList.toggle('active');
-    btn.classList.toggle('hidden');
-    draw();
+// 圖例
+const legend=document.getElementById('legend');
+for(const lid of['R','G','BL','O','BR','Y']){
+  const b=document.createElement('button');
+  b.innerHTML=`<span class="d" style="background:${C[lid]}"></span>${N[lid]}`;
+  b.classList.add('on');
+  b.onclick=()=>{
+    vi[lid]=!vi[lid];
+    b.classList.toggle('on');b.classList.toggle('off');
+    drw();
   };
-  legend.appendChild(btn);
+  legend.appendChild(b);
 }
 
-// ====== INIT ======
-window.addEventListener('resize', resize);
-resize();</script></body></html>
+// 初始化
+window.addEventListener('resize',rs);
+rs();
+</script>
+</body>
+</html>
