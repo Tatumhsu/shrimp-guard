@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台北捷運互動地圖｜6條路線轉乘規劃＋景點攻略</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #f5f0e8;
+  color: #1a1a1a;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ====== Hero 區 ====== */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d0 100%);
+  text-align: center;
+  padding: 40px 24px 24px;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -20px; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #f5f0e8);
+  pointer-events: none;
+  z-index: 2;
+}
+.hero h1 {
+  font-size: 2.2rem; font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.hero p {
+  font-size: 0.85rem; color: #666;
+  max-width: 480px; margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ====== 地圖容器 ====== */
+.mrt-wrap {
+  --base-zoom: 1; --user-zoom: 1;
+  --offset-x: 0px; --offset-y: 0px;
+  --drag-x: 0px; --drag-y: 0px;
+
+  width: 100%; height: calc(100vh - 120px);
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  background: transparent;
+}
+.mrt-wrap:active { cursor: grabbing; }
+.mrt-wrap.is-loading { cursor: wait; }
+
+/* 網格底圖 */
+.mrt-wrap::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(100,90,70,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,90,70,0.12) 1px, transparent 1px);
+  background-size: 30px 30px, 30px 30px;
+}
+
+/* ====== 圖層容器 ====== */
+.mrt-container {
+  transform-origin: center center;
+  transform: scale(calc(var(--base-zoom) * var(--user-zoom)));
+  transition: transform 0.2s ease;
+  width: 100%; height: 100%;
+  contain: layout style;
+  will-change: transform;
+}
+
+.mrt-map {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  transform: translate(calc(var(--offset-x) + var(--drag-x)), calc(var(--offset-y) + var(--drag-y)));
+  contain: layout;
+  will-change: transform;
+}
+
+/* 路線 SVG 圖層 */
+.map-layer {
+  position: absolute; top: 0; left: 0;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  contain: layout style;
+}
+.map-layer.active {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+.map-layer svg {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 2000px; height: 2000px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  overflow: visible;
+}
+.map-layer svg path.line-path {
+  pointer-events: none;
+}
+.map-layer svg circle.station-dot {
+  cursor: pointer;
+  pointer-events: all;
+  transition: r 0.15s ease, stroke-width 0.15s ease;
+}
+.map-layer svg circle.station-dot:hover {
+  stroke-width: 4 !important;
+}
+.map-layer svg text.station-label {
+  pointer-events: none;
+  font-weight: 500;
+}
+
+/* ====== 路線切換選單 ====== */
+.map-switcher {
+  position: absolute;
+  top: 12px; left: 12px; right: 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  z-index: 200;
+  pointer-events: none;
+}
+.map-switcher > * { pointer-events: auto; }
+
+.switcher-btn {
+  display: flex; align-items: center;
+  border: none; background: rgba(255,255,255,0.92);
+  padding: 5px 12px 5px 8px;
+  border-radius: 20px;
+  font-size: 12px; font-weight: 700;
+  cursor: pointer; color: #444;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.switcher-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+.switcher-btn.active {
+  box-shadow: 0 0 0 2px #333 inset;
+  filter: brightness(1.05);
+}
+.switcher-btn .line-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  color: #fff; font-size: 10px; font-weight: 900;
+  margin-right: 6px;
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+/* ====== 縮放控制 ====== */
+.zoom-controls {
+  position: absolute;
+  bottom: 24px; right: 20px;
+  display: flex; flex-direction: column; gap: 6px;
+  z-index: 150;
+  pointer-events: none;
+}
+.zoom-controls > * { pointer-events: auto; }
+.zoom-btn {
+  width: 42px; height: 42px; border-radius: 50%;
+  border: none; background: rgba(255,255,255,0.9);
+  font-size: 20px; font-weight: 700;
+  cursor: pointer; color: #444;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.zoom-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* ====== 車站資訊彈窗 ====== */
+.station-modal {
+  position: absolute;
+  bottom: 80px; left: 50%;
+  transform: translateX(-50%);
+  width: min(360px, calc(100vw - 32px));
+  background: rgba(255,252,248,0.96);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  z-index: 300;
+  display: none;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(200,190,170,0.3);
+}
+.station-modal.show { display: block; animation: modalUp 0.2s ease; }
+@keyframes modalUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.station-modal .close-btn {
+  position: absolute; top: 8px; right: 12px;
+  border: none; background: none;
+  font-size: 20px; cursor: pointer;
+  color: #999;
+}
+.station-modal h3 {
+  font-size: 1.1rem; margin-bottom: 2px;
+}
+.station-modal .station-code {
+  font-size: 0.75rem; color: #888; margin-bottom: 8px;
+}
+.station-modal .transfer-info {
+  font-size: 0.8rem; margin-bottom: 6px;
+}
+.station-modal .transfer-info .line-badge {
+  display: inline-block; padding: 1px 8px;
+  border-radius: 10px; color: #fff;
+  font-size: 0.7rem; font-weight: 700; margin-right: 4px;
+}
+.station-modal .poi-list {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+.station-modal .poi-list span {
+  display: inline-block;
+  background: #f0ebe3;
+  padding: 2px 8px; border-radius: 8px;
+  margin: 2px 4px 2px 0;
+  font-size: 0.75rem;
+}
+
+/* ====== 全螢幕 Loading ====== */
+.map-loading {
+  position: absolute; inset: 0; z-index: 5000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(245,240,232,0.85);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.map-loading.done {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.map-loading-inner {
+  text-align: center;
+}
+.map-loading-inner .spinner {
+  width: 40px; height: 40px;
+  border: 4px solid #ddd; border-top-color: #2b5b84;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.map-loading-inner p {
+  font-size: 0.9rem; color: #666;
+}
+
+/* ====== 響應式 ====== */
+@media (max-width: 640px) {
+  .hero { padding: 24px 16px 16px; }
+  .hero h1 { font-size: 1.5rem; }
+  .map-switcher { top: 8px; left: 8px; right: 8px; gap: 4px; }
+  .switcher-btn { font-size: 11px; padding: 4px 10px 4px 6px; }
+  .switcher-btn .line-icon { width: 18px; height: 18px; font-size: 8px; }
+  .zoom-btn { width: 36px; height: 36px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🚇 台北捷運互動地圖</h1>
+  <p>6條路線・131站・轉乘規劃＋景點攻略，一頁搞定台北交通</p>
+</div>
+
+<!-- Loading -->
+<div class="map-loading" id="mapLoading">
+  <div class="map-loading-inner">
+    <div class="spinner"></div>
+    <p>載入台北捷運路線圖中...</p>
+  </div>
+</div>
+
+<!-- 主地圖 -->
+<div class="mrt-wrap" id="mrtWrap">
+  <!-- 路線切換 -->
+  <div class="map-switcher" id="mapSwitcher"></div>
+
+  <!-- 地圖圖層 -->
+  <div class="mrt-container" id="mrtContainer">
+    <div class="mrt-map" id="mrtMap"></div>
+  </div>
+
+  <!-- 縮放 -->
+  <div class="zoom-controls">
+    <button class="zoom-btn" onclick="zoomIn()">＋</button>
+    <button class="zoom-btn" onclick="zoomOut()">−</button>
+  </div>
+
+  <!-- 車站資訊 -->
+  <div class="station-modal" id="stationModal">
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h3 id="modalTitle"></h3>
+    <div class="station-code" id="modalCode"></div>
+    <div class="transfer-info" id="modalTransfer"></div>
+    <div class="poi-list" id="modalPoi"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 台北捷運資料
+// ============================================================
+const MRT_DATA = {
+  lines: [
+    {
+      id: 'BR', name: '文湖線', nameEn: 'Wenhu Line',
+      color: '#c48a31', bg: '#c48a31',
+      label: 'BR',
+      iconBg: '#c48a31'
+    },
+    {
+      id: 'R', name: '淡水信義線', nameEn: 'Tamsui-Xinyi Line',
+      color: '#e3002c', bg: '#e3002c',
+      label: 'R',
+      iconBg: '#e3002c'
+    },
+    {
+      id: 'G', name: '松山新店線', nameEn: 'Songshan-Xindian Line',
+      color: '#008659', bg: '#008659',
+      label: 'G',
+      iconBg: '#008659'
+    },
+    {
+      id: 'O', name: '中和新蘆線', nameEn: 'Zhonghe-Xinlu Line',
+      color: '#f8b61c', bg: '#f8b61c',
+      label: 'O',
+      iconBg: '#f8b61c',
+      isYellow: true
+    },
+    {
+      id: 'BL', name: '板南線', nameEn: 'Bannan Line',
+      color: '#0070bd', bg: '#0070bd',
+      label: 'BL',
+      iconBg: '#0070bd'
+    },
+    {
+      id: 'Y', name: '環狀線', nameEn: 'Circular Line',
+      color: '#f1c40f', bg: '#f1c40f',
+      label: 'Y',
+      iconBg: '#f1c40f'
+    }
+  ],
+
+  // 路線車站順序（從地圖上北到南/西到東）
+  // 座標是 SVG 座標（0,0 = 地圖中心），非真實經緯度
+  routeStations: {
+    'BR': [
+      // 文湖線 — 從東北到東南
+      { code: 'BR01', name: '動物園', x: 400, y: -300 },
+      { code: 'BR02', name: '木柵', x: 380, y: -330 },
+      { code: 'BR03', name: '萬芳社區', x: 360, y: -360 },
+      { code: 'BR04', name: '萬芳醫院', x: 340, y: -390 },
+      { code: 'BR05', name: '辛亥', x: 310, y: -400 },
+      { code: 'BR06', name: '麟光', x: 280, y: -380 },
+      { code: 'BR07', name: '六張犁', x: 250, y: -350 },
+      { code: 'BR08', name: '科技大樓', x: 220, y: -320 },
+      { code: 'BR09', name: '大安', x: 190, y: -290, transfer: ['R'] },
+      { code: 'BR10', name: '忠孝復興', x: 160, y: -260, transfer: ['BL'] },
+      { code: 'BR11', name: '南京復興', x: 130, y: -230, transfer: ['G'] },
+      { code: 'BR12', name: '中山國中', x: 100, y: -200 },
+      { code: 'BR13', name: '松山機場', x: 70, y: -170 },
+      { code: 'BR14', name: '大直', x: 40, y: -140 },
+      { code: 'BR15', name: '劍南路', x: 10, y: -110 },
+      { code: 'BR16', name: '西湖', x: -20, y: -80 },
+      { code: 'BR17', name: '港墘', x: -50, y: -50 },
+      { code: 'BR18', name: '文德', x: -80, y: -20 },
+      { code: 'BR19', name: '內湖', x: -110, y: 10 },
+      { code: 'BR20', name: '大湖公園', x: -140, y: 40 },
+      { code: 'BR21', name: '葫洲', x: -170, y: 70 },
+      { code: 'BR22', name: '東湖', x: -200, y: 100 },
+      { code: 'BR23', name: '南港軟體園區', x: -230, y: 130 },
+      { code: 'BR24', name: '南港展覽館', x: -260, y: 160, transfer: ['BL'] }
+    ],
+
+    'R': [
+      // 淡水信義線 — 北到南
+      { code: 'R02', name: '淡水', x: -300, y: 650 },
+      { code: 'R03', name: '紅樹林', x: -280, y: 620 },
+      { code: 'R04', name: '竹圍', x: -260, y: 590 },
+      { code: 'R05', name: '關渡', x: -240, y: 560 },
+      { code: 'R06', name: '忠義', x: -220, y: 530 },
+      { code: 'R07', name: '復興崗', x: -200, y: 500 },
+      { code: 'R08', name: '北投', x: -180, y: 470, transfer: ['R'] }, // 新北投支線
+      { code: 'R09', name: '奇岩', x: -160, y: 440 },
+      { code: 'R10', name: '唭哩岸', x: -140, y: 410 },
+      { code: 'R11', name: '石牌', x: -120, y: 380 },
+      { code: 'R12', name: '明德', x: -100, y: 350 },
+      { code: 'R13', name: '芝山', x: -80, y: 320 },
+      { code: 'R14', name: '士林', x: -60, y: 290 },
+      { code: 'R15', name: '劍潭', x: -40, y: 260 },
+      { code: 'R16', name: '圓山', x: -20, y: 230 },
+      { code: 'R17', name: '民權西路', x: 0, y: 200, transfer: ['O'] },
+      { code: 'R18', name: '雙連', x: 20, y: 170 },
+      { code: 'R19', name: '中山', x: 40, y: 140, transfer: ['G'] },
+      { code: 'R20', name: '台北車站', x: 60, y: 110, transfer: ['BL', 'G'] },
+      { code: 'R21', name: '台大醫院', x: 80, y: 80 },
+      { code: 'R22', name: '中正紀念堂', x: 100, y: 50, transfer: ['G'] },
+      { code: 'R23', name: '東門', x: 120, y: 20, transfer: ['O'] },
+      { code: 'R24', name: '大安森林公園', x: 140, y: -10 },
+      { code: 'R25', name: '大安', x: 160, y: -40, transfer: ['BR'] },
+      { code: 'R26', name: '信義安和', x: 180, y: -70 },
+      { code: 'R27', name: '台北101/世貿', x: 200, y: -100 },
+      { code: 'R28', name: '象山', x: 220, y: -130 }
+    ],
+
+    'G': [
+      // 松山新店線 — 從東北到西南
+      { code: 'G19', name: '松山', x: 500, y: -280 },
+      { code: 'G18', name: '南京三民', x: 470, y: -250 },
+      { code: 'G17', name: '台北小巨蛋', x: 440, y: -220 },
+      { code: 'G16', name: '南京復興', x: 410, y: -190, transfer: ['BR'] },
+      { code: 'G15', name: '松江南京', x: 380, y: -160, transfer: ['O'] },
+      { code: 'G14', name: '中山', x: 350, y: -130, transfer: ['R'] },
+      { code: 'G13', name: '北門', x: 320, y: -100 },
+      { code: 'G12', name: '西門', x: 290, y: -70, transfer: ['BL'] },
+      { code: 'G11', name: '小南門', x: 260, y: -40 },
+      { code: 'G10', name: '中正紀念堂', x: 230, y: -10, transfer: ['R'] },
+      { code: 'G09', name: '古亭', x: 200, y: 20, transfer: ['O'] },
+      { code: 'G08', name: '台電大樓', x: 170, y: 50 },
+      { code: 'G07', name: '公館', x: 140, y: 80 },
+      { code: 'G06', name: '萬隆', x: 110, y: 110 },
+      { code: 'G05', name: '景美', x: 80, y: 140 },
+      { code: 'G04', name: '大坪林', x: 50, y: 170, transfer: ['Y'] },
+      { code: 'G03', name: '七張', x: 20, y: 200 },
+      { code: 'G02', name: '新店區公所', x: -10, y: 230 },
+      { code: 'G01', name: '新店', x: -40, y: 260 }
+    ],
+
+    'O': [
+      // 中和新蘆線 — 從西北到東南
+      { code: 'O54', name: '迴龍', x: -500, y: -500 },
+      { code: 'O53', name: '丹鳳', x: -470, y: -470 },
+      { code: 'O52', name: '輔大', x: -440, y: -440 },
+      { code: 'O51', name: '新莊', x: -410, y: -410 },
+      { code: 'O50', name: '頭前庄', x: -380, y: -380, transfer: ['Y'] },
+      { code: 'O49', name: '先嗇宮', x: -350, y: -350 },
+      { code: 'O48', name: '三重', x: -320, y: -320 },
+      { code: 'O47', name: '菜寮', x: -290, y: -290 },
+      { code: 'O46', name: '台北橋', x: -260, y: -260 },
+      { code: 'O45', name: '大橋頭', x: -230, y: -230 },
+      { code: 'O44', name: '民權西路', x: -200, y: -200, transfer: ['R'] },
+      { code: 'O43', name: '中山國小', x: -170, y: -170 },
+      { code: 'O42', name: '行天宮', x: -140, y: -140 },
+      { code: 'O41', name: '松江南京', x: -110, y: -110, transfer: ['G'] },
+      { code: 'O40', name: '忠孝新生', x: -80, y: -80, transfer: ['BL'] },
+      { code: 'O39', name: '東門', x: -50, y: -50, transfer: ['R'] },
+      { code: 'O38', name: '古亭', x: -20, y: -20, transfer: ['G'] },
+      { code: 'O37', name: '頂溪', x: 10, y: 10 },
+      { code: 'O36', name: '永安市場', x: 40, y: 40 },
+      { code: 'O35', name: '景安', x: 70, y: 70, transfer: ['Y'] },
+      { code: 'O34', name: '南勢角', x: 100, y: 100 },
+      // 蘆洲支線
+      { code: 'O56', name: '蘆洲', x: -550, y: -450 },
+      { code: 'O55', name: '三民高中', x: -520, y: -420 },
+      { code: 'O54b', name: '徐匯中學', x: -490, y: -390 },
+      { code: 'O53b', name: '三和國中', x: -460, y: -360 },
+      { code: 'O52b', name: '三重國小', x: -430, y: -330 }
+    ],
+
+    'BL': [
+      // 板南線 — 從西到東
+      { code: 'BL01', name: '頂埔', x: -500, y: 100 },
+      { code: 'BL02', name: '永寧', x: -470, y: 70 },
+      { code: 'BL03', name: '土城', x: -440, y: 40 },
+      { code: 'BL04', name: '海山', x: -410, y: 10 },
+      { code: 'BL05', name: '亞東醫院', x: -380, y: -20 },
+      { code: 'BL06', name: '府中', x: -350, y: -50 },
+      { code: 'BL07', name: '板橋', x: -320, y: -80, transfer: ['Y'] },
+      { code: 'BL08', name: '新埔', x: -290, y: -110 },
+      { code: 'BL09', name: '江子翠', x: -260, y: -140 },
+      { code: 'BL10', name: '龍山寺', x: -230, y: -170 },
+      { code: 'BL11', name: '西門', x: -200, y: -200, transfer: ['G'] },
+      { code: 'BL12', name: '台北車站', x: -170, y: -230, transfer: ['R'] },
+      { code: 'BL13', name: '善導寺', x: -140, y: -260 },
+      { code: 'BL14', name: '忠孝新生', x: -110, y: -290, transfer: ['O'] },
+      { code: 'BL15', name: '忠孝復興', x: -80, y: -320, transfer: ['BR'] },
+      { code: 'BL16', name: '忠孝敦化', x: -50, y: -350 },
+      { code: 'BL17', name: '國父紀念館', x: -20, y: -380 },
+      { code: 'BL18', name: '市政府', x: 10, y: -410 },
+      { code: 'BL19', name: '永春', x: 40, y: -440 },
+      { code: 'BL20', name: '後山埤', x: 70, y: -470 },
+      { code: 'BL21', name: '昆陽', x: 100, y: -500 },
+      { code: 'BL22', name: '南港', x: 130, y: -530 },
+      { code: 'BL23', name: '南港展覽館', x: 160, y: -560, transfer: ['BR'] }
+    ],
+
+    'Y': [
+      // 環狀線 — 從北到南
+      { code: 'Y01', name: '新北產業園區', x: -100, y: -600 },
+      { code: 'Y02', name: '幸福', x: -80, y: -570 },
+      { code: 'Y03', name: '頭前庄', x: -60, y: -540, transfer: ['O'] },
+      { code: 'Y04', name: '新埔民生', x: -40, y: -510 },
+      { code: 'Y05', name: '板橋', x: -20, y: -480, transfer: ['BL'] },
+      { code: 'Y06', name: '板新', x: 0, y: -450 },
+      { code: 'Y07', name: '中和', x: 20, y: -420 },
+      { code: 'Y08', name: '橋和', x: 40, y: -390 },
+      { code: 'Y09', name: '中原', x: 60, y: -360 },
+      { code: 'Y10', name: '板南路', x: 80, y: -330 },
+      { code: 'Y11', name: '景安', x: 100, y: -300, transfer: ['O'] },
+      { code: 'Y12', name: '景平', x: 120, y: -270 },
+      { code: 'Y13', name: '秀朗橋', x: 140, y: -240 },
+      { code: 'Y14', name: '十四張', x: 160, y: -210 },
+      { code: 'Y15', name: '大坪林', x: 180, y: -180, transfer: ['G'] },
+      { code: 'Y16', name: '寶斗厝', x: 200, y: -150 },
+      { code: 'Y17', name: '溝子口', x: 220, y: -120 }
+    ]
+  },
+
+  // 景點資料（站碼 -> 附近景點）
+  pois: {
+    'BR09': ['大安森林公園', '建國花市'],
+    'BR10': ['太平洋SOGO', '東區商圈'],
+    'BR13': ['松山機場'],
+    'BR14': ['美麗華百樂園', '實踐大學'],
+    'BR15': ['美麗華百樂園', '劍南山步道'],
+    'BR19': ['碧湖公園'],
+    'BR20': ['大湖公園'],
+    'BR24': ['南港展覽館'],
+    'R02': ['淡水老街', '漁人碼頭', '紅毛城'],
+    'R03': ['紅樹林自然保留區'],
+    'R08': ['北投溫泉', '北投圖書館'],
+    'R14': ['士林夜市', '士林官邸'],
+    'R15': ['劍潭山', '士林夜市'],
+    'R16': ['花博公園', '台北美術館'],
+    'R20': ['台北車站', '新光三越', '京站'],
+    'R21': ['台大醫院舊院區'],
+    'R22': ['中正紀念堂', '自由廣場'],
+    'R25': ['大安森林公園'],
+    'R27': ['台北101', '信義商圈', '世貿中心'],
+    'R28': ['象山步道', '四四南村'],
+    'G19': ['松山車站', '饒河街夜市', '彩虹橋'],
+    'G16': ['微風南京', '小巨蛋'],
+    'G15': ['四平陽光商圈'],
+    'G12': ['西門町', '西門紅樓', '萬年大樓'],
+    'G10': ['中正紀念堂', '國家戲劇院'],
+    'G09': ['師大夜市'],
+    'G07': ['台灣大學', '公館夜市', '自來水園區'],
+    'G01': ['碧潭風景區'],
+    'BL11': ['西門町', '西門紅樓'],
+    'BL12': ['台北車站', '站前地下街'],
+    'BL14': ['華山1914文創園區', '光華商場'],
+    'BL15': ['太平洋SOGO', '東區商圈'],
+    'BL17': ['國父紀念館'],
+    'BL18': ['台北市政府', '信義商圈'],
+    'BL23': ['南港車站', 'CITYLINK'],
+    'BL07': ['板橋車站', '板橋大遠百'],
+    'BL10': ['龍山寺', '艋舺夜市'],
+    'O41': ['四平陽光商圈'],
+    'O40': ['華山1914文創園區', '光華商場'],
+    'O39': ['永康街', '東門市場'],
+    'O35': ['中和好市多'],
+    'O50': ['新莊廟街'],
+    'O52': ['輔仁大學'],
+    'Y05': ['板橋車站', '板橋大遠百'],
+    'Y11': ['中和好市多'],
+    'Y15': ['景美夜市']
+  }
+};
+
+// ============================================================
+// 地圖引擎
+// ============================================================
+const wrap = document.getElementById('mrtWrap');
+const container = document.getElementById('mrtContainer');
+const mapEl = document.getElementById('mrtMap');
+const switcher = document.getElementById('mapSwitcher');
+const loading = document.getElementById('mapLoading');
+
+let activeLayers = {};     // { lineId: { group, svg } }
+let dragStart = null;
+let isDragging = false;
+
+// 建立路線切換按鈕
+MRT_DATA.lines.forEach(line => {
+  const btn = document.createElement('button');
+  btn.className = 'switcher-btn';
+  btn.dataset.line = line.id;
+  btn.innerHTML = `<span class="line-icon" style="background:${line.iconBg}">${line.label}</span>${line.name}`;
+  btn.onclick = () => toggleLine(line.id);
+  switcher.appendChild(btn);
+});
+
+// 預設顯示所有路線
+function init() {
+  MRT_DATA.lines.forEach(line => {
+    buildLayer(line.id);
+    setLayerActive(line.id, true);
+  });
+  // 預設所有按鈕 active
+  document.querySelectorAll('.switcher-btn').forEach(b => b.classList.add('active'));
+  setTimeout(() => loading.classList.add('done'), 500);
+}
+
+// 建立一條路線的 SVG 圖層
+function buildLayer(lineId) {
+  const line = MRT_DATA.lines.find(l => l.id === lineId);
+  const stations = MRT_DATA.routeStations[lineId];
+  if (!stations || stations.length < 2) return;
+
+  // 計算 route 分支
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '-700 -700 1400 1400');
+  svg.style.overflow = 'visible';
+
+  // 畫路線（path）
+  const pathEl = document.createElementNS(svgNS, 'path');
+  let d = `M ${stations[0].x} ${stations[0].y}`;
+  for (let i = 1; i < stations.length; i++) {
+    d += ` L ${stations[i].x} ${stations[i].y}`;
+  }
+  pathEl.setAttribute('d', d);
+  pathEl.setAttribute('fill', 'none');
+  pathEl.setAttribute('stroke', line.color);
+  pathEl.setAttribute('stroke-width', '6');
+  pathEl.setAttribute('stroke-linecap', 'round');
+  pathEl.setAttribute('stroke-linejoin', 'round');
+  pathEl.setAttribute('opacity', '0.7');
+  pathEl.classList.add('line-path');
+  svg.appendChild(pathEl);
+
+  // 畫車站
+  stations.forEach(s => {
+    // 路線圓點
+    const circle = document.createElementNS(svgNS, 'circle');
+    circle.setAttribute('cx', s.x);
+    circle.setAttribute('cy', s.y);
+    circle.setAttribute('r', s.transfer ? '7' : '5');
+    circle.setAttribute('fill', '#fff');
+    circle.setAttribute('stroke', line.color);
+    circle.setAttribute('stroke-width', '3');
+    circle.classList.add('station-dot');
+    circle.dataset.code = s.code;
+    circle.addEventListener('click', (e) => { e.stopPropagation(); showStation(s.code); });
+    svg.appendChild(circle);
+
+    // 站名
+    const text = document.createElementNS(svgNS, 'text');
+    text.setAttribute('x', s.x);
+    text.setAttribute('y', s.y - 14);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('font-size', '10');
+    text.setAttribute('fill', '#333');
+    text.setAttribute('font-weight', '500');
+    text.classList.add('station-label');
+    text.textContent = s.name;
+    svg.appendChild(text);
+  });
+
+  // 分組（圖層）
+  const group = document.createElement('div');
+  group.className = 'map-layer';
+  group.dataset.line = lineId;
+  group.appendChild(svg);
+  mapEl.appendChild(group);
+
+  activeLayers[lineId] = { group };
+}
+
+// 切換路線顯示
+function toggleLine(lineId) {
+  const isActive = activeLayers[lineId]?.group?.classList.contains('active');
+  setLayerActive(lineId, !isActive);
+  const btn = document.querySelector(`.switcher-btn[data-line="${lineId}"]`);
+  if (btn) btn.classList.toggle('active');
+}
+
+function setLayerActive(lineId, active) {
+  const layer = activeLayers[lineId];
+  if (!layer) return;
+  if (active) {
+    layer.group.classList.add('active');
+  } else {
+    layer.group.classList.remove('active');
+  }
+}
+
+// ====== 拖曳 ======
+wrap.addEventListener('mousedown', startDrag);
+wrap.addEventListener('touchstart', startDragTouch, { passive: false });
+document.addEventListener('mousemove', doDrag);
+document.addEventListener('mouseup', endDrag);
+
+function startDrag(e) {
+  if (e.target.closest('.switcher-btn') || e.target.closest('.zoom-btn') || e.target.closest('.station-modal')) return;
+  dragStart = { x: e.clientX, y: e.clientY, ox: parseFloat(getComputedStyle(mapEl).getPropertyValue('--drag-x').replace('px','')||0), oy: parseFloat(getComputedStyle(mapEl).getPropertyValue('--drag-y').replace('px','')||0) };
+  isDragging = false;
+}
+
+function startDragTouch(e) {
+  const t = e.touches[0];
+  dragStart = { x: t.clientX, y: t.clientY, ox: parseFloat(getComputedStyle(mapEl).getPropertyValue('--drag-x').replace('px','')||0), oy: parseFloat(getComputedStyle(mapEl).getPropertyValue('--drag-y').replace('px','')||0) };
+  isDragging = false;
+  document.addEventListener('touchmove', doDragTouch, { passive: false });
+  document.addEventListener('touchend', endDragTouch);
+}
+
+function doDrag(e) {
+  if (!dragStart) return;
+  const dx = e.clientX - dragStart.x;
+  const dy = e.clientY - dragStart.y;
+  if (Math.abs(dx) > 3 || Math.abs(dy) > 3) isDragging = true;
+  mapEl.style.setProperty('--drag-x', (dragStart.ox + (dx * (1/(parseFloat(getComputedStyle(container).getPropertyValue('--user-zoom'))||1)))) + 'px');
+  mapEl.style.setProperty('--drag-y', (dragStart.oy + (dy * (1/(parseFloat(getComputedStyle(container).getPropertyValue('--user-zoom'))||1)))) + 'px');
+}
+
+function doDragTouch(e) {
+  if (!dragStart) return;
+  const t = e.touches[0];
+  const dx = t.clientX - dragStart.x;
+  const dy = t.clientY - dragStart.y;
+  if (Math.abs(dx) > 3 || Math.abs(dy) > 3) isDragging = true;
+  mapEl.style.setProperty('--drag-x', (dragStart.ox + dx) + 'px');
+  mapEl.style.setProperty('--drag-y', (dragStart.oy + dy) + 'px');
+}
+
+function endDrag(e) { 
+  if (dragStart && !isDragging) { closeModal(); }
+  dragStart = null; 
+}
+function endDragTouch(e) { 
+  if (dragStart && !isDragging) { closeModal(); }
+  dragStart = null; 
+  document.removeEventListener('touchmove', doDragTouch);
+  document.removeEventListener('touchend', endDragTouch);
+}
+
+// ====== 縮放 ======
+let zoom = 1;
+function zoomIn() { zoom = Math.min(zoom + 0.2, 2.5); applyZoom(); }
+function zoomOut() { zoom = Math.max(zoom - 0.2, 0.4); applyZoom(); }
+function applyZoom() { container.style.setProperty('--user-zoom', zoom); }
+
+// ====== 車站彈窗 ======
+function showStation(code) {
+  if (isDragging) return;
+  const modal = document.getElementById('stationModal');
+  // 找站
+  let station = null;
+  let lineId = null;
+  for (const [lid, sts] of Object.entries(MRT_DATA.routeStations)) {
+    const found = sts.find(s => s.code === code);
+    if (found) { station = found; lineId = lid; break; }
+  }
+  if (!station) return;
+
+  const line = MRT_DATA.lines.find(l => l.id === lineId);
+  document.getElementById('modalTitle').textContent = station.name;
+  document.getElementById('modalCode').textContent = `${line?.name || ''} · ${station.code}`;
+
+  // 轉乘
+  let transferHtml = '';
+  if (station.transfer) {
+    transferHtml = '🔄 轉乘：';
+    station.transfer.forEach(tid => {
+      const tl = MRT_DATA.lines.find(l => l.id === tid);
+      if (tl) transferHtml += `<span class="line-badge" style="background:${tl.color}">${tl.name}</span> `;
+    });
+  }
+  document.getElementById('modalTransfer').innerHTML = transferHtml;
+
+  // 景點
+  const pois = MRT_DATA.pois[code];
+  const poiDiv = document.getElementById('modalPoi');
+  if (pois && pois.length > 0) {
+    poiDiv.innerHTML = '📍 <strong>附近景點</strong><br>' + pois.map(p => `<span>${p}</span>`).join('');
+  } else {
+    poiDiv.innerHTML = '';
+  }
+
+  modal.classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('stationModal').classList.remove('show');
+}
+
+// ====== 滾輪縮放 ======
+wrap.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  if (e.deltaY < 0) zoomIn();
+  else zoomOut();
+}, { passive: false });
+
+// 啟動
+init();
+</script>
+</body>
+</html>
