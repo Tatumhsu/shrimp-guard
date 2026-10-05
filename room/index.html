@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light"><title>小房間 · 互動試作</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>
+  <script type="module" src="./main.mjs"></script>
+</head>
+<body>
+  <main>
+    <header><div><p class="eyebrow">A LITTLE ROOM</p><h1>在小房間，打個招呼。</h1></div><span class="tag">3D 互動試作</span></header>
+    <section class="viewport" aria-label="可旋轉與縮放的小房間">
+      <img id="poster" src="./assets/approved-preview.png" alt="已核准 Blender 實際渲染：溫暖房間、成年角色與桌上的杯子">
+      <canvas id="view" tabindex="0" aria-label="3D 小房間。拖曳旋轉，滾輪或雙指縮放，點角色打招呼；也可使用下方按鈕。"></canvas>
+      <p id="status" role="status" aria-live="polite">正在載入同一個房間…</p>
+      <span class="viewport-note">同一個 Blender 模型 · 即時 3D</span>
+    </section>
+    <footer>
+      <p class="hint">拖曳旋轉 · 滾輪／雙指縮放<br><span>點角色，看看他的回應。</span></p>
+      <div class="actions"><button id="greet" disabled>向角色打招呼</button><button id="reset" disabled class="secondary">重置視角</button></div>
+      <p id="error" hidden role="alert"></p>
+    </footer>
+  </main>
+</body>
+</html>
