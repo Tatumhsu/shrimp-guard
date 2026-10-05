@@ -10,6 +10,7 @@ canvas.ready{opacity:1}canvas:focus-visible{outline:3px solid #668b80}#poster{po
 .viewport-note{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#6c6255;font-size:10px;letter-spacing:.08em;pointer-events:none}
 footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px 0}.hint{font-size:13px;line-height:1.7;margin:0;color:#746c60}.hint span{color:#968874;font-size:12px}
 .actions{display:flex;gap:8px}button{font:inherit;font-size:13px;font-weight:600;min-height:44px;padding:10px 17px;border-radius:14px;border:1px solid #668b80;color:#fffdf7;background:#668b80;cursor:pointer}
+.version{width:100%;margin:0;color:#9a8e7d;font-size:11px;text-align:center;letter-spacing:.04em}
 button.secondary{background:transparent;color:#766957;border-color:#c8bba9}button:disabled{opacity:.55;cursor:default}button:focus-visible{outline:3px solid #c18b57;outline-offset:3px}#error{width:100%;margin:0;font-size:12px;color:#935442}
 @media(max-width:540px){main{padding:22px 12px max(18px,env(safe-area-inset-bottom))}header{margin-bottom:14px}.tag{display:none}.viewport{height: min(60dvh,540px);min-height:320px;border-radius:20px}h1{font-size:21px}footer{justify-content:center;text-align:center;padding-top:16px;gap:12px}.hint{width:100%}#status{top:12px;left:12px}.actions{justify-content:center;width:100%}button{flex:1;max-width:190px;padding:11px 12px}}
 @media(prefers-reduced-motion:reduce){canvas{transition:none}}
