@@ -1,115 +1,83 @@
 import * as THREE from 'three';
-import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {TapGuard,Greeting} from './interaction.mjs';
-import {createGreetingRig} from './rig.mjs';
-
-const canvas=document.querySelector('#view'), stage=document.querySelector('.viewport');
-const status=document.querySelector('#status'), greet=document.querySelector('#greet'), reset=document.querySelector('#reset');
-const response=new Greeting(), tap=new TapGuard(), reduced=matchMedia('(prefers-reduced-motion: reduce)');
-let renderer, controls, model, adult, arm, rig, raf=0, disposed=false;
-let pose={phase:'loading',busy:false}, homePosition, homeTarget, resizeObserver;
-const scene=new THREE.Scene();scene.background=new THREE.Color('#ded5c9');
-const camera=new THREE.OrthographicCamera(-4,4,3,-3,.1,80);
-camera.position.set(6.8,6.8,9.3);camera.lookAt(0,1.05,-.1);
-const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2(), point=new THREE.Vector3();
-let baseY=0;
-function isCharacter(obj){for(let o=obj;o;o=o.parent)if(o===adult)return true;return false;}
-function resize(){
-  if(!renderer)return;
-  const w=Math.max(1,stage.clientWidth),h=Math.max(1,stage.clientHeight),aspect=w/h;
-  const viewHeight=Math.max(5.7,6.65/aspect);
-  camera.left=-viewHeight*aspect/2;camera.right=viewHeight*aspect/2;
-  camera.top=viewHeight/2;camera.bottom=-viewHeight/2;camera.updateProjectionMatrix();
-  renderer.setSize(w,h,false);
+import {GLTFLoader} from './vendor/three/examples/jsm/loaders/GLTFLoader.js';
+import {createStore,RULES} from './store-sim.mjs';
+import {fitCamera,loadScene,createConfirmation} from './view-state.mjs';
+const $=id=>document.getElementById(id),store=createStore();
+const storage={getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v),removeItem:k=>localStorage.removeItem(k)};
+const loaded=store.load(storage);let storageWarning=!loaded.ok,ready=false,renderer,model,last=0,saveTime=0,stepTime=0,raf,disposed=false;
+const scene=new THREE.Scene();scene.background=new THREE.Color('#efe9d8');
+const camera=new THREE.OrthographicCamera(-6,6,6,-6,.1,80);camera.position.set(10,13,14);camera.lookAt(0,1.3,0.25);
+const bounds=new THREE.Box3(new THREE.Vector3(-3.82,-.22,-3.85),new THREE.Vector3(3.82,3.6,4.38));
+const actors=new Map(),goods=[],templates=[],ray=new THREE.Raycaster(),pointer=new THREE.Vector2(),confirmation=createConfirmation();
+let previousFocus=null,pulse=0,lastStock=store.getState().stock;
+const toast=message=>{$('toast').textContent=message;};
+function persist(){const r=store.save(storage);storageWarning=!r.ok;$('save-status').textContent=r.message;return r;}
+function update(){
+  const s=store.getState();for(const k of ['day','stock','queue'])$(k).textContent=s[k];$('cash').textContent='$'+s.cash;$('earned').textContent='$'+s.earned;
+  $('paused').hidden=!s.paused;$('pause').textContent=s.paused?'▶':'Ⅱ';$('pause').setAttribute('aria-label',s.paused?'繼續營業':'暫停營業');
+  $('flow').textContent=`今日 ${s.arrivals}/${RULES.visitorsPerDay} 位來客 · 已服務 ${s.sales} 位`;
+  $('scene-status').textContent=s.paused?'暫停中':s.stock===0?'缺貨中，請補货':s.queue?`${s.queue} 位顧客等待結帳`:s.arrivals===RULES.visitorsPerDay&&!s.customers.length?'今天的客人都離開了，可結束今日':'顧客正在選購';
+  $('view').setAttribute('aria-label',`小店內 ${s.customers.length} 位顧客，${s.queue} 位排隊，架上 ${s.stock} 件商品。點货架補貨，點櫃台結帳。`);
+  for(const b of ['restock','checkout','end','pause'])$(b).disabled=!ready;
+  if(s.stock!==lastStock){pulse=1;lastStock=s.stock;}
+  if(model){goods.forEach((g,i)=>{g.visible=i<s.stock;});$('view').dataset.visibleGoods=String(goods.filter(g=>g.visible).length);}
 }
-function beginGreeting(){
-  if(!adult||disposed)return false;
-  adult.getWorldPosition(point);
-  const yaw=Math.atan2(camera.position.x-point.x,camera.position.z-point.z);
-  const accepted=response.start(performance.now(),yaw,reduced.matches);
-  if(accepted){status.textContent='嗨，看到你了。';greet.disabled=true;}
-  return accepted;
+function feedback(text){$('feedback').textContent=text;$('feedback').classList.remove('burst');void $('feedback').offsetWidth;$('feedback').classList.add('burst');}
+function act(fn){if(!ready||confirmation.pending)return;const r=fn();toast(r.message);if(r.ok){persist();if(r.code==='RESTOCKED')feedback('+6');if(r.code==='CHECKOUT')feedback('+$'+r.income);}update();return r;}
+function closeDialog(){confirmation.cancel();$('confirm').hidden=true;$('game-ui').inert=false;previousFocus?.focus();}
+function ask(title,message,fn){if(confirmation.pending)return;previousFocus=document.activeElement;confirmation.open(fn);$('confirm-title').textContent=title;$('confirm-message').textContent=message;$('game-ui').inert=true;$('confirm').hidden=false;$('confirm-cancel').focus();}
+$('confirm-cancel').onclick=closeDialog;
+$('confirm-ok').onclick=()=>{const had=confirmation.pending;$('confirm').hidden=true;$('game-ui').inert=false;if(had)confirmation.confirm();previousFocus?.focus();};
+$('confirm').onclick=e=>{if(e.target===$('confirm'))closeDialog();};
+document.addEventListener('keydown',e=>{if(!confirmation.pending)return;if(e.key==='Escape'){e.preventDefault();closeDialog();}if(e.key==='Tab'){const cancel=$('confirm-cancel'),ok=$('confirm-ok');if(e.shiftKey&&document.activeElement===cancel){e.preventDefault();ok.focus();}else if(!e.shiftKey&&document.activeElement===ok){e.preventDefault();cancel.focus();}}});
+$('restock').onclick=()=>act(()=>store.restock());$('checkout').onclick=()=>act(()=>store.checkout());$('pause').onclick=()=>act(()=>store.togglePause());
+$('end').onclick=()=>{if(store.getState().paused){toast('先繼續營業，再結束今日');return;}const s=store.getState();ask(`第 ${s.day} 天結算`, `售出 ${s.sales} 件 · 營收 $${s.earned}\n補貨支出 $${s.spent} · 營業損益 $${s.earned-s.spent}\n結束後客人離店，明日開店補助 $10，庫存至少 4 件。`,()=>{const r=store.endDay();toast(r.message);if(r.ok){clearActors();persist();}update();});};
+$('reset').onclick=()=>ask('重新開始？','這會清除此裝置的小店進度，回到第 1 天。\n此操作無法復原。',()=>{const r=store.reset(storage);toast(r.message);if(r.ok){clearActors();storageWarning=false;$('save-status').textContent='已清除舊進度，重新開始';}else{$('save-status').textContent=r.message;storageWarning=true;}update();});
+$('retry').onclick=()=>location.reload();
+function clearActors(){for(const a of actors.values())scene.remove(a.root);actors.clear();}
+function targetFor(c,s){
+  const lane=c.id%2;
+  if(c.phase==='enter')return new THREE.Vector3(1.14,0,.6);
+  if(c.phase==='shop')return new THREE.Vector3(lane?.75:-2.7,0,.6);
+  if(c.phase==='queue'){const i=s.customers.filter(a=>a.phase==='queue').findIndex(a=>a.id===c.id);return new THREE.Vector3(2.12,0,-.35+i*.88);}
+  return new THREE.Vector3(3.32,0,4.2);
 }
-function resetView(){
-  if(!controls)return;
-  const damping=controls.enableDamping;controls.enableDamping=false;controls.update();
-  controls.reset();controls.enableDamping=damping;tap.clear();
+function syncScene(dt){
+  if(!model)return;const s=store.getState(),ids=new Set(s.customers.map(c=>c.id));
+  for(const [id,a]of actors)if(!ids.has(id)){scene.remove(a.root);actors.delete(id);}
+  for(const c of s.customers){
+    let a=actors.get(c.id);if(!a){const root=templates[c.id%4].clone(true);root.visible=true;root.position.set(.65,0,3.85);scene.add(root);a={root,phase:c.phase};actors.set(c.id,a);}
+    const goal=targetFor(c,s),distance=a.root.position.distanceTo(goal);
+    if(dt>0){a.root.position.lerp(goal,1-Math.exp(-dt*5));a.root.rotation.y=c.phase==='leave'?-.4:0;}
+    a.root.position.y=distance>.15&&dt>0?.025*Math.sin(performance.now()/95+c.id):0;
+    a.root.userData.action='checkout';
+  }
+  $('view').dataset.activeCustomers=String(actors.size);
+  pulse=Math.max(0,pulse-dt*2);goods.forEach(g=>g.scale.setScalar(1+.1*Math.sin(pulse*Math.PI)));
 }
-function tick(now){
-  raf=0;if(disposed||document.hidden)return;
-  controls.update();pose=response.sample(now);
-  rig.apply(pose);
-  adult.position.y=baseY+(!pose.busy&&!reduced.matches?.003*Math.sin(now/900):0);
-  if(!pose.busy&&greet.disabled){greet.disabled=false;status.textContent='房間裡，一切剛剛好。';}
-  renderer.render(scene,camera);raf=requestAnimationFrame(tick);
+function resize(){if(!renderer)return;const w=$('stage').clientWidth,h=$('stage').clientHeight;fitCamera(THREE,camera,bounds,w/h);renderer.setSize(w,h,false);}
+let down=null;
+$('view').addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,id:e.pointerId};});
+$('view').addEventListener('pointercancel',()=>{down=null;});
+$('view').addEventListener('pointerup',e=>{const p=down;down=null;if(!p||p.id!==e.pointerId||Math.hypot(e.clientX-p.x,e.clientY-p.y)>8||!ready||confirmation.pending)return;const r=$('view').getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);const hits=ray.intersectObjects([model,...Array.from(actors.values(),a=>a.root)],true).filter(h=>{for(let o=h.object;o;o=o.parent)if(!o.visible)return false;return true;});for(const h of hits){let action=null;for(let o=h.object;o;o=o.parent){if(o.userData.action){action=o.userData.action;break;}if(/^(Shelf_|Stock_|Freezer_)/.test(o.name)){action='restock';break;}if(o.name==='Counter'){action='checkout';break;}}if(action){act(()=>store[action]());break;}}});
+function frame(now){if(disposed)return;const dt=last?Math.min(1000,now-last):0;last=now;const active=ready&&!document.hidden&&!confirmation.pending&&!store.getState().paused;
+  if(active){stepTime+=dt;saveTime+=dt;while(stepTime>=50){const r=store.tick(50);stepTime-=50;if(r.events.includes('impatient'))toast('等太久的顧客離開了，記得幫大家結帳');}if(saveTime>=1000){saveTime=0;persist();}update();}
+  syncScene(active?dt/1000:0);renderer?.render(scene,camera);raf=requestAnimationFrame(frame);
 }
-function startLoop(){if(!raf&&!disposed&&adult&&!document.hidden)raf=requestAnimationFrame(tick);}
-canvas.addEventListener('pointerdown',e=>{if(e.button===0)tap.down(e);});
-canvas.addEventListener('pointermove',e=>tap.move(e));
-canvas.addEventListener('pointercancel',e=>tap.cancel(e.pointerId));
-canvas.addEventListener('lostpointercapture',e=>tap.cancel(e.pointerId));
-window.addEventListener('blur',()=>tap.clear());
-canvas.addEventListener('pointerup',e=>{
-  if(!tap.up(e)||!adult)return;
-  const rect=canvas.getBoundingClientRect();
-  pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);
-  raycaster.setFromCamera(pointer,camera);
-  const hit=raycaster.intersectObject(model,true)[0];
-  if(hit&&isCharacter(hit.object))beginGreeting();
-});
-greet.addEventListener('click',beginGreeting);reset.addEventListener('click',resetView);
-document.addEventListener('visibilitychange',()=>{
-  tap.clear();if(document.hidden){if(raf)cancelAnimationFrame(raf);raf=0;}else startLoop();
-});
-canvas.addEventListener('webglcontextlost',e=>{
-  e.preventDefault();if(raf)cancelAnimationFrame(raf);raf=0;disposed=true;
-  status.textContent='3D 顯示已中斷；重新載入頁面可重試。';greet.disabled=true;reset.disabled=true;
-});
-window.addEventListener('pagehide',e=>{
-  if(e.persisted){if(raf)cancelAnimationFrame(raf);raf=0;tap.clear();return;}
-  disposed=true;if(raf)cancelAnimationFrame(raf);raf=0;tap.clear();resizeObserver?.disconnect();controls?.dispose();
-  model?.traverse(o=>{if(o.isMesh){o.geometry.dispose();for(const m of (Array.isArray(o.material)?o.material:[o.material]))m.dispose();}});
-  renderer?.dispose();
-});
-Object.defineProperty(window,'roomDebug',{value:Object.freeze({getState:()=>({
-  loaded:!!adult,phase:pose.phase,busy:pose.busy,greetings:response.count,
-  activePointers:tap.points.size,loopRunning:!!raf,zoom:camera.zoom,
-  source:'room-prototype.blend',reducedMotion:reduced.matches,
-  renderer:renderer?{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles}:null
-})}),writable:false});
-
+document.addEventListener('visibilitychange',()=>{last=0;down=null;if(document.hidden&&ready)persist();});
+window.addEventListener('pagehide',()=>{if(ready)persist();});
+window.addEventListener('pageshow',()=>{last=0;});
+$('view').addEventListener('webglcontextlost',e=>{e.preventDefault();fail(new Error('WebGL context lost'));});
+function fail(error){console.error('Store scene failed:',error);ready=false;$('load-error').hidden=false;toast('3D 載入失敗，進度未清除');update();}
+const observer=new ResizeObserver(resize);observer.observe($('stage'));
+$('save-status').textContent=loaded.ok?'進度會儲存在此裝置':loaded.message;
+if(!loaded.ok)toast(loaded.message);
 try{
-  renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'low-power'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
-  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.15;
-  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-  scene.add(new THREE.HemisphereLight(0xfff7e6,0x9b8061,2.2));
-  const key=new THREE.DirectionalLight(0xffe4c3,3.2);key.position.set(-3,6,5);key.castShadow=true;
-  key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-4,right:4,top:4,bottom:-4,near:.1,far:20});
-  key.shadow.bias=-.00035;key.shadow.normalBias=.025;scene.add(key);
-  const fill=new THREE.DirectionalLight(0xd6e4ff,.8);fill.position.set(4,4,1);scene.add(fill);
-  const ground=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.MeshStandardMaterial({color:0xded5c9,roughness:1}));
-  ground.rotation.x=-Math.PI/2;ground.position.y=-.315;ground.receiveShadow=true;scene.add(ground);
-  controls=new OrbitControls(camera,canvas);controls.target.set(0,1.05,-.1);
-  controls.enableDamping=true;controls.dampingFactor=.08;controls.enablePan=false;
-  controls.minZoom=.7;controls.maxZoom=2.4;controls.minPolarAngle=.35;controls.maxPolarAngle=1.35;
-  controls.minAzimuthAngle=-1.15;controls.maxAzimuthAngle=1.45;
-  controls.touches.ONE=THREE.TOUCH.ROTATE;controls.touches.TWO=THREE.TOUCH.DOLLY_PAN;
-  controls.update();controls.saveState();homePosition=camera.position.clone();homeTarget=controls.target.clone();
-  const gltf=await new GLTFLoader().loadAsync('./assets/room.glb');
-  if(disposed)throw new Error('Page closed during model loading');
-  model=gltf.scene;adult=model.getObjectByName('AdultRoot');arm=model.getObjectByName('GreetingArmPivot');
-  if(!adult||!arm)throw new Error('Expected approved character pivots not found');
-  rig=createGreetingRig(THREE,model,adult,arm);baseY=adult.position.y;
-  model.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});scene.add(model);
-  resizeObserver=new ResizeObserver(resize);resizeObserver.observe(stage);resize();
-  document.querySelector('#poster').hidden=true;canvas.classList.add('ready');greet.disabled=false;reset.disabled=false;
-  status.textContent='房間裡，一切剛剛好。';pose=response.sample(performance.now());startLoop();
-}catch(error){
-  console.error('Room viewer failed',error);disposed=true;controls?.dispose();renderer?.dispose();
-  document.querySelector('#poster').hidden=false;greet.disabled=true;reset.disabled=true;
-  status.textContent='目前顯示核准渲染圖，尚未啟用互動。';
-  const alert=document.querySelector('#error');alert.hidden=false;
-  alert.textContent='3D 載入未完成。請確認透過本機 HTTP 預覽開啟，且瀏覽器支援 WebGL2。';
-}
+  renderer=new THREE.WebGLRenderer({canvas:$('view'),antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NoToneMapping;
+  // Baked contact pads plus unshadowed lights avoid low-resolution shadow acne.
+  scene.add(new THREE.HemisphereLight(0xfffbeb,0xb2c2b5,2.5));const sun=new THREE.DirectionalLight(0xfff0d5,2.6);sun.position.set(-4,8,6);scene.add(sun);resize();
+  const gltf=await loadScene(new GLTFLoader(),'./assets/mini-store.glb');model=gltf.scene;
+  for(let i=0;i<4;i++){const t=model.getObjectByName('Customer_'+i);if(!t)throw Error('Missing customer template');t.visible=false;templates.push(t);}
+  for(let i=0;i<36;i++){const g=model.getObjectByName('Stock_'+String(i).padStart(2,'0'));if(!g)throw Error('Missing stock mesh');goods.push(g);}
+  scene.add(model);ready=true;toast(!loaded.ok?loaded.message:'小店開門了！等顧客選好商品，再點櫃台結帳');update();syncScene(0);raf=requestAnimationFrame(frame);
+}catch(error){fail(error);}

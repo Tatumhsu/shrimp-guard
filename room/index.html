@@ -2,26 +2,29 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="color-scheme" content="light"><title>小房間 · 互動試作</title>
-  <link rel="stylesheet" href="./style.css">
-  <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>
-  <script type="module" src="./main.mjs"></script>
+  <meta name="theme-color" content="#f7f3e8"><title>巷口小店 · 薄荷日常</title>
+  <link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js"}}</script>
 </head>
 <body>
-  <main>
-    <header><div><p class="eyebrow">A LITTLE ROOM</p><h1>在小房間，打個招呼。</h1></div><span class="tag">3D 互動試作</span></header>
-    <section class="viewport" aria-label="可旋轉與縮放的小房間">
-      <img id="poster" src="./assets/approved-preview.png" alt="已核准 Blender 實際渲染：溫暖房間、成年角色與桌上的杯子">
-      <canvas id="view" tabindex="0" aria-label="3D 小房間。拖曳旋轉，滾輪或雙指縮放，點角色打招呼；也可使用下方按鈕。"></canvas>
-      <p id="status" role="status" aria-live="polite">正在載入同一個房間…</p>
-      <span class="viewport-note">同一個 Blender 模型 · 即時 3D</span>
+<main>
+  <div id="game-ui">
+    <header><div class="brand"><span class="shop-icon" aria-hidden="true">▤</span><div><p class="eyebrow">MINT CORNER · 第 <span id="day">1</span> 天</p><h1>巷口小店</h1></div></div><button id="pause" class="pause" aria-label="暫停營業" disabled>Ⅱ</button></header>
+    <section class="stats" aria-label="營業統計"><div><small>可用現金</small><strong id="cash">$120</strong></div><div><small>今日營收</small><strong id="earned">$0</strong></div><div><small>架上庫存</small><strong><span id="stock">12</span><i> / 36</i></strong></div></section>
+    <section id="stage" class="stage" aria-label="立體小店">
+      <canvas id="view" aria-label="點擊貨架補貨，點擊櫃台結帳"></canvas>
+      <div class="stage-top"><span id="scene-status">準備開店…</span><span class="queue-chip">排隊 <b id="queue">0</b> 人</span></div>
+      <div id="paused" class="veil" hidden><strong>休息一下</strong><span>時間與顧客都已暫停</span></div>
+      <div id="load-error" class="veil error" hidden><strong>小店暫時無法顯示</strong><p>3D 資產載入失敗，進度仍保留。請重新載入再試。</p><button id="retry">重新載入</button></div>
+      <div id="feedback" aria-hidden="true"></div>
+      <p id="toast" role="status" aria-live="polite">正在準備貨架與商品</p>
     </section>
-    <footer>
-      <p class="hint">拖曳旋轉 · 滾輪／雙指縮放<br><span>點角色，看看他的回應。</span></p>
-      <div class="actions"><button id="greet" disabled>向角色打招呼</button><button id="reset" disabled class="secondary">重置視角</button></div>
-      <p class="version">版本 2026.10.05-2</p>
-      <p id="error" hidden role="alert"></p>
-    </footer>
-  </main>
-</body>
-</html>
+    <div class="dayline"><span id="flow">顧客準備進店</span><span>每件售價 $25</span></div>
+    <section class="controls" aria-label="營業操作"><button id="restock" disabled><b>▣ 補貨</b><small>6 件 / $15</small></button><button id="checkout" disabled><b>▦ 結帳</b><small>服務排隊顧客</small></button><button id="end" disabled><b>☾ 結束今日</b><small>查看今日結算</small></button></section>
+    <p class="hint">點貨架補貨 · 點櫃台結帳</p>
+    <footer><span id="save-status" role="status">正在讀取進度</span><button id="reset">重新開始</button></footer>
+  </div>
+  <div id="confirm" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-message"><div class="modal-card"><p class="eyebrow">MINT CORNER</p><h2 id="confirm-title">請確認</h2><p id="confirm-message"></p><div class="modal-actions"><button id="confirm-cancel">取消</button><button id="confirm-ok">確認</button></div></div></div>
+</main>
+<script type="module" src="./main.mjs"></script>
+</body></html>
