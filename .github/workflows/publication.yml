@@ -4,6 +4,8 @@ on:
     branches: [main, safety/publication-projects]
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -18,8 +20,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: reviewed-publication
-          path: |
-            public/
-            verification/result.json
+          path: public/
           include-hidden-files: true
 # Deliberately validation-only pending review; existing Pages mode is gh-pages branch root.

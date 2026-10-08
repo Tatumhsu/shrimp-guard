@@ -1,7 +1,7 @@
-const {chromium}=require('C:/Users/user/Documents/Codex/2026-10-08/task/tooling/node_modules/playwright');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const fs=require('fs');
 (async()=>{
- const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+ const browser=await chromium.launch({headless:true,...(process.env.BROWSER_EXECUTABLE ? {executablePath:process.env.BROWSER_EXECUTABLE} : {})});
  const results=[];fs.mkdirSync('verification/screenshots',{recursive:true});
  for(const [label,width,height] of [['desktop',1440,1000],['mobile',390,844]]){
   const page=await browser.newPage({viewport:{width,height}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
