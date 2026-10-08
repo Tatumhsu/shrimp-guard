@@ -1,0 +1,10 @@
+{
+  "status": "built",
+  "cname": "shrimp-guard.us.ci",
+  "build_type": "legacy",
+  "source": {
+    "branch": "gh-pages",
+    "path": "/"
+  },
+  "html_url": "http://shrimp-guard.us.ci/"
+}

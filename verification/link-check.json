@@ -13,5 +13,5 @@
   "local_links_exist": true,
   "homepage_only_navigation_added": true,
   "status_checks": true,
-  "browser_UI": "blocked: no available browser surfaces; mobile/desktop screenshots and history/reload pending"
+  "browser_UI": "26 checks passed; see browser-check.json and screenshots/"
 }

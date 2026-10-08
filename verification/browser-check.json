@@ -1,0 +1,37 @@
+{
+  "checks": [
+    "desktop: six entries",
+    "desktop: nine links",
+    "desktop: no horizontal overflow",
+    "desktop: three pending migrations",
+    "desktop: retained entry explicitly paused",
+    "desktop: responsive columns",
+    "desktop: room opens",
+    "desktop: browser back returns",
+    "desktop: reload persists entry",
+    "desktop: retained world page loads",
+    "desktop: homepage articles preserved",
+    "desktop: homepage entry navigates",
+    "desktop: no JavaScript errors",
+    "mobile: six entries",
+    "mobile: nine links",
+    "mobile: no horizontal overflow",
+    "mobile: three pending migrations",
+    "mobile: retained entry explicitly paused",
+    "mobile: responsive columns",
+    "mobile: room opens",
+    "mobile: browser back returns",
+    "mobile: reload persists entry",
+    "mobile: retained world page loads",
+    "mobile: homepage articles preserved",
+    "mobile: homepage entry navigates",
+    "mobile: no JavaScript errors"
+  ],
+  "count": 26,
+  "browser": "installed Chrome via existing Playwright",
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ],
+  "errors": []
+}

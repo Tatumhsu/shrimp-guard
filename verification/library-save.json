@@ -1,0 +1,9 @@
+{
+  "status": "failed_before_upload",
+  "reason": "Official upload helper returned: Library prepare_uploads is not available",
+  "library_file_ids": [],
+  "local_files": [
+    "verification/screenshots/projects-desktop.png",
+    "verification/screenshots/projects-mobile.png"
+  ]
+}
