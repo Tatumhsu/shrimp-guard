@@ -1,0 +1,36 @@
+[
+  {
+    "matches_baseline": true,
+    "path": "index.html",
+    "sha256": "9ed9b6dc6086740e09c09403b7148a833c90aed35c9164d54fc36fed5f454409",
+    "status": 200
+  },
+  {
+    "matches_baseline": true,
+    "path": "room/index.html",
+    "sha256": "b037e67bddce68d26f1f9bceff9161a337ee8afaa4cc72615419555305aa5771",
+    "status": 200
+  },
+  {
+    "matches_baseline": true,
+    "path": "world-impact/index.html",
+    "sha256": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f",
+    "status": 200
+  },
+  {
+    "matches_baseline": true,
+    "path": "taipei-mrt/index.html",
+    "sha256": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a",
+    "status": 200
+  },
+  {
+    "matches_baseline": true,
+    "path": "posts/ai-virtual-model-economy/index.html",
+    "sha256": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
+    "status": 200
+  },
+  {
+    "path": "CNAME",
+    "error": "Response status code does not indicate success: 404 (Not Found)."
+  }
+]

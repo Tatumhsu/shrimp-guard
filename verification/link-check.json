@@ -1,0 +1,17 @@
+{
+  "project_links": [
+    "/",
+    "/",
+    "/room/",
+    "https://dashboard.shrimp-guard.us.ci/one-life/",
+    "https://life-compass.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/",
+    "https://dashboard.shrimp-guard.us.ci/rail-trip/",
+    "https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/",
+    "https://dashboard.shrimp-guard.us.ci/fund-manager/",
+    "/world-impact/"
+  ],
+  "local_links_exist": true,
+  "homepage_only_navigation_added": true,
+  "status_checks": true,
+  "browser_UI": "blocked: no available browser surfaces; mobile/desktop screenshots and history/reload pending"
+}

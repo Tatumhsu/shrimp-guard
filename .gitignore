@@ -19,3 +19,8 @@ Thumbs.db
 .env.local
 
 # Theme (loaded via gitmodule)
+
+!publication/**
+!publication/**/.*
+
+__pycache__/

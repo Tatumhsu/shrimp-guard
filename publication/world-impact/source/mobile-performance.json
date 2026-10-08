@@ -1,0 +1,28 @@
+{
+  "loadMs": 909.7000000029802,
+  "resources": [
+    {
+      "name": "style.css",
+      "bytes": 10108,
+      "ms": 309.3999999985099
+    },
+    {
+      "name": "world.webp",
+      "bytes": 61696,
+      "ms": 595.8999999985099
+    },
+    {
+      "name": "app.js",
+      "bytes": 10367,
+      "ms": 339.20000000298023
+    },
+    {
+      "name": "events.json",
+      "bytes": 7860,
+      "ms": 206.70000000298023
+    }
+  ],
+  "width": 390,
+  "scrollWidth": 390,
+  "method": "cold cache; 1.6Mbps down, 150ms latency, 4x CPU slowdown; Chrome desktop emulation, not physical mobile"
+}

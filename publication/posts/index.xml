@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>文章列表 on Shrimp Guard</title>
+    <link>https://shrimp-guard.us.ci/posts/</link>
+    <description>Recent content in 文章列表 on Shrimp Guard</description>
+    <generator>Hugo</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 14 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shrimp-guard.us.ci/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>台股戰情室：本週追蹤（2026/05/14）</title>
+      <link>https://shrimp-guard.us.ci/posts/taiwan-stock-watch-20260514/</link>
+      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://shrimp-guard.us.ci/posts/taiwan-stock-watch-20260514/</guid>
+      <description>本週追蹤：台積電再逼近前高，高股息 ETF 集體創高</description>
+    </item>
+    <item>
+      <title>AI 虛擬模特兒經濟：從話題到月入數萬美元</title>
+      <link>https://shrimp-guard.us.ci/posts/ai-virtual-model-economy/</link>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://shrimp-guard.us.ci/posts/ai-virtual-model-economy/</guid>
+      <description>無相機、無團隊：看看 AI 虛擬模特兒如何走向商業實體化的道路</description>
+    </item>
+  </channel>
+</rss>

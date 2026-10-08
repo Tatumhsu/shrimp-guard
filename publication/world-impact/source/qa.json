@@ -1,0 +1,30 @@
+{
+  "asserts": [
+    "three cases loaded",
+    "no implicit personal impact",
+    "pathway opens 0",
+    "pathway opens 1",
+    "pathway opens 2",
+    "localStorage restored",
+    "checklist restored",
+    "cancel restores saved conditions",
+    "no-match state",
+    "no-data category",
+    "preferences cancel",
+    "actual GLB WebGL loaded",
+    "3D disposed to static",
+    "390px no horizontal overflow",
+    "official source links",
+    "Escape closes modal",
+    "data error state",
+    "data retry recovers",
+    "reduced motion default",
+    "WebGL fallback",
+    "WebGL fallback preserves events",
+    "Belgium expiry becomes historical",
+    "no page exceptions"
+  ],
+  "errors": [],
+  "passed": 23,
+  "date": "2026-10-08T00:11:23.339Z"
+}

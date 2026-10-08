@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#06213f">
+  <title>航程風浪 · 概念示意</title>
+  <meta name="description" content="基隆—那霸方向示例航程的風浪預報示意（Open-Meteo 模型預報，非即時、非實船航跡）。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js"}}</script>
+</head>
+<body>
+<a class="skip" href="#controls">跳到控制區</a>
+<main class="app">
+  <header class="hero" aria-labelledby="title">
+    <div id="scene" class="scene">
+      <svg id="sea-fallback" class="fallback" viewBox="0 0 390 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true" hidden>
+        <defs>
+          <linearGradient id="fb-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f3f6e"/><stop offset=".55" stop-color="#4f9bc4"/><stop offset="1" stop-color="#f2c38a"/></linearGradient>
+          <linearGradient id="fb-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb8cf"/><stop offset=".25" stop-color="#1b7ea6"/><stop offset="1" stop-color="#062b52"/></linearGradient>
+          <radialGradient id="fb-sun" cx=".78" cy=".28" r=".35"><stop offset="0" stop-color="#ffe3b0" stop-opacity=".95"/><stop offset="1" stop-color="#ffb473" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="390" height="150" fill="url(#fb-sky)"/>
+        <rect width="390" height="150" fill="url(#fb-sun)"/>
+        <rect y="150" width="390" height="370" fill="url(#fb-sea)"/>
+        <g fill="none" stroke="#9fe3ea" stroke-opacity=".45" stroke-width="1.5">
+          <path d="M-10 230c40-12 70-12 110 0s70 12 110 0 70-12 110 0 70 12 110 0"/>
+          <path d="M-10 290c40-14 70-14 110 0s70 14 110 0 70-14 110 0 70 14 110 0"/>
+          <path d="M-10 360c40-16 70-16 110 0s70 16 110 0 70-16 110 0 70 16 110 0"/>
+          <path d="M-10 440c40-18 70-18 110 0s70 18 110 0 70-18 110 0 70 18 110 0"/>
+        </g>
+        <g transform="translate(70 205)">
+          <path d="M0 60 L250 60 Q290 55 300 30 L0 30 Q-8 45 0 60Z" fill="#f4f7f9"/>
+          <path d="M0 60 L250 60 Q290 55 300 30 L0 30 Q-8 45 0 60Z" fill="#0b2a4a" opacity=".9" transform="translate(0 50) scale(1 .18)"/>
+          <rect x="20" y="40" width="240" height="4" fill="#163a5c"/>
+          <rect x="30" y="8" width="190" height="22" rx="3" fill="#f4f7f9"/><rect x="40" y="16" width="170" height="5" fill="#163a5c"/>
+          <rect x="50" y="-10" width="150" height="18" rx="3" fill="#f4f7f9"/><rect x="58" y="-4" width="134" height="5" fill="#163a5c"/>
+          <rect x="70" y="-26" width="100" height="16" rx="3" fill="#f4f7f9"/><rect x="76" y="-21" width="88" height="5" fill="#163a5c"/>
+          <rect x="88" y="-42" width="22" height="16" rx="4" fill="#f4f7f9"/>
+          <g fill="#e88a3a"><rect x="40" y="31" width="14" height="5" rx="2"/><rect x="62" y="31" width="14" height="5" rx="2"/><rect x="84" y="31" width="14" height="5" rx="2"/><rect x="106" y="31" width="14" height="5" rx="2"/><rect x="128" y="31" width="14" height="5" rx="2"/><rect x="150" y="31" width="14" height="5" rx="2"/></g>
+        </g>
+      </svg>
+      <p class="scene-note" aria-hidden="true">海面示意，非船體運動預測</p>
+    </div>
+    <div class="hero-text">
+      <p class="pill">概念示意 · 非即時預報</p>
+      <p class="eyebrow">VOYAGE PREVIEW</p>
+      <h1 id="title">航程風浪</h1>
+      <svg class="flourish" viewBox="0 0 60 10" aria-hidden="true"><path d="M1 6c6-6 12-6 18 0s12 6 18 0 12-6 18 0" fill="none" stroke="#9fe3ea" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <p class="route" id="route-label" aria-live="polite"><span id="route-from">基隆</span><span class="arrow" aria-hidden="true">→</span><span id="route-to">那霸</span><span class="sr-only">方向示意</span></p>
+      <p class="hero-time"><time id="hero-time-tw"></time> 台灣時間</p>
+      <p class="route-note">基隆—那霸方向示例 · 那霸靠港時間未核實</p>
+    </div>
+    <div class="hero-summary" id="hero-summary" role="status" aria-live="polite">
+      <p class="summary-lead" id="summary-lead">正在取得示例海域預報…</p>
+      <p class="summary-sub" id="summary-sub"></p>
+    </div>
+    <figure class="routeline" aria-label="示意航線">
+      <svg id="route-svg" viewBox="0 0 390 96" aria-hidden="true">
+        <defs><marker id="arrow-head" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9z" fill="#dff8fa"/></marker></defs>
+        <path id="route-path" d="M34 62 C 110 20, 170 18, 200 34 S 300 76, 356 66" fill="none" stroke="#bdeff3" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round" marker-end="url(#arrow-head)"/>
+        <g class="route-dots">
+          <circle data-point="keelung" cx="34" cy="62" r="4"/>
+          <circle data-point="midsea" cx="200" cy="34" r="4"/>
+          <circle data-point="naha" cx="356" cy="66" r="4"/>
+        </g>
+        <text x="34" y="86" class="port-label">基隆</text>
+        <text x="200" y="58" class="mid-label">示意航線</text>
+        <text x="356" y="90" class="port-label" text-anchor="end">那霸</text>
+      </svg>
+      <figcaption class="sr-only">示意航線：基隆、途中示例海域、那霸外海三個抽樣點，非 AIS 航跡，不代表實船位置。</figcaption>
+    </figure>
+  </header>
+
+  <section class="panel" id="controls" aria-label="航程風浪控制">
+    <div class="seg" role="radiogroup" aria-label="方向示意">
+      <button type="button" role="radio" aria-checked="true" data-dir="out" class="seg-btn is-on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15l2 4h14l2-4-9-2-9 2zm4-2V8h10v5M10 8V5h4v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        去程<span class="sr-only">（基隆→那霸）</span>
+      </button>
+      <button type="button" role="radio" aria-checked="false" data-dir="back" class="seg-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15l2 4h14l2-4-9-2-9 2zm4-2V8h10v5M10 8V5h4v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        回程<span class="sr-only">（那霸→基隆）</span>
+      </button>
+    </div>
+    <div class="areas" role="radiogroup" aria-label="示例海域" id="areas"></div>
+
+    <div class="label-row">
+      <h2 class="label">預報狀態</h2>
+      <span class="chip" id="status-chip" data-state="loading">取得中…</span>
+      <button type="button" id="retry" class="btn ghost inline" hidden>重試</button>
+      <button type="button" id="refresh" class="btn ghost inline" disabled aria-label="重新整理預報">更新</button>
+    </div>
+    <p class="status-line" id="status-text" role="status" aria-live="polite"></p>
+
+    <h2 class="label">航程時間</h2>
+    <p class="time-big"><time id="time-tw"></time><span class="time-jp" id="time-jp"></span></p>
+    <div class="slider-row">
+      <button type="button" id="play" class="round" aria-label="播放時間軸" aria-pressed="false">
+        <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z" fill="currentColor"/></svg>
+      </button>
+      <div class="slider-wrap">
+        <input type="range" id="time-slider" min="0" max="0" value="0" step="1" aria-label="航程時間（台灣時間）" aria-valuetext="">
+        <div class="ticks" id="ticks" aria-hidden="true"></div>
+        <div class="slider-ends" aria-hidden="true"><span id="range-start"></span><span id="range-end"></span></div>
+      </div>
+    </div>
+    <div class="step-row">
+      <button type="button" id="prev" class="btn ghost small" aria-label="前一小時">‹ 前一小時</button>
+      <button type="button" id="next" class="btn ghost small" aria-label="後一小時">後一小時 ›</button>
+    </div>
+
+    <details class="details" id="details">
+      <summary>示例數值、詳細資料與來源</summary>
+      <div class="metrics" id="metrics">
+        <div class="metric"><span class="m-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15c3-5 6-5 9 0s6 5 9 0M3 15c2 3 5 3 7 1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>浪高</span><strong id="m-wave" class="m-val">—</strong><span class="m-unit">m</span></div>
+        <div class="metric"><span class="m-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9c3-3 6-3 9 0s6 3 9 0M3 15c3-3 6-3 9 0s6 3 9 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>週期</span><strong id="m-period" class="m-val">—</strong><span class="m-unit">s</span></div>
+        <div class="metric"><span class="m-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M3 13h15a3 3 0 1 1-3 3M3 18h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>風速</span><strong id="m-wind" class="m-val">—</strong><span class="m-unit">km/h <small id="m-wind-ms"></small></span></div>
+      </div>
+      <p class="note">方向示意，不代表已核實航段；時間軸皆為基隆離港至返港期間。示例數值為所選海域、所選小時的模型預報。</p>
+      <div class="details-body" id="details-body"></div>
+    </details>
+
+    <footer class="foot">
+      <p>航線為示意，實際航程依船公司安排。<a id="official-link" href="#" target="_blank" rel="noopener">官方船期</a></p>
+      <p class="tiny" id="attribution">預報資料：<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>（<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>），模型預報非實況。</p>
+    </footer>
+  </section>
+</main>
+<script type="module" src="./main.mjs"></script>
+</body>
+</html>
