@@ -1,0 +1,340 @@
+Info: Saved as "world.blend"
+INFO Draco mesh compression is available, use library at C:\Users\user\Documents\Codex\2026-10-08\task\blender-runtime\blender-4.5.3-windows-x64\4.5\scripts\addons_core\io_scene_gltf2\extern_draco.dll
+08:12:36 | INFO: Starting glTF 2.0 export
+08:12:36 | INFO: Extracting primitive: Cylinder
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.001
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.001
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.002
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.003
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.004
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.005
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.006
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.007
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.008
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.009
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.010
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.011
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.012
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.013
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.014
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.015
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.016
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.017
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.018
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.019
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.020
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.021
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.002
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.003
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.004
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.022
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.005
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.023
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.006
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.007
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.024
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.025
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.001
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.026
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.027
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.028
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.008
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.002
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.009
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.003
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.010
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.004
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Orbital connection
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Orbital connection.001
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.011
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.012
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Impact thread
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.029
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.030
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.031
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.032
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.033
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.034
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.035
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.036
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Water ripple
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Water ripple.001
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Water ripple.002
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.013
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.014
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Impact thread.001
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.037
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.038
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.039
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.040
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.041
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.042
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.043
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.044
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.045
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.046
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.047
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.048
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.049
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.050
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.051
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.005
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.006
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.007
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.015
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.016
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Impact thread.002
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.052
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.053
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.054
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.055
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cube.056
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.017
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.018
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.008
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.019
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.020
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.009
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.021
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Cylinder.022
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Extracting primitive: Sphere.010
+08:12:36 | INFO: Primitives created: 1
+08:12:36 | INFO: Finished glTF 2.0 export in 0.2922244071960449 s
+Blender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:33:33)
+Fra:1 Mem:25.44M (Peak 27.05M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Central life island
+Fra:1 Mem:25.44M (Peak 27.05M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Oak floor
+Fra:1 Mem:27.45M (Peak 27.45M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Floor plank
+Fra:1 Mem:27.47M (Peak 27.47M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Floor plank.001
+Fra:1 Mem:27.68M (Peak 27.68M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Floor plank.003
+Fra:1 Mem:27.94M (Peak 27.94M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Floor plank.004
+Fra:1 Mem:27.93M (Peak 27.94M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Floor plank.007
+Fra:1 Mem:28.07M (Peak 28.07M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Back wall
+Fra:1 Mem:28.09M (Peak 28.09M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Orbital connection.001
+Fra:1 Mem:28.16M (Peak 28.16M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Side wall
+Fra:1 Mem:28.13M (Peak 28.16M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Window frame
+Fra:1 Mem:28.32M (Peak 28.32M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Window glass
+Fra:1 Mem:28.39M (Peak 28.39M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Window cross
+Fra:1 Mem:28.38M (Peak 28.39M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Window cross.001
+Fra:1 Mem:28.43M (Peak 28.43M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sofa base
+Fra:1 Mem:28.48M (Peak 28.48M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Impact thread
+Fra:1 Mem:28.48M (Peak 28.48M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sofa back
+Fra:1 Mem:28.50M (Peak 28.50M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sofa arm
+Fra:1 Mem:28.52M (Peak 28.52M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sofa arm.001
+Fra:1 Mem:28.52M (Peak 28.52M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Water ripple
+Fra:1 Mem:28.57M (Peak 28.57M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Water ripple.001
+Fra:1 Mem:28.58M (Peak 28.58M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Water ripple.002
+Fra:1 Mem:28.56M (Peak 28.58M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cushion
+Fra:1 Mem:28.62M (Peak 28.62M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Impact thread.001
+Fra:1 Mem:28.58M (Peak 28.62M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cushion.001
+Fra:1 Mem:28.61M (Peak 28.62M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Round rug
+Fra:1 Mem:28.63M (Peak 28.63M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Coffee table
+Fra:1 Mem:28.62M (Peak 28.63M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Table leg
+Fra:1 Mem:28.66M (Peak 28.66M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Impact thread.002
+Fra:1 Mem:29.04M (Peak 29.04M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Book
+Fra:1 Mem:28.96M (Peak 29.04M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cup
+Fra:1 Mem:28.93M (Peak 29.04M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Work desk
+Fra:1 Mem:29.05M (Peak 29.05M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Desk leg
+Fra:1 Mem:29.14M (Peak 29.14M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Desk leg.001
+Fra:1 Mem:29.19M (Peak 29.19M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Laptop
+Fra:1 Mem:29.31M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Area.002
+Fra:1 Mem:29.21M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Person head
+Fra:1 Mem:29.23M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Area.001
+Fra:1 Mem:29.24M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Area
+Fra:1 Mem:29.26M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sculpted canopy.005
+Fra:1 Mem:29.29M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Tree trunk.005
+Fra:1 Mem:29.31M (Peak 29.31M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Person sweater
+Fra:1 Mem:29.35M (Peak 29.35M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Person legs
+Fra:1 Mem:29.49M (Peak 29.49M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Person legs.001
+Fra:1 Mem:29.44M (Peak 29.49M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sculpted canopy
+Fra:1 Mem:29.53M (Peak 29.53M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Tree trunk.001
+Fra:1 Mem:29.62M (Peak 29.62M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sculpted canopy.001
+Fra:1 Mem:29.65M (Peak 29.65M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Tree trunk.002
+Fra:1 Mem:29.74M (Peak 29.74M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Small garden.002
+Fra:1 Mem:29.88M (Peak 29.88M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sculpted canopy.002
+Fra:1 Mem:29.92M (Peak 29.92M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Event island 0
+Fra:1 Mem:30.01M (Peak 30.01M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sculpted canopy.004
+Fra:1 Mem:30.03M (Peak 30.03M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Tree trunk.004
+Fra:1 Mem:29.97M (Peak 30.03M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Surface
+Fra:1 Mem:30.10M (Peak 30.10M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Container ship hull
+Fra:1 Mem:30.15M (Peak 30.15M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Bridge
+Fra:1 Mem:30.23M (Peak 30.23M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cargo container
+Fra:1 Mem:30.20M (Peak 30.23M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Small garden.001
+Fra:1 Mem:30.34M (Peak 30.34M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cargo container.001
+Fra:1 Mem:30.29M (Peak 30.34M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cargo container.002
+Fra:1 Mem:30.33M (Peak 30.34M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cargo container.003
+Fra:1 Mem:30.35M (Peak 30.35M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cargo container.004
+Fra:1 Mem:30.45M (Peak 30.45M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cargo container.005
+Fra:1 Mem:30.37M (Peak 30.45M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Sculpted canopy.003
+Fra:1 Mem:30.42M (Peak 30.45M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Tree trunk.003
+Fra:1 Mem:30.55M (Peak 30.55M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Event island 1
+Fra:1 Mem:30.47M (Peak 30.55M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Surface.001
+Fra:1 Mem:30.68M (Peak 30.68M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cloud service tower
+Fra:1 Mem:30.69M (Peak 30.69M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Small garden
+Fra:1 Mem:30.87M (Peak 30.87M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status
+Fra:1 Mem:30.81M (Peak 30.87M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.001
+Fra:1 Mem:30.85M (Peak 30.87M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.002
+Fra:1 Mem:30.83M (Peak 30.87M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.003
+Fra:1 Mem:30.84M (Peak 30.87M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cloud service tower.001
+Fra:1 Mem:31.02M (Peak 31.02M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.004
+Fra:1 Mem:30.91M (Peak 31.02M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.005
+Fra:1 Mem:30.93M (Peak 31.02M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Aircraft tail
+Fra:1 Mem:30.97M (Peak 31.02M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.006
+Fra:1 Mem:31.02M (Peak 31.02M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.007
+Fra:1 Mem:31.00M (Peak 31.02M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cloud service tower.002
+Fra:1 Mem:31.06M (Peak 31.06M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Aircraft wings
+Fra:1 Mem:31.07M (Peak 31.07M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.008
+Fra:1 Mem:31.09M (Peak 31.09M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.009
+Fra:1 Mem:31.09M (Peak 31.09M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.010
+Fra:1 Mem:31.15M (Peak 31.15M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Aircraft fuselage
+Fra:1 Mem:31.18M (Peak 31.18M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Service status.011
+Fra:1 Mem:31.16M (Peak 31.18M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cloud
+Fra:1 Mem:31.21M (Peak 31.21M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cloud.001
+Fra:1 Mem:31.21M (Peak 31.21M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Cloud.002
+Fra:1 Mem:31.23M (Peak 31.23M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Event island 2
+Fra:1 Mem:31.27M (Peak 31.27M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Terminal
+Fra:1 Mem:31.34M (Peak 31.34M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | Terminal glazing
+Fra:1 Mem:31.47M (Peak 31.47M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:23.60M (Peak 31.47M) | Time:00:00.05 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:23.60M (Peak 31.47M) | Time:00:00.05 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:23.60M (Peak 31.47M) | Time:00:00.05 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:23.60M (Peak 31.47M) | Time:00:00.05 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:23.69M (Peak 31.47M) | Time:00:00.05 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:23.69M (Peak 31.47M) | Time:00:00.05 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:23.69M (Peak 31.47M) | Time:00:00.05 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:23.69M (Peak 31.47M) | Time:00:00.05 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:23.69M (Peak 31.47M) | Time:00:00.05 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:23.69M (Peak 31.47M) | Time:00:00.05 | Mem:0.01M, Peak:0.01M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:23.71M (Peak 31.47M) | Time:00:00.05 | Mem:0.03M, Peak:0.03M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:23.71M (Peak 31.47M) | Time:00:00.05 | Mem:0.03M, Peak:0.03M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:23.71M (Peak 31.47M) | Time:00:00.05 | Mem:0.03M, Peak:0.03M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:23.71M (Peak 31.47M) | Time:00:00.05 | Mem:0.03M, Peak:0.03M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:23.71M (Peak 31.47M) | Time:00:00.05 | Mem:0.03M, Peak:0.03M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:24.43M (Peak 31.47M) | Time:00:00.05 | Mem:0.04M, Peak:0.04M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:24.42M (Peak 31.47M) | Time:00:00.05 | Mem:0.73M, Peak:0.73M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:24.42M (Peak 31.47M) | Time:00:00.05 | Mem:0.73M, Peak:0.73M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:24.42M (Peak 31.47M) | Time:00:00.05 | Mem:1.97M, Peak:1.97M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:24.42M (Peak 31.47M) | Time:00:00.05 | Mem:3.45M, Peak:4.68M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:24.42M (Peak 31.47M) | Time:00:00.05 | Mem:3.45M, Peak:4.68M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:3.45M, Peak:4.68M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.46M, Peak:5.46M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.46M, Peak:5.46M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.46M, Peak:5.46M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.46M, Peak:5.46M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.46M, Peak:5.46M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.54M, Peak:5.54M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.54M, Peak:5.54M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.54M, Peak:5.54M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:26.43M (Peak 31.47M) | Time:00:00.05 | Mem:5.54M, Peak:5.54M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:26.44M (Peak 31.47M) | Time:00:00.05 | Mem:5.46M, Peak:5.54M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:26.44M (Peak 31.47M) | Time:00:00.05 | Mem:5.55M, Peak:5.55M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:26.44M (Peak 31.47M) | Time:00:00.05 | Mem:5.55M, Peak:5.55M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:26.44M (Peak 31.47M) | Time:00:00.05 | Mem:5.55M, Peak:5.55M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:26.44M (Peak 31.47M) | Time:00:00.05 | Mem:5.55M, Peak:5.55M | Scene, ViewLayer | Sample 0/32
+Fra:1 Mem:148.27M (Peak 148.27M) | Time:00:00.38 | Remaining:00:10.19 | Mem:127.31M, Peak:127.31M | Scene, ViewLayer | Sample 1/32
+Fra:1 Mem:199.54M (Peak 276.45M) | Time:00:17.00 | Mem:127.31M, Peak:127.31M | Scene, ViewLayer | Sample 32/32
+Fra:1 Mem:199.54M (Peak 276.45M) | Time:00:17.00 | Mem:127.31M, Peak:127.31M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Documents\Codex\2026-10-08\task\site\world-impact\assets\world.png'
+Time: 00:17.36 (Saving: 00:00.34)
+
+
+WORLD_IMPACT_BLENDER_COMPLETE 4.5.3 LTS
+
+Blender quit
