@@ -88,8 +88,9 @@ def preflight(api):
 
 
 def tree_files(commit, prefix=''):
-    paths = git('ls-tree', '-rz', '--name-only', commit, '--', prefix or '.').decode().split('\0')
-    return {p: git('show', commit+':'+p) for p in paths if p}
+    rows = git('ls-tree', '-rz', commit, '--', prefix or '.').decode().split('\0')
+    paths = [row.split('\t', 1)[1] for row in rows if row and row.split()[1] == 'blob']
+    return {p: git('show', commit+':'+p) for p in paths}
 
 
 def object_tree(files, parent=None, remove_prefixes=()):
@@ -166,17 +167,24 @@ def prepare(args):
     (ROOT/'.release').mkdir(exist_ok=True)
     api = api_client()
     before = heads()
-    expected_pub = read(ROOT/'verification/source-state.json')['publication_commit']
+    previous = read(args.rollback_plan) if args.rollback_plan else None
+    expected_pub = previous['publication_commit'] if previous else read(ROOT/'verification/source-state.json')['publication_commit']
     require_heads(before, args.expected_main, expected_pub)
+    if previous:
+        verify_plan(previous)
+        if phase(previous, before) not in ('published', 'complete'):
+            raise RuntimeError('Rollback requires a published state from the original verified plan')
     evidence = preflight(api)
     source = textgit('rev-parse', 'HEAD')
+    if previous and source != before['main']:
+        raise RuntimeError('Rollback must start from the current reviewed source head')
     subprocess.run(['git', 'merge-base', '--is-ancestor', args.expected_main, source], cwd=ROOT, check=True)
     if any((ROOT/'.github/workflows'/name).exists() for name in ['hugo.yml', 'deploy.yml']):
         raise RuntimeError('Competing workflows still present in source')
     # Fetch exact expected objects only; refs/working tree stay unchanged.
     git('fetch', '--no-tags', 'origin', before['gh-pages'])
     backup = {p: hashlib.sha256(b).hexdigest() for p, b in tree_files(before['gh-pages']).items()}
-    if backup != read(ROOT/'verification/baseline.json'):
+    if backup != (previous['artifact_hashes'] if previous else read(ROOT/'verification/baseline.json')):
         raise RuntimeError('Remote publication bytes differ from canonical baseline')
     subprocess.run(['python', '-m', 'unittest', 'discover', '-s', 'scripts', '-p', 'test_*.py'],
                    cwd=ROOT, check=True)
@@ -185,7 +193,6 @@ def prepare(args):
     output = {p.relative_to(directory/'public').as_posix(): p.read_bytes()
               for p in (directory/'public').rglob('*') if p.is_file()}
     if args.rollback_plan:
-        previous = read(args.rollback_plan)
         output = tree_files(previous['before']['gh-pages'])
         if {p: hashlib.sha256(b).hexdigest() for p, b in output.items()} != previous['backup_hashes']:
             raise RuntimeError('Rollback tree differs from verified backup')

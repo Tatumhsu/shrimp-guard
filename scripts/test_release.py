@@ -54,6 +54,9 @@ class ReleaseState(unittest.TestCase):
             initial_tree=release.object_tree({'publication/index.html':b'old', 'overlays/projects/index.html':b'new', '.github/workflows/publication.yml':b'validation-only'})
             # Root commit fixture, then ordinary parented release objects.
             source=release.git('-c','user.name=Test','-c','user.email=test@localhost','commit-tree',initial_tree,data=b'fixture\n').decode().strip()
+            release.git('read-tree',source)
+            release.git('update-index','--add','--cacheinfo','160000',source,'themes/PaperMod')
+            source=release.commit(release.textgit('write-tree'),source,'with theme gitlink')
             output={'index.html':b'old','projects/index.html':b'new','CNAME':b'shrimp-guard.us.ci\n'}
             pub=release.commit(release.object_tree(output), source, 'publish')
             self.assertEqual(release.tree_files(pub),output)
@@ -61,6 +64,7 @@ class ReleaseState(unittest.TestCase):
             files=release.tree_files(promoted)
             self.assertFalse(any(p.startswith('overlays/') for p in files))
             self.assertEqual(files['.github/workflows/publication.yml'],b'validation-only')
+            self.assertEqual(release.git('ls-tree',source,'themes/PaperMod'),release.git('ls-tree',promoted,'themes/PaperMod'))
             self.assertEqual(json.loads(files['verification/source-state.json'])['publication_commit'],pub)
             self.assertEqual(json.loads(files['verification/baseline.json']),{p:hashlib.sha256(b).hexdigest() for p,b in output.items()})
             self.assertEqual(json.loads(files['verification/allowlist.json']),{'added':[],'changed':[],'deleted':[]})
