@@ -1,5 +1,5 @@
 Info: Saved as "world.blend"
-INFO Draco mesh compression is available, use library at C:\Users\user\Documents\Codex\2026-10-08\task\blender-runtime\blender-4.5.3-windows-x64\4.5\scripts\addons_core\io_scene_gltf2\extern_draco.dll
+INFO Draco mesh compression is available, use library at <workspace>\blender-runtime\blender-4.5.3-windows-x64\4.5\scripts\addons_core\io_scene_gltf2\extern_draco.dll
 08:12:36 | INFO: Starting glTF 2.0 export
 08:12:36 | INFO: Extracting primitive: Cylinder
 08:12:36 | INFO: Primitives created: 1
@@ -331,7 +331,7 @@ Fra:1 Mem:26.44M (Peak 31.47M) | Time:00:00.05 | Mem:5.55M, Peak:5.55M | Scene, 
 Fra:1 Mem:148.27M (Peak 148.27M) | Time:00:00.38 | Remaining:00:10.19 | Mem:127.31M, Peak:127.31M | Scene, ViewLayer | Sample 1/32
 Fra:1 Mem:199.54M (Peak 276.45M) | Time:00:17.00 | Mem:127.31M, Peak:127.31M | Scene, ViewLayer | Sample 32/32
 Fra:1 Mem:199.54M (Peak 276.45M) | Time:00:17.00 | Mem:127.31M, Peak:127.31M | Scene, ViewLayer | Finished
-Saved: 'C:\Users\user\Documents\Codex\2026-10-08\task\site\world-impact\assets\world.png'
+Saved: '<workspace>\site\world-impact\assets\world.png'
 Time: 00:17.36 (Saving: 00:00.34)
 
 

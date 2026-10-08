@@ -21,7 +21,7 @@ python -c "from PIL import Image; Image.open('../assets/world.png').save('../ass
 
 Official Blender Windows ZIP SHA-256: `6b657c8bdd3a7b65b07b9e1ae17eb4be7dd4aa23121da7f3d3354fc2551330a7`. Verified against Blender's official 4.5.3 SHA-256 manifest. Blender binary itself is not committed.
 
-The supplied Library concept `libfile_8cacb37771b08191b00cf31beb7ceeee` could not be inspected locally: two freshly prepared official helper downloads returned HTTP 403. No guessed URL or permission bypass was used. This edition uses an independently authored Blender interpretation of the written brief and does not claim reference-image fidelity.
+The supplied Library concept image could not be inspected locally: two freshly prepared official helper downloads returned HTTP 403. No guessed URL or permission bypass was used. This edition uses an independently authored Blender interpretation of the written brief and does not claim reference-image fidelity.
 
 ## Run and verify
 
