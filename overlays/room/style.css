@@ -209,3 +209,45 @@ input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; border-radius
 .sky-line .sep { opacity: 0.5; margin: 0 5px; }
 .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 400px) { .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 分頁 */
+.tabs { position: sticky; top: 0; z-index: 30; display: flex; gap: 6px; padding: 8px 12px; background: rgba(6, 33, 63, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.tab { flex: 1; min-height: 40px; border-radius: 12px; border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 15px; letter-spacing: 0.08em; cursor: pointer; }
+.tab.is-on { background: linear-gradient(135deg, rgba(63, 208, 214, 0.75), rgba(32, 140, 170, 0.75)); color: #fff; }
+/* 沖繩上岸 */
+.landing { padding-bottom: 20px; }
+.land-title { margin: 6px 0 0; font-size: 24px; letter-spacing: 0.1em; }
+.land-sub { margin: 4px 0 10px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.land-loc { display: flex; gap: 10px; align-items: center; }
+.land-locate { flex: none; min-width: 110px; }
+.land-fix { font-size: 12.5px; color: var(--cream); line-height: 1.45; }
+.land-far { color: #ffd38a; }
+.land-regions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
+.land-region { min-height: 40px; border-radius: 12px; border: 1px solid var(--line); background: rgba(5, 25, 48, 0.45); color: var(--cream); font-size: 13.5px; cursor: pointer; }
+.land-region[aria-checked="true"] { border-color: var(--teal); background: rgba(63, 208, 214, 0.18); }
+.land-basis { margin: 8px 2px 0; font-size: 12px; color: var(--muted); }
+.land-offline { margin-top: 8px; padding: 8px 10px; border-radius: 10px; background: rgba(255, 211, 138, 0.12); border: 1px solid rgba(255, 211, 138, 0.4); color: #ffe2b0; font-size: 12.5px; }
+.land-meet { margin-top: 14px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: rgba(5, 25, 48, 0.4); }
+.land-meet label { font-size: 13px; color: var(--muted); }
+.land-meet-row { display: flex; gap: 8px; margin-top: 6px; align-items: center; }
+.land-meet-row input { flex: 1; min-width: 0; min-height: 42px; border-radius: 10px; border: 1px solid var(--line); background: rgba(5, 25, 48, 0.6); color: var(--cream); font-size: 18px; padding: 0 10px; }
+.land-meet-note { margin: 6px 0 0; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.land-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.land-card { border-radius: 14px; border: 1px solid var(--line); background: rgba(5, 25, 48, 0.45); overflow: hidden; }
+.land-photo { margin: 0; }
+.land-photo img { display: block; width: 100%; height: 170px; object-fit: cover; }
+.land-photo figcaption { font-size: 10.5px; color: var(--muted); padding: 3px 10px 0; }
+.land-body { padding: 8px 12px 10px; }
+.land-name { margin: 0; font-size: 16px; overflow-wrap: anywhere; }
+.land-name small { font-size: 12px; color: var(--muted); font-weight: 400; }
+.land-kind { margin: 2px 0 0; font-size: 12px; color: var(--teal-soft); }
+.land-intro { margin: 6px 0 0; font-size: 13px; line-height: 1.55; color: rgba(243, 247, 250, 0.9); }
+.land-addr { margin: 6px 0 0; font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; }
+.land-dist { margin: 4px 0 0; font-size: 13px; font-weight: 600; color: var(--cream); }
+.land-links { margin: 6px 0 0; font-size: 12.5px; line-height: 1.8; overflow-wrap: anywhere; }
+.land-links .sep { margin: 0 6px; color: var(--muted); }
+.land-nav { font-weight: 600; }
+.land-privacy { margin-top: 18px; padding: 10px 12px; border-radius: 14px; border: 1px dashed var(--line); font-size: 12px; color: var(--muted); line-height: 1.55; }
+.land-privacy h3 { margin: 0 0 4px; font-size: 13px; color: var(--cream); }
+.land-privacy p { margin: 4px 0 0; }
+#land-more { width: 100%; margin-top: 10px; }

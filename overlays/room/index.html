@@ -13,6 +13,8 @@
 <body>
 <a class="skip" href="#controls">跳到控制區</a>
 <main class="app">
+  <nav class="tabs" aria-label="頁面"><button type="button" class="tab is-on" data-tab="voyage" aria-pressed="true">航程風浪</button><button type="button" class="tab" data-tab="landing" aria-pressed="false">沖繩上岸</button></nav>
+  <div id="view-voyage">
   <header class="hero" aria-labelledby="title">
     <div id="scene" class="scene">
       <svg id="sea-fallback" class="fallback" viewBox="0 0 390 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true" hidden>
@@ -132,6 +134,8 @@
       <p class="tiny" id="attribution">預報資料：<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>（<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>），模型預報非實況。</p>
     </footer>
   </section>
+  </div>
+  <section class="panel landing" id="view-landing" aria-label="沖繩上岸" hidden></section>
 </main>
 <script type="module" src="./main.mjs"></script>
 </body>

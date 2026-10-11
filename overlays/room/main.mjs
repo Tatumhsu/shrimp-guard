@@ -7,6 +7,7 @@ import {
 } from './cruise-data.mjs';
 import { createCruiseScene, fallbackColors, deriveVisual, SCALE_M_PER_UNIT, WAVE_EXAGGERATION, SHIP_SPEED_MS } from './cruise-scene.mjs';
 import { solarEvents } from './sky-astro.mjs';
+import { mountLanding } from './okinawa.mjs';
 
 const T = globalThis.__CRUISE_TEST__ ?? {};
 const $ = (id) => document.getElementById(id);
@@ -96,7 +97,7 @@ const sceneEl = $('scene');
 const scene = createCruiseScene(sceneEl, { reducedMotion, forceFallback: !!T.forceNoWebGL });
 if (scene.mode === 'static') $('sea-fallback').hidden = false;
 document.addEventListener('visibilitychange', () => {
-  scene.setPaused(document.hidden);
+  scene.setPaused(document.hidden || TAB === 'landing');
   if (document.hidden) {
     if (state.playing) setPlaying(false);
     stopAgeTimer();
@@ -479,6 +480,22 @@ async function load(force) {
   }
 }
 
+// ---------- 分頁：航程風浪／沖繩上岸（切到上岸頁暫停海面動畫以省電） ----------
+let TAB = 'voyage';
+const landing = mountLanding($('view-landing'));
+function setTab(tab) {
+  TAB = tab === 'landing' ? 'landing' : 'voyage';
+  for (const b of document.querySelectorAll('.tab')) { const on = b.dataset.tab === TAB; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', String(on)); }
+  $('view-voyage').hidden = TAB === 'landing';
+  $('view-landing').hidden = TAB !== 'landing';
+  if (TAB === 'landing') { if (state.playing) setPlaying(false); scene.setPaused(true); landing.show(); }
+  else { scene.setPaused(document.hidden); landing.hide(); }
+  const want = TAB === 'landing' ? '#landing' : '';
+  if (location.hash !== want) history.replaceState(null, '', location.pathname + location.search + want);
+}
+document.querySelector('.tabs').addEventListener('click', (e) => { const b = e.target.closest('.tab'); if (b) { setTab(b.dataset.tab); window.scrollTo(0, 0); } });
+window.addEventListener('hashchange', () => setTab(location.hash === '#landing' ? 'landing' : 'voyage'));
+
 // ---------- 事件 ----------
 document.querySelector('.seg').addEventListener('click', (e) => { const b = e.target.closest('.seg-btn'); if (b) setDir(b.dataset.dir); });
 $('time-slider').addEventListener('input', (e) => { if (state.playing) setPlaying(false); setIdx(e.target.value); });
@@ -502,6 +519,7 @@ window.addEventListener('offline', () => renderStatus());
   $('official-link').href = VOYAGE_META.source;
 }
 renderAll();
+if (location.hash === '#landing') setTab('landing');
 load(false);
 if (!document.hidden) startAgeTimer();
 
@@ -516,6 +534,9 @@ Object.defineProperty(globalThis, '__cruise', {
     isAnimating: () => scene.isAnimating(),
     sceneSnapshot: () => scene.snapshot(),
     sceneConditions: () => sceneConditions(currentRow()),
+    get tab() { return TAB; },
+    get landing() { return landing.state; },
+    locate: () => landing.locate(),
     reducedMotion,
   },
 });
