@@ -1,28 +1,5 @@
 {
-  "added": [
-    "room/okinawa-data.mjs",
-    "room/okinawa.mjs",
-    "room/photos/fukushuen.jpg",
-    "room/photos/gokokuji.jpg",
-    "room/photos/heiwa-dori.jpg",
-    "room/photos/kokusai-dori.jpg",
-    "room/photos/kume-shiseibyo.jpg",
-    "room/photos/makishi-market.jpg",
-    "room/photos/makishi-station.jpg",
-    "room/photos/naha-history-museum.jpg",
-    "room/photos/naminoue-beach.jpg",
-    "room/photos/naminoue-shrine.jpg",
-    "room/photos/sakurazaka-theater.jpg",
-    "room/photos/tsuboya-museum.jpg",
-    "room/sea-physics.mjs",
-    "room/sky-astro.mjs"
-  ],
-  "changed": [
-    "room/cruise-data.mjs",
-    "room/cruise-scene.mjs",
-    "room/index.html",
-    "room/main.mjs",
-    "room/style.css"
-  ],
+  "added": [],
+  "changed": [],
   "deleted": []
 }

@@ -5,7 +5,9 @@ import {
   createCruiseDataClient, resolveRange, formatInZone, buildHourlyTable, summarizeTable,
   VOYAGE_META, SAMPLE_POINTS, SAMPLE_POINTS_NOTE, ATTRIBUTION, DEFAULTS,
 } from './cruise-data.mjs';
-import { createCruiseScene } from './cruise-scene.mjs';
+import { createCruiseScene, fallbackColors, deriveVisual, SCALE_M_PER_UNIT, WAVE_EXAGGERATION, SHIP_SPEED_MS } from './cruise-scene.mjs';
+import { solarEvents } from './sky-astro.mjs';
+import { mountLanding } from './okinawa.mjs';
 
 const T = globalThis.__CRUISE_TEST__ ?? {};
 const $ = (id) => document.getElementById(id);
@@ -95,7 +97,7 @@ const sceneEl = $('scene');
 const scene = createCruiseScene(sceneEl, { reducedMotion, forceFallback: !!T.forceNoWebGL });
 if (scene.mode === 'static') $('sea-fallback').hidden = false;
 document.addEventListener('visibilitychange', () => {
-  scene.setPaused(document.hidden);
+  scene.setPaused(document.hidden || TAB === 'landing');
   if (document.hidden) {
     if (state.playing) setPlaying(false);
     stopAgeTimer();
@@ -168,8 +170,47 @@ function renderMetrics() {
   const ms = row?.wind_speed_10m ?? null;
   setVal('m-wind', isNum(ms) ? ms * 3.6 : null, 0);
   $('m-wind-ms').textContent = isNum(ms) ? `${ms.toFixed(1)} m/s` : '';
-  // 海面示意強弱：以浪高做相對示意（0–2.5 m 映射），非物理模型
-  scene.setSeaLevel(isNum(row?.wave_height) ? row.wave_height / 2.5 : 0.25);
+  setVal('m-cloud', row?.cloud_cover ?? null, 0);
+  renderSky(row);
+}
+
+// ---------- 場景條件與天空資訊列 ----------
+// 場景只吃「所選海域、所選小時」的預報值與該點經緯度／時刻；缺值時場景用保守預設並在資訊列標示。
+function sceneConditions(row) {
+  const meta = pointMeta(state.pointId);
+  return {
+    epochSec: HOURS[state.idx], lat: meta.lat, lon: meta.lon, direction: state.dir,
+    waveHeight: row?.wave_height ?? null, wavePeriod: row?.wave_period ?? null, waveFrom: row?.wave_direction ?? null,
+    windMs: row?.wind_speed_10m ?? null, windFrom: row?.wind_direction_10m ?? null,
+    cloud: row?.cloud_cover ?? null, precip: row?.precipitation ?? null, visibility: row?.visibility ?? null,
+  };
+}
+const STAGE_TEXT = { day: '白天', civil: '民用暮光', nautical: '航海暮光', astronomical: '天文暮光', night: '夜間' };
+function moonText(m) {
+  const pct = Math.round(m.illumination * 100);
+  const name = pct < 3 ? '朔' : pct > 97 ? '望' : (m.waxing ? (pct < 50 ? '眉月' : '盈凸月') : (pct < 50 ? '殘月' : '虧凸月'));
+  return `${name} ${pct}%`;
+}
+function renderSky(row) {
+  const c = sceneConditions(row);
+  const v = deriveVisual(c);
+  const sun = v.sun, parts = [];
+  parts.push(`太陽 ${sun.elevationDeg >= 0 ? '高度 ' + sun.elevationDeg.toFixed(0) + '°' : '地平下 ' + (-sun.elevationDeg).toFixed(0) + '°'}（${STAGE_TEXT[v.stage]}）`);
+  if (v.moon.elevationDeg > 0) parts.push(`月 ${moonText(v.moon)}`); else parts.push(`月未升 ${moonText(v.moon)}`);
+  if (v.known.sky) parts.push(`雲 ${Math.round(v.cloud * 100)}%${v.precip > 0 ? ' · 雨 ' + v.precip.toFixed(1) + ' mm' : ''}`);
+  if (!v.known.wave) parts.push('浪：尚無預報，海面用預設示意');
+  $('sky-line').innerHTML = parts.map(esc).join('<span class="sep">·</span>');
+  scene.setConditions(c);
+  if (scene.mode === 'static') renderFallback(c);
+}
+function renderFallback(c) {
+  const f = fallbackColors(c.epochSec, c.lat, c.lon);
+  const set = (id, k, val) => { const el = $(id); if (el) el.setAttribute(k, val); };
+  set('fb-sky-0', 'stop-color', f.skyTop); set('fb-sky-1', 'stop-color', f.skyBottom); set('fb-sky-2', 'stop-color', f.skyBottom);
+  set('fb-sun-rect', 'opacity', f.sunVisible ? '1' : '0');
+  set('fb-stars', 'opacity', String((f.dark * (1 - (isNum(c.cloud) ? c.cloud / 100 : 0.2))).toFixed(2)));
+  set('fb-moon', 'opacity', f.moonVisible ? String((0.4 + f.moonIllumination * 0.6).toFixed(2)) : '0');
+  const sea = $('sea-fallback'); if (sea) sea.style.filter = `brightness(${(0.35 + 0.65 * (1 - f.dark)).toFixed(2)})`;
 }
 
 function buildSummary() {
@@ -295,6 +336,21 @@ function sourceBlock(name, s, a, grid, req) {
     <dt>海格座標</dt><dd>${grid ? `${grid.lat}, ${grid.lon}` : none}</dd>
   </dl>`;
 }
+function sceneBlock(row) {
+  const c = sceneConditions(row), v = deriveVisual(c), meta = pointMeta(state.pointId);
+  const dayStart = HOURS[state.idx] - ((HOURS[state.idx] + TW * 60) % 86400);
+  const ev = solarEvents(dayStart, meta.lat, meta.lon);
+  const hm = (e) => (e ? formatInZone(e, TW).time : '—');
+  const w = v.waves[0];
+  return `<h3>畫面怎麼來（示意，非船體運動預測）</h3><dl class="kv">
+    <dt>太陽</dt><dd>高度 ${v.sun.elevationDeg.toFixed(1)}°、方位 ${v.sun.azimuthDeg.toFixed(0)}°（${esc(STAGE_TEXT[v.stage])}）；當地日出 ${hm(ev.sunrise)}、日沒 ${hm(ev.sunset)}（依 ${meta.lat}°N ${meta.lon}°E 計算）</dd>
+    <dt>月亮</dt><dd>${v.moon.elevationDeg > 0 ? `高度 ${v.moon.elevationDeg.toFixed(0)}°、` : '在地平線下、'}${esc(moonText(v.moon))}，月齡 ${v.moon.ageDays.toFixed(1)} 天</dd>
+    <dt>湧浪</dt><dd>${v.known.wave ? `來自 ${w.fromDeg.toFixed(0)}°，週期 ${w.periodS.toFixed(1)} s → 波長 ${(w.wavelengthU * SCALE_M_PER_UNIT).toFixed(0)} m、波速 ${(w.speedU * SCALE_M_PER_UNIT).toFixed(1)} m/s（深水波），畫面浪高放大 ${WAVE_EXAGGERATION} 倍` : '尚無預報，用預設示意'}</dd>
+    <dt>船隻搖晃</dt><dd>船向 ${v.heading.toFixed(0)}°、速度假設 ${(SHIP_SPEED_MS * 1.944).toFixed(0)} 節；浪與船首夾角 ${Math.abs(v.encounter.relAngleDeg).toFixed(0)}°，遭遇週期 ${v.motion.periodS.toFixed(1)} s；湧浪造成橫搖 ±${v.motion.rollDeg.toFixed(1)}°、縱搖 ±${v.motion.pitchDeg.toFixed(1)}°，風浪另加 ±${v.motion.windRollDeg.toFixed(1)}°（週期 ${v.motion.windPeriodS.toFixed(1)} s），側風傾側 ${v.motion.heelDeg.toFixed(1)}°（示意幅度，隨浪高線性放大，非船體運動預測）</dd>
+    <dt>風</dt><dd>${v.known.wind ? `真風 ${v.windMs.toFixed(1)} m/s 自 ${v.windFrom.toFixed(0)}°；視風 ${v.apparentWind.speedMs.toFixed(1)} m/s 自 ${v.apparentWind.fromDeg.toFixed(0)}°（煙與風紋方向）；白浪覆蓋率約 ${(v.whitecap * 100).toFixed(2)}%` : '尚無預報'}</dd>
+    <dt>天氣</dt><dd>雲量 ${Math.round(v.cloud * 100)}%${v.precip > 0 ? `、降水 ${v.precip.toFixed(1)} mm/h` : ''}、能見度 ${(v.visibilityM / 1000).toFixed(1)} km → 天空灰度、星月可見度、雨與遠景霧化</dd>
+  </dl>`;
+}
 function renderDetails() {
   const r = view();
   const body = $('details-body');
@@ -312,7 +368,11 @@ function renderDetails() {
       <dt>浪向（來向）</dt><dd>${dirText(row?.wave_direction) ?? none}</dd>
       <dt>風速</dt><dd>${isNum(row?.wind_speed_10m) ? `${row.wind_speed_10m.toFixed(1)} m/s（約 ${(row.wind_speed_10m * 3.6).toFixed(0)} km/h）` : none}</dd>
       <dt>風向（來向）</dt><dd>${dirText(row?.wind_direction_10m) ?? none}</dd>
+      <dt>雲量</dt><dd>${isNum(row?.cloud_cover) ? `${row.cloud_cover.toFixed(0)} %` : none}</dd>
+      <dt>降水</dt><dd>${isNum(row?.precipitation) ? `${row.precipitation.toFixed(1)} mm` : none}</dd>
+      <dt>能見度</dt><dd>${isNum(row?.visibility) ? `${(row.visibility / 1000).toFixed(1)} km` : none}</dd>
     </dl>`;
+    html += sceneBlock(row);
     const cov = p?.coverage;
     html += `<h3>本期間覆蓋</h3><dl class="kv"><dt>海象</dt><dd>${esc(cov.marine.status)}（${cov.marine.complete}/${cov.marine.requested} 小時完整）</dd><dt>風場</dt><dd>${esc(cov.weather.status)}（${cov.weather.complete}/${cov.weather.requested} 小時完整）</dd></dl>`;
     const w = r.summary.points.find((x) => x.id === state.pointId)?.wave;
@@ -420,6 +480,22 @@ async function load(force) {
   }
 }
 
+// ---------- 分頁：航程風浪／沖繩上岸（切到上岸頁暫停海面動畫以省電） ----------
+let TAB = 'voyage';
+const landing = mountLanding($('view-landing'));
+function setTab(tab) {
+  TAB = tab === 'landing' ? 'landing' : 'voyage';
+  for (const b of document.querySelectorAll('.tab')) { const on = b.dataset.tab === TAB; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', String(on)); }
+  $('view-voyage').hidden = TAB === 'landing';
+  $('view-landing').hidden = TAB !== 'landing';
+  if (TAB === 'landing') { if (state.playing) setPlaying(false); scene.setPaused(true); landing.show(); }
+  else { scene.setPaused(document.hidden); landing.hide(); }
+  const want = TAB === 'landing' ? '#landing' : '';
+  if (location.hash !== want) history.replaceState(null, '', location.pathname + location.search + want);
+}
+document.querySelector('.tabs').addEventListener('click', (e) => { const b = e.target.closest('.tab'); if (b) { setTab(b.dataset.tab); window.scrollTo(0, 0); } });
+window.addEventListener('hashchange', () => setTab(location.hash === '#landing' ? 'landing' : 'voyage'));
+
 // ---------- 事件 ----------
 document.querySelector('.seg').addEventListener('click', (e) => { const b = e.target.closest('.seg-btn'); if (b) setDir(b.dataset.dir); });
 $('time-slider').addEventListener('input', (e) => { if (state.playing) setPlaying(false); setIdx(e.target.value); });
@@ -443,6 +519,7 @@ window.addEventListener('offline', () => renderStatus());
   $('official-link').href = VOYAGE_META.source;
 }
 renderAll();
+if (location.hash === '#landing') setTab('landing');
 load(false);
 if (!document.hidden) startAgeTimer();
 
@@ -455,6 +532,11 @@ Object.defineProperty(globalThis, '__cruise', {
     stats: () => client.stats(),
     sceneMode: scene.mode,
     isAnimating: () => scene.isAnimating(),
+    sceneSnapshot: () => scene.snapshot(),
+    sceneConditions: () => sceneConditions(currentRow()),
+    get tab() { return TAB; },
+    get landing() { return landing.state; },
+    locate: () => landing.locate(),
     reducedMotion,
   },
 });

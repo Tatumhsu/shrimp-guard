@@ -212,6 +212,9 @@ export const MARINE_FIELDS = Object.freeze({
 export const WEATHER_FIELDS = Object.freeze({
   wind_speed_10m: { units: ['m/s'], min: 0, max: 120 },
   wind_direction_10m: { units: ['°', 'deg'], min: 0, max: 360 },
+  cloud_cover: { units: ['%'], min: 0, max: 100 },
+  precipitation: { units: ['mm'], min: 0, max: 500 },
+  visibility: { units: ['m'], min: 0, max: 200000 },
 });
 
 const validLatLon = (lat, lon) => Number.isFinite(lat) && Number.isFinite(lon) && Math.abs(lat) <= 90 && Math.abs(lon) <= 180;
@@ -347,6 +350,8 @@ export const normalizeWeather = (payload, points = SAMPLE_POINTS, url = '') => n
 // ---------------------------------------------------------------------------
 export const MARINE_COLS = Object.freeze(['wave_height', 'wave_period', 'wave_direction']);
 export const WEATHER_COLS = Object.freeze(['wind_speed_10m', 'wind_direction_10m']);
+// 天空欄位：只供場景日夜與天氣呈現，缺值不影響「風場可用」判定
+export const SKY_COLS = Object.freeze(['cloud_cover', 'precipitation', 'visibility']);
 
 export const COVERAGE_STATUS = Object.freeze({
   complete: '完整',
@@ -397,6 +402,7 @@ export function buildHourlyTable(range, points, marineNorm, weatherNorm) {
       for (const c of MARINE_COLS) row[c] = mk === undefined ? null : m.loc.series[c][mk];
       const wk = w?.map.get(epoch);
       for (const c of WEATHER_COLS) row[c] = wk === undefined ? null : w.loc.series[c][wk];
+      for (const c of SKY_COLS) row[c] = wk === undefined || !w.loc.series[c] ? null : w.loc.series[c][wk];
       // marineAvailable / weatherAvailable = 該小時該來源所有欄位皆非 null（單欄缺即 false）
       row.marineAvailable = MARINE_COLS.every((c) => row[c] !== null);
       row.weatherAvailable = WEATHER_COLS.every((c) => row[c] !== null);
@@ -407,7 +413,7 @@ export function buildHourlyTable(range, points, marineNorm, weatherNorm) {
       requested: { lat: p.lat, lon: p.lon },
       marineGrid: m ? m.loc.returned : null,
       weatherGrid: w ? w.loc.returned : null,
-      units: { wave_height: 'm', wave_period: 's', wave_direction: 'deg (coming from)', wind_speed_10m: 'm/s', wind_direction_10m: 'deg (coming from)' },
+      units: { wave_height: 'm', wave_period: 's', wave_direction: 'deg (coming from)', wind_speed_10m: 'm/s', wind_direction_10m: 'deg (coming from)', cloud_cover: '%', precipitation: 'mm', visibility: 'm' },
       rows,
       coverage: { marine: coverageOf(rows, MARINE_COLS, 'marineLevel'), weather: coverageOf(rows, WEATHER_COLS, 'weatherLevel') },
     };
