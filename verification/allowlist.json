@@ -1,5 +1,14 @@
 {
-  "added": [],
-  "changed": [],
+  "added": [
+    "room/sea-physics.mjs",
+    "room/sky-astro.mjs"
+  ],
+  "changed": [
+    "room/cruise-data.mjs",
+    "room/cruise-scene.mjs",
+    "room/index.html",
+    "room/main.mjs",
+    "room/style.css"
+  ],
   "deleted": []
 }
