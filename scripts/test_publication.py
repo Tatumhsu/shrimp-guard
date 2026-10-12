@@ -24,11 +24,18 @@ class EntryContent(unittest.TestCase):
   if not entry.exists(): entry=root/'publication/projects/index.html'
   if not entry.exists(): self.skipTest('Entry absent in rollback baseline')
   parser=Links(); html=entry.read_text(encoding='utf-8');parser.feed(html)
-  self.assertEqual(len(parser.links),9)
+  import importlib.util
+  spec=importlib.util.spec_from_file_location('entry',root/'scripts/build_projects_entry.py'); entry_src=importlib.util.module_from_spec(spec); spec.loader.exec_module(entry_src)
+  self.assertEqual(html,entry_src.build())   # overlay is exactly the generated page
+  expected=['/','/']+['#'+g for g,_ in entry_src.GROUPS]+[w['url'] for w in entry_src.WORKS if w.get('url')]
+  self.assertEqual(parser.links,expected)
   for href in parser.links:
    if href.startswith('/'):
-    self.assertTrue((root/'publication'/href.lstrip('/')/'index.html').is_file())
-  for status in ['保留待改作','待整理','假資料測試版']: self.assertIn(status,html)
+    self.assertTrue((root/'publication'/href.split('#')[0].lstrip('/')/'index.html').is_file())
+  for w in entry_src.WORKS:
+   if w['g']=='ask': self.assertIsNone(w.get('url'))
+  for status in ['測試資料','暫不提供入口','舊版']: self.assertIn(status,html)
+  self.assertNotRegex(html,r'\d+/\d+ 通過')   # test results stay in the report, not on public cards
   delta='\n<li><a href="/projects/">作品入口</a></li>'.encode()
   if (root/'overlays/index.html').exists():
    self.assertEqual((root/'overlays/index.html').read_bytes().replace(delta,b''),(root/'publication/index.html').read_bytes())
