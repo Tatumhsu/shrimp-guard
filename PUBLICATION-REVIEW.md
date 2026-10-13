@@ -14,13 +14,13 @@ Local branch: `safety/publication-projects`; no push, PR, deployment, VPS access
 
 ## Verification
 
-- 5 unit tests passed (4 safety cases plus entry links/status/homepage delta).
-- 164 baseline files verified against original Git blobs. Output: 165 files, 163 unchanged, 1 changed (`index.html` navigation only), 1 added (`projects/index.html`), 0 deleted.
+- 12 unit tests passed (`test_publication.py` 5 + `test_release.py` 7).
+- Current baseline (gh-pages `b339cd3`): 181 files verified. Output: 181 files, 180 unchanged, 1 changed (`projects/index.html`), 0 added, 0 deleted.
 - All room (13), world-impact (30), taipei-mrt (1), posts (5), and legacy public (59) files remain byte-identical.
 - Five live HTTP 200 pages match baseline SHA-256: homepage, room, world-impact, taipei-mrt, ai-virtual-model-economy. Live CNAME URL returns 404; the Git CNAME is preserved and this is not evidence of a site failure.
-- All project-page local link targets exist. Nine anchors include duplicate homepage navigation, six products and the LIFE test link nested under LIFE. External login services were not accessed; their availability is not inferred.
+- All project-page local link targets exist. The page has 13 card entry links plus 2 navigation links and 4 group jump links; the owner-only ChatGPT preview link is external and was not opened. External login services were not accessed; their availability is not inferred.
 - `verification/result.json` contains full before/after file hashes; baseline, allowlist, live checks and Git byte-check results are adjacent.
-- UI VERIFIED using installed desktop Chrome and the existing Playwright package: 26 checks passed at 1440x1000 and 390x844. Verified six entries, nine links, responsive columns, no horizontal overflow, migration/paused labels, room and retained world loading, browser back, reload, original homepage articles, homepage navigation and no JavaScript exceptions. Both full-page screenshots were visually inspected. Physical phones, Safari and Firefox were not tested.
+- UI VERIFIED using installed desktop Chrome and the existing Playwright package: 81 checks passed (27 each at 1440x1000, 390x844 and 360x740). Verified 22 works in four groups (9/4/6/3), 13 entry links, the owner-only ChatGPT private preview label and button, responsive columns, no horizontal overflow, migration/paused labels, room and retained world loading, browser back, reload, original homepage articles, homepage navigation and no JavaScript exceptions. All three full-page screenshots were visually inspected. Physical phones, Safari and Firefox were not tested.
 
 ## Safe continuation / deployment gates
 

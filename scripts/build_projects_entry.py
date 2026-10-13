@@ -19,6 +19,7 @@ WORKS = [
     dict(g='ok', name='Shrimp Guard 部落格', desc='AI 應用趨勢與台股觀察文章。', url='/', login=False, st='可瀏覽', date='05/14'),
     dict(g='dev', name='LIFE COMPASS 雲端測試版', of='LIFE COMPASS 的版本', desc='雲端遷移測試，使用測試資料，不是正式個人資料。', url='https://life-compass.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, test=True, st='測試中', date='10/12'),
     dict(g='dev', name='Emergence World', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
+    dict(g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),
     dict(g='dev', name='Technology Tycoon', desc='AI 經營的科技公司模擬，一天等於遊戲一個月。', url=None, st='開發中・尚無可用預覽', date='10/08'),
     dict(g='old', name='小王國', desc='手機王國遊戲（建設村莊、發布懸賞、英雄自行出任務）。', url=None, st='暫停・素材成果保留', date='10/12'),
     dict(g='old', name='世界與我', desc='原入口保留中。', url='/world-impact/', login=False, st='保留中', date='10/08'),
@@ -68,7 +69,7 @@ LABEL = dict(GROUPS)
 def card(w):
     tags = []
     if w.get('url'):
-        tags.append('<li class="lock">需要登入</li>' if w.get('login') else '<li class="pub">公開</li>')
+        tags.append(f'<li class="lock">{e(w.get("access", "需要登入"))}</li>' if w.get('login') else '<li class="pub">公開</li>')
     if w.get('test'):
         tags.append('<li class="test">測試資料</li>')
     tags.append(f'<li class="{w["g"]}">{LABEL[w["g"]]}</li>')
@@ -76,8 +77,8 @@ def card(w):
     out = [f'<article class="card{" sub" if w.get("sub") else ""}">', f'<h3 class="name">{e(w["name"])}{of}</h3>', f'<p class="desc">{e(w["desc"])}</p>',
            f'<ul class="tags">{"".join(tags)}</ul>', f'<p class="st">{e(w["st"])}<time>{"更新 " + e(w["date"]) if w.get("date") else "更新日期未確認"}</time></p>']
     if w.get('url'):
-        verb = '開啟預覽' if w['g'] == 'dev' else '開啟'
-        out.append(f'<p class="open"><a href="{e(w["url"])}">{verb} {e(w["name"])} →</a></p>')
+        label = e(w['btn']) if w.get('btn') else f"{'開啟預覽' if w['g'] == 'dev' else '開啟'} {e(w['name'])}"
+        out.append(f'<p class="open"><a href="{e(w["url"])}">{label} →</a></p>')
     out.append('</article>')
     return ''.join(out)
 
@@ -95,9 +96,9 @@ def build():
     return ('<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>作品入口 · Shrimp Guard</title><meta name="description" content="Shrimp Guard 所有作品與目前狀態。">'
             f'<style>{CSS}</style></head><body><div class="shell"><nav class="top" aria-label="網站導覽"><a href="/">Shrimp Guard</a><a href="/">返回主站</a></nav>'
-            '<main><h1>作品入口</h1><p class="intro">所有作品與目前狀態。需要登入的作品沿用原有帳號。</p>'
+            '<main><h1>作品入口</h1><p class="intro">所有作品與目前狀態。「需要登入」的作品沿用網站原有帳號；「僅擁有者 ChatGPT 帳號」為私人預覽，訪客無法開啟。</p>'
             f'<nav class="jump" aria-label="分類">{"".join(jump)}</nav>{"".join(body)}</main>'
-            f'<footer>狀態核對日 {CHECKED}。「需要登入」沿用原有帳號，本頁不變更登入方式。待確認項目暫不提供入口。</footer></div></body></html>\n')
+            f'<footer>狀態核對日 {CHECKED}。「需要登入」沿用網站原有帳號；「僅擁有者 ChatGPT 帳號」僅限作品擁有者登入預覽。本頁不變更登入方式。待確認項目暫不提供入口。</footer></div></body></html>\n')
 
 
 if __name__ == '__main__':
