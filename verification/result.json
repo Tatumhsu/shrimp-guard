@@ -1,5 +1,5 @@
 {
-  "baseline_commit": "8845e609a3c13910dc8b8ff1178d0a9015727f60",
+  "baseline_commit": "5e2cce35777bef9f8c9ffc74eb0f624d4d28bc85",
   "before_count": 181,
   "after_count": 181,
   "unchanged": 181,
@@ -114,8 +114,8 @@
       "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
     },
     "projects/index.html": {
-      "before": "ea77d20b660860f95c7dc3f972354a28166b5bae96af0b605c948b79c1366161",
-      "after": "ea77d20b660860f95c7dc3f972354a28166b5bae96af0b605c948b79c1366161"
+      "before": "539e920730de7ea8e77f298fad124f3750225ce5ed10bffb379dd57133fc1cf9",
+      "after": "539e920730de7ea8e77f298fad124f3750225ce5ed10bffb379dd57133fc1cf9"
     },
     "public/taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
