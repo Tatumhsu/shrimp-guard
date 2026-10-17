@@ -21,7 +21,6 @@ WORKS = [
     dict(g='ok', name='Fund Manager', desc='Bybit 紙上交易帳本與 AI 決策紀錄（不下真單）。', url=D + '/fund-manager/', login=True, st='V1 紙上帳本運作中・V2 300U 已停止', date='10/12'),
     dict(g='ok', name='台北捷運路線圖', desc='台北捷運路線與站點圖。', url='/taipei-mrt/', login=False, st='可瀏覽', date='07/14'),
     dict(g='ok', name='Shrimp Guard 部落格', desc='AI 應用趨勢與台股觀察文章。', url='/', login=False, st='可瀏覽', date='05/14'),
-    dict(g='dev', name='生存者', desc='仿 Conway Automaton 的自主 AI：每次思考都從餘額扣掉真實運算成本，靠主人打賞和可驗證的發現賺點數，歸零就停止。不碰真錢、不能複製自己。', url=D + '/apps/automaton/', login=True, st='試運行中・每小時醒來一次', date='10/17'),
     dict(g='dev', name='LIFE COMPASS 雲端測試版', of='LIFE COMPASS 的版本', desc='雲端遷移測試，使用測試資料，不是正式個人資料。', url='https://life-compass.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, test=True, st='測試中', date='10/12'),
     dict(g='dev', name='Emergence World', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
     dict(g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),

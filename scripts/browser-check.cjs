@@ -11,8 +11,8 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const check=(value,name)=>{if(!value)throw Error(label+': '+name);results.push(label+': '+name)};
   // groups and counts
   const chips=await page.locator('nav.jump a').allInnerTexts();
-  check(JSON.stringify(chips)===JSON.stringify(['可使用 13','開發中 5','舊版／暫停 6','待確認 3']),'four groups with counts');
-  check(await page.locator('#ok .card').count()===13&&await page.locator('#dev .card').count()===5&&await page.locator('#old .card').count()===6&&await page.locator('#ask .card').count()===3,'card counts match groups');
+  check(JSON.stringify(chips)===JSON.stringify(['可使用 13','開發中 4','舊版／暫停 6','待確認 3']),'four groups with counts');
+  check(await page.locator('#ok .card').count()===13&&await page.locator('#dev .card').count()===4&&await page.locator('#old .card').count()===6&&await page.locator('#ask .card').count()===3,'card counts match groups');
   // 台股小鎮 is a LIFE COMPASS tab, not another deployment
   const town=page.locator('.card',{hasText:'台股小鎮'});
   check((await town.innerText()).includes('LIFE COMPASS 裡的分頁')&&(await town.innerText()).includes('成交金額影響人潮'),'stock town labelled as LIFE COMPASS tab');
@@ -25,9 +25,9 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const bad=await page.locator('.card').evaluateAll(cs=>cs.filter(c=>{const a=c.querySelector('.open a');if(!a)return false;const t=c.querySelector('.tags').textContent;if(a.href.includes('harbor-sixty-minute-game.windy-maple-0615.chatgpt.site'))return !t.includes('僅擁有者 ChatGPT 帳號')||t.includes('公開');return a.href.includes('dashboard.shrimp-guard.us.ci')?!t.includes('需要登入'):!t.includes('公開')}).map(c=>c.querySelector('.name').textContent));
   check(bad.length===0,'login labels match entry hosts');
   const harbor=page.locator('#dev .card',{hasText:'離港前60分鐘'});
-  check(await page.locator('.card').count()===27,'27 total works');
+  check(await page.locator('.card').count()===26,'26 total works');
   for(const [n,u] of [['週末出走','/weekend/'],['台鐵即時列車','/apps/rail-live/'],["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/']]){const c=page.locator('#ok .card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
-  const surv=page.locator('#dev .card',{hasText:'生存者'});check((await surv.innerText()).includes('不碰真錢')&&(await surv.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci/apps/automaton/','survivor card in 開發中 with entry');
+  check(await page.locator('.card',{hasText:'生存者'}).count()===0,'retired survivor card removed');
   check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'private playable preview clearly labelled');
   check((await harbor.locator('a').innerText()).trim()==='擁有者預覽 →','harbor owner-preview button text');
   check((await page.locator('.intro').innerText()).includes('僅擁有者 ChatGPT 帳號')&&(await page.locator('footer').innerText()).includes('僅擁有者 ChatGPT 帳號'),'header/footer explain owner-only preview');
