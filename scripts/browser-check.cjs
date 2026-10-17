@@ -27,6 +27,10 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   check(bad.length===0,'login labels match entry hosts');
   const harbor=page.locator('#lab .card',{hasText:'離港前60分鐘'});
   check(await page.locator('.card').count()===24,'24 total works');
+  // moving previews (lazy, with a still poster for reduced motion); none for works that show personal data
+  check(await page.locator('.card .pv img[loading=lazy]').count()===9,'nine lazy moving previews');
+  check(await page.locator('.card',{hasText:'LIFE COMPASS'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'Fund Manager'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'VPS 狀態'}).locator('.pv').count()===0,'no previews of personal-data works');
+  const pvImg=page.locator('.card',{hasText:'台鐵即時列車'}).locator('.pv img');await pvImg.scrollIntoViewIfNeeded();await page.waitForFunction(el=>el.complete&&el.naturalWidth>0,await pvImg.elementHandle());check(true,'preview image loads');
   for(const [n,u] of [['週末出走','/weekend/'],['台鐵即時列車','/apps/rail-live/'],["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['台灣此刻','/apps/taiwan/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
   check(await page.locator('.card',{hasText:'生存者'}).count()===0,'retired survivor card removed');
   check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'private playable preview clearly labelled');

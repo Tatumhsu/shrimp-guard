@@ -1,5 +1,26 @@
 {
-  "added": [],
-  "changed": [],
+  "added": [
+    "projects/previews/blog.poster.webp",
+    "projects/previews/blog.webp",
+    "projects/previews/emergence.poster.webp",
+    "projects/previews/emergence.webp",
+    "projects/previews/food-map.poster.webp",
+    "projects/previews/food-map.webp",
+    "projects/previews/rail-live.poster.webp",
+    "projects/previews/rail-live.webp",
+    "projects/previews/rail-trip.poster.webp",
+    "projects/previews/rail-trip.webp",
+    "projects/previews/room.poster.webp",
+    "projects/previews/room.webp",
+    "projects/previews/taipei-mrt.poster.webp",
+    "projects/previews/taipei-mrt.webp",
+    "projects/previews/taiwan.poster.webp",
+    "projects/previews/taiwan.webp",
+    "projects/previews/weekend.poster.webp",
+    "projects/previews/weekend.webp"
+  ],
+  "changed": [
+    "projects/index.html"
+  ],
   "deleted": []
 }
