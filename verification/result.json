@@ -1,8 +1,8 @@
 {
-  "baseline_commit": "5e2cce35777bef9f8c9ffc74eb0f624d4d28bc85",
-  "before_count": 181,
-  "after_count": 181,
-  "unchanged": 181,
+  "baseline_commit": "688c8495940d1dd93509643fb4cc96c8039f14c9",
+  "before_count": 199,
+  "after_count": 199,
+  "unchanged": 199,
   "diff": {
     "added": [],
     "changed": [],
@@ -114,8 +114,8 @@
       "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
     },
     "projects/index.html": {
-      "before": "539e920730de7ea8e77f298fad124f3750225ce5ed10bffb379dd57133fc1cf9",
-      "after": "539e920730de7ea8e77f298fad124f3750225ce5ed10bffb379dd57133fc1cf9"
+      "before": "84a1dd827c8e4932147c548b2184af503d137e73de70b4758800e9bcbebbccc3",
+      "after": "84a1dd827c8e4932147c548b2184af503d137e73de70b4758800e9bcbebbccc3"
     },
     "public/taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
@@ -416,6 +416,78 @@
     "tags/00919/page/1/index.html": {
       "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
       "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
+    },
+    "projects/previews/blog.webp": {
+      "before": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc",
+      "after": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc"
+    },
+    "projects/previews/room.poster.webp": {
+      "before": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0",
+      "after": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0"
+    },
+    "projects/previews/blog.poster.webp": {
+      "before": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8",
+      "after": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8"
+    },
+    "projects/previews/weekend.poster.webp": {
+      "before": "2ca91671480de9b52a2573faa552d5299fc079e6845437dad3ef085e895903d1",
+      "after": "2ca91671480de9b52a2573faa552d5299fc079e6845437dad3ef085e895903d1"
+    },
+    "projects/previews/rail-live.webp": {
+      "before": "a40aff0698b24085e34aef42d2a66e80ad95511fcc21177e5806fade9ae3d5f3",
+      "after": "a40aff0698b24085e34aef42d2a66e80ad95511fcc21177e5806fade9ae3d5f3"
+    },
+    "projects/previews/food-map.poster.webp": {
+      "before": "11706bffdb89f2b07453f785afbc89aa2b6ad2a5725ac7636cb5eafe1860c0c9",
+      "after": "11706bffdb89f2b07453f785afbc89aa2b6ad2a5725ac7636cb5eafe1860c0c9"
+    },
+    "projects/previews/food-map.webp": {
+      "before": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b",
+      "after": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b"
+    },
+    "projects/previews/rail-trip.webp": {
+      "before": "94fe94873a201fafcb4a625650d45beb91cbbaf15de5c4c1b5270da7c6ef4767",
+      "after": "94fe94873a201fafcb4a625650d45beb91cbbaf15de5c4c1b5270da7c6ef4767"
+    },
+    "projects/previews/emergence.poster.webp": {
+      "before": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530",
+      "after": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530"
+    },
+    "projects/previews/rail-trip.poster.webp": {
+      "before": "5a7b22c2884936fa18d1e9dfaf1c378a6583203d205871bf64c4249aece952de",
+      "after": "5a7b22c2884936fa18d1e9dfaf1c378a6583203d205871bf64c4249aece952de"
+    },
+    "projects/previews/taiwan.poster.webp": {
+      "before": "3f6a15e701bb63010adc418a50f90838979d145801a13187897b0d019f8bdb2b",
+      "after": "3f6a15e701bb63010adc418a50f90838979d145801a13187897b0d019f8bdb2b"
+    },
+    "projects/previews/room.webp": {
+      "before": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274",
+      "after": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274"
+    },
+    "projects/previews/taipei-mrt.poster.webp": {
+      "before": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417",
+      "after": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417"
+    },
+    "projects/previews/rail-live.poster.webp": {
+      "before": "0094f49954af4113007f4e31a7847ab79db304a3d81f6fea85ed767d562cced8",
+      "after": "0094f49954af4113007f4e31a7847ab79db304a3d81f6fea85ed767d562cced8"
+    },
+    "projects/previews/weekend.webp": {
+      "before": "a6a9bf969ef58778d95399d226ff7e4ca7ace89302d058ffd3665a77d26bdb88",
+      "after": "a6a9bf969ef58778d95399d226ff7e4ca7ace89302d058ffd3665a77d26bdb88"
+    },
+    "projects/previews/emergence.webp": {
+      "before": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5",
+      "after": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5"
+    },
+    "projects/previews/taipei-mrt.webp": {
+      "before": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5",
+      "after": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5"
+    },
+    "projects/previews/taiwan.webp": {
+      "before": "0f1a4135810066e65331f54009d15e02cfb124dff096f8837e16915296218e12",
+      "after": "0f1a4135810066e65331f54009d15e02cfb124dff096f8837e16915296218e12"
     },
     "public/posts/index.html": {
       "before": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e",
