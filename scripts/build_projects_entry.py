@@ -9,32 +9,22 @@ CHECKED = '2026-10-17'
 # group: ok 可使用 / dev 開發中 / old 舊版／暫停 (collapsed) / ask 待確認 (no open button)
 WORKS = [
     dict(c='live', g='ok', name='台灣此刻', pv='taiwan', desc='一個頁面看台灣上空的一切：風的流線、氣溫、降雨、PM2.5 與 48 小時預報，衛星雲圖、地震、火燒雲／觀星／雲海景點預報疊在同一張地圖；另有星空（星官與二十八宿、太空站過境）、天象曆、立體光影、天氣聲音分頁。', url=D + '/apps/taiwan/', login=True, st='運作中・整合 8 個工具', date='10/17'),
-    dict(c='travel', g='ok', name='週末出走', pv='weekend', desc='選出發站和週末日期，找出停得夠久、附近有得吃的台鐵車站，排好去回程班次（含轉乘一次）與美食。', url=D + '/weekend/', login=True, st='運作中・時刻表到 12/13', date='10/16'),
-    dict(c='travel', g='ok', name='台鐵即時列車', pv='rail-live', desc='依台鐵公開時刻表推算全台每一班列車此刻的位置，沿真實軌道移動；點列車看停靠站，點車站看發車，可回放任一天。不含誤點。', url=D + '/apps/rail-live/', login=True, st='運作中・資料到 12/14', date='10/17'),
     dict(c='live', g='ok', name="God's Eye View 3D 地球", desc='開源作品（MIT）：寫實 3D 地球，即時航班、船隻、衛星、火箭發射、地震與颱風。建議用電腦開。', url=D + '/globe/', login=True, st='運作中・未加 API key（3D 建築、語音 AI 不開放）', date='10/17'),
-    dict(c='tools', g='ok', name='VPS 狀態', desc='主機磁碟、記憶體、服務、排程、容器，以及一鍵檢查所有作品網址。', url=D + '/apps/vps/', login=True, st='運作中', date='10/17'),
-    dict(c='money', g='ok', name='LIFE COMPASS', desc='台股 ETF 持股、配息現金流、目標與研究紀錄。', url=D + '/one-life/', login=True, st='正式版運作中', date='10/11'),
-    dict(c='money', g='ok', name='台股小鎮', of='LIFE COMPASS 裡的分頁', desc='四檔持股變成四間店：成交金額影響人潮，法人買賣成為門口隊伍。收盤資料示意動畫。', url=D + '/one-life/#town', login=True, sub=True, st='運作中', date='10/11'),
+    dict(c='ai', g='ok', name='AI 前沿日報', pv='ai-frontier', desc='每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', url=D + '/apps/ai-frontier/', login=True, st='運作中・可看往期', date='10/17'),
+    dict(c='ai', g='dev', name='Emergence World', pv='emergence', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
+    dict(c='ai', g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),
+    dict(c='travel', g='ok', name='台灣鐵道', pv='rail-live', desc='一頁整合：全台每班列車此刻在哪（可切 3D 地形，山的光影跟著時間變）、週末出走找站吃美食、平溪線 3D 半日遊沙盤、台北捷運路線圖。', url=D + '/apps/rail/', login=True, st='運作中・時刻表到 12/13', date='10/17'),
     dict(c='travel', g='ok', name='航程風浪', pv='room', desc='基隆—那霸示例航程：真實日夜與預報風浪的海面。', url='/room/', login=False, st='運作中', date='10/11'),
     dict(c='travel', g='ok', name='沖繩上岸', of='航程風浪裡的分頁', desc='依目前位置排序那霸景點與美食，附導航。', url='/room/#landing', login=False, sub=True, st='運作中', date='10/11'),
     dict(c='food', g='ok', name='美食大蒐集', pv='food-map', desc='全台 20,615 家店：即時搜尋、推薦、隱藏美食、夜市入口。', url=D + '/food-map/', login=True, st='運作中・每月自動更新', date='10/10'),
-    dict(c='travel', g='ok', name='鐵道出走沙盤', pv='rail-trip', desc='平溪線半日鐵道旅行 3D 規劃。', url=D + '/rail-trip/', login=True, st='運作中・時刻表每日自動更新', date='10/07'),
+    dict(c='money', g='ok', name='LIFE COMPASS', desc='台股 ETF 持股、配息現金流、目標與研究紀錄。', url=D + '/one-life/', login=True, st='正式版運作中', date='10/11'),
+    dict(c='money', g='ok', name='台股小鎮', of='LIFE COMPASS 裡的分頁', desc='四檔持股變成四間店：成交金額影響人潮，法人買賣成為門口隊伍。收盤資料示意動畫。', url=D + '/one-life/#town', login=True, sub=True, st='運作中', date='10/11'),
     dict(c='money', g='ok', name='Fund Manager', desc='Bybit 紙上交易帳本與 AI 決策紀錄（不下真單）。', url=D + '/fund-manager/', login=True, st='V1 紙上帳本運作中・V2 300U 已停止', date='10/12'),
-    dict(c='travel', g='ok', name='台北捷運路線圖', pv='taipei-mrt', desc='台北捷運路線與站點圖。', url='/taipei-mrt/', login=False, st='可瀏覽', date='07/14'),
+    dict(c='tools', g='ok', name='VPS 狀態', desc='主機磁碟、記憶體、服務、排程、容器，以及一鍵檢查所有作品網址。', url=D + '/apps/vps/', login=True, st='運作中', date='10/17'),
     dict(c='tools', g='ok', name='Shrimp Guard 部落格', pv='blog', desc='AI 應用趨勢與台股觀察文章。', url='/', login=False, st='可瀏覽', date='05/14'),
-    dict(c='money', g='dev', name='LIFE COMPASS 雲端測試版', of='LIFE COMPASS 的版本', desc='雲端遷移測試，使用測試資料，不是正式個人資料。', url='https://life-compass.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, test=True, st='測試中', date='10/12'),
-    dict(c='lab', g='dev', name='Emergence World', pv='emergence', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
-    dict(c='lab', g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),
-    dict(c='lab', g='dev', name='Technology Tycoon', desc='AI 經營的科技公司模擬，一天等於遊戲一個月。', url=None, st='開發中・尚無可用預覽', date='10/08'),
-    dict(c='old', g='old', name='小王國', desc='手機王國遊戲（建設村莊、發布懸賞、英雄自行出任務）。', url=None, st='暫停・素材成果保留', date='10/12'),
-    dict(c='old', g='old', name='世界與我', desc='原入口保留中。', url='/world-impact/', login=False, st='保留中', date='10/08'),
-    dict(c='old', g='old', name='美食大蒐集（公開版）', of='美食大蒐集的版本', desc='曾規劃的 GitHub Pages 公開版本。', url=None, st='暫停・正式版在美食大蒐集', date='10/10'),
-    dict(c='old', g='old', name='ONE LIFE ／ AI Resident', desc='生活角色實驗，網址已由 LIFE COMPASS 接手。', url=None, st='已退役', date='10/01'),
-    dict(c='old', g='old', name='AI COMMONS ／ Latticefolk', desc='多模型社群與 AI 生活世界實驗。', url=None, st='已退役', date='09/30'),
-    dict(c='old', g='old', name='Fund Manager V2 300U', of='Fund Manager 的版本', desc='300 USDT 雙向持倉紙上帳本。', url=None, st='已停止・紀錄可在 Fund Manager 查看', date='10/12'),
 ]
 GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
-CATS = [('travel', '交通與旅行'), ('live', '台灣即時'), ('food', '美食'), ('money', '投資理財'), ('lab', '遊戲與實驗'), ('tools', '工具與文章'), ('old', '舊版與退役')]
+CATS = [('live', '台灣即時'), ('ai', 'AI 前沿與實驗'), ('travel', '交通與旅行'), ('food', '美食'), ('money', '投資理財'), ('tools', '工具與文章')]
 assert all(w['c'] in dict(CATS) for w in WORKS) and all((w['c'] == 'old') == (w['g'] == 'old') for w in WORKS)
 
 CSS = """

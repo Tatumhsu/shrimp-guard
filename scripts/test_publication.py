@@ -35,7 +35,7 @@ class EntryContent(unittest.TestCase):
     self.assertTrue((root/'publication'/href.split('#')[0].lstrip('/')/'index.html').is_file())
   for w in entry_src.WORKS:
    if w['g']=='ask': self.assertIsNone(w.get('url'))
-  for status in ['測試資料','尚無可用預覽','舊版']: self.assertIn(status,html)
+  for status in ['需要登入','開發中','公開']: self.assertIn(status,html)
   self.assertNotRegex(html,r'\d+/\d+ 通過')   # test results stay in the report, not on public cards
   delta='\n<li><a href="/projects/">作品入口</a></li>'.encode()
   if (root/'overlays/index.html').exists():
