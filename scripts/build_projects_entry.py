@@ -8,6 +8,9 @@ D = 'https://dashboard.shrimp-guard.us.ci'
 CHECKED = '2026-10-17'
 # group: ok 可使用 / dev 開發中 / old 舊版／暫停 (collapsed) / ask 待確認 (no open button)
 WORKS = [
+    dict(c='live', g='ok', name='今晚星空', desc='從台灣抬頭看的即時星空：中國傳統星官與二十八宿（月亮今晚停在哪一宿）、行星、國際太空站與天宮何時飛過、節氣與流星雨；手機可以直接對準天空。', url=D + '/apps/sky/', login=True, st='運作中・全在瀏覽器計算', date='10/17'),
+    dict(c='live', g='ok', name='天空預報', desc='全台 22 個景點未來三天的火燒雲、日出朝霞、觀星與雲海機會：看高中低雲層和太陽方向打分數，每個分數都附原因。', url=D + '/apps/skycast/', login=True, st='運作中・Open-Meteo 預報', date='10/17'),
+    dict(c='live', g='ok', name='台灣風場', desc='台灣與周邊海面的風一條條流動給你看，可往後播 48 小時；切換氣溫、降雨，點任一處看風向、風速和蒲福風級。', url=D + '/apps/wind/', login=True, st='運作中・每小時預報', date='10/17'),
     dict(c='live', g='ok', name='地震快報', desc='台灣附近與全球過去 30 天的地震地圖；台灣的地震標出離哪個縣市、哪個方向多遠，24 小時內有大地震會跳出提醒。', url=D + '/apps/quake/', login=True, st='運作中・每 2 分鐘更新（USGS）', date='10/17'),
     dict(c='travel', g='ok', name='週末出走', desc='選出發站和週末日期，找出停得夠久、附近有得吃的台鐵車站，排好去回程班次（含轉乘一次）與美食。', url=D + '/weekend/', login=True, st='運作中・時刻表到 12/13', date='10/16'),
     dict(c='travel', g='ok', name='台鐵即時列車', desc='依台鐵公開時刻表推算全台每一班列車此刻的位置，沿真實軌道移動；點列車看停靠站，點車站看發車，可回放任一天。不含誤點。', url=D + '/apps/rail-live/', login=True, st='運作中・資料到 12/14', date='10/17'),
@@ -34,7 +37,7 @@ WORKS = [
     dict(c='old', g='old', name='Fund Manager V2 300U', of='Fund Manager 的版本', desc='300 USDT 雙向持倉紙上帳本。', url=None, st='已停止・紀錄可在 Fund Manager 查看', date='10/12'),
 ]
 GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
-CATS = [('travel', '交通與旅行'), ('live', '即時地圖'), ('food', '美食'), ('money', '投資理財'), ('lab', '遊戲與實驗'), ('tools', '工具與文章'), ('old', '舊版與退役')]
+CATS = [('travel', '交通與旅行'), ('live', '天空與地球'), ('food', '美食'), ('money', '投資理財'), ('lab', '遊戲與實驗'), ('tools', '工具與文章'), ('old', '舊版與退役')]
 assert all(w['c'] in dict(CATS) for w in WORKS) and all((w['c'] == 'old') == (w['g'] == 'old') for w in WORKS)
 
 CSS = """
