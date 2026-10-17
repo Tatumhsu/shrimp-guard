@@ -1,8 +1,8 @@
 {
-  "baseline_commit": "0def8eeea3cf1cabe21d456c9b3c649ebd975306",
-  "before_count": 209,
-  "after_count": 209,
-  "unchanged": 209,
+  "baseline_commit": "ec2db82bb6f865eb6dff710fcd524e383877aecb",
+  "before_count": 215,
+  "after_count": 215,
+  "unchanged": 215,
   "diff": {
     "added": [],
     "changed": [],
@@ -114,8 +114,8 @@
       "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
     },
     "projects/index.html": {
-      "before": "1fbcd5abba54ee8cf7cb091dab2ca524835578610b67a808e8f90636b3990f51",
-      "after": "1fbcd5abba54ee8cf7cb091dab2ca524835578610b67a808e8f90636b3990f51"
+      "before": "d5be1b48104082f71c83b54b535c97f24643d14b61b781bf9d73975cfcf2f9cb",
+      "after": "d5be1b48104082f71c83b54b535c97f24643d14b61b781bf9d73975cfcf2f9cb"
     },
     "public/taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
@@ -445,6 +445,18 @@
       "before": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810",
       "after": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810"
     },
+    "projects/previews/oracle.poster.webp": {
+      "before": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1",
+      "after": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1"
+    },
+    "projects/previews/studio.webp": {
+      "before": "fd3465bd57169491c0385c257618c32686cbcb71e3abdcaa4a4857b524517846",
+      "after": "fd3465bd57169491c0385c257618c32686cbcb71e3abdcaa4a4857b524517846"
+    },
+    "projects/previews/steward.poster.webp": {
+      "before": "19b1be056e404cd9ff8047f23abc2f2d5e0ff55ca0152d596204bbaf94740a9a",
+      "after": "19b1be056e404cd9ff8047f23abc2f2d5e0ff55ca0152d596204bbaf94740a9a"
+    },
     "projects/previews/weekend.poster.webp": {
       "before": "2ca91671480de9b52a2573faa552d5299fc079e6845437dad3ef085e895903d1",
       "after": "2ca91671480de9b52a2573faa552d5299fc079e6845437dad3ef085e895903d1"
@@ -461,9 +473,21 @@
       "before": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b",
       "after": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b"
     },
+    "projects/previews/oracle.webp": {
+      "before": "22ac9dc921ac700eb0d73a8c305d34e05895b383a6181dda557a20e9e3646734",
+      "after": "22ac9dc921ac700eb0d73a8c305d34e05895b383a6181dda557a20e9e3646734"
+    },
     "projects/previews/planner.poster.webp": {
       "before": "42a169cb27746a72c45a04593945cc0b348c27c39faebf4c8c97ab578de54a84",
       "after": "42a169cb27746a72c45a04593945cc0b348c27c39faebf4c8c97ab578de54a84"
+    },
+    "projects/previews/steward.webp": {
+      "before": "afb93dff0c0f2d8578b81b29b22e4c077084e98a01ae4ff1fc106efff6fe8575",
+      "after": "afb93dff0c0f2d8578b81b29b22e4c077084e98a01ae4ff1fc106efff6fe8575"
+    },
+    "projects/previews/studio.poster.webp": {
+      "before": "534d5cb1c0fc9e6366c240fed72e4085c1133aa749beb231042648caf6b21fed",
+      "after": "534d5cb1c0fc9e6366c240fed72e4085c1133aa749beb231042648caf6b21fed"
     },
     "projects/previews/ai-frontier.webp": {
       "before": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c",

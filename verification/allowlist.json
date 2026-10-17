@@ -1,14 +1,5 @@
 {
-  "added": [
-    "projects/previews/oracle.poster.webp",
-    "projects/previews/oracle.webp",
-    "projects/previews/steward.poster.webp",
-    "projects/previews/steward.webp",
-    "projects/previews/studio.poster.webp",
-    "projects/previews/studio.webp"
-  ],
-  "changed": [
-    "projects/index.html"
-  ],
+  "added": [],
+  "changed": [],
   "deleted": []
 }
