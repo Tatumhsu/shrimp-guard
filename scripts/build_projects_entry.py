@@ -18,7 +18,6 @@ WORKS = [
     dict(c='ai', g='ok', name='全球關注', pv='world', desc='21 種語言的維基百科昨天最多人讀什麼？哪些話題全世界一起在看？世界地圖點各地看，AI 用中文解釋可能的原因。', url=D + '/apps/world/', login=True, st='運作中・每天一期', date='10/17'),
     dict(c='ai', g='ok', name='瀏覽器 AI 實驗室', pv='ailab', desc='AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', url=D + '/apps/ailab/', login=True, st='運作中・第一次要下載模型', date='10/17'),
     dict(c='ai', g='dev', name='Emergence World', pv='emergence', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
-    dict(c='game', g='ok', name='方塊樂園', pv='blocks', desc='給小朋友的方塊世界：自己蓋闖關地圖（岩漿、彈跳墊、檢查點、金幣、終點），闖關計時，發布給大家玩，還看得到其他玩家。沒有聊天室。手機平板也能玩。', url=D + '/apps/blocks/', login=True, st='運作中', date='10/17'),
     dict(c='game', g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),
     dict(c='travel', g='ok', name='台灣鐵道', pv='rail-live', desc='一頁整合：全台每班列車此刻在哪（可切 3D 地形，山的光影跟著時間變）、週末出走找站吃美食、平溪線 3D 半日遊沙盤、台北捷運路線圖。', url=D + '/apps/rail/', login=True, st='運作中・時刻表到 12/13', date='10/17'),
     dict(c='travel', g='ok', name='台灣鄉鎮圖鑑', pv='towns', desc='368 個鄉鎮市區一個一個認識：故事、景點、特產與小知識，還有店家數和台鐵車站；去過的就蓋章，看你走過台灣多少地方。', url=D + '/apps/towns/', login=True, st='運作中', date='10/17'),
