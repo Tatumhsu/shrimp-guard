@@ -1,8 +1,8 @@
 {
-  "baseline_commit": "ec2db82bb6f865eb6dff710fcd524e383877aecb",
-  "before_count": 215,
-  "after_count": 215,
-  "unchanged": 215,
+  "baseline_commit": "6f1bfaaf51b533b349cbb287ca1bd0077068e591",
+  "before_count": 217,
+  "after_count": 217,
+  "unchanged": 217,
   "diff": {
     "added": [],
     "changed": [],
@@ -114,8 +114,8 @@
       "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
     },
     "projects/index.html": {
-      "before": "d5be1b48104082f71c83b54b535c97f24643d14b61b781bf9d73975cfcf2f9cb",
-      "after": "d5be1b48104082f71c83b54b535c97f24643d14b61b781bf9d73975cfcf2f9cb"
+      "before": "e073767171e6ce5c15a5e858d3ae6233df1ff98a6477b21f5838e7da282e0791",
+      "after": "e073767171e6ce5c15a5e858d3ae6233df1ff98a6477b21f5838e7da282e0791"
     },
     "public/taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
@@ -429,6 +429,10 @@
       "before": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc",
       "after": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc"
     },
+    "projects/previews/blocks.poster.webp": {
+      "before": "594a5523e92ea651f1130cc1d6aea01ec9bbb0b4a6399d4cd748367398face4b",
+      "after": "594a5523e92ea651f1130cc1d6aea01ec9bbb0b4a6399d4cd748367398face4b"
+    },
     "projects/previews/ailab.webp": {
       "before": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4",
       "after": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4"
@@ -520,6 +524,10 @@
     "projects/previews/taiwan.poster.webp": {
       "before": "3f6a15e701bb63010adc418a50f90838979d145801a13187897b0d019f8bdb2b",
       "after": "3f6a15e701bb63010adc418a50f90838979d145801a13187897b0d019f8bdb2b"
+    },
+    "projects/previews/blocks.webp": {
+      "before": "0cbf5b816ea9545242f9b2b1d266a137f31d291a35184ed2c24c37f0f118c760",
+      "after": "0cbf5b816ea9545242f9b2b1d266a137f31d291a35184ed2c24c37f0f118c760"
     },
     "projects/previews/room.webp": {
       "before": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274",
