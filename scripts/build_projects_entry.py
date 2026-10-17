@@ -10,10 +10,14 @@ CHECKED = '2026-10-17'
 WORKS = [
     dict(c='live', g='ok', name='台灣此刻', pv='taiwan', desc='一個頁面看台灣上空的一切：風的流線、氣溫、降雨、PM2.5 與 48 小時預報，衛星雲圖、地震、火燒雲／觀星／雲海景點預報疊在同一張地圖；另有星空（星官與二十八宿、太空站過境）、天象曆、立體光影、天氣聲音分頁。', url=D + '/apps/taiwan/', login=True, st='運作中・整合 8 個工具', date='10/17'),
     dict(c='live', g='ok', name="God's Eye View 3D 地球", desc='開源作品（MIT）：寫實 3D 地球，即時航班、船隻、衛星、火箭發射、地震與颱風。建議用電腦開。', url=D + '/globe/', login=True, st='運作中・未加 API key（3D 建築、語音 AI 不開放）', date='10/17'),
-    dict(c='ai', g='ok', name='AI 前沿日報', pv='ai-frontier', desc='每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', url=D + '/apps/ai-frontier/', login=True, st='運作中・可看往期', date='10/17'),
+    dict(c='tools', g='ok', name='AI 前沿日報', pv='ai-frontier', desc='每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', url=D + '/apps/ai-frontier/', login=True, st='運作中・可看往期', date='10/17'),
+    dict(c='ai', g='ok', name='AI 旅行規劃師', pv='planner', desc='說出發站、日期和喜好，AI 從全台 368 個鄉鎮挑地方，用當天真的會開的台鐵班次排好一日遊或兩天一夜，還能照你的意見改。', url=D + '/apps/planner/', login=True, st='運作中・每天全站 60 次', date='10/17'),
+    dict(c='ai', g='ok', name='全球關注', pv='world', desc='21 種語言的維基百科昨天最多人讀什麼？哪些話題全世界一起在看？世界地圖點各地看，AI 用中文解釋可能的原因。', url=D + '/apps/world/', login=True, st='運作中・每天一期', date='10/17'),
+    dict(c='ai', g='ok', name='瀏覽器 AI 實驗室', pv='ailab', desc='AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', url=D + '/apps/ailab/', login=True, st='運作中・第一次要下載模型', date='10/17'),
     dict(c='ai', g='dev', name='Emergence World', pv='emergence', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
     dict(c='ai', g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),
     dict(c='travel', g='ok', name='台灣鐵道', pv='rail-live', desc='一頁整合：全台每班列車此刻在哪（可切 3D 地形，山的光影跟著時間變）、週末出走找站吃美食、平溪線 3D 半日遊沙盤、台北捷運路線圖。', url=D + '/apps/rail/', login=True, st='運作中・時刻表到 12/13', date='10/17'),
+    dict(c='travel', g='ok', name='台灣鄉鎮圖鑑', pv='towns', desc='368 個鄉鎮市區一個一個認識：故事、景點、特產與小知識，還有店家數和台鐵車站；去過的就蓋章，看你走過台灣多少地方。', url=D + '/apps/towns/', login=True, st='運作中', date='10/17'),
     dict(c='travel', g='ok', name='航程風浪', pv='room', desc='基隆—那霸示例航程：真實日夜與預報風浪的海面。', url='/room/', login=False, st='運作中', date='10/11'),
     dict(c='travel', g='ok', name='沖繩上岸', of='航程風浪裡的分頁', desc='依目前位置排序那霸景點與美食，附導航。', url='/room/#landing', login=False, sub=True, st='運作中', date='10/11'),
     dict(c='food', g='ok', name='美食大蒐集', pv='food-map', desc='全台 20,615 家店：即時搜尋、推薦、隱藏美食、夜市入口。', url=D + '/food-map/', login=True, st='運作中・每月自動更新', date='10/10'),
@@ -24,7 +28,7 @@ WORKS = [
     dict(c='tools', g='ok', name='Shrimp Guard 部落格', pv='blog', desc='AI 應用趨勢與台股觀察文章。', url='/', login=False, st='可瀏覽', date='05/14'),
 ]
 GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
-CATS = [('live', '台灣即時'), ('ai', 'AI 前沿與實驗'), ('travel', '交通與旅行'), ('food', '美食'), ('money', '投資理財'), ('tools', '工具與文章')]
+CATS = [('live', '台灣即時'), ('ai', 'AI 作品'), ('travel', '交通與旅行'), ('food', '美食'), ('money', '投資理財'), ('tools', '工具與文章')]
 assert all(w['c'] in dict(CATS) for w in WORKS) and all((w['c'] == 'old') == (w['g'] == 'old') for w in WORKS)
 
 CSS = """
