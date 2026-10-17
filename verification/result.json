@@ -1,8 +1,8 @@
 {
-  "baseline_commit": "688c8495940d1dd93509643fb4cc96c8039f14c9",
-  "before_count": 199,
-  "after_count": 199,
-  "unchanged": 199,
+  "baseline_commit": "5bbd1e628ff04611018aabb7bf8f9c8d7a12875e",
+  "before_count": 201,
+  "after_count": 201,
+  "unchanged": 201,
   "diff": {
     "added": [],
     "changed": [],
@@ -114,8 +114,8 @@
       "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
     },
     "projects/index.html": {
-      "before": "84a1dd827c8e4932147c548b2184af503d137e73de70b4758800e9bcbebbccc3",
-      "after": "84a1dd827c8e4932147c548b2184af503d137e73de70b4758800e9bcbebbccc3"
+      "before": "921027a9b367ba3ba786216f5d2c39da20e420a4cdf324676d36849676ed45a2",
+      "after": "921027a9b367ba3ba786216f5d2c39da20e420a4cdf324676d36849676ed45a2"
     },
     "public/taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
@@ -444,6 +444,14 @@
     "projects/previews/food-map.webp": {
       "before": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b",
       "after": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b"
+    },
+    "projects/previews/ai-frontier.webp": {
+      "before": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c",
+      "after": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c"
+    },
+    "projects/previews/ai-frontier.poster.webp": {
+      "before": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85",
+      "after": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85"
     },
     "projects/previews/rail-trip.webp": {
       "before": "94fe94873a201fafcb4a625650d45beb91cbbaf15de5c4c1b5270da7c6ef4767",
