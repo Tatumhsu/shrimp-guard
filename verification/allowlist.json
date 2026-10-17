@@ -1,16 +1,5 @@
 {
-  "added": [
-    "projects/previews/ailab.poster.webp",
-    "projects/previews/ailab.webp",
-    "projects/previews/planner.poster.webp",
-    "projects/previews/planner.webp",
-    "projects/previews/towns.poster.webp",
-    "projects/previews/towns.webp",
-    "projects/previews/world.poster.webp",
-    "projects/previews/world.webp"
-  ],
-  "changed": [
-    "projects/index.html"
-  ],
+  "added": [],
+  "changed": [],
   "deleted": []
 }
