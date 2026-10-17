@@ -11,9 +11,9 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const check=(value,name)=>{if(!value)throw Error(label+': '+name);results.push(label+': '+name)};
   // groups and counts
   const chips=await page.locator('nav.jump a').allInnerTexts();
-  check(JSON.stringify(chips)===JSON.stringify(['交通與旅行 6','天空與地球 5','美食 1','投資理財 4','遊戲與實驗 3','工具與文章 2','舊版與退役 6']),'seven themes with counts');
-  check(await page.locator('#travel .card').count()===6&&await page.locator('#live .card').count()===5&&await page.locator('#money .card').count()===4&&await page.locator('#lab .card').count()===3&&await page.locator('#old .card').count()===6,'card counts match themes');
-  check(await page.locator('.tags .ok').count()===17&&await page.locator('.tags .dev').count()===4&&await page.locator('.tags .old').count()===6,'status tags on every card');
+  check(JSON.stringify(chips)===JSON.stringify(['交通與旅行 6','地球即時 4','星空與天象 3','美食 1','投資理財 4','遊戲與實驗 4','工具與文章 2','舊版與退役 6']),'eight themes with counts');
+  check(await page.locator('#travel .card').count()===6&&await page.locator('#live .card').count()===4&&await page.locator('#sky .card').count()===3&&await page.locator('#money .card').count()===4&&await page.locator('#lab .card').count()===4&&await page.locator('#old .card').count()===6,'card counts match themes');
+  check(await page.locator('.tags .ok').count()===20&&await page.locator('.tags .dev').count()===4&&await page.locator('.tags .old').count()===6,'status tags on every card');
   // 台股小鎮 is a LIFE COMPASS tab, not another deployment
   const town=page.locator('.card',{hasText:'台股小鎮'});
   check((await town.innerText()).includes('LIFE COMPASS 裡的分頁')&&(await town.innerText()).includes('成交金額影響人潮'),'stock town labelled as LIFE COMPASS tab');
@@ -26,8 +26,8 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const bad=await page.locator('.card').evaluateAll(cs=>cs.filter(c=>{const a=c.querySelector('.open a');if(!a)return false;const t=c.querySelector('.tags').textContent;if(a.href.includes('harbor-sixty-minute-game.windy-maple-0615.chatgpt.site'))return !t.includes('僅擁有者 ChatGPT 帳號')||t.includes('公開');return a.href.includes('dashboard.shrimp-guard.us.ci')?!t.includes('需要登入'):!t.includes('公開')}).map(c=>c.querySelector('.name').textContent));
   check(bad.length===0,'login labels match entry hosts');
   const harbor=page.locator('#lab .card',{hasText:'離港前60分鐘'});
-  check(await page.locator('.card').count()===27,'27 total works');
-  for(const [n,u] of [['週末出走','/weekend/'],['台鐵即時列車','/apps/rail-live/'],["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['地震快報','/apps/quake/'],['今晚星空','/apps/sky/'],['天空預報','/apps/skycast/'],['台灣風場','/apps/wind/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
+  check(await page.locator('.card').count()===30,'30 total works');
+  for(const [n,u] of [['週末出走','/weekend/'],['台鐵即時列車','/apps/rail-live/'],["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['地震快報','/apps/quake/'],['今晚星空','/apps/sky/'],['天空預報','/apps/skycast/'],['台灣風場','/apps/wind/'],['台灣天象曆','/apps/almanac/'],['光影台灣','/apps/relief/'],['此刻台灣的聲音','/apps/sound/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
   check(await page.locator('.card',{hasText:'生存者'}).count()===0,'retired survivor card removed');
   check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'private playable preview clearly labelled');
   check((await harbor.locator('a').innerText()).trim()==='擁有者預覽 →','harbor owner-preview button text');
