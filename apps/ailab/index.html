@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>瀏覽器 AI 實驗室</title>
+<meta name="description" content="在你的瀏覽器裡直接跑 AI：照片變 3D、語音轉文字、物件辨識。不用伺服器、不用 API 金鑰，資料不上傳。">
+<meta name="theme-color" content="#0c0f14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0f14'/%3E%3Cpath d='M11 6h10M13 6v8l-6 11a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-6-11V6' fill='none' stroke='%237fe0c4' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add('embed')</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="back-link" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a>
+    <div class="title-row">
+      <div>
+        <h1>瀏覽器 AI 實驗室</h1>
+        <p class="sub">AI 模型直接在這個分頁裡執行——沒有伺服器，也不用 API 金鑰。</p>
+      </div>
+      <div class="engine" id="engine" title="推論引擎"><span class="led"></span><span id="engineText">偵測運算環境…</span></div>
+    </div>
+    <p class="privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>照片和聲音都只在你的瀏覽器裡處理，不會上傳。</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="實驗項目">
+    <a href="#depth" role="tab" data-tab="depth"><span class="ix">01</span>照片變 3D</a>
+    <a href="#speech" role="tab" data-tab="speech"><span class="ix">02</span>語音轉文字</a>
+    <a href="#detect" role="tab" data-tab="detect"><span class="ix">03</span>物件辨識</a>
+  </nav>
+
+  <!-- 01 depth -->
+  <section class="panel" id="panel-depth" data-panel="depth" data-state="idle">
+    <div class="panel-head">
+      <h2>照片變 3D</h2>
+      <p>用單眼深度模型猜出照片裡每個點的遠近，再把照片「推」成立體浮雕。移動滑鼠或傾斜手機就能看到視差。</p>
+    </div>
+    <div class="grid">
+      <div class="controls">
+        <label class="drop" id="depthDrop">
+          <input type="file" accept="image/*" id="depthFile" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l4-4 3 3 5-6 4 5M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <b>拖進照片，或點這裡選擇</b>
+          <span>JPG / PNG，會先縮到 768 px 再處理</span>
+        </label>
+        <div class="samples">
+          <span class="lbl">或試試範例</span>
+          <button class="sample" data-sample="samples/sample-balls.jpg" type="button"><img src="samples/sample-balls.jpg" alt="範例：棋盤地板上的四顆球" width="96" height="64">棋盤上的球</button>
+          <button class="sample" data-sample="samples/sample-valley.jpg" type="button"><img src="samples/sample-valley.jpg" alt="範例：層層山稜與月亮" width="96" height="64">山谷月夜</button>
+        </div>
+        <div class="model-card">
+          <div class="mc-top"><span class="mono">Depth Anything V2 Small</span><span class="size">≈ 27 MB</span></div>
+          <p>第一次使用要下載模型（WASM 約 27 MB、WebGPU 約 50–99 MB），之後會快取在瀏覽器，不用再下載。</p>
+          <div class="progress" hidden><div class="bar"><i></i></div><span class="ptext"></span></div>
+        </div>
+        <div class="knobs">
+          <label class="knob">深度強度 <input type="range" id="depthStrength" min="0" max="100" value="45"><output id="depthStrengthOut">45</output></label>
+          <div class="btn-row">
+            <button type="button" class="btn" id="depthDownload" disabled>下載深度圖</button>
+            <button type="button" class="btn ghost" id="tiltBtn" hidden>啟用手機傾斜</button>
+          </div>
+        </div>
+        <p class="status mono" id="depthStatus" aria-live="polite"></p>
+      </div>
+      <div class="stage-wrap">
+        <div class="seg" role="radiogroup" aria-label="檢視模式">
+          <button type="button" data-view="3d" aria-pressed="true">3D 視差</button>
+          <button type="button" data-view="depth" aria-pressed="false">深度圖</button>
+          <button type="button" data-view="photo" aria-pressed="false">原圖</button>
+        </div>
+        <div class="stage" id="depthStage">
+          <canvas id="gl" aria-label="3D 視差畫面"></canvas>
+          <canvas id="depthView" hidden aria-label="深度圖"></canvas>
+          <canvas id="photoView" hidden aria-label="原圖"></canvas>
+          <div class="empty" id="depthEmpty"><span>選一張照片開始</span></div>
+          <div class="busy" hidden><span class="spin"></span><span class="btext">分析深度中…</span></div>
+        </div>
+        <p class="hint">亮 = 近、暗 = 遠。深度是模型「猜」出來的相對值，不是真實距離。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 speech -->
+  <section class="panel" id="panel-speech" data-panel="speech" data-state="idle" hidden>
+    <div class="panel-head">
+      <h2>語音轉文字</h2>
+      <p>用 Whisper 把錄音轉成逐字稿，每一段附時間標記。簡體輸出會自動轉成繁體（台灣用字）。</p>
+    </div>
+    <div class="grid">
+      <div class="controls">
+        <div class="rec-box">
+          <button type="button" class="rec" id="recBtn" aria-pressed="false"><span class="dot"></span><span class="rtext">開始錄音</span></button>
+          <span class="rec-time mono" id="recTime">00:00</span>
+        </div>
+        <label class="drop slim">
+          <input type="file" accept="audio/*,video/*" id="audioFile" hidden>
+          <b>或上傳音檔</b><span>mp3 / m4a / wav / webm，建議 5 分鐘內</span>
+        </label>
+        <label class="field">語言
+          <select id="asrLang">
+            <option value="chinese" selected>中文</option>
+            <option value="english">英文</option>
+            <option value="japanese">日文</option>
+            <option value="">自動偵測</option>
+          </select>
+        </label>
+        <label class="field">模型
+          <select id="asrSize">
+            <option value="base" selected>快速：Whisper base（約 77 MB）</option>
+            <option value="small">精準：Whisper small（約 250 MB，較慢）</option>
+          </select>
+        </label>
+        <audio id="audioPreview" controls hidden></audio>
+        <div class="model-card">
+          <div class="mc-top"><span class="mono" id="asrName">Whisper base</span><span class="size" id="asrSizeTxt">≈ 77 MB</span></div>
+          <p id="asrNote"></p>
+          <div class="progress" hidden><div class="bar"><i></i></div><span class="ptext"></span></div>
+        </div>
+        <p class="status mono" id="asrStatus" aria-live="polite"></p>
+      </div>
+      <div class="out-wrap">
+        <div class="out-head">
+          <h3>逐字稿</h3>
+          <button type="button" class="btn small" id="copyBtn" disabled>複製</button>
+        </div>
+        <ol class="chunks" id="chunks"><li class="empty-li">錄音或上傳音檔後，結果會出現在這裡。</li></ol>
+        <div class="busy inline" hidden><span class="spin"></span><span class="btext">轉寫中…</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 detect -->
+  <section class="panel" id="panel-detect" data-panel="detect" data-state="idle" hidden>
+    <div class="panel-head">
+      <h2>物件辨識</h2>
+      <p>DETR 模型會在照片裡框出它認得的 80 類常見物品（COCO）：人、車、動物、餐具、家具……</p>
+    </div>
+    <div class="grid">
+      <div class="controls">
+        <label class="drop" id="detDrop">
+          <input type="file" accept="image/*" id="detFile" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M9 9h6v6H9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <b>拖進照片，或點這裡選擇</b>
+          <span>街景、餐桌、客廳、寵物照效果最好</span>
+        </label>
+        <div class="samples">
+          <span class="lbl">或試試範例</span>
+          <button class="sample" data-sample="samples/sample-balls.jpg" type="button"><img src="samples/sample-balls.jpg" alt="範例：棋盤地板上的四顆球" width="96" height="64">棋盤上的球</button>
+        </div>
+        <label class="knob">信心門檻 <input type="range" id="detThreshold" min="20" max="95" value="50"><output id="detThresholdOut">50%</output></label>
+        <div class="model-card">
+          <div class="mc-top"><span class="mono">DETR ResNet-50</span><span class="size">≈ 43 MB</span></div>
+          <p>第一次使用要下載模型（WASM 約 43 MB、WebGPU 約 84–167 MB），之後會快取。</p>
+          <div class="progress" hidden><div class="bar"><i></i></div><span class="ptext"></span></div>
+        </div>
+        <p class="status mono" id="detStatus" aria-live="polite"></p>
+      </div>
+      <div class="stage-wrap">
+        <div class="stage tall" id="detStage">
+          <canvas id="detCanvas" aria-label="辨識結果"></canvas>
+          <div class="empty" id="detEmpty"><span>選一張照片開始</span></div>
+          <div class="busy" hidden><span class="spin"></span><span class="btext">辨識中…</span></div>
+        </div>
+        <ul class="det-list" id="detList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <h3>使用的開源專案與授權</h3>
+    <ul>
+      <li><a href="https://github.com/huggingface/transformers.js">Transformers.js</a> 3.7.6 — Apache-2.0（Hugging Face）</li>
+      <li><a href="https://github.com/microsoft/onnxruntime">ONNX Runtime Web</a> — MIT（Microsoft，隨 Transformers.js 打包）</li>
+      <li><a href="https://huggingface.co/onnx-community/depth-anything-v2-small">Depth Anything V2 Small</a> — Apache-2.0（ONNX 版：onnx-community）</li>
+      <li><a href="https://huggingface.co/Xenova/whisper-base">Whisper base</a>／<a href="https://huggingface.co/Xenova/whisper-small">small</a> — Apache-2.0（OpenAI；ONNX 版：Xenova）</li>
+      <li><a href="https://huggingface.co/Xenova/detr-resnet-50">DETR ResNet-50</a> — Apache-2.0（Facebook AI；ONNX 版：Xenova）</li>
+      <li><a href="https://github.com/BYVoid/OpenCC">OpenCC</a> 簡繁轉換字表 — Apache-2.0</li>
+    </ul>
+    <p>模型檔從 Hugging Face 直接下載到你的瀏覽器並快取；範例圖片為本站自行繪製。</p>
+  </footer>
+</div>
+<script type="module" src="app.js"></script>
+</body></html>

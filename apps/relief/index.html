@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>光影台灣</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0e1214">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="style.css"><script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add('embed')</script><style>.embed .top{display:none}.embed .app{padding-top:8px}</style></head>
+<body>
+<div class="app">
+  <header class="top"><a class="back" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a>
+    <h1>光影台灣</h1>
+    <p class="sub">立體的台灣，山的光影跟此刻真實的太陽同步。拖動時間，看日出的光從太平洋爬上中央山脈、傍晚的山影拉長；也看看哪座山最早迎來曙光。</p>
+  </header>
+  <section class="stage">
+    <div id="map" aria-label="台灣立體地形，可拖曳旋轉"></div>
+    <div class="hud"><span id="phase" class="phase">—</span><span id="sunline" class="sunline"></span></div>
+    <div class="views" role="group" aria-label="視角" id="views"></div>
+  </section>
+  <div class="timebar">
+    <button type="button" id="now" class="ghost">現在</button>
+    <input id="slider" type="range" min="0" max="1439" step="1" value="720" aria-label="一天中的時間">
+    <output id="clock" class="clock"></output>
+    <button type="button" id="play" class="ghost" aria-pressed="false" aria-label="播放一天的光影">▶</button>
+  </div>
+  <div class="panel">
+    <section><h2>誰先看到日出<span id="dayLabel" class="tag"></span></h2><ol id="first" class="first"></ol>
+      <p class="fine">從山頂看出去的地平線比海平面低，太陽會早幾分鐘露臉；這裡用海平面地平線估算，被別的山擋住的情況沒算進去。</p></section>
+    <section><h2>怎麼看</h2>
+      <p class="fine">拖曳旋轉、兩指或滾輪縮放、右鍵或兩指上下拖曳改變傾角。地形用 1.5 倍誇張，看起來更立體。</p>
+      <p class="fine">底圖：Esri World Imagery 衛星影像；地形：Tilezen Terrarium 高程（AWS Open Data）；太陽位置：Astronomy Engine；地圖引擎：MapLibre GL。</p></section>
+  </div>
+</div>
+<script src="vendor/maplibre-gl.js"></script>
+<script src="vendor/astronomy.browser.min.js"></script>
+<script type="module" src="app.js"></script>
+</body></html>

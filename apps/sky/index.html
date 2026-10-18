@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>今晚星空</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0a0f1c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css"><script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add('embed')</script><style>.embed .top{display:none}.embed .app{padding-top:8px}</style></head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="title"><a class="back" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a>
+      <h1>今晚星空</h1><p class="sub">從台灣抬頭看：傳統星官與二十八宿、行星、太空站過境、節氣。</p></div>
+    <div class="where">
+      <label>地點 <select id="place"></select></label>
+      <button type="button" id="geo" class="ghost">用我的位置</button>
+      <button type="button" id="red" class="ghost" aria-pressed="false" title="紅光不破壞暗適應，適合真的在外面看星星">紅光夜視</button>
+    </div>
+  </header>
+  <p id="highlight" class="highlight">計算中…</p>
+  <div class="layout">
+    <section class="skycard" aria-label="星空圖">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="視角"><button type="button" data-view="dome" aria-pressed="true">全天</button><button type="button" data-view="look" aria-pressed="false">抬頭看</button></div>
+        <div class="seg" role="group" aria-label="星座"><button type="button" data-lines="cn" aria-pressed="true">星官</button><button type="button" data-lines="we" aria-pressed="false">西方星座</button><button type="button" data-lines="none" aria-pressed="false">不畫線</button></div>
+        <button type="button" id="aim" class="ghost" hidden>手機對準天空</button>
+      </div>
+      <div class="canvaswrap"><canvas id="sky" aria-label="星空圖，可點選星星、行星與星官查看說明"></canvas><p id="hint" class="hint"></p></div>
+      <div class="timebar">
+        <button type="button" id="now" class="ghost">現在</button>
+        <input id="slider" type="range" min="-720" max="720" step="5" value="0" aria-label="調整時間（前後 12 小時）">
+        <output id="clock" class="clock"></output>
+        <button type="button" id="play" class="ghost" aria-pressed="false" aria-label="快轉播放">▶</button>
+      </div>
+      <div id="info" class="info" hidden></div>
+    </section>
+    <aside class="panel">
+      <section class="card"><h2 id="tonightTitle">今晚</h2><dl id="tonight" class="kv"></dl></section>
+      <section class="card"><h2>行星</h2><ol id="planets" class="rows"></ol></section>
+      <section class="card"><h2>太空站過境<span class="tag">看得到的才列</span></h2><ol id="passes" class="rows"></ol><p class="fine" id="tlenote"></p></section>
+      <section class="card"><h2>流星雨</h2><div id="shower"></div></section>
+      <p class="fine">星表與星官：d3-celestial（BSD-3），簡轉繁 OpenCC；天體計算：Astronomy Engine（MIT）；軌道：CelesTrak 與 satellite.js（MIT）。位置計算在你的瀏覽器裡完成，不會上傳。</p>
+    </aside>
+  </div>
+</div>
+<script src="vendor/astronomy.browser.min.js"></script>
+<script type="module" src="app.js"></script>
+</body></html>
