@@ -1,13 +1,5 @@
 {
-  "added": [
-    "apps/world-taiwan/app.js",
-    "apps/world-taiwan/assets/world.svg",
-    "apps/world-taiwan/data/news.json",
-    "apps/world-taiwan/index.html",
-    "apps/world-taiwan/style.css"
-  ],
-  "changed": [
-    "projects/index.html"
-  ],
+  "added": [],
+  "changed": [],
   "deleted": []
 }
