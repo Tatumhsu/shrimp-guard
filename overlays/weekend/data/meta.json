@@ -1,0 +1,33 @@
+{
+ "built_at": "2026-10-16T07:52:55+08:00",
+ "dates": [
+  "20261017",
+  "20261018",
+  "20261024",
+  "20261025",
+  "20261031",
+  "20261101",
+  "20261107",
+  "20261108",
+  "20261114",
+  "20261115",
+  "20261121",
+  "20261122",
+  "20261128",
+  "20261129",
+  "20261205",
+  "20261206",
+  "20261212",
+  "20261213"
+ ],
+ "stations": 244,
+ "shops": 28717,
+ "osm_added": 8102,
+ "food_radius_m": 1000,
+ "sources": {
+  "stations": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/0518b833e8964d53bfea3f7691aea0ee",
+  "timetable": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/railway_schedule/JSON/list",
+  "food": "美食大蒐集（本站 /food-map/）",
+  "osm": "OpenStreetMap via Overpass（ODbL）"
+ }
+}

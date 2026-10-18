@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>此刻台灣的聲音</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0f1418">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css"><script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add('embed')</script><style>.embed .top{display:none}.embed .app{padding-top:8px}</style></head>
+<body>
+<div class="app">
+  <header class="top"><a class="back" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a>
+    <h1>此刻台灣的聲音</h1>
+    <p class="sub">選一個地方，聽它現在的天氣：雨、風、海浪、蟲鳴蛙叫、清晨鳥聲，加上隨天氣變換的和弦；台灣最近的地震會化成一聲聲低沉的鐘。全部由瀏覽器即時合成，沒有錄音檔。建議戴耳機。</p>
+  </header>
+  <section class="stage">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="overlay">
+      <div class="where"><span id="placeName">臺北</span><span id="cond" class="cond">讀取天氣中…</span></div>
+      <button type="button" id="play" class="play" aria-pressed="false">開始聆聽</button>
+      <p id="hear" class="hear"></p>
+      <p id="bellNote" class="bell" aria-live="polite"></p>
+    </div>
+  </section>
+  <div class="panel">
+    <section>
+      <h2>地點 <button type="button" id="round" class="ghost" aria-pressed="false" title="每 45 秒換到環島路線上的下一站">環島聆聽</button></h2>
+      <div id="places" class="places" role="group" aria-label="地點"></div>
+    </section>
+    <section>
+      <h2>混音</h2>
+      <div class="mixer">
+        <label>自然（雨、風、海）<input type="range" min="0" max="1.5" step="0.05" value="1" data-group="nature"></label>
+        <label>生物（蟲、蛙、鳥）<input type="range" min="0" max="1.5" step="0.05" value="1" data-group="life"></label>
+        <label>和弦<input type="range" min="0" max="1.5" step="0.05" value="1" data-group="music"></label>
+        <label>地震鐘<input type="range" min="0" max="1.5" step="0.05" value="1" data-group="quake"></label>
+      </div>
+      <p id="quakes" class="fine"></p>
+    </section>
+  </div>
+  <p class="fine">天氣：Open-Meteo 即時資料（每 15 分鐘）；地震：美國地質調查所（USGS）過去 7 天台灣附近規模 2.5 以上。聲音是依天氣數據推估「應該聽得到什麼」再合成，不是現場收音。</p>
+</div>
+<script src="vendor/astronomy.browser.min.js"></script>
+<script type="module" src="app.js"></script>
+</body></html>

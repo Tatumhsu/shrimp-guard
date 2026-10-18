@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17181a" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="週末出走">
+<title>週末出走</title>
+<link rel="stylesheet" href="style.css?v=20261016231156">
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <h1>週末出走</h1>
+    <p class="lead">選出發站和日期，找出直達或轉一次車、停得夠久、附近有得吃的車站。</p>
+  </header>
+
+  <form id="form" class="panel" autocomplete="off">
+    <label class="field wide">出發站
+      <input id="from" list="station-list" value="臺北" inputmode="search" enterkeyhint="search" aria-describedby="from-err">
+      <datalist id="station-list"></datalist>
+      <span id="from-err" class="err" role="alert"></span>
+    </label>
+    <div class="field wide">日期
+      <div id="dates" class="chips" role="radiogroup" aria-label="日期"></div>
+    </div>
+    <label class="field">幾點出門
+      <select id="leave"></select>
+    </label>
+    <label class="field">最晚回到
+      <select id="back"></select>
+    </label>
+    <label class="field">單程車程
+      <select id="ride">
+        <option value="60">1 小時內</option>
+        <option value="90">1.5 小時內</option>
+        <option value="120" selected>2 小時內</option>
+        <option value="180">3 小時內</option>
+      </select>
+    </label>
+    <label class="field">至少停留
+      <select id="stay">
+        <option value="120">2 小時</option>
+        <option value="180" selected>3 小時</option>
+        <option value="240">4 小時</option>
+        <option value="360">6 小時</option>
+      </select>
+    </label>
+    <label class="check wide"><input type="checkbox" id="local"> 只搭區間車（免訂票，週末自強號常客滿）</label>
+    <label class="check wide"><input type="checkbox" id="direct"> 只看直達車（不轉車）</label>
+  </form>
+
+  <section id="results" aria-live="polite">
+    <div class="bar">
+      <p id="summary" class="summary">讀取資料中…</p>
+      <label class="sort">排序
+        <select id="sort">
+          <option value="best">推薦</option>
+          <option value="near">車程最短</option>
+          <option value="long">停留最久</option>
+          <option value="food">美食最多</option>
+        </select>
+      </label>
+    </div>
+    <ol id="list" class="list"></ol>
+    <button type="button" id="more" class="more" hidden>顯示更多</button>
+  </section>
+
+  <section id="detail" hidden></section>
+
+  <footer class="foot">
+    <p>時刻表：臺鐵開放資料，<span id="tt-date"></span>。最多轉一次車（預留 6–60 分鐘），不含票價；自強號請另行訂票。</p>
+    <p>店家：觀光署觀光資訊資料庫、OpenStreetMap（ODbL © OpenStreetMap 貢獻者）。營業時間以資料為準，出發前請再確認。步行時間依直線距離估算。</p>
+    <p><a href="../rail-trip/">鐵道出走沙盤</a>・<a href="../food-map/">美食大蒐集</a></p>
+  </footer>
+</div>
+<script type="module" src="app.js?v=20261016231156"></script>
+</body>
+</html>

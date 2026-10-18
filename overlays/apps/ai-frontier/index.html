@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 前沿日報</title><meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css"><script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add('embed')</script></head>
+<body>
+<div class="app">
+  <header class="top"><a class="back" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a></header>
+  <div class="mast">
+    <div class="mast-l"><span class="kicker">AI FRONTIER DAILY</span><h1>AI 前沿日報</h1></div>
+    <div class="mast-r"><label>期數 <select id="day"></select></label><span id="meta" class="meta"></span></div>
+  </div>
+  <details id="week" class="week" hidden open><summary>本週回顧 <span id="weekRange" class="meta"></span></summary><div id="weekBody"></div></details>
+  <p id="headline" class="headline">讀取中…</p>
+  <section class="front">
+    <div><h2>今日趨勢</h2><div id="trends" class="trends"></div></div>
+    <aside>
+      <div class="box"><h3>給一般人</h3><p id="everyone"></p></div>
+      <div class="box"><h3>接下來值得留意</h3><ol id="watch"></ol></div>
+    </aside>
+  </section>
+  <nav class="filters" aria-label="領域篩選" id="fields"></nav>
+  <section><h2>今日論文<small>Hugging Face 每日論文，依社群票數</small></h2><div id="papers" class="cards"></div></section>
+  <section><h2>熱門模型<small>Hugging Face 正在被大量下載、按讚的模型</small></h2><div id="models" class="cards"></div></section>
+  <section><h2>新開源專案<small>近 7 天新建、AI 主題、GitHub 星星最多</small></h2><div id="repos" class="cards"></div></section>
+  <footer class="fine">資料來源：Hugging Face Daily Papers、Hugging Face Hub、GitHub。中文解說由 Claude 依原始摘要撰寫，可能有誤；重要細節請點原文確認。</footer>
+</div>
+<script type="module" src="app.js"></script>
+</body></html>

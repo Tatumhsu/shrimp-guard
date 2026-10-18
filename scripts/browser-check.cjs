@@ -11,7 +11,7 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const check=(value,name)=>{if(!value)throw Error(label+': '+name);results.push(label+': '+name)};
   // groups and counts
   const chips=await page.locator('nav.jump a').allInnerTexts();
-  check(JSON.stringify(chips)===JSON.stringify(['台灣即時 2','AI 作品 7','遊戲 2','交通與旅行 4','美食 1','投資理財 3','工具與文章 3']),'seven themes with counts');
+  check(JSON.stringify(chips)===JSON.stringify(['台灣即時 2','AI 作品 7','遊戲 1','交通與旅行 4','美食 1','投資理財 3','工具與文章 3']),'seven themes with counts');
   check(await page.locator('#live .card').count()===2&&await page.locator('#ai .card').count()===7&&await page.locator('#game .card').count()===1&&await page.locator('#travel .card').count()===4&&await page.locator('#money .card').count()===3&&await page.locator('#old').count()===0,'card counts match themes; no retired section');
   check(await page.locator('.tags .ok').count()===19&&await page.locator('.tags .dev').count()===2&&await page.locator('.tags .old').count()===0,'status tags on every card');
   // 台股小鎮 is a LIFE COMPASS tab, not another deployment
@@ -31,7 +31,8 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   check(await page.locator('.card .pv img[loading=lazy]').count()===14,'fourteen lazy moving previews');
   check(await page.locator('.card',{hasText:'LIFE COMPASS'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'Fund Manager'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'VPS 狀態'}).locator('.pv').count()===0,'no previews of personal-data works');
   const pvImg=page.locator('.card',{hasText:'AI 前沿日報'}).locator('.pv img');await pvImg.scrollIntoViewIfNeeded();await page.waitForFunction(el=>el.complete&&el.naturalWidth>0,await pvImg.elementHandle());check(true,'preview image loads');
-  for(const [n,u] of [['台灣鐵道','/apps/rail/'],['AI 前沿日報','/apps/ai-frontier/'],["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['台灣此刻','/apps/taiwan/'],['AI 旅行規劃師','/apps/planner/'],['全球關注','/apps/world/'],['瀏覽器 AI 實驗室','/apps/ailab/'],['台灣鄉鎮圖鑑','/apps/towns/'],['AI 開發工作室','/apps/studio/'],['總管','/apps/steward/'],['AI 預言家','/apps/oracle/'],['方塊樂園','/apps/blocks/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
+  for(const [n,u] of [["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['AI 旅行規劃師','/apps/planner/'],['全球關注','/apps/world/'],['AI 開發工作室','/apps/studio/'],['總管','/apps/steward/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
+  for(const [n,u] of [['台灣鐵道','/apps/rail/'],['AI 前沿日報','/apps/ai-frontier/'],['台灣此刻','/apps/taiwan/'],['瀏覽器 AI 實驗室','/apps/ailab/'],['台灣鄉鎮圖鑑','/apps/towns/'],['AI 預言家','/apps/oracle/'],['美食大蒐集','/food-map/']]){const c=page.locator('.card',{hasText:n}).first();check((await c.locator('a').getAttribute('href'))===u&&!(await c.innerText()).includes('需要登入'),n+' card links to the public copy, no login');}
   check(await page.locator('.card',{hasText:'生存者'}).count()===0,'retired survivor card removed');
   check(await page.locator('.card',{hasText:'方塊樂園'}).count()===0,'retired blocks game card removed');
   check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'private playable preview clearly labelled');

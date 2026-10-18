@@ -1,0 +1,5 @@
+Vendored from npm @huggingface/transformers@3.7.6 (dist/), Apache-2.0 — see transformers.LICENSE.txt
+  transformers.min.js                 browser bundle (includes onnxruntime-web JS, MIT, Microsoft)
+  ort-wasm-simd-threaded.jsep.mjs     onnxruntime-web 1.22.0-dev loader (MIT)
+  ort-wasm-simd-threaded.jsep.wasm    onnxruntime-web WASM/WebGPU runtime (MIT)
+Model weights are NOT vendored; they download from huggingface.co on first use and are cached by the browser.
