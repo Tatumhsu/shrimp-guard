@@ -32,7 +32,7 @@ class EntryContent(unittest.TestCase):
   self.assertEqual(parser.links,expected)
   for href in parser.links:
    if href.startswith('/'):
-    self.assertTrue((root/'publication'/href.split('#')[0].lstrip('/')/'index.html').is_file())
+    self.assertTrue(any((root/d/href.split('#')[0].lstrip('/')/'index.html').is_file() for d in ('publication','overlays')))
   for w in entry_src.WORKS:
    if w['g']=='ask': self.assertIsNone(w.get('url'))
   for status in ['需要登入','開發中','公開']: self.assertIn(status,html)
