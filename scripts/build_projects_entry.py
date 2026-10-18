@@ -11,6 +11,7 @@ WORKS = [
     dict(c='live', g='ok', name='台灣此刻', pv='taiwan', desc='一個頁面看台灣上空的一切：風的流線、氣溫、降雨、PM2.5 與 48 小時預報，衛星雲圖、地震、火燒雲／觀星／雲海景點預報疊在同一張地圖；另有星空（星官與二十八宿、太空站過境）、天象曆、立體光影、天氣聲音分頁。', url='/apps/taiwan/', login=False, st='運作中・整合 8 個工具', date='10/17'),
     dict(c='live', g='ok', name="God's Eye View 3D 地球", desc='開源作品（MIT）：寫實 3D 地球，即時航班、船隻、衛星、火箭發射、地震與颱風。建議用電腦開。', url=D + '/globe/', login=True, st='運作中・未加 API key（3D 建築、語音 AI 不開放）', date='10/17'),
     dict(c='tools', g='ok', name='AI 前沿日報', pv='ai-frontier', desc='每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', url='/apps/ai-frontier/', login=False, st='公開版・內容到 10/18', date='10/17'),
+    dict(c='tools', g='ok', name='世界大事對台灣', desc='每天把國際大新聞整理成對台灣的影響，世界地圖一眼看：油價、匯率、半導體、關稅、兩岸，每則附新聞來源；影響說明為 AI 推論，非投資建議。', url='/apps/world-taiwan/', login=False, st='公開版', date='10/18'),
     dict(c='ai', g='ok', name='AI 開發工作室', pv='studio', desc='丟一個想法，一組 AI 代理人分工把它做出來：企劃寫規格、設計定風格、工程寫程式、測試員用真的瀏覽器驗收，不過就退回重做；做好直接上線，每一步公開。', url=D + '/apps/studio/', login=True, st='運作中・每天 12 件', date='10/17'),
     dict(c='ai', g='ok', name='總管', pv='steward', desc='會自己醒來的 AI 代理人：看顧主機與網站、回你的留話、安排工作室和研究員做事、寫自己的筆記；動到主機的事只能提案，你同意才做。', url=D + '/apps/steward/', login=True, st='試運行・待安裝常駐服務', date='10/17'),
     dict(c='ai', g='ok', name='AI 預言家', pv='oracle', desc='三位 AI 預測者（直覺派、數據派、統計派）加一條基準線，每天對台灣與世界的可驗證問題下注機率，隔天用公開資料自動對答案，長期累積準確率排行榜。', url='/apps/oracle/', login=False, st='公開版・內容到 10/18', date='10/17'),

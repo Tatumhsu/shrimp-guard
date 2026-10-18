@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>世界大事對台灣</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0a1222">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="title">
+      <a class="back" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a>
+      <h1>世界大事對台灣</h1>
+      <p class="sub">國際新聞翻成「跟台灣、跟生活有什麼關係」</p>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="分類">
+      <a role="tab" href="#all" data-tab="all">總覽</a><a role="tab" href="#geo" data-tab="geo">地緣政治</a><a role="tab" href="#econ" data-tab="econ">經濟影響</a><a role="tab" href="#industry" data-tab="industry">產業衝擊</a>
+    </nav>
+    <div class="stamp" id="stamp">讀取中…</div>
+  </header>
+
+  <main class="grid">
+    <section class="panel mapbox" aria-label="世界地圖">
+      <div class="maphead"><h2>事件發生在哪</h2><button type="button" id="clearRegion" class="chip" hidden>顯示全部地區 ✕</button></div>
+      <div class="map" id="map"><img src="assets/world.svg" alt="" class="land"><svg id="overlay" viewBox="0 0 1000 390" preserveAspectRatio="xMidYMid meet" aria-hidden="false"></svg></div>
+      <p class="hint">點地圖上的點，就只看那個地區的新聞；再點一次回到全部</p>
+    </section>
+
+    <section class="panel newsbox" aria-label="全球大事要聞">
+      <div class="newshead"><h2>全球大事要聞</h2><span id="count" class="muted"></span></div>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section class="panel twbox" aria-label="今日台灣三件事">
+      <h2><span class="flag" aria-hidden="true"></span>今日台灣三件事</h2>
+      <div id="tw3" class="tw3"></div>
+    </section>
+  </main>
+
+  <details class="panel rawbox"><summary>這次抓到的全部原始新聞（<span id="rawCount">0</span> 則）</summary><ol id="raw"></ol></details>
+
+  <footer class="foot">
+    <p id="srcLine"></p>
+    <p>「對台灣影響」是由 AI 根據新聞標題與摘要寫的白話推論，不是預測，也不是投資建議。每則都附原始新聞連結，請以原文為準。</p>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body></html>

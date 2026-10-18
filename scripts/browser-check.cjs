@@ -11,9 +11,9 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const check=(value,name)=>{if(!value)throw Error(label+': '+name);results.push(label+': '+name)};
   // groups and counts
   const chips=await page.locator('nav.jump a').allInnerTexts();
-  check(JSON.stringify(chips)===JSON.stringify(['台灣即時 2','AI 作品 7','遊戲 1','交通與旅行 4','美食 1','投資理財 3','工具與文章 3']),'seven themes with counts');
+  check(JSON.stringify(chips)===JSON.stringify(['台灣即時 2','AI 作品 7','遊戲 1','交通與旅行 4','美食 1','投資理財 3','工具與文章 4']),'seven themes with counts');
   check(await page.locator('#live .card').count()===2&&await page.locator('#ai .card').count()===7&&await page.locator('#game .card').count()===1&&await page.locator('#travel .card').count()===4&&await page.locator('#money .card').count()===3&&await page.locator('#old').count()===0,'card counts match themes; no retired section');
-  check(await page.locator('.tags .ok').count()===19&&await page.locator('.tags .dev').count()===2&&await page.locator('.tags .old').count()===0,'status tags on every card');
+  check(await page.locator('.tags .ok').count()===20&&await page.locator('.tags .dev').count()===2&&await page.locator('.tags .old').count()===0,'status tags on every card');
   // 台股小鎮 is a LIFE COMPASS tab, not another deployment
   const town=page.locator('.card',{hasText:'台股小鎮'});
   check((await town.innerText()).includes('LIFE COMPASS 裡的分頁')&&(await town.innerText()).includes('成交金額影響人潮'),'stock town labelled as LIFE COMPASS tab');
@@ -26,13 +26,16 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   const bad=await page.locator('.card').evaluateAll(cs=>cs.filter(c=>{const a=c.querySelector('.open a');if(!a)return false;const t=c.querySelector('.tags').textContent;if(a.href.includes('harbor-sixty-minute-game.windy-maple-0615.chatgpt.site'))return !t.includes('僅擁有者 ChatGPT 帳號')||t.includes('公開');return a.href.includes('dashboard.shrimp-guard.us.ci')?!t.includes('需要登入'):!t.includes('公開')}).map(c=>c.querySelector('.name').textContent));
   check(bad.length===0,'login labels match entry hosts');
   const harbor=page.locator('#game .card',{hasText:'離港前60分鐘'});
-  check(await page.locator('.card').count()===21,'21 total works');
+  check(await page.locator('.card').count()===22,'22 total works');
   // moving previews (lazy, with a still poster for reduced motion); none for works that show personal data
   check(await page.locator('.card .pv img[loading=lazy]').count()===14,'fourteen lazy moving previews');
   check(await page.locator('.card',{hasText:'LIFE COMPASS'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'Fund Manager'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'VPS 狀態'}).locator('.pv').count()===0,'no previews of personal-data works');
   const pvImg=page.locator('.card',{hasText:'AI 前沿日報'}).locator('.pv img');await pvImg.scrollIntoViewIfNeeded();await page.waitForFunction(el=>el.complete&&el.naturalWidth>0,await pvImg.elementHandle());check(true,'preview image loads');
   for(const [n,u] of [["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['AI 旅行規劃師','/apps/planner/'],['全球關注','/apps/world/'],['AI 開發工作室','/apps/studio/'],['總管','/apps/steward/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
-  for(const [n,u] of [['台灣鐵道','/apps/rail/'],['AI 前沿日報','/apps/ai-frontier/'],['台灣此刻','/apps/taiwan/'],['瀏覽器 AI 實驗室','/apps/ailab/'],['台灣鄉鎮圖鑑','/apps/towns/'],['AI 預言家','/apps/oracle/'],['美食大蒐集','/food-map/']]){const c=page.locator('.card',{hasText:n}).first();check((await c.locator('a').getAttribute('href'))===u&&!(await c.innerText()).includes('需要登入'),n+' card links to the public copy, no login');}
+  for(const [n,u] of [['台灣鐵道','/apps/rail/'],['AI 前沿日報','/apps/ai-frontier/'],['台灣此刻','/apps/taiwan/'],['瀏覽器 AI 實驗室','/apps/ailab/'],['台灣鄉鎮圖鑑','/apps/towns/'],['AI 預言家','/apps/oracle/'],['美食大蒐集','/food-map/'],['世界大事對台灣','/apps/world-taiwan/']]){const c=page.locator('.card',{hasText:n}).first();check((await c.locator('a').getAttribute('href'))===u&&!(await c.innerText()).includes('需要登入'),n+' card links to the public copy, no login');}
+  const world=page.locator('#tools .card',{hasText:'世界大事對台灣'});
+  const worldText=await world.innerText();
+  check(worldText.includes('每天把國際大新聞整理成對台灣的影響，世界地圖一眼看：油價、匯率、半導體、關稅、兩岸，每則附新聞來源；影響說明為 AI 推論，非投資建議。')&&worldText.includes('公開')&&worldText.includes('可使用')&&worldText.includes('更新 10/18'),'world-taiwan card copy in 工具與文章');
   check(await page.locator('.card',{hasText:'生存者'}).count()===0,'retired survivor card removed');
   check(await page.locator('.card',{hasText:'方塊樂園'}).count()===0,'retired blocks game card removed');
   check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'private playable preview clearly labelled');
