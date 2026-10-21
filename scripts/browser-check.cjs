@@ -48,7 +48,7 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   check((await page.locator('body').innerText()).length>40,'room opens');
   await page.goBack();await page.getByRole('heading',{name:'作品入口',exact:true}).waitFor();check(true,'browser back returns');
   await page.reload();await page.getByRole('heading',{name:'作品入口',exact:true}).waitFor();check(true,'reload persists entry');
-  await page.goto(BASE+'/world-impact/');await page.locator('.event-card').first().waitFor();check(await page.locator('.event-card').count()===3,'retained world page still loads (unlisted)');
+  for(const gone of ['/world-impact/','/taipei-mrt/']){const r=await page.goto(BASE+gone);check(r.status()===404,'retired page gone '+gone);}
   await page.goBack();await page.getByRole('heading',{name:'作品入口',exact:true}).waitFor();
   await page.getByRole('link',{name:'返回主站',exact:true}).first().click();await page.waitForURL(BASE+'/');await page.locator('.entry-header').first().waitFor();check(await page.locator('.entry-header').count()===2,'homepage articles preserved');
   await page.getByRole('link',{name:'作品入口',exact:true}).click();await page.waitForURL('**/projects/');check(true,'homepage entry navigates');
