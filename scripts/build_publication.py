@@ -16,6 +16,12 @@ def build(root=ROOT, out=None, report_path=None):
     if out.exists(): raise ValueError('Output exists: use a fresh checkout or explicitly move previous output aside')
     shutil.copytree(root/'publication',out)
     if (root/'overlays').exists(): shutil.copytree(root/'overlays',out,dirs_exist_ok=True)
+    rm=root/'verification/remove.json'   # reviewed retirements: path prefixes dropped from the publication (each deleted file must also be in the allowlist)
+    for prefix in (json.loads(rm.read_text()) if rm.exists() else []):
+        if '..' in prefix or prefix.startswith('/') or not prefix.strip('/'): raise ValueError('bad remove prefix '+prefix)
+        t=out/prefix
+        if t.is_dir(): shutil.rmtree(t)
+        elif t.is_file(): t.unlink()
     actual=hashes(out)
     diff=validate(baseline,actual,json.loads((root/'verification/allowlist.json').read_text()))
     if (out/'CNAME').read_text().strip()!='shrimp-guard.us.ci': raise ValueError('CNAME mismatch')

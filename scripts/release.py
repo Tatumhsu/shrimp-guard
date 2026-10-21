@@ -128,6 +128,7 @@ def promotion(source, output, publication_commit):
     files['verification/baseline.json'] = json_bytes(manifest)
     files['verification/source-state.json'] = json_bytes({'publication_commit': publication_commit})
     files['verification/allowlist.json'] = json_bytes({'added': [], 'changed': [], 'deleted': []})
+    files['verification/remove.json'] = json_bytes([])
     files['verification/result.json'] = json_bytes({'baseline_commit': publication_commit,
         'before_count': len(output), 'after_count': len(output), 'unchanged': len(output),
         'diff': {'added': [], 'changed': [], 'deleted': []},

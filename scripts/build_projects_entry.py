@@ -1,38 +1,28 @@
 """Generate overlays/projects/index.html (作品入口) from the reviewed list below. Static HTML, no JavaScript; motion is CSS-only (motion-prompt names #074/#079/#081/#082/#086) and off under prefers-reduced-motion.
-Public cards show only purpose, login requirement, status and update date; test results live in the release report.
+Public cards show only purpose, access, status and update date; test results live in the release report.
 Run: python3 scripts/build_projects_entry.py"""
 from html import escape as e
 from pathlib import Path
 
-D = 'https://dashboard.shrimp-guard.us.ci'
-CHECKED = '2026-10-17'
+CHECKED = '2026-10-21'
 # group: ok 可使用 / dev 開發中 / old 舊版／暫停 (collapsed) / ask 待確認 (no open button)
 WORKS = [
-    dict(c='live', g='ok', name='台灣此刻', pv='taiwan', desc='一個頁面看台灣上空的一切：風的流線、氣溫、降雨、PM2.5 與 48 小時預報，衛星雲圖、地震、火燒雲／觀星／雲海景點預報疊在同一張地圖；另有星空（星官與二十八宿、太空站過境）、天象曆、立體光影、天氣聲音分頁。', url='/apps/taiwan/', login=False, st='運作中・整合 8 個工具', date='10/17'),
-    dict(c='live', g='ok', name="God's Eye View 3D 地球", desc='開源作品（MIT）：寫實 3D 地球，即時航班、船隻、衛星、火箭發射、地震與颱風。建議用電腦開。', url=D + '/globe/', login=True, st='運作中・未加 API key（3D 建築、語音 AI 不開放）', date='10/17'),
-    dict(c='tools', g='ok', name='AI 前沿日報', pv='ai-frontier', desc='每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', url='/apps/ai-frontier/', login=False, st='公開版・內容到 10/18', date='10/17'),
-    dict(c='tools', g='ok', name='世界大事對台灣', desc='每天把國際大新聞整理成對台灣的影響，世界地圖一眼看：油價、匯率、半導體、關稅、兩岸，每則附新聞來源；影響說明為 AI 推論，非投資建議。', url='/apps/world-taiwan/', login=False, st='公開版', date='10/18'),
-    dict(c='ai', g='ok', name='AI 開發工作室', pv='studio', desc='丟一個想法，一組 AI 代理人分工把它做出來：企劃寫規格、設計定風格、工程寫程式、測試員用真的瀏覽器驗收，不過就退回重做；做好直接上線，每一步公開。', url=D + '/apps/studio/', login=True, st='運作中・每天 12 件', date='10/17'),
-    dict(c='ai', g='ok', name='總管', pv='steward', desc='會自己醒來的 AI 代理人：看顧主機與網站、回你的留話、安排工作室和研究員做事、寫自己的筆記；動到主機的事只能提案，你同意才做。', url=D + '/apps/steward/', login=True, st='試運行・待安裝常駐服務', date='10/17'),
-    dict(c='ai', g='ok', name='AI 預言家', pv='oracle', desc='三位 AI 預測者（直覺派、數據派、統計派）加一條基準線，每天對台灣與世界的可驗證問題下注機率，隔天用公開資料自動對答案，長期累積準確率排行榜。', url='/apps/oracle/', login=False, st='公開版・內容到 10/18', date='10/17'),
-    dict(c='ai', g='ok', name='AI 旅行規劃師', pv='planner', desc='說出發站、日期和喜好，AI 從全台 368 個鄉鎮挑地方，用當天真的會開的台鐵班次排好一日遊或兩天一夜，還能照你的意見改。', url=D + '/apps/planner/', login=True, st='運作中・每天全站 60 次', date='10/17'),
-    dict(c='ai', g='ok', name='全球關注', pv='world', desc='21 種語言的維基百科昨天最多人讀什麼？哪些話題全世界一起在看？世界地圖點各地看，AI 用中文解釋可能的原因。', url=D + '/apps/world/', login=True, st='運作中・每天一期', date='10/17'),
-    dict(c='ai', g='ok', name='瀏覽器 AI 實驗室', pv='ailab', desc='AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', url='/apps/ailab/', login=False, st='運作中・第一次要下載模型', date='10/17'),
-    dict(c='ai', g='dev', name='Emergence World', pv='emergence', desc='五位居民的持續運行小世界。', url='https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', login=False, st='公開預覽', date=None),
-    dict(c='game', g='dev', name='離港前60分鐘', desc='原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', url='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', login=True, access='僅擁有者 ChatGPT 帳號', btn='擁有者預覽', st='可玩測試版・私人存取', date='10/13'),
-    dict(c='travel', g='ok', name='台灣鐵道', pv='rail-live', desc='一頁整合：全台每班列車此刻在哪（可切 3D 地形，山的光影跟著時間變）、週末出走找站吃美食、平溪線 3D 半日遊沙盤、台北捷運路線圖。', url='/apps/rail/', login=False, st='運作中・時刻表到 12/13', date='10/17'),
-    dict(c='travel', g='ok', name='台灣鄉鎮圖鑑', pv='towns', desc='368 個鄉鎮市區一個一個認識：故事、景點、特產與小知識，還有店家數和台鐵車站；去過的就蓋章，看你走過台灣多少地方。', url='/apps/towns/', login=False, st='運作中', date='10/17'),
-    dict(c='travel', g='ok', name='航程風浪', pv='room', desc='基隆—那霸示例航程：真實日夜與預報風浪的海面。', url='/room/', login=False, st='運作中', date='10/11'),
-    dict(c='travel', g='ok', name='沖繩上岸', of='航程風浪裡的分頁', desc='依目前位置排序那霸景點與美食，附導航。', url='/room/#landing', login=False, sub=True, st='運作中', date='10/11'),
-    dict(c='food', g='ok', name='美食大蒐集', pv='food-map', desc='全台 20,615 家店：即時搜尋、推薦、隱藏美食、夜市入口。', url='/food-map/', login=False, st='運作中・每月自動更新', date='10/10'),
-    dict(c='money', g='ok', name='LIFE COMPASS', desc='台股 ETF 持股、配息現金流、目標與研究紀錄。', url=D + '/one-life/', login=True, st='正式版運作中', date='10/11'),
-    dict(c='money', g='ok', name='台股小鎮', of='LIFE COMPASS 裡的分頁', desc='四檔持股變成四間店：成交金額影響人潮，法人買賣成為門口隊伍。收盤資料示意動畫。', url=D + '/one-life/#town', login=True, sub=True, st='運作中', date='10/11'),
-    dict(c='money', g='ok', name='Fund Manager', desc='Bybit 紙上交易帳本與 AI 決策紀錄（不下真單）。', url=D + '/fund-manager/', login=True, st='V1 紙上帳本運作中・V2 300U 已停止', date='10/12'),
-    dict(c='tools', g='ok', name='VPS 狀態', desc='主機磁碟、記憶體、服務、排程、容器，以及一鍵檢查所有作品網址。', url=D + '/apps/vps/', login=True, st='運作中', date='10/17'),
-    dict(c='tools', g='ok', name='Shrimp Guard 部落格', pv='blog', desc='AI 應用趨勢與台股觀察文章。', url='/', login=False, st='可瀏覽', date='05/14'),
+    {'c': 'live', 'g': 'ok', 'name': '全球關注', 'pv': 'world', 'desc': '21 種語言的維基百科昨天最多人讀什麼？哪些話題全世界一起在看？世界地圖點各地看，AI 用中文解釋可能的原因。', 'url': '/apps/world/', 'login': False, 'st': '公開版・內容到 10/16', 'date': '10/21'},
+    {'c': 'live', 'g': 'ok', 'name': '時光之城', 'desc': '一座會隨年份演化的未來台北：拖動時間到 2060，城市依 AI 小隊每天更新的預測改變。', 'url': '/apps/future/', 'login': False, 'st': '公開版・預測到 10/19', 'date': '10/21'},
+    {'c': 'live', 'g': 'ok', 'name': '世界大事對台灣', 'desc': '每天把國際大新聞整理成對台灣的影響，世界地圖一眼看：油價、匯率、半導體、關稅、兩岸，每則附新聞來源；影響說明為 AI 推論，非投資建議。', 'url': '/apps/world-taiwan/', 'login': False, 'st': '公開版', 'date': '10/18'},
+    {'c': 'live', 'g': 'ok', 'name': '光影台灣', 'desc': '立體的台灣，山的光影跟此刻真實的太陽同步；拖動時間看日出與山影，找最早迎來曙光的山。', 'url': '/apps/relief/', 'login': False, 'st': '公開版', 'date': '10/21'},
+    {'c': 'live', 'g': 'ok', 'name': '此刻台灣的聲音', 'desc': '選一個地方，聽此刻的雨、風、海浪與蟲鳥鳴；天氣化成和弦、地震化成低鐘，全部由瀏覽器即時合成。建議戴耳機。', 'url': '/apps/sound/', 'login': False, 'st': '公開版', 'date': '10/21'},
+    {'c': 'ai', 'g': 'ok', 'name': 'AI 前沿日報', 'pv': 'ai-frontier', 'desc': '每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', 'url': '/apps/ai-frontier/', 'login': False, 'st': '公開版・內容到 10/18', 'date': '10/17'},
+    {'c': 'ai', 'g': 'ok', 'name': 'AI 預言家', 'pv': 'oracle', 'desc': '三位 AI 預測者（直覺派、數據派、統計派）加一條基準線，每天對台灣與世界的可驗證問題下注機率，隔天用公開資料自動對答案，長期累積準確率排行榜。', 'url': '/apps/oracle/', 'login': False, 'st': '公開版・內容到 10/18', 'date': '10/17'},
+    {'c': 'ai', 'g': 'ok', 'name': '瀏覽器 AI 實驗室', 'pv': 'ailab', 'desc': 'AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', 'url': '/apps/ailab/', 'login': False, 'st': '運作中・第一次要下載模型', 'date': '10/17'},
+    {'c': 'ai', 'g': 'dev', 'name': 'Emergence World', 'pv': 'emergence', 'desc': '五位居民的持續運行小世界。', 'url': 'https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', 'login': False, 'st': '公開預覽', 'date': None},
+    {'c': 'game', 'g': 'ok', 'name': '航程風浪', 'pv': 'room', 'desc': '基隆—那霸示例航程：真實日夜與預報風浪的海面。', 'url': '/room/', 'login': False, 'st': '運作中', 'date': '10/11'},
+    {'c': 'game', 'g': 'ok', 'name': '沖繩上岸', 'of': '航程風浪裡的分頁', 'desc': '依目前位置排序那霸景點與美食，附導航。', 'url': '/room/#landing', 'login': False, 'sub': True, 'st': '運作中', 'date': '10/11'},
+    {'c': 'game', 'g': 'dev', 'name': '離港前60分鐘', 'desc': '原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', 'url': 'https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', 'login': True, 'access': '僅擁有者 ChatGPT 帳號', 'btn': '擁有者預覽', 'st': '可玩測試版・私人存取', 'date': '10/13'},
+    {'c': 'tools', 'g': 'ok', 'name': 'Shrimp Guard 部落格', 'pv': 'blog', 'desc': 'AI 應用趨勢與台股觀察文章。', 'url': '/', 'login': False, 'st': '可瀏覽', 'date': '05/14'},
 ]
 GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
-CATS = [('live', '台灣即時'), ('ai', 'AI 作品'), ('game', '遊戲'), ('travel', '交通與旅行'), ('food', '美食'), ('money', '投資理財'), ('tools', '工具與文章')]
+CATS = [('live', '看世界'), ('ai', 'AI 作品'), ('game', '遊戲與故事'), ('tools', '文章')]
 assert all(w['c'] in dict(CATS) for w in WORKS) and all((w['c'] == 'old') == (w['g'] == 'old') for w in WORKS)
 
 CSS = """
@@ -120,11 +110,11 @@ def build():
             grid = f'<details><summary>{len(items)} 項舊版、暫停與退役作品</summary>{grid}</details>'
         body.append(f'<section id="{c}" aria-label="{label}">{head}{grid}</section>')
     return ('<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>作品入口 · Shrimp Guard</title><meta name="description" content="Shrimp Guard 所有作品與目前狀態。">'
+            '<title>作品入口 · Shrimp Guard</title><meta name="description" content="Shrimp Guard 公開作品與目前狀態，免登入瀏覽。">'
             f'<style>{CSS}</style></head><body><div class="progress" aria-hidden="true"></div><div class="shell"><nav class="top" aria-label="網站導覽"><a href="/">Shrimp Guard</a><a href="/">返回主站</a></nav>'
-            '<main><h1>作品入口</h1><p class="intro">所有作品依主題分類，每張卡片標出目前狀態。「需要登入」的作品沿用網站原有帳號；「僅擁有者 ChatGPT 帳號」為私人預覽，訪客無法開啟。</p>'
+            '<main><h1>作品入口</h1><p class="intro">這裡是免登入瀏覽的公開作品，依主題分類並標出目前狀態；另保留「離港前60分鐘」的擁有者預覽，標示「僅擁有者 ChatGPT 帳號」，訪客無法開啟。</p>'
             f'<nav class="jump" aria-label="分類">{"".join(jump)}</nav>{"".join(body)}</main>'
-            f'<footer>狀態核對日 {CHECKED}。「需要登入」沿用網站原有帳號；「僅擁有者 ChatGPT 帳號」僅限作品擁有者登入預覽。本頁不變更登入方式。</footer></div></body></html>\n')
+            f'<footer>狀態核對日 {CHECKED}。公開作品免登入；「僅擁有者 ChatGPT 帳號」僅限作品擁有者登入預覽。</footer></div></body></html>\n')
 
 
 if __name__ == '__main__':

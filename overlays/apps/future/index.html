@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>時光之城</title><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="一座會隨年份演化的未來台北：拖動時間到 2060，城市依 AI 小隊每天更新的預測改變。">
+<meta name="theme-color" content="#020611">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="city.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js"}}</script>
+</head>
+<body>
+<canvas id="scene" aria-label="未來台北的 3D 城市，隨年份演化"></canvas>
+<div id="labels" aria-hidden="true"></div>
+
+<header class="hud-top">
+  <div class="brand"><a class="back" href="https://shrimp-guard.us.ci/projects/">← 作品入口</a>
+    <span class="kicker">FUTURE WORLD · 2026 → 2060</span><h1>時光之城</h1></div>
+  <div class="year" aria-live="polite"><span id="year">2026</span></div>
+</header>
+
+<div class="tools">
+  <div class="seg" role="group" aria-label="時刻">
+    <button type="button" data-mode="day" aria-pressed="false">白天</button>
+    <button type="button" data-mode="dusk" aria-pressed="false">黃昏</button>
+    <button type="button" data-mode="night" aria-pressed="true">夜晚</button>
+  </div>
+  <button type="button" id="sound" class="icon" aria-pressed="false" aria-label="背景音樂">🔈</button>
+  <button type="button" id="skip" class="icon" aria-label="這是什麼">?</button>
+  <a class="icon datalink" href="data.html" aria-label="看預測資料">資料</a>
+</div>
+
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<footer class="hud-bottom">
+  <div class="statwrap"><small class="statlab">城市狀態（示意）</small><div id="stats" class="stats"></div></div>
+  <div class="timebar">
+    <button type="button" id="play" class="play" aria-pressed="false">▶ 時光旅行</button>
+    <div class="track">
+      <div id="ticks" class="ticks"></div>
+      <input id="slider" type="range" min="2026" max="2060" step="0.05" value="2026" aria-label="年份">
+      <div class="ends"><span>2026</span><span>2040</span><span>2060</span></div>
+    </div>
+  </div>
+</footer>
+
+<section id="info" class="info" hidden>
+  <h2>這座城市怎麼變的？</h2>
+  <p>每一個變化都綁著一個里程碑。AI 小隊（Claude 搜尋新聞與研究、Grok 看 X 上的討論、Codex 審查）每天更新各里程碑「最可能發生的年份」與 80% 區間：
+    預測年份是變化走到一半的時候，區間越寬，變化越緩慢。</p>
+  <ul>
+    <li>車燈從橘轉白：電動車過半　・　青綠車燈：無人計程車</li>
+    <li>藍色屋頂與風機：再生能源　・　青色光環：核融合電廠</li>
+    <li>紫色脈衝與塔頂：通用人工智慧　・　科學園區亮度：台積電新製程</li>
+    <li>窗燈變少：台灣人口減少　・　月面燈光與火箭：重返月球與月球基地</li>
+  </ul>
+  <p class="fine">城市是示意，數字也是示意；真正的年份、依據與來源在「資料」頁。敏感的地緣衝突預測不在城市中演出。</p>
+  <button type="button" class="ok" onclick="this.parentElement.hidden=true">開始看</button>
+</section>
+
+<div id="card" class="card" hidden role="dialog" aria-modal="true" aria-labelledby="cardTitle">
+  <div class="cpanel"><button type="button" id="cardClose" class="close" aria-label="關閉">✕</button><div id="cardBody"></div></div>
+</div>
+<div id="loading" class="loading">建造城市中…</div>
+<div id="nogl" class="loading" hidden>你的瀏覽器不支援 3D 畫面。<a href="data.html">改看預測資料 →</a></div>
+<script type="module" src="city.js"></script>
+</body></html>

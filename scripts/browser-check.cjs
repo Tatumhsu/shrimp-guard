@@ -9,49 +9,38 @@ const BASE=process.env.BASE_URL || 'http://127.0.0.1:8765';
   await page.goto(BASE+'/projects/');
   await page.getByRole('heading',{name:'作品入口',exact:true}).waitFor();
   const check=(value,name)=>{if(!value)throw Error(label+': '+name);results.push(label+': '+name)};
-  // groups and counts
   const chips=await page.locator('nav.jump a').allInnerTexts();
-  check(JSON.stringify(chips)===JSON.stringify(['台灣即時 2','AI 作品 7','遊戲 1','交通與旅行 4','美食 1','投資理財 3','工具與文章 4']),'seven themes with counts');
-  check(await page.locator('#live .card').count()===2&&await page.locator('#ai .card').count()===7&&await page.locator('#game .card').count()===1&&await page.locator('#travel .card').count()===4&&await page.locator('#money .card').count()===3&&await page.locator('#old').count()===0,'card counts match themes; no retired section');
-  check(await page.locator('.tags .ok').count()===20&&await page.locator('.tags .dev').count()===2&&await page.locator('.tags .old').count()===0,'status tags on every card');
-  // 台股小鎮 is a LIFE COMPASS tab, not another deployment
-  const town=page.locator('.card',{hasText:'台股小鎮'});
-  check((await town.innerText()).includes('LIFE COMPASS 裡的分頁')&&(await town.innerText()).includes('成交金額影響人潮'),'stock town labelled as LIFE COMPASS tab');
-  check(await town.locator('a').getAttribute('href')==='https://dashboard.shrimp-guard.us.ci/one-life/#town','stock town links to /one-life/#town');
-  // test-data version moved to 開發中, formal card keeps only the formal entry
-  check(await page.locator('#money .card',{hasText:'LIFE COMPASS'}).first().locator('a').count()===1,'formal LIFE card has one entry');
-  check(await page.locator('.card',{hasText:'雲端測試版'}).count()===0&&await page.locator('.card',{hasText:'Technology Tycoon'}).count()===0,'test copy and undeployed works removed');
-  check(!/\d+\/\d+ 通過/.test(await page.locator('main').innerText()),'no test pass counts on public cards');
-  // Login labels distinguish dashboard accounts from the owner-only ChatGPT preview.
-  const bad=await page.locator('.card').evaluateAll(cs=>cs.filter(c=>{const a=c.querySelector('.open a');if(!a)return false;const t=c.querySelector('.tags').textContent;if(a.href.includes('harbor-sixty-minute-game.windy-maple-0615.chatgpt.site'))return !t.includes('僅擁有者 ChatGPT 帳號')||t.includes('公開');return a.href.includes('dashboard.shrimp-guard.us.ci')?!t.includes('需要登入'):!t.includes('公開')}).map(c=>c.querySelector('.name').textContent));
-  check(bad.length===0,'login labels match entry hosts');
+  check(JSON.stringify(chips)===JSON.stringify(['看世界 5','AI 作品 4','遊戲與故事 3','文章 1']),'four themes with counts');
+  check(await page.locator('#live .card').count()===5&&await page.locator('#ai .card').count()===4&&await page.locator('#game .card').count()===3&&await page.locator('#tools .card').count()===1,'card counts match themes');
+  check(await page.locator('.card:not(.sub)').count()===12&&await page.locator('.card.sub').count()===1,'12 works plus one sub card');
+  check(await page.locator('.tags .ok').count()===11&&await page.locator('.tags .dev').count()===2,'status tags on every card');
+  check(await page.locator('a[href*="dashboard.shrimp-guard.us.ci"]').count()===0,'no dashboard links');
+  check(!/需要登入|\d+\/\d+ 通過/.test(await page.locator('main').innerText()),'no dashboard login or test pass status');
+  const expectedLinks=[
+   ['全球關注','/apps/world/'],['時光之城','/apps/future/'],['世界大事對台灣','/apps/world-taiwan/'],['光影台灣','/apps/relief/'],['此刻台灣的聲音','/apps/sound/'],
+   ['AI 前沿日報','/apps/ai-frontier/'],['AI 預言家','/apps/oracle/'],['瀏覽器 AI 實驗室','/apps/ailab/'],
+   ['Emergence World','https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/'],
+   ['航程風浪','/room/'],['沖繩上岸','/room/#landing'],['離港前60分鐘','https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site'],['Shrimp Guard 部落格','/']
+  ];
+  check(JSON.stringify(await page.locator('.open a').evaluateAll(as=>as.map(a=>a.getAttribute('href'))))===JSON.stringify(expectedLinks.map(([,u])=>u)),'exact public work links in order');
+  for(const [name,url] of expectedLinks){
+   const card=page.locator('.card').filter({has:page.getByRole('heading',{name:new RegExp('^'+name)})});
+   check(await card.locator('a').getAttribute('href')===url,name+' destination');
+   check((await card.locator('.tags').innerText()).includes(name==='離港前60分鐘'?'僅擁有者 ChatGPT 帳號':'公開'),name+' access label');
+  }
+  const landing=page.locator('.card.sub');
+  check((await landing.innerText()).includes('航程風浪裡的分頁'),'Okinawa labelled as room tab');
+  check((await page.locator('#live .card',{hasText:'全球關注'}).innerText()).includes('公開版・內容到 10/16'),'world snapshot status');
+  check((await page.locator('#live .card',{hasText:'時光之城'}).innerText()).includes('公開版・預測到 10/19'),'future snapshot status');
   const harbor=page.locator('#game .card',{hasText:'離港前60分鐘'});
-  check(await page.locator('.card').count()===22,'22 total works');
-  // moving previews (lazy, with a still poster for reduced motion); none for works that show personal data
-  check(await page.locator('.card .pv img[loading=lazy]').count()===14,'fourteen lazy moving previews');
-  check(await page.locator('.card',{hasText:'LIFE COMPASS'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'Fund Manager'}).locator('.pv').count()===0&&await page.locator('.card',{hasText:'VPS 狀態'}).locator('.pv').count()===0,'no previews of personal-data works');
-  const pvImg=page.locator('.card',{hasText:'AI 前沿日報'}).locator('.pv img');await pvImg.scrollIntoViewIfNeeded();await page.waitForFunction(el=>el.complete&&el.naturalWidth>0,await pvImg.elementHandle());check(true,'preview image loads');
-  for(const [n,u] of [["God's Eye View 3D 地球",'/globe/'],['VPS 狀態','/apps/vps/'],['AI 旅行規劃師','/apps/planner/'],['全球關注','/apps/world/'],['AI 開發工作室','/apps/studio/'],['總管','/apps/steward/']]){const c=page.locator('.card',{hasText:n});check((await c.locator('a').getAttribute('href'))==='https://dashboard.shrimp-guard.us.ci'+u&&(await c.innerText()).includes('需要登入'),n+' card links to dashboard with login label');}
-  for(const [n,u] of [['台灣鐵道','/apps/rail/'],['AI 前沿日報','/apps/ai-frontier/'],['台灣此刻','/apps/taiwan/'],['瀏覽器 AI 實驗室','/apps/ailab/'],['台灣鄉鎮圖鑑','/apps/towns/'],['AI 預言家','/apps/oracle/'],['美食大蒐集','/food-map/'],['世界大事對台灣','/apps/world-taiwan/']]){const c=page.locator('.card',{hasText:n}).first();check((await c.locator('a').getAttribute('href'))===u&&!(await c.innerText()).includes('需要登入'),n+' card links to the public copy, no login');}
-  const world=page.locator('#tools .card',{hasText:'世界大事對台灣'});
-  const worldText=await world.innerText();
-  check(worldText.includes('每天把國際大新聞整理成對台灣的影響，世界地圖一眼看：油價、匯率、半導體、關稅、兩岸，每則附新聞來源；影響說明為 AI 推論，非投資建議。')&&worldText.includes('公開')&&worldText.includes('可使用')&&worldText.includes('更新 10/18'),'world-taiwan card copy in 工具與文章');
-  check(await page.locator('.card',{hasText:'生存者'}).count()===0,'retired survivor card removed');
-  check(await page.locator('.card',{hasText:'方塊樂園'}).count()===0,'retired blocks game card removed');
-  check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'private playable preview clearly labelled');
+  check((await harbor.innerText()).includes('可玩測試版')&&(await harbor.innerText()).includes('僅限擁有者開啟'),'owner preview clearly labelled');
   check((await harbor.locator('a').innerText()).trim()==='擁有者預覽 →','harbor owner-preview button text');
-  check((await page.locator('.intro').innerText()).includes('僅擁有者 ChatGPT 帳號')&&(await page.locator('footer').innerText()).includes('僅擁有者 ChatGPT 帳號'),'header/footer explain owner-only preview');
-  check(await harbor.locator('a').getAttribute('href')==='https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site','harbor preview exact destination');
-  // placeholders removed; 小王國 has no button
-  check(await page.locator('#ask').count()===0&&await page.locator('.card',{hasText:'實驗槽'}).count()===0&&await page.locator('.card',{hasText:'Studio 001'}).count()===0,'empty placeholders removed');
-  check(await page.locator('.card',{hasText:'小王國'}).count()===0&&await page.locator('.card',{hasText:'世界與我'}).count()===0,'retired works removed from the entrance');
-  // 舊版 collapsed by default and expandable
-
-
-
+  check((await page.locator('.intro').innerText()).includes('免登入')&&(await page.locator('.intro').innerText()).includes('僅擁有者 ChatGPT 帳號')&&(await page.locator('footer').innerText()).includes('僅擁有者 ChatGPT 帳號'),'public intro explains owner-preview exception');
+  check(await page.locator('.card .pv img[loading=lazy]').count()===7,'seven lazy previews');
+  const pvImg=page.locator('.card',{hasText:'AI 前沿日報'}).locator('.pv img');await pvImg.scrollIntoViewIfNeeded();await page.waitForFunction(el=>el.complete&&el.naturalWidth>0,await pvImg.elementHandle());check(true,'preview image loads');
   // layout
   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow');
-  const cols=await page.locator('#travel .grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length);
+  const cols=await page.locator('#game .grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length);
   check(cols===(width<600?1:2),'responsive columns');
   await page.screenshot({path:`verification/screenshots/projects-${label}.png`,fullPage:true});
   // navigation still works
