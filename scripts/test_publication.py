@@ -15,7 +15,7 @@ class EntryContent(unittest.TestCase):
   import json
   from pathlib import Path
   root=Path(__file__).resolve().parents[1]
-  data=root/'overlays/apps/world/data/api'
+  data=next(d for d in (root/'overlays/apps/world/data/api',root/'publication/apps/world/data/api') if d.exists())
   days=sorted(p.stem for p in data.glob('*.json') if len(p.stem)==8 and p.stem.isdigit())
   self.assertTrue(days)
   self.assertEqual(json.loads((data/'days.json').read_text()),{'days':days,'latest':days[-1]})
