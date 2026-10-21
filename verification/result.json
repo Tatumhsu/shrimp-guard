@@ -1,8 +1,8 @@
 {
-  "baseline_commit": "1db098d5fe054c2e039cc2d2757d53833757f5f5",
-  "before_count": 278,
-  "after_count": 278,
-  "unchanged": 278,
+  "baseline_commit": "4f106fcf77c98ecbb25492cb0b4ba20b075ec9fd",
+  "before_count": 247,
+  "after_count": 247,
+  "unchanged": 247,
   "diff": {
     "added": [],
     "changed": [],
@@ -101,10 +101,6 @@
       "before": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7",
       "after": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7"
     },
-    "taipei-mrt/index.html": {
-      "before": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a",
-      "after": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a"
-    },
     "tags/index.html": {
       "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
       "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
@@ -136,26 +132,6 @@
     "public/404.html": {
       "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
       "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
-    },
-    "world-impact/events.json": {
-      "before": "856419081e07aed5d25cbf5678012f59d3e16cabf4cad9344b8f9fd9bcbf6a1d",
-      "after": "856419081e07aed5d25cbf5678012f59d3e16cabf4cad9344b8f9fd9bcbf6a1d"
-    },
-    "world-impact/scene.js": {
-      "before": "d47e956ef686324868ef6a2b0eadfcc94383d038b11c986b25a8ad6ae35dabdc",
-      "after": "d47e956ef686324868ef6a2b0eadfcc94383d038b11c986b25a8ad6ae35dabdc"
-    },
-    "world-impact/style.css": {
-      "before": "8d5f42b5e2bac4e37ca3cc4248b9274cf2adf0b263eab2dc176811205a276dbc",
-      "after": "8d5f42b5e2bac4e37ca3cc4248b9274cf2adf0b263eab2dc176811205a276dbc"
-    },
-    "world-impact/app.js": {
-      "before": "b3693171560bc377c7aab0c56afdbb3aee6381cda6f185115a9898e7dbe0d75c",
-      "after": "b3693171560bc377c7aab0c56afdbb3aee6381cda6f185115a9898e7dbe0d75c"
-    },
-    "world-impact/index.html": {
-      "before": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f",
-      "after": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f"
     },
     "assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
       "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
@@ -1020,106 +996,6 @@
     "apps/sound/vendor/astronomy.browser.min.js": {
       "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
       "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
-    },
-    "world-impact/assets/world.webp": {
-      "before": "13fb62a54830e545f4207181611245d66b6b9f42e9226da08a85cf0bcf0c8662",
-      "after": "13fb62a54830e545f4207181611245d66b6b9f42e9226da08a85cf0bcf0c8662"
-    },
-    "world-impact/assets/THREE-LICENSE.txt": {
-      "before": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
-      "after": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
-    },
-    "world-impact/assets/three.core.js": {
-      "before": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
-      "after": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
-    },
-    "world-impact/assets/world.png": {
-      "before": "f1ab7958e0790bd3fdd433450eb3e21a0e4f5e5ef6240d9ba08bd11b2b86ec96",
-      "after": "f1ab7958e0790bd3fdd433450eb3e21a0e4f5e5ef6240d9ba08bd11b2b86ec96"
-    },
-    "world-impact/assets/three.module.js": {
-      "before": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
-      "after": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
-    },
-    "world-impact/assets/BufferGeometryUtils.js": {
-      "before": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797",
-      "after": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797"
-    },
-    "world-impact/assets/GLTFLoader.js": {
-      "before": "1fb28ad78bc873cfc3f3a5494bb961abc8552668ee4e70f6bac08654ce53f48c",
-      "after": "1fb28ad78bc873cfc3f3a5494bb961abc8552668ee4e70f6bac08654ce53f48c"
-    },
-    "world-impact/assets/SkeletonUtils.js": {
-      "before": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f",
-      "after": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f"
-    },
-    "world-impact/assets/world.glb": {
-      "before": "1d8eaff46ae8eb9d0b7280e624ab75fd127481fb5fec6675405f34330c48e03a",
-      "after": "1d8eaff46ae8eb9d0b7280e624ab75fd127481fb5fec6675405f34330c48e03a"
-    },
-    "world-impact/source/README.md": {
-      "before": "f1417ee6b43f892b51d13bfc1eb382e0727d78cbd30fd66f1e8b12db56afea3b",
-      "after": "f1417ee6b43f892b51d13bfc1eb382e0727d78cbd30fd66f1e8b12db56afea3b"
-    },
-    "world-impact/source/blender-run.log": {
-      "before": "c35e79f15654b25664022326c76df212577bfbfd8b8ba70e33c58d6b7c06e1dc",
-      "after": "c35e79f15654b25664022326c76df212577bfbfd8b8ba70e33c58d6b7c06e1dc"
-    },
-    "world-impact/source/source-checks.json": {
-      "before": "8262a14d22c73e658e7dd2e3b9c0818fc7c789e5a63fdf63a02f09b2b5dcbd42",
-      "after": "8262a14d22c73e658e7dd2e3b9c0818fc7c789e5a63fdf63a02f09b2b5dcbd42"
-    },
-    "world-impact/source/desktop-3d.png": {
-      "before": "649cf205570e1c68b9d8f9c221c5c814a39cbfe79169c70246516ede9e69eff1",
-      "after": "649cf205570e1c68b9d8f9c221c5c814a39cbfe79169c70246516ede9e69eff1"
-    },
-    "world-impact/source/package.json": {
-      "before": "414e5856124b562b3b68ee6d925109871713cc2fb2050ef8fc857e873ee53666",
-      "after": "414e5856124b562b3b68ee6d925109871713cc2fb2050ef8fc857e873ee53666"
-    },
-    "world-impact/source/package-lock.json": {
-      "before": "218a226ddbf8b6841f80eaf1f9b5d55a00ba82e0a054ed626d08ac90b4c51c20",
-      "after": "218a226ddbf8b6841f80eaf1f9b5d55a00ba82e0a054ed626d08ac90b4c51c20"
-    },
-    "world-impact/source/build_scene.py": {
-      "before": "fd988811d4f796cf6931a773e7c5cd4df3e5b680f5adad841a194577d600be92",
-      "after": "fd988811d4f796cf6931a773e7c5cd4df3e5b680f5adad841a194577d600be92"
-    },
-    "world-impact/source/mobile-detail.png": {
-      "before": "548230ed5cf44928087243fe3ef97634318041322efcf42ef2ca8f5c35e093cc",
-      "after": "548230ed5cf44928087243fe3ef97634318041322efcf42ef2ca8f5c35e093cc"
-    },
-    "world-impact/source/final-check.cjs": {
-      "before": "a4d28f194d5b9f306d3eb33ad2ebd3c261e8141329fd2aa06b34572e22b33856",
-      "after": "a4d28f194d5b9f306d3eb33ad2ebd3c261e8141329fd2aa06b34572e22b33856"
-    },
-    "world-impact/source/desktop.png": {
-      "before": "3ff1325c5c2590670fc59ae258c6bff3bc8f8d758b093eb40a83f87ba27cb5f9",
-      "after": "3ff1325c5c2590670fc59ae258c6bff3bc8f8d758b093eb40a83f87ba27cb5f9"
-    },
-    "world-impact/source/qa.cjs": {
-      "before": "76095fe8e778b06fc2746a81cf6f9a46e79c237d5be16876e76531ec3bdc7fdd",
-      "after": "76095fe8e778b06fc2746a81cf6f9a46e79c237d5be16876e76531ec3bdc7fdd"
-    },
-    "world-impact/source/mobile.png": {
-      "before": "282e19f9a1b6dba71f9b69ebcaf3485dc74442e7232653015003fe4e52fd2228",
-      "after": "282e19f9a1b6dba71f9b69ebcaf3485dc74442e7232653015003fe4e52fd2228"
-    },
-    "world-impact/source/perf.cjs": {
-      "before": "96fdf86bd8f83ab7aad776bf1a8e45a31fece5a09e980d271f4e3fcc38942089",
-      "after": "96fdf86bd8f83ab7aad776bf1a8e45a31fece5a09e980d271f4e3fcc38942089"
-    },
-    "world-impact/source/qa.json": {
-      "before": "f2dc62e85b073d131697c840309331614374dd99af64db1fbc533737d0322308",
-      "after": "f2dc62e85b073d131697c840309331614374dd99af64db1fbc533737d0322308"
-    },
-    "world-impact/source/world.blend": {
-      "before": "6a7963543742536b7a7e483c39996da055f05f2e05987beca0b7d4e472f1ccae",
-      "after": "6a7963543742536b7a7e483c39996da055f05f2e05987beca0b7d4e472f1ccae"
-    },
-    "world-impact/source/mobile-performance.json": {
-      "before": "ba974e4c6672dba1134f9497aa5bf47adc035b2999444d8e68263fb03a650c11",
-      "after": "ba974e4c6672dba1134f9497aa5bf47adc035b2999444d8e68263fb03a650c11"
     }
   }
 }
