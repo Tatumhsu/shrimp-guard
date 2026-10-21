@@ -1,1655 +1,25 @@
 {
-  "baseline_commit": "9760c32c55eb06054c6c1a4bab1e84149f0ccb3a",
-  "before_count": 538,
+  "baseline_commit": "1db098d5fe054c2e039cc2d2757d53833757f5f5",
+  "before_count": 278,
   "after_count": 278,
-  "unchanged": 244,
+  "unchanged": 278,
   "diff": {
-    "added": [
-      "apps/future/app.js",
-      "apps/future/city.css",
-      "apps/future/city.js",
-      "apps/future/data.html",
-      "apps/future/data/world.json",
-      "apps/future/index.html",
-      "apps/future/style.css",
-      "apps/future/vendor/three/LICENSE",
-      "apps/future/vendor/three/build/three.core.js",
-      "apps/future/vendor/three/build/three.module.js",
-      "apps/future/vendor/three/jsm/controls/OrbitControls.js",
-      "apps/future/vendor/three/jsm/postprocessing/EffectComposer.js",
-      "apps/future/vendor/three/jsm/postprocessing/MaskPass.js",
-      "apps/future/vendor/three/jsm/postprocessing/OutputPass.js",
-      "apps/future/vendor/three/jsm/postprocessing/Pass.js",
-      "apps/future/vendor/three/jsm/postprocessing/RenderPass.js",
-      "apps/future/vendor/three/jsm/postprocessing/ShaderPass.js",
-      "apps/future/vendor/three/jsm/postprocessing/UnrealBloomPass.js",
-      "apps/future/vendor/three/jsm/shaders/CopyShader.js",
-      "apps/future/vendor/three/jsm/shaders/LuminosityHighPassShader.js",
-      "apps/future/vendor/three/jsm/shaders/OutputShader.js",
-      "apps/world/app.js",
-      "apps/world/data/WORLD-ATLAS-LICENSE",
-      "apps/world/data/api/20261016.json",
-      "apps/world/data/api/days.json",
-      "apps/world/data/countries-110m.json",
-      "apps/world/index.html",
-      "apps/world/style.css",
-      "apps/world/vendor/LEAFLET-LICENSE",
-      "apps/world/vendor/TOPOJSON-CLIENT-LICENSE",
-      "apps/world/vendor/leaflet.css",
-      "apps/world/vendor/leaflet.js",
-      "apps/world/vendor/topojson-client.min.js"
-    ],
-    "deleted": [
-      "apps/almanac/almanac.js",
-      "apps/almanac/app.js",
-      "apps/almanac/index.html",
-      "apps/almanac/style.css",
-      "apps/almanac/vendor/astronomy.browser.min.js",
-      "apps/rail-live/BUILD",
-      "apps/rail-live/app.js",
-      "apps/rail-live/data/lines.json",
-      "apps/rail-live/data/meta.json",
-      "apps/rail-live/data/paths.json",
-      "apps/rail-live/data/stations.json",
-      "apps/rail-live/data/tt/20261016.json",
-      "apps/rail-live/data/tt/20261017.json",
-      "apps/rail-live/data/tt/20261018.json",
-      "apps/rail-live/data/tt/20261019.json",
-      "apps/rail-live/data/tt/20261020.json",
-      "apps/rail-live/data/tt/20261021.json",
-      "apps/rail-live/data/tt/20261022.json",
-      "apps/rail-live/data/tt/20261023.json",
-      "apps/rail-live/data/tt/20261024.json",
-      "apps/rail-live/data/tt/20261025.json",
-      "apps/rail-live/data/tt/20261026.json",
-      "apps/rail-live/data/tt/20261027.json",
-      "apps/rail-live/data/tt/20261028.json",
-      "apps/rail-live/data/tt/20261029.json",
-      "apps/rail-live/data/tt/20261030.json",
-      "apps/rail-live/data/tt/20261031.json",
-      "apps/rail-live/data/tt/20261101.json",
-      "apps/rail-live/data/tt/20261102.json",
-      "apps/rail-live/data/tt/20261103.json",
-      "apps/rail-live/data/tt/20261104.json",
-      "apps/rail-live/data/tt/20261105.json",
-      "apps/rail-live/data/tt/20261106.json",
-      "apps/rail-live/data/tt/20261107.json",
-      "apps/rail-live/data/tt/20261108.json",
-      "apps/rail-live/data/tt/20261109.json",
-      "apps/rail-live/data/tt/20261110.json",
-      "apps/rail-live/data/tt/20261111.json",
-      "apps/rail-live/data/tt/20261112.json",
-      "apps/rail-live/data/tt/20261113.json",
-      "apps/rail-live/data/tt/20261114.json",
-      "apps/rail-live/data/tt/20261115.json",
-      "apps/rail-live/data/tt/20261116.json",
-      "apps/rail-live/data/tt/20261117.json",
-      "apps/rail-live/data/tt/20261118.json",
-      "apps/rail-live/data/tt/20261119.json",
-      "apps/rail-live/data/tt/20261120.json",
-      "apps/rail-live/data/tt/20261121.json",
-      "apps/rail-live/data/tt/20261122.json",
-      "apps/rail-live/data/tt/20261123.json",
-      "apps/rail-live/data/tt/20261124.json",
-      "apps/rail-live/data/tt/20261125.json",
-      "apps/rail-live/data/tt/20261126.json",
-      "apps/rail-live/data/tt/20261127.json",
-      "apps/rail-live/data/tt/20261128.json",
-      "apps/rail-live/data/tt/20261129.json",
-      "apps/rail-live/data/tt/20261130.json",
-      "apps/rail-live/data/tt/20261201.json",
-      "apps/rail-live/data/tt/20261202.json",
-      "apps/rail-live/data/tt/20261203.json",
-      "apps/rail-live/data/tt/20261204.json",
-      "apps/rail-live/data/tt/20261205.json",
-      "apps/rail-live/data/tt/20261206.json",
-      "apps/rail-live/data/tt/20261207.json",
-      "apps/rail-live/data/tt/20261208.json",
-      "apps/rail-live/data/tt/20261209.json",
-      "apps/rail-live/data/tt/20261210.json",
-      "apps/rail-live/data/tt/20261211.json",
-      "apps/rail-live/data/tt/20261212.json",
-      "apps/rail-live/data/tt/20261213.json",
-      "apps/rail-live/data/tt/20261214.json",
-      "apps/rail-live/index.html",
-      "apps/rail-live/style.css",
-      "apps/rail-live/terrain.js",
-      "apps/rail-live/vendor/astronomy.browser.min.js",
-      "apps/rail-live/vendor/maplibre-gl.css",
-      "apps/rail-live/vendor/maplibre-gl.js",
-      "apps/rail/index.html",
-      "apps/sky/app.js",
-      "apps/sky/astro.js",
-      "apps/sky/data/D3-CELESTIAL-LICENSE",
-      "apps/sky/data/sky.json",
-      "apps/sky/index.html",
-      "apps/sky/style.css",
-      "apps/sky/vendor/astronomy.browser.min.js",
-      "apps/sky/vendor/satellite/LICENSE.md",
-      "apps/sky/vendor/satellite/common-types.js",
-      "apps/sky/vendor/satellite/constants.js",
-      "apps/sky/vendor/satellite/dopplerFactor.js",
-      "apps/sky/vendor/satellite/entry.js",
-      "apps/sky/vendor/satellite/ext.js",
-      "apps/sky/vendor/satellite/io.js",
-      "apps/sky/vendor/satellite/propagation.js",
-      "apps/sky/vendor/satellite/propagation/SatRec.js",
-      "apps/sky/vendor/satellite/propagation/check-for-decay.js",
-      "apps/sky/vendor/satellite/propagation/dpper.js",
-      "apps/sky/vendor/satellite/propagation/dscom.js",
-      "apps/sky/vendor/satellite/propagation/dsinit.js",
-      "apps/sky/vendor/satellite/propagation/dspace.js",
-      "apps/sky/vendor/satellite/propagation/gstime.js",
-      "apps/sky/vendor/satellite/propagation/initl.js",
-      "apps/sky/vendor/satellite/propagation/propagate.js",
-      "apps/sky/vendor/satellite/propagation/sgp4.js",
-      "apps/sky/vendor/satellite/propagation/sgp4init.js",
-      "apps/sky/vendor/satellite/shadow.js",
-      "apps/sky/vendor/satellite/sun.js",
-      "apps/sky/vendor/satellite/transforms.js",
-      "apps/taiwan/app.js",
-      "apps/taiwan/index.html",
-      "apps/taiwan/lib/field.js",
-      "apps/taiwan/lib/frames.js",
-      "apps/taiwan/lib/model.js",
-      "apps/taiwan/lib/sea.js",
-      "apps/taiwan/style.css",
-      "apps/taiwan/vendor/LEAFLET-LICENSE",
-      "apps/taiwan/vendor/astronomy.browser.min.js",
-      "apps/taiwan/vendor/leaflet.css",
-      "apps/taiwan/vendor/leaflet.js",
-      "apps/towns/app.js",
-      "apps/towns/data/TAIWAN-ATLAS-LICENSE",
-      "apps/towns/data/profiles.json",
-      "apps/towns/data/towns-10t.json",
-      "apps/towns/data/towns.json",
-      "apps/towns/index.html",
-      "apps/towns/style.css",
-      "apps/towns/vendor/LEAFLET-LICENSE",
-      "apps/towns/vendor/TOPOJSON-CLIENT-LICENSE",
-      "apps/towns/vendor/leaflet.css",
-      "apps/towns/vendor/leaflet.js",
-      "apps/towns/vendor/topojson-client.min.js",
-      "food-map/app.js",
-      "food-map/assets/vendor/leaflet.markercluster/LICENSE",
-      "food-map/assets/vendor/leaflet.markercluster/MarkerCluster.Default.css",
-      "food-map/assets/vendor/leaflet.markercluster/MarkerCluster.css",
-      "food-map/assets/vendor/leaflet.markercluster/leaflet.markercluster.js",
-      "food-map/assets/vendor/leaflet/LICENSE",
-      "food-map/assets/vendor/leaflet/images/layers-2x.png",
-      "food-map/assets/vendor/leaflet/images/layers.png",
-      "food-map/assets/vendor/leaflet/images/marker-icon-2x.png",
-      "food-map/assets/vendor/leaflet/images/marker-icon.png",
-      "food-map/assets/vendor/leaflet/images/marker-shadow.png",
-      "food-map/assets/vendor/leaflet/leaflet.css",
-      "food-map/assets/vendor/leaflet/leaflet.js",
-      "food-map/data/city/南投縣-0.json",
-      "food-map/data/city/嘉義市-0.json",
-      "food-map/data/city/嘉義縣-0.json",
-      "food-map/data/city/基隆市-0.json",
-      "food-map/data/city/宜蘭縣-0.json",
-      "food-map/data/city/屏東縣-0.json",
-      "food-map/data/city/彰化縣-0.json",
-      "food-map/data/city/新北市-0.json",
-      "food-map/data/city/新竹市-0.json",
-      "food-map/data/city/新竹縣-0.json",
-      "food-map/data/city/新竹縣-1.json",
-      "food-map/data/city/桃園市-0.json",
-      "food-map/data/city/澎湖縣-0.json",
-      "food-map/data/city/臺中市-0.json",
-      "food-map/data/city/臺北市-0.json",
-      "food-map/data/city/臺北市-1.json",
-      "food-map/data/city/臺北市-10.json",
-      "food-map/data/city/臺北市-11.json",
-      "food-map/data/city/臺北市-12.json",
-      "food-map/data/city/臺北市-13.json",
-      "food-map/data/city/臺北市-14.json",
-      "food-map/data/city/臺北市-15.json",
-      "food-map/data/city/臺北市-16.json",
-      "food-map/data/city/臺北市-17.json",
-      "food-map/data/city/臺北市-18.json",
-      "food-map/data/city/臺北市-19.json",
-      "food-map/data/city/臺北市-2.json",
-      "food-map/data/city/臺北市-20.json",
-      "food-map/data/city/臺北市-21.json",
-      "food-map/data/city/臺北市-22.json",
-      "food-map/data/city/臺北市-23.json",
-      "food-map/data/city/臺北市-24.json",
-      "food-map/data/city/臺北市-25.json",
-      "food-map/data/city/臺北市-26.json",
-      "food-map/data/city/臺北市-27.json",
-      "food-map/data/city/臺北市-28.json",
-      "food-map/data/city/臺北市-29.json",
-      "food-map/data/city/臺北市-3.json",
-      "food-map/data/city/臺北市-30.json",
-      "food-map/data/city/臺北市-31.json",
-      "food-map/data/city/臺北市-32.json",
-      "food-map/data/city/臺北市-33.json",
-      "food-map/data/city/臺北市-34.json",
-      "food-map/data/city/臺北市-4.json",
-      "food-map/data/city/臺北市-5.json",
-      "food-map/data/city/臺北市-6.json",
-      "food-map/data/city/臺北市-7.json",
-      "food-map/data/city/臺北市-8.json",
-      "food-map/data/city/臺北市-9.json",
-      "food-map/data/city/臺南市-0.json",
-      "food-map/data/city/臺南市-1.json",
-      "food-map/data/city/臺東縣-0.json",
-      "food-map/data/city/花蓮縣-0.json",
-      "food-map/data/city/苗栗縣-0.json",
-      "food-map/data/city/連江縣-0.json",
-      "food-map/data/city/金門縣-0.json",
-      "food-map/data/city/雲林縣-0.json",
-      "food-map/data/city/雲林縣-1.json",
-      "food-map/data/city/高雄市-0.json",
-      "food-map/data/city/高雄市-1.json",
-      "food-map/data/city/高雄市-2.json",
-      "food-map/data/city/高雄市-3.json",
-      "food-map/data/city/高雄市-4.json",
-      "food-map/data/city/高雄市-5.json",
-      "food-map/data/city/高雄市-6.json",
-      "food-map/data/city/高雄市-7.json",
-      "food-map/data/index.json",
-      "food-map/data/lite/南投縣.json",
-      "food-map/data/lite/嘉義市.json",
-      "food-map/data/lite/嘉義縣.json",
-      "food-map/data/lite/基隆市.json",
-      "food-map/data/lite/宜蘭縣.json",
-      "food-map/data/lite/屏東縣.json",
-      "food-map/data/lite/彰化縣.json",
-      "food-map/data/lite/新北市.json",
-      "food-map/data/lite/新竹市.json",
-      "food-map/data/lite/新竹縣.json",
-      "food-map/data/lite/桃園市.json",
-      "food-map/data/lite/澎湖縣.json",
-      "food-map/data/lite/臺中市.json",
-      "food-map/data/lite/臺北市.json",
-      "food-map/data/lite/臺南市.json",
-      "food-map/data/lite/臺東縣.json",
-      "food-map/data/lite/花蓮縣.json",
-      "food-map/data/lite/苗栗縣.json",
-      "food-map/data/lite/連江縣.json",
-      "food-map/data/lite/金門縣.json",
-      "food-map/data/lite/雲林縣.json",
-      "food-map/data/lite/高雄市.json",
-      "food-map/index.html",
-      "food-map/style.css",
-      "projects/previews/blocks.poster.webp",
-      "projects/previews/blocks.webp",
-      "projects/previews/food-map.poster.webp",
-      "projects/previews/food-map.webp",
-      "projects/previews/planner.poster.webp",
-      "projects/previews/planner.webp",
-      "projects/previews/rail-live.poster.webp",
-      "projects/previews/rail-live.webp",
-      "projects/previews/rail-trip.poster.webp",
-      "projects/previews/rail-trip.webp",
-      "projects/previews/steward.poster.webp",
-      "projects/previews/steward.webp",
-      "projects/previews/studio.poster.webp",
-      "projects/previews/studio.webp",
-      "projects/previews/taiwan.poster.webp",
-      "projects/previews/taiwan.webp",
-      "projects/previews/towns.poster.webp",
-      "projects/previews/towns.webp",
-      "projects/previews/weekend.poster.webp",
-      "projects/previews/weekend.webp",
-      "rail-trip/BUILD",
-      "rail-trip/app.js",
-      "rail-trip/data/pois.json",
-      "rail-trip/data/stations.json",
-      "rail-trip/data/timetable.json",
-      "rail-trip/index.html",
-      "rail-trip/planner.js",
-      "rail-trip/scene.js",
-      "rail-trip/style.css",
-      "rail-trip/vendor/OrbitControls.js",
-      "rail-trip/vendor/THREE_LICENSE",
-      "rail-trip/vendor/three.module.min.js",
-      "weekend/BUILD",
-      "weekend/app.js",
-      "weekend/data/events.json",
-      "weekend/data/food.json",
-      "weekend/data/meta.json",
-      "weekend/data/stations.json",
-      "weekend/data/tt/20261017.json",
-      "weekend/data/tt/20261018.json",
-      "weekend/data/tt/20261024.json",
-      "weekend/data/tt/20261025.json",
-      "weekend/data/tt/20261031.json",
-      "weekend/data/tt/20261101.json",
-      "weekend/data/tt/20261107.json",
-      "weekend/data/tt/20261108.json",
-      "weekend/data/tt/20261114.json",
-      "weekend/data/tt/20261115.json",
-      "weekend/data/tt/20261121.json",
-      "weekend/data/tt/20261122.json",
-      "weekend/data/tt/20261128.json",
-      "weekend/data/tt/20261129.json",
-      "weekend/data/tt/20261205.json",
-      "weekend/data/tt/20261206.json",
-      "weekend/data/tt/20261212.json",
-      "weekend/data/tt/20261213.json",
-      "weekend/index.html",
-      "weekend/planner.js",
-      "weekend/style.css"
-    ],
-    "changed": [
-      "projects/index.html"
-    ]
+    "added": [],
+    "changed": [],
+    "deleted": []
   },
   "files": {
-    ".hugo_build.lock": {
-      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    "404.html": {
-      "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
-      "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
+    "taiwan-stock-chart.png": {
+      "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
+      "after": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f"
     },
     "CNAME": {
       "before": "efd8978b9f1a3b098e228d73d1569fc3d5c72ba742822e5b7bb5211a79f3b4fb",
       "after": "efd8978b9f1a3b098e228d73d1569fc3d5c72ba742822e5b7bb5211a79f3b4fb"
     },
-    "about/index.html": {
-      "before": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1",
-      "after": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1"
-    },
-    "apps/ai-frontier/app.js": {
-      "before": "8c9a965c673b068b237d33394d079265fd2ddc7371351b6d0aa8b8cdfb095df2",
-      "after": "8c9a965c673b068b237d33394d079265fd2ddc7371351b6d0aa8b8cdfb095df2"
-    },
-    "apps/ai-frontier/data/20261012.json": {
-      "before": "23dd661a2e4a88e2b1eb440a822197a4600452898381823f596d911f4a055a3d",
-      "after": "23dd661a2e4a88e2b1eb440a822197a4600452898381823f596d911f4a055a3d"
-    },
-    "apps/ai-frontier/data/20261013.json": {
-      "before": "717b7e1e5d43d2461ee52ec6ccff9fb52d67ac88ab6f05fbeddd293f11246ad8",
-      "after": "717b7e1e5d43d2461ee52ec6ccff9fb52d67ac88ab6f05fbeddd293f11246ad8"
-    },
-    "apps/ai-frontier/data/20261014.json": {
-      "before": "fc56de94cabf04cee015c5e78cf26ac0c8ec3a40b0fed2a32a2f7015a8cc3ad0",
-      "after": "fc56de94cabf04cee015c5e78cf26ac0c8ec3a40b0fed2a32a2f7015a8cc3ad0"
-    },
-    "apps/ai-frontier/data/20261015.json": {
-      "before": "e527e1016f22030f5b7381c70c89fc352abbfc57f659ecc3a7eddd2cd4656074",
-      "after": "e527e1016f22030f5b7381c70c89fc352abbfc57f659ecc3a7eddd2cd4656074"
-    },
-    "apps/ai-frontier/data/20261016.json": {
-      "before": "05b0b2005ad857fd6d7d1b5cb386eeb089f2dea32e6ecbbf25c271b799c7217c",
-      "after": "05b0b2005ad857fd6d7d1b5cb386eeb089f2dea32e6ecbbf25c271b799c7217c"
-    },
-    "apps/ai-frontier/data/20261017.json": {
-      "before": "0c30474db3c2239c2eec8b3a986442dfe97408b70e5f5b1314ec753ee65aa77f",
-      "after": "0c30474db3c2239c2eec8b3a986442dfe97408b70e5f5b1314ec753ee65aa77f"
-    },
-    "apps/ai-frontier/data/index.json": {
-      "before": "7b9377c07e12d4c863177cd3d6ad11539d58979d91a0e6e37b8879a796c5ea15",
-      "after": "7b9377c07e12d4c863177cd3d6ad11539d58979d91a0e6e37b8879a796c5ea15"
-    },
-    "apps/ai-frontier/data/week-20261017.json": {
-      "before": "d1e4402e58e29f6fcd49d526f8f0961f345c0bb4343b36be2cb9372ef45c80fd",
-      "after": "d1e4402e58e29f6fcd49d526f8f0961f345c0bb4343b36be2cb9372ef45c80fd"
-    },
-    "apps/ai-frontier/index.html": {
-      "before": "8e0372fadd5736e9dc8b981535a237b502dad12967650fc3e0efd56fa862d388",
-      "after": "8e0372fadd5736e9dc8b981535a237b502dad12967650fc3e0efd56fa862d388"
-    },
-    "apps/ai-frontier/style.css": {
-      "before": "5f95866a5e4d51181e2eb00c6185f67f070681b95387640f55196ede288f394d",
-      "after": "5f95866a5e4d51181e2eb00c6185f67f070681b95387640f55196ede288f394d"
-    },
-    "apps/ailab/app.js": {
-      "before": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0",
-      "after": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0"
-    },
-    "apps/ailab/index.html": {
-      "before": "a24e65b220a74818118e13bcf22cb62dee961863dc4cbc974f5f365adc715633",
-      "after": "a24e65b220a74818118e13bcf22cb62dee961863dc4cbc974f5f365adc715633"
-    },
-    "apps/ailab/s2t.js": {
-      "before": "3532febb891564d8b69c2672755caf8fe85ea549d2acc69eacc4ae2254679bec",
-      "after": "3532febb891564d8b69c2672755caf8fe85ea549d2acc69eacc4ae2254679bec"
-    },
-    "apps/ailab/samples/sample-balls.jpg": {
-      "before": "a1effb699a24ffa1d2ea5b8ef4d8bd1818c77de01627e94c06b98ca65ec9c200",
-      "after": "a1effb699a24ffa1d2ea5b8ef4d8bd1818c77de01627e94c06b98ca65ec9c200"
-    },
-    "apps/ailab/samples/sample-valley.jpg": {
-      "before": "3c7946a0e072e11547661ed90c2c20c7c55f2e7b329c591a687a35270a442a83",
-      "after": "3c7946a0e072e11547661ed90c2c20c7c55f2e7b329c591a687a35270a442a83"
-    },
-    "apps/ailab/style.css": {
-      "before": "f274c1ba2c22dbab94525611807d6cb49f227341f6a278ae6adbe1f569325bd6",
-      "after": "f274c1ba2c22dbab94525611807d6cb49f227341f6a278ae6adbe1f569325bd6"
-    },
-    "apps/ailab/vendor/VENDOR.txt": {
-      "before": "f7edb0e28e37187fee5d0f3991b7825df9caaf23e51a116e50b07a6df872eb0d",
-      "after": "f7edb0e28e37187fee5d0f3991b7825df9caaf23e51a116e50b07a6df872eb0d"
-    },
-    "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.js": {
-      "before": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
-      "after": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
-    },
-    "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.mjs": {
-      "before": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
-      "after": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
-    },
-    "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.wasm": {
-      "before": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
-      "after": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39"
-    },
-    "apps/ailab/vendor/transformers.LICENSE.txt": {
-      "before": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "after": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
-    },
-    "apps/ailab/vendor/transformers.min.js": {
-      "before": "13746ae88695b62e431fc5ebe3beb10a080d2081406047670639ce8c10a9ba25",
-      "after": "13746ae88695b62e431fc5ebe3beb10a080d2081406047670639ce8c10a9ba25"
-    },
-    "apps/ailab/worker.js": {
-      "before": "24306888c67b6555202c3a4e8bbf8db655e73497be7069d6d2de5c15bc136dd5",
-      "after": "24306888c67b6555202c3a4e8bbf8db655e73497be7069d6d2de5c15bc136dd5"
-    },
-    "apps/almanac/almanac.js": {
-      "before": "2d863f52c99377d7fcf40fbd766d63a7dd8b830ffc426f12b64e42df5a52b746",
-      "after": null
-    },
-    "apps/almanac/app.js": {
-      "before": "0d3138b3bc8a19411c7f7f60f132e0daa57c4783943ed001532a45a46f13e04e",
-      "after": null
-    },
-    "apps/almanac/index.html": {
-      "before": "123ec01e9a13e70a9d7798672c0b8cf7bc98b63a9555d0904c182128496d69e5",
-      "after": null
-    },
-    "apps/almanac/style.css": {
-      "before": "cda37e94a4f0a906f392465d98cb05e28072182145f282d89930cb20767c465a",
-      "after": null
-    },
-    "apps/almanac/vendor/astronomy.browser.min.js": {
-      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": null
-    },
-    "apps/future/app.js": {
-      "before": null,
-      "after": "657341f5c276c591e52594c039790d43255b25144b690c61c40afd27075beef0"
-    },
-    "apps/future/city.css": {
-      "before": null,
-      "after": "4e807ef875d626dfa7be1215ca7aaacf7ade851cf4183098a897a1c1487b2430"
-    },
-    "apps/future/city.js": {
-      "before": null,
-      "after": "a397a603811897c0cc5e44e8e701b7964c670c2f54ed0d047e216e8e31500e82"
-    },
-    "apps/future/data.html": {
-      "before": null,
-      "after": "db04dca6858a92eeabd937f50ebc34947acd37ab0f2339a0224de3a1d002495d"
-    },
-    "apps/future/data/world.json": {
-      "before": null,
-      "after": "e6a57bb8bee186452fbfc95f7769efab6281238901b9d99366f68ac706ea7023"
-    },
-    "apps/future/index.html": {
-      "before": null,
-      "after": "4d54b30c33314ca8759697667b7bbdb8465d0b4a3b9bd7ee4765ef206e35a578"
-    },
-    "apps/future/style.css": {
-      "before": null,
-      "after": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d"
-    },
-    "apps/future/vendor/three/LICENSE": {
-      "before": null,
-      "after": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
-    },
-    "apps/future/vendor/three/build/three.core.js": {
-      "before": null,
-      "after": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
-    },
-    "apps/future/vendor/three/build/three.module.js": {
-      "before": null,
-      "after": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
-    },
-    "apps/future/vendor/three/jsm/controls/OrbitControls.js": {
-      "before": null,
-      "after": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/EffectComposer.js": {
-      "before": null,
-      "after": "4b8c855f28eed2570bed898adc0ab89c585a8a281ecb6d905c09d00697f9f50a"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/MaskPass.js": {
-      "before": null,
-      "after": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/OutputPass.js": {
-      "before": null,
-      "after": "f5b81c96e76b6b28b4b3ba8c41c4aeb982b1e03f3d82883242d951b2ab082fa2"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/Pass.js": {
-      "before": null,
-      "after": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/RenderPass.js": {
-      "before": null,
-      "after": "fd91229aacc5830e3984b0f2bdefcf566163ea028f4c1f1ab233fa6665a133ac"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/ShaderPass.js": {
-      "before": null,
-      "after": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d"
-    },
-    "apps/future/vendor/three/jsm/postprocessing/UnrealBloomPass.js": {
-      "before": null,
-      "after": "d92742959879b461f25348b2abddc7ca0d48527e7718340bcfa29fa771e2799a"
-    },
-    "apps/future/vendor/three/jsm/shaders/CopyShader.js": {
-      "before": null,
-      "after": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718"
-    },
-    "apps/future/vendor/three/jsm/shaders/LuminosityHighPassShader.js": {
-      "before": null,
-      "after": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e"
-    },
-    "apps/future/vendor/three/jsm/shaders/OutputShader.js": {
-      "before": null,
-      "after": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2"
-    },
-    "apps/oracle/app.js": {
-      "before": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d",
-      "after": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d"
-    },
-    "apps/oracle/data/board.json": {
-      "before": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e",
-      "after": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e"
-    },
-    "apps/oracle/data/history.json": {
-      "before": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25",
-      "after": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25"
-    },
-    "apps/oracle/data/latest.json": {
-      "before": "8a6ac00bab523de993988fe12b85866e9a3e42358c4a32253ca019fd532ab67b",
-      "after": "8a6ac00bab523de993988fe12b85866e9a3e42358c4a32253ca019fd532ab67b"
-    },
-    "apps/oracle/index.html": {
-      "before": "dba0d3d68ec31a9cd85f4928a831f0b31314696e559ffeae43304680284527a7",
-      "after": "dba0d3d68ec31a9cd85f4928a831f0b31314696e559ffeae43304680284527a7"
-    },
-    "apps/oracle/style.css": {
-      "before": "c96d749f4ddc555ba6ac6ad42698c03798b623ab9afaeae2f1f107344b14ea28",
-      "after": "c96d749f4ddc555ba6ac6ad42698c03798b623ab9afaeae2f1f107344b14ea28"
-    },
-    "apps/rail-live/BUILD": {
-      "before": "662694cb253469c85b6bbb3eb514c32a62d9fb67a4dc379523b55d681fff69d8",
-      "after": null
-    },
-    "apps/rail-live/app.js": {
-      "before": "2704362f50a58cec2db76f8f7b3676b66a7422dc0036c72a2f59c28c5e83ebd8",
-      "after": null
-    },
-    "apps/rail-live/data/lines.json": {
-      "before": "c7fb80b9256a5345bcfd1d95df65a9444e7d09e0c3b1e664011fe52c741daa78",
-      "after": null
-    },
-    "apps/rail-live/data/meta.json": {
-      "before": "1c5b52d74c135a99a6b1125bd54086afa401f86809643a9c63b60d0262f32570",
-      "after": null
-    },
-    "apps/rail-live/data/paths.json": {
-      "before": "a2e4f8730246472ae0ba212da8f1b1a30d6277828248adf9506c36c90a915614",
-      "after": null
-    },
-    "apps/rail-live/data/stations.json": {
-      "before": "77669a5ac27005f3f6123113329652931050b87c776fb5d9df6779626d114afb",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261016.json": {
-      "before": "1ddef5391d3a871f36a27878c5a8c780949cdc7ab58949d3d0a2bf2f522c3bd6",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261017.json": {
-      "before": "d5b05425fa8b652d258617740acaf211493887c7d26613916ef903291ec8795e",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261018.json": {
-      "before": "60b37c41358a3007c848d4b9f3aea9a124b53eb7134014d877708c5728079084",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261019.json": {
-      "before": "bb39d81dba289e983ad5247857a007beb8c65188d23c81d83f31fa2663944a45",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261020.json": {
-      "before": "a196ab9f8cd16286c0824b38da02c4e057f02ab55daa9e0a7b7c70031164a12d",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261021.json": {
-      "before": "37a33c25c4914f2156314fb570706e8e783da75f38f0b44f23d9e1777986cc40",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261022.json": {
-      "before": "9951fa6c2cd2b66dc521f2333918f3500f07a942d89eace82446e4ce77018513",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261023.json": {
-      "before": "f1a80338cd87e09dbac5a4f0ccce639a742ecb39f1d1c3e80d6719b73bf6bc72",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261024.json": {
-      "before": "0555584d533e73ee8b512dc5cf3bd083073a9900096a94e1667461db4e452849",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261025.json": {
-      "before": "2d02087695b942ce8e36a2573f04b5a953eafe0170c52a0b4f39cf9e4127f78a",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261026.json": {
-      "before": "e7e3bd3a8094fee28317f78a8185f35e9dbf8b0f99267c005532eca14916dc0f",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261027.json": {
-      "before": "8e40bce8ec5a3d9e4aa81faad26c1a780e92666a581b8d7d0ac78a18927f0b91",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261028.json": {
-      "before": "acef572107ce0e73ab56fa2c7c3b401a6e0b29cc3be549fdba5733c616b8f5a5",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261029.json": {
-      "before": "f8525c33e07a2620883c3ff7cad39bc933e1a95f4f5902acb0d54db04a11ad2c",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261030.json": {
-      "before": "c64de5a64526e84595c7be3a9a761d0bb11249a21f8d2bf9ab9191d9e345c9b6",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261031.json": {
-      "before": "b2fb3c0b3177932c758b4eed6d1d86d0cad1bcdd55c2777bed1201c74ad7f527",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261101.json": {
-      "before": "1d8aa2abea6ef6a919dd60258179d1cd9699597520cd01380c70c725ff9d8dd9",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261102.json": {
-      "before": "1de09b525c2a44c054fee090b2b19f7653670656f17ced8f6f39f37f02de049c",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261103.json": {
-      "before": "f7820a64f1b02d41329bdb31e0bd755294cab0794d76d3be40392f3cf5b28530",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261104.json": {
-      "before": "597a4400566385c3d4df0b48b887da5799900eb847faa338dbfd0ed40bec20cc",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261105.json": {
-      "before": "d39395e4efad8ee9da1734a67d7102abab1766c1df9e7a62bfc03ee93a7931b6",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261106.json": {
-      "before": "4e0ac956309887fa718ef4e00c99fefa0d0db83b9cf60871425e7b9c696b0a78",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261107.json": {
-      "before": "c8d8148dbc3329afb8fce4b0e65cddeb2b89e1cf8fca60d4d24844951117d0dc",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261108.json": {
-      "before": "01a16dfe1b77bac14d114302a7c6f5539aaa73cd4c00ac72f20d9f872108b4b7",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261109.json": {
-      "before": "a01691126c8b26ca9ebf9623fb3346d7cb15ac37a26a69bdad54601307739cf8",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261110.json": {
-      "before": "6557005d72cf5106c079d2a0e6f92b54fb080616c96487da4dd9ef61a5513f93",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261111.json": {
-      "before": "cd9d16e82cec59d0248fdb9ffaf33e94be2e2142ccfde0d50aba35fb446f37d0",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261112.json": {
-      "before": "4b982aef1923b272389c69320bf7bc06dd6913fdc95620afb0df027d469f90e9",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261113.json": {
-      "before": "6e1659dbb96887f4b4c2a8063e001350ba6eee111d16ef193c27b8b0562391a1",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261114.json": {
-      "before": "6c84754d2ac1658b57fb1023b85a30579c6e373edf9e22b5f51e2066fa9645a8",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261115.json": {
-      "before": "a4d8e3315732f68a39e59d69530b88fa4a83f10e1f24e62ae66373fc4e47f1d8",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261116.json": {
-      "before": "3a24635c499a564fcfb06e3bf64124a9376bd2a9bae8e7ca577f9cd4375ca739",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261117.json": {
-      "before": "030e9c63bb23afaacb912867b4481f0f52426843ff6adb696c2e0423c846782c",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261118.json": {
-      "before": "e552b9846938f1c14d400908ddacc3e72cd4a1e076e7ac5f55a1a7668279ccc2",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261119.json": {
-      "before": "0ff8857e52035c93afe4323a3abf1bf4c02e055d56675f269c1f8ea010412a64",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261120.json": {
-      "before": "9c088a9bc86eae13865e12cc9fce192341ef6ee0ea840e61e1a8afd5fd30f4d1",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261121.json": {
-      "before": "7216a100e23e1cd473a1bf880c5b3bae42cea813d162afbe9b2f24938f7a019e",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261122.json": {
-      "before": "37240894d45102d4fe6d5d43ca1ed23e43859678e74adbc82ffa75990ad1b393",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261123.json": {
-      "before": "411bafbefd9a19d812b87b3f88ec382542f4ae6b5c7886e5838c16105bd4010f",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261124.json": {
-      "before": "d90cca068b95c6ca29b1853fd41cb3fbe1b8fb0250d5c36dd158226075a5ed43",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261125.json": {
-      "before": "086dc4064275ccedbd746008c7b98e8f06bd429ab54467f8bd498a34937f3411",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261126.json": {
-      "before": "281a19887c961b85235490a590bca9b7542c71ca88c3bd2c8466134ce5c8490e",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261127.json": {
-      "before": "da11ce31ad5478e9dcce1f3a99e78b0ea727d260a1ce6d189cbfff1ace2b7607",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261128.json": {
-      "before": "128187f79ab3e2e5f73885300341949eaa6d28ff1dfc57b7cfcf56932398a4ee",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261129.json": {
-      "before": "0380f619da72e1f0b0e36ed04eb657c40f14f0a9d667c550bbbeec2391081322",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261130.json": {
-      "before": "e38bd3cb024cd1ed77612a87f2bde72ac05360e8595b12fea525a200240ff8b9",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261201.json": {
-      "before": "5e7f010bb1a7b03d486579e41293f73e03b0c533bec3e44e408556004ca3f658",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261202.json": {
-      "before": "b6073a678e03fed8c5c72e98e415f87307bfc61d61774b57d1504244648f1971",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261203.json": {
-      "before": "3c80b3b42d91a240e5a443579a5fbce7da73921f85b634f7fac3edb463792181",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261204.json": {
-      "before": "8cfcd3e775e0b6419a1c66695a8bf4d47ada29a42eeffd60b6e6214e56ac28e0",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261205.json": {
-      "before": "d2869f68a37a7c32df28ae84305718adf919fb0ab8b136a31d653f4156372587",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261206.json": {
-      "before": "a62bd37daab6d3a7f98081c0eeeb8e57c252a14392eb7aca173cc853b2cc2ab1",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261207.json": {
-      "before": "4711920decffeec3cd6e37a57ad1f586468bb0a2304c3a890a175a15a3534aed",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261208.json": {
-      "before": "f7a8fb887932b9ec74441ad74b8b338f39afe131200422d7136b5cdbe8a1f17c",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261209.json": {
-      "before": "78566f8697b545289c12ade78ce45feb02154542ca55c782e6c80d0c0600eef6",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261210.json": {
-      "before": "3d235b514ec777e17f8c35874b5c1e2461fa0bc4b5e6d9d29059348291b432d5",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261211.json": {
-      "before": "10f9f43b334b9449efb86d7345cf35e80f458e839291aca29699c3d4e35cbe71",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261212.json": {
-      "before": "ef827b7dadd4291047721e72753841b618c7e5664a01bbfdbcb749515383b5d4",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261213.json": {
-      "before": "edbf604e2779f16f45bcd42f4ed8d7bb467f6faf912b6e6d4490eed8187e8641",
-      "after": null
-    },
-    "apps/rail-live/data/tt/20261214.json": {
-      "before": "4b063fc103ab3baf94e664114f73320f1f2d98a85bf32c835c62d78a434bd561",
-      "after": null
-    },
-    "apps/rail-live/index.html": {
-      "before": "04f23cac5b7f1628cc844929682927dd6b2bd79393313486fa76024f794f54de",
-      "after": null
-    },
-    "apps/rail-live/style.css": {
-      "before": "78b3df56f4cdd6f13b3ff4422af9adc58d2a4468266a2de0c19bdada8ff56ba6",
-      "after": null
-    },
-    "apps/rail-live/terrain.js": {
-      "before": "ebeeba9932b8ed4167097572a9ee72a50dec04f3afce84d78e77d1aaf730624b",
-      "after": null
-    },
-    "apps/rail-live/vendor/astronomy.browser.min.js": {
-      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": null
-    },
-    "apps/rail-live/vendor/maplibre-gl.css": {
-      "before": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9",
-      "after": null
-    },
-    "apps/rail-live/vendor/maplibre-gl.js": {
-      "before": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1",
-      "after": null
-    },
-    "apps/rail/index.html": {
-      "before": "eb838103875fdb696bdd490bbd9dde78889304c3633042c3118b5ad8efc7e786",
-      "after": null
-    },
-    "apps/relief/app.js": {
-      "before": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d",
-      "after": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d"
-    },
-    "apps/relief/index.html": {
-      "before": "3caf7a58790a21055b2e220e229c0b50307c60e573523806de40e3b045ec2bb7",
-      "after": "3caf7a58790a21055b2e220e229c0b50307c60e573523806de40e3b045ec2bb7"
-    },
-    "apps/relief/light.js": {
-      "before": "45f7269942989904477528413927fad94f1d8c2061ab2dbe893d58a6b97e0234",
-      "after": "45f7269942989904477528413927fad94f1d8c2061ab2dbe893d58a6b97e0234"
-    },
-    "apps/relief/style.css": {
-      "before": "a74007e2c0196bc62877d11dbe02562324a6e6bce0fb0f7e98ef54417472330f",
-      "after": "a74007e2c0196bc62877d11dbe02562324a6e6bce0fb0f7e98ef54417472330f"
-    },
-    "apps/relief/vendor/astronomy.browser.min.js": {
-      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
-    },
-    "apps/relief/vendor/maplibre-gl.css": {
-      "before": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9",
-      "after": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9"
-    },
-    "apps/relief/vendor/maplibre-gl.js": {
-      "before": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1",
-      "after": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1"
-    },
-    "apps/sky/app.js": {
-      "before": "38e46f9a7f143aae592ee3061be17dd8e9ebfa10454b071b3e8d40edc63a63c0",
-      "after": null
-    },
-    "apps/sky/astro.js": {
-      "before": "d4c10b723b6bc2c3e30d2b3e04e892cc4693e98b182562c32549b5bc9bcd6774",
-      "after": null
-    },
-    "apps/sky/data/D3-CELESTIAL-LICENSE": {
-      "before": "95e8d6c281db702112e3f990c9c2958a4b412e2cfc09d419ec33f1227aa8dce4",
-      "after": null
-    },
-    "apps/sky/data/sky.json": {
-      "before": "5d36ce2526603e221c946fc889018a9ee7dd978f1946f4eccfa85429e7b48f19",
-      "after": null
-    },
-    "apps/sky/index.html": {
-      "before": "2b7ac9be147dad404b1b20f0f6e79f2238d0c78aa8a54aefd09229adca703b46",
-      "after": null
-    },
-    "apps/sky/style.css": {
-      "before": "afafc67ca984d68c5c4ea08927eb2180708f1adba08708dfa439f54a631cb100",
-      "after": null
-    },
-    "apps/sky/vendor/astronomy.browser.min.js": {
-      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/LICENSE.md": {
-      "before": "1432ff8b94b91db9f242d908e09f2ecb1a0804a03f76ba844cf052c7bb614d9e",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/common-types.js": {
-      "before": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/constants.js": {
-      "before": "39efed0e8259640b7132afefd116197a6eee4171479143b363829e4f04237df1",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/dopplerFactor.js": {
-      "before": "19f83703bd59746feef73bed8ca404b7cc29035362f8575f4328699c7e09ba0f",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/entry.js": {
-      "before": "4b562ab750b7e92ddc741c5860c49989c4beb98a5f9e12694670b8d2ae07b79b",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/ext.js": {
-      "before": "55702c1ae12f68ca43e6fcd8e9ec0a4d5a61a4013c7873db134ebca6b988da3d",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/io.js": {
-      "before": "24f9618bdadfea6951ac0b1f7e4bb3d867c66719d1c4eb3f7a03306debb32d77",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation.js": {
-      "before": "98bffd4671df7ba2550f65c2cd4c2a3e100ed59cf6861044352462b9ec98ba06",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/SatRec.js": {
-      "before": "edcffa5f13d8960b4480ff844286ca76ca9d2952e989d9f32fad82c14aa6fd7b",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/check-for-decay.js": {
-      "before": "cd13c5ca230657ae6f94f47cac8cc2201d60a5f23f8ddf6a79bf93f580844ee1",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/dpper.js": {
-      "before": "ccd5dbde780f132298da240369e685a0654f6feeca2ca99e8c1234206e632b20",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/dscom.js": {
-      "before": "4163f176bb7bc196c46f05d5f485fbb64c759fd47ce9fd3c82362b746c641d4d",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/dsinit.js": {
-      "before": "5d7ebdc2a28eefcb10e1d857c86cfee4b3db2443541d11d55fcb6a79a561e9ec",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/dspace.js": {
-      "before": "5b34f0cd64c12080583b1b75d1d7a48100aaddbfaad267daa45cb3538e22ae17",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/gstime.js": {
-      "before": "a84b7910bec97f8c07723d0054ee4d29ef1c3e9a0c746e848529b627bcc8d7cf",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/initl.js": {
-      "before": "fe57ab8af951bccfd95f8e6166f1d5374a9dd126291fda183b658ddfa9523ac7",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/propagate.js": {
-      "before": "e937521a49439d9881b46b5c015f9d8e4716ae9646797b34a3a55f4f00ce7ee4",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/sgp4.js": {
-      "before": "1d0b43d56db60da74b009465711e2f22c5aab4ba7bf62b9c5260b3f87e9d0d0d",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/propagation/sgp4init.js": {
-      "before": "cc47b4efcf8bf9ecca73f40e7a922e18668d0de7082f942b4bdedddaca182b78",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/shadow.js": {
-      "before": "62f6ed353ca799a1f04e8b09ae6010347536fa00763ea2e4d79c575661c50aeb",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/sun.js": {
-      "before": "0246943cf46aee78e47950493aafeee4a043119f4660d8a637f9c29cbeae820d",
-      "after": null
-    },
-    "apps/sky/vendor/satellite/transforms.js": {
-      "before": "01350aab059aeeb1091d38431f7fd60abb346152fa84fa7a6220886a9688f32b",
-      "after": null
-    },
-    "apps/sound/app.js": {
-      "before": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f",
-      "after": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f"
-    },
-    "apps/sound/audio.js": {
-      "before": "594f324e22e94e7a38da4e52f35d59ae30377be14c8d785e34e9c9877ae47fa8",
-      "after": "594f324e22e94e7a38da4e52f35d59ae30377be14c8d785e34e9c9877ae47fa8"
-    },
-    "apps/sound/index.html": {
-      "before": "5902c9c0f600bfebebe385cec409586de2045302a277667460cc52d61b46f38d",
-      "after": "5902c9c0f600bfebebe385cec409586de2045302a277667460cc52d61b46f38d"
-    },
-    "apps/sound/scene.js": {
-      "before": "fe0e9011d07fb80c3fac98a2fd44d8bc88229b841df5c2a86945df99f4267b92",
-      "after": "fe0e9011d07fb80c3fac98a2fd44d8bc88229b841df5c2a86945df99f4267b92"
-    },
-    "apps/sound/style.css": {
-      "before": "1bd8b6d14f4aeed17b14fd4fe20d534d93594f8b21ebe4d4565d39cfa4191da6",
-      "after": "1bd8b6d14f4aeed17b14fd4fe20d534d93594f8b21ebe4d4565d39cfa4191da6"
-    },
-    "apps/sound/vendor/astronomy.browser.min.js": {
-      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
-    },
-    "apps/taiwan/app.js": {
-      "before": "2c507061d9e1dd3ee6ebd142ea4a2350dbffcca546f119d4338eaede2df981f3",
-      "after": null
-    },
-    "apps/taiwan/index.html": {
-      "before": "404443323efbc83b6745eb5ffb2f33ac88cbb91325ffeb4ab8b906169762c554",
-      "after": null
-    },
-    "apps/taiwan/lib/field.js": {
-      "before": "f8f893498353b2744ea57e21b68a38f9eea472ec3abb57fbf332453f3a3255f0",
-      "after": null
-    },
-    "apps/taiwan/lib/frames.js": {
-      "before": "9e1f021ebfbc008fbcd3d74a743afabbb8d8cbbca0327e79b66f0be45f72bdc4",
-      "after": null
-    },
-    "apps/taiwan/lib/model.js": {
-      "before": "7a73a098f43d77ec06388d6d4e8a0a76d323632cbbe03843d65fb630d83a442d",
-      "after": null
-    },
-    "apps/taiwan/lib/sea.js": {
-      "before": "ef3c0aaddf6ab3a3f347dc957c936867cd0178b8963227ca4d2618575863c8b3",
-      "after": null
-    },
-    "apps/taiwan/style.css": {
-      "before": "ffe6f028764ee6540189011ac8658e1f67bd21d8dbab9fb3fd558e1b10db3591",
-      "after": null
-    },
-    "apps/taiwan/vendor/LEAFLET-LICENSE": {
-      "before": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
-      "after": null
-    },
-    "apps/taiwan/vendor/astronomy.browser.min.js": {
-      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": null
-    },
-    "apps/taiwan/vendor/leaflet.css": {
-      "before": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
-      "after": null
-    },
-    "apps/taiwan/vendor/leaflet.js": {
-      "before": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
-      "after": null
-    },
-    "apps/towns/app.js": {
-      "before": "e9159ccba84b302e545a37dc3217ba9c38e3df56bdcab99ebd91318fc2745907",
-      "after": null
-    },
-    "apps/towns/data/TAIWAN-ATLAS-LICENSE": {
-      "before": "9ad88ef4eb520e69c47b49f6cccb00da33a1f04d9b13424c4242761c47049a98",
-      "after": null
-    },
-    "apps/towns/data/profiles.json": {
-      "before": "71dce846325d0a87ce54d516186f74d63ecf4f9b8dd116aed1d83d0b4c536f52",
-      "after": null
-    },
-    "apps/towns/data/towns-10t.json": {
-      "before": "250f63cdef76679b67d2a34633a69355c8f1180ae6b55407e6c87789940feab0",
-      "after": null
-    },
-    "apps/towns/data/towns.json": {
-      "before": "cecd51c0563b7066a3d28d5e0a13e323f2c48fdea1274aae148e3e8da2f1a87a",
-      "after": null
-    },
-    "apps/towns/index.html": {
-      "before": "3a1a8d17bf250eec07f6d06211086a777327589da8b2d87695bfd99fee4912ca",
-      "after": null
-    },
-    "apps/towns/style.css": {
-      "before": "edb476280ab21dff4d92f21255d63b4af30683b0e2c378849ffa34e6d0354add",
-      "after": null
-    },
-    "apps/towns/vendor/LEAFLET-LICENSE": {
-      "before": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
-      "after": null
-    },
-    "apps/towns/vendor/TOPOJSON-CLIENT-LICENSE": {
-      "before": "4c4d15b635e04e691825a76db7d33f7f2033b55669a7430011694f31e6c65999",
-      "after": null
-    },
-    "apps/towns/vendor/leaflet.css": {
-      "before": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
-      "after": null
-    },
-    "apps/towns/vendor/leaflet.js": {
-      "before": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
-      "after": null
-    },
-    "apps/towns/vendor/topojson-client.min.js": {
-      "before": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89",
-      "after": null
-    },
-    "apps/world-taiwan/app.js": {
-      "before": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc",
-      "after": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc"
-    },
-    "apps/world-taiwan/assets/world.svg": {
-      "before": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8",
-      "after": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8"
-    },
-    "apps/world-taiwan/data/news.json": {
-      "before": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec",
-      "after": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec"
-    },
-    "apps/world-taiwan/index.html": {
-      "before": "5349b45e95928e4fcbb49c7e6aee62d313adc7f28e2dd5d6e5b15d2860defbd6",
-      "after": "5349b45e95928e4fcbb49c7e6aee62d313adc7f28e2dd5d6e5b15d2860defbd6"
-    },
-    "apps/world-taiwan/style.css": {
-      "before": "2666affe3c17e55c0cca8ac08395603e43b6a508ef558fc72daa0cb12de8d41a",
-      "after": "2666affe3c17e55c0cca8ac08395603e43b6a508ef558fc72daa0cb12de8d41a"
-    },
-    "apps/world/app.js": {
-      "before": null,
-      "after": "436364937e86129206c0e7df3817714c89f9c4612a22fc92fb1521c478f6bed2"
-    },
-    "apps/world/data/WORLD-ATLAS-LICENSE": {
-      "before": null,
-      "after": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31"
-    },
-    "apps/world/data/api/20261016.json": {
-      "before": null,
-      "after": "70ef56160b0df6c918b58fcff3f72d524d3f583c8157480f3c4fa025201e78be"
-    },
-    "apps/world/data/api/days.json": {
-      "before": null,
-      "after": "e26c267fb7416205f331f8e1290655c451bd7620de23da1eb7f256a3e36d13ff"
-    },
-    "apps/world/data/countries-110m.json": {
-      "before": null,
-      "after": "2516c915867c7baf18ddec727aec46c315541a07cfb3d79a6559b05d5e94eee8"
-    },
-    "apps/world/index.html": {
-      "before": null,
-      "after": "0dda6836b8092f0caa1f27ff4295fc3016e6585d633a4ccd79d213a52cdbbaa4"
-    },
-    "apps/world/style.css": {
-      "before": null,
-      "after": "2dffd029afeb03eb7221d17e595b02d55e020b1da365a498534b7aff5eed7cb0"
-    },
-    "apps/world/vendor/LEAFLET-LICENSE": {
-      "before": null,
-      "after": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb"
-    },
-    "apps/world/vendor/TOPOJSON-CLIENT-LICENSE": {
-      "before": null,
-      "after": "4c4d15b635e04e691825a76db7d33f7f2033b55669a7430011694f31e6c65999"
-    },
-    "apps/world/vendor/leaflet.css": {
-      "before": null,
-      "after": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6"
-    },
-    "apps/world/vendor/leaflet.js": {
-      "before": null,
-      "after": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
-    },
-    "apps/world/vendor/topojson-client.min.js": {
-      "before": null,
-      "after": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
-    },
-    "assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
-      "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
-      "after": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c"
-    },
-    "categories/ai-應用/index.html": {
-      "before": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a",
-      "after": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a"
-    },
-    "categories/ai-應用/index.xml": {
-      "before": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5",
-      "after": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5"
-    },
-    "categories/ai-應用/page/1/index.html": {
-      "before": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85",
-      "after": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85"
-    },
-    "categories/index.html": {
-      "before": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362",
-      "after": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362"
-    },
-    "categories/index.xml": {
-      "before": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7",
-      "after": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7"
-    },
-    "categories/台股/index.html": {
-      "before": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9",
-      "after": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9"
-    },
-    "categories/台股/index.xml": {
-      "before": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d",
-      "after": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d"
-    },
-    "categories/台股/page/1/index.html": {
-      "before": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17",
-      "after": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17"
-    },
-    "food-map/app.js": {
-      "before": "28e1e282b67695fba853c82d3eca9392ebd33f53c03030aefe0ae4648501c433",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet.markercluster/LICENSE": {
-      "before": "3133dacd38250bd1f524d8166cc60a016a382522e062fce143691c65bf5e4b3d",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet.markercluster/MarkerCluster.Default.css": {
-      "before": "61258232d98d64dc2a7b1e02130d67421bc5b9bda5994eef70228ff97570c170",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet.markercluster/MarkerCluster.css": {
-      "before": "614dea0a98ff3f4ead74f04918f6b1d1b9ba435c25b5fc23b21a394d1e3e4d87",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet.markercluster/leaflet.markercluster.js": {
-      "before": "1e4e1d22972a3926f48598e0caf14e3fe7049835d428a344fed4f9e3665b3508",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/LICENSE": {
-      "before": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/images/layers-2x.png": {
-      "before": "066daca850d8ffbef007af00b06eac0015728dee279c51f3cb6c716df7c42edf",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/images/layers.png": {
-      "before": "1dbbe9d028e292f36fcba8f8b3a28d5e8932754fc2215b9ac69e4cdecf5107c6",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/images/marker-icon-2x.png": {
-      "before": "00179c4c1ee830d3a108412ae0d294f55776cfeb085c60129a39aa6fc4ae2528",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/images/marker-icon.png": {
-      "before": "574c3a5cca85f4114085b6841596d62f00d7c892c7b03f28cbfa301deb1dc437",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/images/marker-shadow.png": {
-      "before": "264f5c640339f042dd729062cfc04c17f8ea0f29882b538e3848ed8f10edb4da",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/leaflet.css": {
-      "before": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
-      "after": null
-    },
-    "food-map/assets/vendor/leaflet/leaflet.js": {
-      "before": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
-      "after": null
-    },
-    "food-map/data/city/南投縣-0.json": {
-      "before": "2990d875fe17386f7ef8ae85423b06487dd9651a81ebbb8b7b2324ae9160cb6c",
-      "after": null
-    },
-    "food-map/data/city/嘉義市-0.json": {
-      "before": "0ce13befbabc86f9c14e816924bde5adb1f992ca6abb7df64cdcef7287bf5802",
-      "after": null
-    },
-    "food-map/data/city/嘉義縣-0.json": {
-      "before": "04ff67db9834fedc975b9f63eee017400ceff85dc3691b071e014493118ff048",
-      "after": null
-    },
-    "food-map/data/city/基隆市-0.json": {
-      "before": "ef05d64a13735f620c927420a41e09fe29edb2e88cdccb4d675d4de2c8d6f47f",
-      "after": null
-    },
-    "food-map/data/city/宜蘭縣-0.json": {
-      "before": "8eb9d7110bbcf39cf06bb5fb9d093dc7edf6efd0b8332b99cf16559309c7221e",
-      "after": null
-    },
-    "food-map/data/city/屏東縣-0.json": {
-      "before": "cb88af0d16d2b9e5bf2e1972d0eaa8bb661a4f5ebf879dca1fa339c47f05907f",
-      "after": null
-    },
-    "food-map/data/city/彰化縣-0.json": {
-      "before": "6a8e8288b7bde60b9d4fb27f97b59221d0879f6ca66a4e632f2de56d855d483d",
-      "after": null
-    },
-    "food-map/data/city/新北市-0.json": {
-      "before": "80875fffc3df84773518e279d9752953518a67f7b695fb6baf0458cbb29b3f99",
-      "after": null
-    },
-    "food-map/data/city/新竹市-0.json": {
-      "before": "c8931e8e35537c20dc7a35bf8678d8b3547e5b181000584c6c6cbed99b1792c4",
-      "after": null
-    },
-    "food-map/data/city/新竹縣-0.json": {
-      "before": "8b2e617976c6f35fc9667c35d65096ac41c773d5acc04c4a03821854f8ad60ca",
-      "after": null
-    },
-    "food-map/data/city/新竹縣-1.json": {
-      "before": "f753646aeb6cc6519c135cd92385ddf75efca22c2aa8708daf6a59a9f39f8dc2",
-      "after": null
-    },
-    "food-map/data/city/桃園市-0.json": {
-      "before": "5920b4abf82bd98c3f55694f008f77558033a10be0a5022b5fd543ae2201f3be",
-      "after": null
-    },
-    "food-map/data/city/澎湖縣-0.json": {
-      "before": "f86231ceee1098186a5bec5a83ee9c62f63d08ea0265a717e3f288cf2bc65f18",
-      "after": null
-    },
-    "food-map/data/city/臺中市-0.json": {
-      "before": "012c5b97f46cce0993eef1a3062a75017563821402459054d794a95c63778004",
-      "after": null
-    },
-    "food-map/data/city/臺北市-0.json": {
-      "before": "b3a20e2f3ee192ef0052caaec4260a2712de9f0b63e7dfb620a7c6d6f4391333",
-      "after": null
-    },
-    "food-map/data/city/臺北市-1.json": {
-      "before": "d011e124d9920403e9c5d79c8bf59478c35c80481f4a0c826879d508fd19e25f",
-      "after": null
-    },
-    "food-map/data/city/臺北市-10.json": {
-      "before": "0055e3b82cc9f26b82500c46480b9841856e4875b849cccc8a4eebc60d3410bc",
-      "after": null
-    },
-    "food-map/data/city/臺北市-11.json": {
-      "before": "fe55e0deb4ec5fbc79c841e6e1de8d1027f677dd1bcdfb70a50ffbbf1d7c862a",
-      "after": null
-    },
-    "food-map/data/city/臺北市-12.json": {
-      "before": "fb55003ec17131fc69c24033045ce2d67389744ed63900f4d18880c61ded4acd",
-      "after": null
-    },
-    "food-map/data/city/臺北市-13.json": {
-      "before": "861d0dca5e11cddcfd2ed5a1bd125e30dd7dea99dc608fee340984f0059d0f85",
-      "after": null
-    },
-    "food-map/data/city/臺北市-14.json": {
-      "before": "77c8fb14c8a7d3ad0287e66e5ba715ac841b97f629977d20862aaf7f99067153",
-      "after": null
-    },
-    "food-map/data/city/臺北市-15.json": {
-      "before": "49dd2b9a1e8f2d85a9cb523b19170a698067d52e1d2c369399d0655075dbabf7",
-      "after": null
-    },
-    "food-map/data/city/臺北市-16.json": {
-      "before": "0ff609a974f9b3da4ae4a1445a24464dfa3d72ae82ff2145908250a6aeb2e335",
-      "after": null
-    },
-    "food-map/data/city/臺北市-17.json": {
-      "before": "183927e45213f200f0220025b57942f98479a5943b9ce1392e10dd00b4b16e62",
-      "after": null
-    },
-    "food-map/data/city/臺北市-18.json": {
-      "before": "c78af46329d8ecd70b63c65378f81b07ccbcd22e93258b77b940e5745d5d7daa",
-      "after": null
-    },
-    "food-map/data/city/臺北市-19.json": {
-      "before": "8198a032621e2abf833085847acc1657220074400d9f34e007ab5ccdb70ffbfd",
-      "after": null
-    },
-    "food-map/data/city/臺北市-2.json": {
-      "before": "44dab1768604caab7659ebc8f69bb1c5da8bd7cfd39cb2343082225ca77bd58a",
-      "after": null
-    },
-    "food-map/data/city/臺北市-20.json": {
-      "before": "b12f93cf5677431a40bfb34ed858e956a2bd734a9504d3cb1018defea4c698c1",
-      "after": null
-    },
-    "food-map/data/city/臺北市-21.json": {
-      "before": "5c05c61ce7331dd81dfa8939ac2b949c460094bec515e2720f18fcef39af55a4",
-      "after": null
-    },
-    "food-map/data/city/臺北市-22.json": {
-      "before": "1d33aa1772d527121404d9fb3d1ff48991649dc7b60d357fb8515ab3bdbdec8d",
-      "after": null
-    },
-    "food-map/data/city/臺北市-23.json": {
-      "before": "ad1cd910a0029d7d68cfe59046162d8c43127c098c25d22e63204446417750f2",
-      "after": null
-    },
-    "food-map/data/city/臺北市-24.json": {
-      "before": "ac40c0621dce1c49cc76c8b95bd6fdce94f53f0a084f3665cb5aa846d7af5396",
-      "after": null
-    },
-    "food-map/data/city/臺北市-25.json": {
-      "before": "c5138847a818c436c39c42ec13fffc55ddc13d9072225528603a0f08e6c923af",
-      "after": null
-    },
-    "food-map/data/city/臺北市-26.json": {
-      "before": "3150fc3a107ba427adaa17a56cd1bff39cef205127e83bf3023c1569d66b8d9f",
-      "after": null
-    },
-    "food-map/data/city/臺北市-27.json": {
-      "before": "533db50987d722fd2838993230fbd44438d76afb5e9cb19ffd0b1059beccdc76",
-      "after": null
-    },
-    "food-map/data/city/臺北市-28.json": {
-      "before": "3a86a4426ee9f57b3723f7656090a8a0e32c5220f48f269ba580c502986cb48d",
-      "after": null
-    },
-    "food-map/data/city/臺北市-29.json": {
-      "before": "5416302a19a92fdbc9a7830d26716d431d0f7697e7c3cbc05cb72f6f5d8c7293",
-      "after": null
-    },
-    "food-map/data/city/臺北市-3.json": {
-      "before": "1cbd309bd87b6f7cc0356ea980e5a182f690a8c2ad812d706c5eb01a8e8bd86b",
-      "after": null
-    },
-    "food-map/data/city/臺北市-30.json": {
-      "before": "c068c1ff6f26554ee97bc41bbd18b7b85be6212f89e7e26b2ee8c64826a4c7c5",
-      "after": null
-    },
-    "food-map/data/city/臺北市-31.json": {
-      "before": "95683f4dc3cb015f1c3ec10f1270ffc3ad2dc541e8a14e0ff8fc4b5a2ac42d96",
-      "after": null
-    },
-    "food-map/data/city/臺北市-32.json": {
-      "before": "1327defcae8ae6793bd5d10d65a34d194cd79975f8474e4f6721e20f97243d3d",
-      "after": null
-    },
-    "food-map/data/city/臺北市-33.json": {
-      "before": "d0740146199bebba1f8b2f37d93f87dded55d2030f1f3d79ab459d6420febe8b",
-      "after": null
-    },
-    "food-map/data/city/臺北市-34.json": {
-      "before": "8c71bf0e21274b6775e37255db8cd9fb0c2bd3d721eb507b345a80399223a5be",
-      "after": null
-    },
-    "food-map/data/city/臺北市-4.json": {
-      "before": "137fa6e590c4748aab0457492e522ab4877bae5f55127b1ba081517da2052a52",
-      "after": null
-    },
-    "food-map/data/city/臺北市-5.json": {
-      "before": "1fd54bed521d6c61ae8ac4e73b9dee0987e7745961e58a42d0c6504ea80916d5",
-      "after": null
-    },
-    "food-map/data/city/臺北市-6.json": {
-      "before": "4a2872ec01e1061b440ec4874e4b8688f98adfc046b65d8be7eb4ce1b71e492a",
-      "after": null
-    },
-    "food-map/data/city/臺北市-7.json": {
-      "before": "505e85a02e72c800e3258df9ec8a49066712cc6299cb28537cd4b2ffa40add5d",
-      "after": null
-    },
-    "food-map/data/city/臺北市-8.json": {
-      "before": "8f7f4c2f23b1788b76202719a431e5a783e3e6055883c19e0fccc9709be98dd2",
-      "after": null
-    },
-    "food-map/data/city/臺北市-9.json": {
-      "before": "aeaee906be185a639c220bdca14480050cc97173f0551aa642d5d6851e859a77",
-      "after": null
-    },
-    "food-map/data/city/臺南市-0.json": {
-      "before": "0a10db6335baffe8a4c68ba6514cb5df5fc9437816a151793ecc12477486524a",
-      "after": null
-    },
-    "food-map/data/city/臺南市-1.json": {
-      "before": "cdb346ad730dee3b8a9a55ee68aeaba3ae4e0204a5e78cab042c6a7dca5aa82d",
-      "after": null
-    },
-    "food-map/data/city/臺東縣-0.json": {
-      "before": "672414e3a4162a782a26ded97e203b3f33a10655cc8dd822c1aa544c2d234905",
-      "after": null
-    },
-    "food-map/data/city/花蓮縣-0.json": {
-      "before": "822236139d1955375948ba275a86b2fc4eb1f558e8a5005842cefe9c74a41139",
-      "after": null
-    },
-    "food-map/data/city/苗栗縣-0.json": {
-      "before": "511b8deb94d99aa88973ede91ecca6733d108ad1705f455444c0ead7179b3204",
-      "after": null
-    },
-    "food-map/data/city/連江縣-0.json": {
-      "before": "223d35c567da23d98d4a992ce09308a9379f88e64cecc797e3d077c2703d63b8",
-      "after": null
-    },
-    "food-map/data/city/金門縣-0.json": {
-      "before": "25f2377b4f6fe2856e4122b624b4a7081ce96f7ec029a8a85192335a9029ee5e",
-      "after": null
-    },
-    "food-map/data/city/雲林縣-0.json": {
-      "before": "9aed8b83b89a72c3dfc559cc6d3c7b3295ee4809e66d895ba4d5af55b6ba8ca3",
-      "after": null
-    },
-    "food-map/data/city/雲林縣-1.json": {
-      "before": "18539b8722207e497f3198ad6f89200113eab284efa12aa4449c4faa00f1fee4",
-      "after": null
-    },
-    "food-map/data/city/高雄市-0.json": {
-      "before": "dd4ad65bc26185094eca21c07611d5ddd8812848ff3b22babafff990879b5977",
-      "after": null
-    },
-    "food-map/data/city/高雄市-1.json": {
-      "before": "eea8a4ac11293be9f34d21c0f57de5615d94448790a6ec641277a54bd17c0b52",
-      "after": null
-    },
-    "food-map/data/city/高雄市-2.json": {
-      "before": "47e2614c266c0d7548ddad160f7186dc476f2d11034a0b2a6225db81877831e8",
-      "after": null
-    },
-    "food-map/data/city/高雄市-3.json": {
-      "before": "4f6a3f84952d9af8d054e30e66a8caad13d40cf32b92409e3eec1f4c0259837a",
-      "after": null
-    },
-    "food-map/data/city/高雄市-4.json": {
-      "before": "ec7dabb7e579a1fb52e35bbb89fabe35c444ad0ec7f415544052fdc98bc34e44",
-      "after": null
-    },
-    "food-map/data/city/高雄市-5.json": {
-      "before": "5c07748108aaded5db0bb27fe622465de7b083d774d4361ebc2a87059fb2ca4c",
-      "after": null
-    },
-    "food-map/data/city/高雄市-6.json": {
-      "before": "f4fec843f0bc2286a4eea0052b9c521c55ce868995e94cac3e44d6fba5c8954a",
-      "after": null
-    },
-    "food-map/data/city/高雄市-7.json": {
-      "before": "ed4e6fef843579d4b4bdc2ae0a412e46f346fca32be88a18896d2c4370d6710b",
-      "after": null
-    },
-    "food-map/data/index.json": {
-      "before": "88d6bb398bc738493dcc83c302247afd54ba12bf68cab9a80ddb257b622c78c4",
-      "after": null
-    },
-    "food-map/data/lite/南投縣.json": {
-      "before": "3ce015997d7bb66eab5fdd4698711323cbb490744b674ea9c86f54a2c451b982",
-      "after": null
-    },
-    "food-map/data/lite/嘉義市.json": {
-      "before": "66f799b3a618c54e7fc6b314a83b2ef16557855e1065de02a612bb6b3aa3be50",
-      "after": null
-    },
-    "food-map/data/lite/嘉義縣.json": {
-      "before": "fad3a8df8f502a222cc2aa634941b5487e8245aecdaa45765cae201e81c41d53",
-      "after": null
-    },
-    "food-map/data/lite/基隆市.json": {
-      "before": "4e0191e6a47bbdfdc80649b136a27eca7eb729d1538b59be4ece1994edd911d4",
-      "after": null
-    },
-    "food-map/data/lite/宜蘭縣.json": {
-      "before": "16c4dd478c911369cb6f38aafc550e4b9b3c5b6ba2d5ca1a88adaedffeff335f",
-      "after": null
-    },
-    "food-map/data/lite/屏東縣.json": {
-      "before": "42629c86ae29ab7493df23b4c0386ca7ea0e9c460903d223788124278ca8c3ff",
-      "after": null
-    },
-    "food-map/data/lite/彰化縣.json": {
-      "before": "3f1ae2f35dd2a8fed8b9b515e669082a199319f8084fbff73931cec2fe1a2e3e",
-      "after": null
-    },
-    "food-map/data/lite/新北市.json": {
-      "before": "4ba365217504dbca220bfe3787bf913f0efb19113b080d9d63cbe31a19dfd49d",
-      "after": null
-    },
-    "food-map/data/lite/新竹市.json": {
-      "before": "a1e4f3659f5fc78ac2f977ab9bcadb0d387af6d568c6e2bc4e208e1c7eb27112",
-      "after": null
-    },
-    "food-map/data/lite/新竹縣.json": {
-      "before": "a61475c2c47c46dcf9b2370a982f1bd9b1e89fbcba6be820368612394619b070",
-      "after": null
-    },
-    "food-map/data/lite/桃園市.json": {
-      "before": "b7dd84ad417ed53b329b2f8b83e1ca605740d9516de9f8c6c0df699de4aedffe",
-      "after": null
-    },
-    "food-map/data/lite/澎湖縣.json": {
-      "before": "30c4bf495706ea07be270bd6b9c41fb572f05c1d2e5e9dd5a0c046df019b18b1",
-      "after": null
-    },
-    "food-map/data/lite/臺中市.json": {
-      "before": "70d0f493de9cbe924a5e9e6e0ab16deef44685d5c82514c3c894b1d72fed28ff",
-      "after": null
-    },
-    "food-map/data/lite/臺北市.json": {
-      "before": "7927764c892a3d68d8b66aaa428855b95a9bb2bec83f0780bccae233302fca4f",
-      "after": null
-    },
-    "food-map/data/lite/臺南市.json": {
-      "before": "2ef9288b82edf0b46b86010a7aa04a115b9ef8f17d2284ae0218b887bd84e18f",
-      "after": null
-    },
-    "food-map/data/lite/臺東縣.json": {
-      "before": "dd7d0e80dbe3d09745d0a7210f224474382722770ee5db4fb4a1733ca09e709c",
-      "after": null
-    },
-    "food-map/data/lite/花蓮縣.json": {
-      "before": "c3ba6609f16ba711508b74b02fa8374dd263e836073b279a4d18c743ec87d253",
-      "after": null
-    },
-    "food-map/data/lite/苗栗縣.json": {
-      "before": "3fa8f3ba76a3798c4047df559d0cf577f7392b2e09b9f8bf7b33436ac70d6a2e",
-      "after": null
-    },
-    "food-map/data/lite/連江縣.json": {
-      "before": "ee35d1f40fe6df71fbb9143eac07d83de957b84311c43fd5e7fa053dbd656068",
-      "after": null
-    },
-    "food-map/data/lite/金門縣.json": {
-      "before": "462df10c6c6ca4b90080f271166b686dc7791e45cbedd333e3520946462a2f8a",
-      "after": null
-    },
-    "food-map/data/lite/雲林縣.json": {
-      "before": "20703a0e78f436007b10d24a7f9112f85739986d31c7c7a92215dcf92606b3b4",
-      "after": null
-    },
-    "food-map/data/lite/高雄市.json": {
-      "before": "c848f0d6130f6dcdceca742d68b17546b86aa7804345e25b930befe27319737e",
-      "after": null
-    },
-    "food-map/index.html": {
-      "before": "b22324e0508e9421f00188d3a922c8d56a8dd47a1d9103bc00d5245278cfe62c",
-      "after": null
-    },
-    "food-map/style.css": {
-      "before": "892d2f1ca858afd4920ab0d13fbe4e7d079e112a425ad6d7176ad4ef7088a4cf",
-      "after": null
+    ".hugo_build.lock": {
+      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "index.html": {
       "before": "cae701ff32a76b7c547689286a3d631595cd615fddc5530dcd702314c6f9fe9d",
@@ -1659,13 +29,57 @@
       "before": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935",
       "after": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935"
     },
-    "page/1/index.html": {
-      "before": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026",
-      "after": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026"
+    "sitemap.xml": {
+      "before": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b",
+      "after": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b"
     },
-    "posts/ai-virtual-model-economy/index.html": {
-      "before": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
-      "after": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3"
+    "404.html": {
+      "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
+      "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
+    },
+    "room/sea-physics.mjs": {
+      "before": "707b9bc83d429db72aa8d7cb02794e8891d126e61b9534f5756d974bd47622ea",
+      "after": "707b9bc83d429db72aa8d7cb02794e8891d126e61b9534f5756d974bd47622ea"
+    },
+    "room/okinawa-data.mjs": {
+      "before": "87f667b6997964e3612145462c4ead938cd9ec3c5c85664f8e3b3372eaebf31e",
+      "after": "87f667b6997964e3612145462c4ead938cd9ec3c5c85664f8e3b3372eaebf31e"
+    },
+    "room/sky-astro.mjs": {
+      "before": "39ec935c56e43ffc74f172414249ad28d9cdbffc0590a9e1ebfb58544526afa2",
+      "after": "39ec935c56e43ffc74f172414249ad28d9cdbffc0590a9e1ebfb58544526afa2"
+    },
+    "room/main.mjs": {
+      "before": "5275938cdab831abff6d12d6747b6f82e3a01bae259cdb008240a68d9f54f365",
+      "after": "5275938cdab831abff6d12d6747b6f82e3a01bae259cdb008240a68d9f54f365"
+    },
+    "room/view-state.mjs": {
+      "before": "02e6e0d6e3a2859316acf6eaae4f2a49a3c17814a9dae06e6698856ef5cf2682",
+      "after": "02e6e0d6e3a2859316acf6eaae4f2a49a3c17814a9dae06e6698856ef5cf2682"
+    },
+    "room/store-sim.mjs": {
+      "before": "e8b047f94ac63d8b813843576e2bc4a0a188fb1614920d272ad50349a375d8f3",
+      "after": "e8b047f94ac63d8b813843576e2bc4a0a188fb1614920d272ad50349a375d8f3"
+    },
+    "room/style.css": {
+      "before": "4b2a5bf0343deab237f2646bbb7a88334eb05c2aedb736e9ca1490cda077e3cf",
+      "after": "4b2a5bf0343deab237f2646bbb7a88334eb05c2aedb736e9ca1490cda077e3cf"
+    },
+    "room/index.html": {
+      "before": "ce3b0901b05a4fba3a93b38edd3ec8b9bcfdbd67ebb564f3aa1457e3e4e989dd",
+      "after": "ce3b0901b05a4fba3a93b38edd3ec8b9bcfdbd67ebb564f3aa1457e3e4e989dd"
+    },
+    "room/okinawa.mjs": {
+      "before": "b8b7dba7798a8f14af5164d1afc75e06078b6303aefaf14606cac5f63e459b7c",
+      "after": "b8b7dba7798a8f14af5164d1afc75e06078b6303aefaf14606cac5f63e459b7c"
+    },
+    "room/cruise-scene.mjs": {
+      "before": "6baaa20e91674a5dfcb26ea9199f8b724ea2010201446845b425d3ef6a2c9a07",
+      "after": "6baaa20e91674a5dfcb26ea9199f8b724ea2010201446845b425d3ef6a2c9a07"
+    },
+    "room/cruise-data.mjs": {
+      "before": "6864f2a50b7d19a17e3167a7446becfb28ab713aca239cb8b68fc607975b19fd",
+      "after": "6864f2a50b7d19a17e3167a7446becfb28ab713aca239cb8b68fc607975b19fd"
     },
     "posts/index.html": {
       "before": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e",
@@ -1675,205 +89,37 @@
       "before": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e",
       "after": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e"
     },
-    "posts/page/1/index.html": {
-      "before": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf",
-      "after": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf"
-    },
-    "posts/taiwan-stock-watch-20260514/index.html": {
-      "before": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c",
-      "after": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c"
-    },
-    "projects/index.html": {
-      "before": "ce4a5e079f172a488c44a8dc759e79efc8c722f4d30efd35bb5a9246726503de",
-      "after": "6dc5617445215c5719ad494fe86b827e40245f0668959cc555ee51ef219450f5"
-    },
-    "projects/previews/ai-frontier.poster.webp": {
-      "before": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85",
-      "after": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85"
-    },
-    "projects/previews/ai-frontier.webp": {
-      "before": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c",
-      "after": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c"
-    },
-    "projects/previews/ailab.poster.webp": {
-      "before": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810",
-      "after": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810"
-    },
-    "projects/previews/ailab.webp": {
-      "before": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4",
-      "after": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4"
-    },
-    "projects/previews/blocks.poster.webp": {
-      "before": "594a5523e92ea651f1130cc1d6aea01ec9bbb0b4a6399d4cd748367398face4b",
-      "after": null
-    },
-    "projects/previews/blocks.webp": {
-      "before": "0cbf5b816ea9545242f9b2b1d266a137f31d291a35184ed2c24c37f0f118c760",
-      "after": null
-    },
-    "projects/previews/blog.poster.webp": {
-      "before": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8",
-      "after": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8"
-    },
-    "projects/previews/blog.webp": {
-      "before": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc",
-      "after": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc"
-    },
-    "projects/previews/emergence.poster.webp": {
-      "before": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530",
-      "after": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530"
-    },
-    "projects/previews/emergence.webp": {
-      "before": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5",
-      "after": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5"
-    },
-    "projects/previews/food-map.poster.webp": {
-      "before": "11706bffdb89f2b07453f785afbc89aa2b6ad2a5725ac7636cb5eafe1860c0c9",
-      "after": null
-    },
-    "projects/previews/food-map.webp": {
-      "before": "3517d4b038649c28d328aa6f0741ccf848ae82d8d9ce8082078bd0a08fd98d2b",
-      "after": null
-    },
-    "projects/previews/oracle.poster.webp": {
-      "before": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1",
-      "after": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1"
-    },
-    "projects/previews/oracle.webp": {
-      "before": "22ac9dc921ac700eb0d73a8c305d34e05895b383a6181dda557a20e9e3646734",
-      "after": "22ac9dc921ac700eb0d73a8c305d34e05895b383a6181dda557a20e9e3646734"
-    },
-    "projects/previews/planner.poster.webp": {
-      "before": "42a169cb27746a72c45a04593945cc0b348c27c39faebf4c8c97ab578de54a84",
-      "after": null
-    },
-    "projects/previews/planner.webp": {
-      "before": "6e029fa2f7dbd8234af28195c3a9dde1c325b7d3a6e923e5df28e0d7a8ef4ab0",
-      "after": null
-    },
-    "projects/previews/rail-live.poster.webp": {
-      "before": "0094f49954af4113007f4e31a7847ab79db304a3d81f6fea85ed767d562cced8",
-      "after": null
-    },
-    "projects/previews/rail-live.webp": {
-      "before": "a40aff0698b24085e34aef42d2a66e80ad95511fcc21177e5806fade9ae3d5f3",
-      "after": null
-    },
-    "projects/previews/rail-trip.poster.webp": {
-      "before": "5a7b22c2884936fa18d1e9dfaf1c378a6583203d205871bf64c4249aece952de",
-      "after": null
-    },
-    "projects/previews/rail-trip.webp": {
-      "before": "94fe94873a201fafcb4a625650d45beb91cbbaf15de5c4c1b5270da7c6ef4767",
-      "after": null
-    },
-    "projects/previews/room.poster.webp": {
-      "before": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0",
-      "after": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0"
-    },
-    "projects/previews/room.webp": {
-      "before": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274",
-      "after": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274"
-    },
-    "projects/previews/steward.poster.webp": {
-      "before": "19b1be056e404cd9ff8047f23abc2f2d5e0ff55ca0152d596204bbaf94740a9a",
-      "after": null
-    },
-    "projects/previews/steward.webp": {
-      "before": "afb93dff0c0f2d8578b81b29b22e4c077084e98a01ae4ff1fc106efff6fe8575",
-      "after": null
-    },
-    "projects/previews/studio.poster.webp": {
-      "before": "534d5cb1c0fc9e6366c240fed72e4085c1133aa749beb231042648caf6b21fed",
-      "after": null
-    },
-    "projects/previews/studio.webp": {
-      "before": "fd3465bd57169491c0385c257618c32686cbcb71e3abdcaa4a4857b524517846",
-      "after": null
-    },
-    "projects/previews/taipei-mrt.poster.webp": {
-      "before": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417",
-      "after": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417"
-    },
-    "projects/previews/taipei-mrt.webp": {
-      "before": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5",
-      "after": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5"
-    },
-    "projects/previews/taiwan.poster.webp": {
-      "before": "3f6a15e701bb63010adc418a50f90838979d145801a13187897b0d019f8bdb2b",
-      "after": null
-    },
-    "projects/previews/taiwan.webp": {
-      "before": "0f1a4135810066e65331f54009d15e02cfb124dff096f8837e16915296218e12",
-      "after": null
-    },
-    "projects/previews/towns.poster.webp": {
-      "before": "55a62c29888a7d1e2e9ecce6bcdb9b9532dd44845d5146b37cd40ad6aa65f9af",
-      "after": null
-    },
-    "projects/previews/towns.webp": {
-      "before": "46f6a2c5cc8c62fd153c16923e3a1c9fd8a76ad7e2045f6abd08470c14dd7309",
-      "after": null
-    },
-    "projects/previews/weekend.poster.webp": {
-      "before": "2ca91671480de9b52a2573faa552d5299fc079e6845437dad3ef085e895903d1",
-      "after": null
-    },
-    "projects/previews/weekend.webp": {
-      "before": "a6a9bf969ef58778d95399d226ff7e4ca7ace89302d058ffd3665a77d26bdb88",
-      "after": null
-    },
-    "projects/previews/world.poster.webp": {
-      "before": "b0d1233cbf909c741d8c8afb70861f966d80e32246210a64a77846af800e924f",
-      "after": "b0d1233cbf909c741d8c8afb70861f966d80e32246210a64a77846af800e924f"
-    },
-    "projects/previews/world.webp": {
-      "before": "8815d786c1d86f61f8b4621c0a03494c8dd615972a0124625b91eca37d090646",
-      "after": "8815d786c1d86f61f8b4621c0a03494c8dd615972a0124625b91eca37d090646"
-    },
-    "public/404.html": {
-      "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
-      "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
-    },
-    "public/about/index.html": {
+    "about/index.html": {
       "before": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1",
       "after": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1"
     },
-    "public/assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
-      "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
-      "after": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c"
-    },
-    "public/categories/ai-應用/index.html": {
-      "before": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a",
-      "after": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a"
-    },
-    "public/categories/ai-應用/index.xml": {
-      "before": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5",
-      "after": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5"
-    },
-    "public/categories/ai-應用/page/1/index.html": {
-      "before": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85",
-      "after": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85"
-    },
-    "public/categories/index.html": {
+    "categories/index.html": {
       "before": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362",
       "after": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362"
     },
-    "public/categories/index.xml": {
+    "categories/index.xml": {
       "before": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7",
       "after": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7"
     },
-    "public/categories/台股/index.html": {
-      "before": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9",
-      "after": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9"
+    "taipei-mrt/index.html": {
+      "before": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a",
+      "after": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a"
     },
-    "public/categories/台股/index.xml": {
-      "before": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d",
-      "after": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d"
+    "tags/index.html": {
+      "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
+      "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
     },
-    "public/categories/台股/page/1/index.html": {
-      "before": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17",
-      "after": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17"
+    "tags/index.xml": {
+      "before": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8",
+      "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
+    },
+    "projects/index.html": {
+      "before": "c9b8f2973ca3f4639ce701a22bd6bdf6fd0dbb0239f5d091332a69f93cdd0e2d",
+      "after": "c9b8f2973ca3f4639ce701a22bd6bdf6fd0dbb0239f5d091332a69f93cdd0e2d"
+    },
+    "public/taiwan-stock-chart.png": {
+      "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
+      "after": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f"
     },
     "public/index.html": {
       "before": "9ed9b6dc6086740e09c09403b7148a833c90aed35c9164d54fc36fed5f454409",
@@ -1883,329 +129,89 @@
       "before": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935",
       "after": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935"
     },
-    "public/page/1/index.html": {
-      "before": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026",
-      "after": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026"
-    },
-    "public/posts/ai-virtual-model-economy/index.html": {
-      "before": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
-      "after": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3"
-    },
-    "public/posts/index.html": {
-      "before": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e",
-      "after": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e"
-    },
-    "public/posts/index.xml": {
-      "before": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e",
-      "after": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e"
-    },
-    "public/posts/page/1/index.html": {
-      "before": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf",
-      "after": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf"
-    },
-    "public/posts/taiwan-stock-watch-20260514/index.html": {
-      "before": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c",
-      "after": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c"
-    },
     "public/sitemap.xml": {
       "before": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b",
       "after": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b"
     },
-    "public/tags/00713/index.html": {
-      "before": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2",
-      "after": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2"
+    "public/404.html": {
+      "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
+      "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
     },
-    "public/tags/00713/index.xml": {
-      "before": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544",
-      "after": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544"
+    "world-impact/events.json": {
+      "before": "856419081e07aed5d25cbf5678012f59d3e16cabf4cad9344b8f9fd9bcbf6a1d",
+      "after": "856419081e07aed5d25cbf5678012f59d3e16cabf4cad9344b8f9fd9bcbf6a1d"
     },
-    "public/tags/00713/page/1/index.html": {
-      "before": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9",
-      "after": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9"
+    "world-impact/scene.js": {
+      "before": "d47e956ef686324868ef6a2b0eadfcc94383d038b11c986b25a8ad6ae35dabdc",
+      "after": "d47e956ef686324868ef6a2b0eadfcc94383d038b11c986b25a8ad6ae35dabdc"
     },
-    "public/tags/00878/index.html": {
-      "before": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44",
-      "after": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44"
+    "world-impact/style.css": {
+      "before": "8d5f42b5e2bac4e37ca3cc4248b9274cf2adf0b263eab2dc176811205a276dbc",
+      "after": "8d5f42b5e2bac4e37ca3cc4248b9274cf2adf0b263eab2dc176811205a276dbc"
     },
-    "public/tags/00878/index.xml": {
-      "before": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713",
-      "after": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713"
+    "world-impact/app.js": {
+      "before": "b3693171560bc377c7aab0c56afdbb3aee6381cda6f185115a9898e7dbe0d75c",
+      "after": "b3693171560bc377c7aab0c56afdbb3aee6381cda6f185115a9898e7dbe0d75c"
     },
-    "public/tags/00878/page/1/index.html": {
-      "before": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc",
-      "after": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc"
+    "world-impact/index.html": {
+      "before": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f",
+      "after": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f"
     },
-    "public/tags/00919/index.html": {
-      "before": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869",
-      "after": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869"
-    },
-    "public/tags/00919/index.xml": {
-      "before": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2",
-      "after": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2"
-    },
-    "public/tags/00919/page/1/index.html": {
-      "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
-      "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
-    },
-    "public/tags/00929/index.html": {
-      "before": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454",
-      "after": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454"
-    },
-    "public/tags/00929/index.xml": {
-      "before": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7",
-      "after": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7"
-    },
-    "public/tags/00929/page/1/index.html": {
-      "before": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd",
-      "after": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd"
-    },
-    "public/tags/2330/index.html": {
-      "before": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876",
-      "after": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876"
-    },
-    "public/tags/2330/index.xml": {
-      "before": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994",
-      "after": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994"
-    },
-    "public/tags/2330/page/1/index.html": {
-      "before": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65",
-      "after": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65"
-    },
-    "public/tags/ai-影響者/index.html": {
-      "before": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420",
-      "after": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420"
-    },
-    "public/tags/ai-影響者/index.xml": {
-      "before": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3",
-      "after": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3"
-    },
-    "public/tags/ai-影響者/page/1/index.html": {
-      "before": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0",
-      "after": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0"
-    },
-    "public/tags/etf/index.html": {
-      "before": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de",
-      "after": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de"
-    },
-    "public/tags/etf/index.xml": {
-      "before": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6",
-      "after": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6"
-    },
-    "public/tags/etf/page/1/index.html": {
-      "before": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462",
-      "after": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462"
-    },
-    "public/tags/index.html": {
-      "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
-      "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
-    },
-    "public/tags/index.xml": {
-      "before": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8",
-      "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
-    },
-    "public/tags/onlyfans/index.html": {
-      "before": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81",
-      "after": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81"
-    },
-    "public/tags/onlyfans/index.xml": {
-      "before": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250",
-      "after": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250"
-    },
-    "public/tags/onlyfans/page/1/index.html": {
-      "before": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74",
-      "after": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74"
-    },
-    "public/tags/台積電/index.html": {
-      "before": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2",
-      "after": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2"
-    },
-    "public/tags/台積電/index.xml": {
-      "before": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc",
-      "after": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc"
-    },
-    "public/tags/台積電/page/1/index.html": {
-      "before": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0",
-      "after": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0"
-    },
-    "public/tags/商業模式/index.html": {
-      "before": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef",
-      "after": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef"
-    },
-    "public/tags/商業模式/index.xml": {
-      "before": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7",
-      "after": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7"
-    },
-    "public/tags/商業模式/page/1/index.html": {
-      "before": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c",
-      "after": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c"
-    },
-    "public/tags/虛擬模特兒/index.html": {
-      "before": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0",
-      "after": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0"
-    },
-    "public/tags/虛擬模特兒/index.xml": {
-      "before": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1",
-      "after": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1"
-    },
-    "public/tags/虛擬模特兒/page/1/index.html": {
-      "before": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6",
-      "after": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6"
-    },
-    "public/tags/高股息/index.html": {
-      "before": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078",
-      "after": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078"
-    },
-    "public/tags/高股息/index.xml": {
-      "before": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482",
-      "after": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482"
-    },
-    "public/tags/高股息/page/1/index.html": {
-      "before": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba",
-      "after": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba"
-    },
-    "public/taiwan-stock-chart.png": {
-      "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
-      "after": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f"
-    },
-    "rail-trip/BUILD": {
-      "before": "3b98d9ca3c9c6bc97837c2d5138054c19e2c0bb00e70e2902bf92062aab57fcc",
-      "after": null
-    },
-    "rail-trip/app.js": {
-      "before": "29d6b5698a7204fea38ec2a988df9c6ebb9772f393bcb231bd7e2e3ffdc24316",
-      "after": null
-    },
-    "rail-trip/data/pois.json": {
-      "before": "a960deb5a57fa8b913b4786f6ce6f3a9f6e5d0e0c14604e7a69032d9587837d7",
-      "after": null
-    },
-    "rail-trip/data/stations.json": {
-      "before": "447d56ddd041a7bb6c897f5dda07a2d7ad42463e3d9058cbec65c097673bd4fc",
-      "after": null
-    },
-    "rail-trip/data/timetable.json": {
-      "before": "5a973bbab640f20282368b9ceb6b44a94f18d1250e0a4f7a9353e829af85a957",
-      "after": null
-    },
-    "rail-trip/index.html": {
-      "before": "8290d5d452ef87bbea94ab93deceef0ae1ea13efc1aaa8bb9b47211a53f0ea5e",
-      "after": null
-    },
-    "rail-trip/planner.js": {
-      "before": "ce7f3e0aa617b92ec14ba818b45bc104820919d5e1bf8f00133b7f3dd14c51e5",
-      "after": null
-    },
-    "rail-trip/scene.js": {
-      "before": "7505395d6811d50987c1da84075ea89b8e7cbdfad12853ba4ff348178fabc683",
-      "after": null
-    },
-    "rail-trip/style.css": {
-      "before": "ed0e0995d5b90bb338a3b899abf17422c9d216ccadafdb2df57c0517e19fc89b",
-      "after": null
-    },
-    "rail-trip/vendor/OrbitControls.js": {
-      "before": "5a44a9e86a2a0fb11933eed69bc2cd33c76a496854c1aed6ed776efa87d7b064",
-      "after": null
-    },
-    "rail-trip/vendor/THREE_LICENSE": {
-      "before": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
-      "after": null
-    },
-    "rail-trip/vendor/three.module.min.js": {
-      "before": "3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6",
-      "after": null
+    "assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
+      "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
+      "after": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c"
     },
     "room/assets/mini-store.glb": {
       "before": "793c1748fbd8bdcf65e8545900d665efadfe658d4f9b87c3f83918073c2c6d26",
       "after": "793c1748fbd8bdcf65e8545900d665efadfe658d4f9b87c3f83918073c2c6d26"
     },
-    "room/cruise-data.mjs": {
-      "before": "6864f2a50b7d19a17e3167a7446becfb28ab713aca239cb8b68fc607975b19fd",
-      "after": "6864f2a50b7d19a17e3167a7446becfb28ab713aca239cb8b68fc607975b19fd"
-    },
-    "room/cruise-scene.mjs": {
-      "before": "6baaa20e91674a5dfcb26ea9199f8b724ea2010201446845b425d3ef6a2c9a07",
-      "after": "6baaa20e91674a5dfcb26ea9199f8b724ea2010201446845b425d3ef6a2c9a07"
-    },
-    "room/index.html": {
-      "before": "ce3b0901b05a4fba3a93b38edd3ec8b9bcfdbd67ebb564f3aa1457e3e4e989dd",
-      "after": "ce3b0901b05a4fba3a93b38edd3ec8b9bcfdbd67ebb564f3aa1457e3e4e989dd"
-    },
-    "room/main.mjs": {
-      "before": "5275938cdab831abff6d12d6747b6f82e3a01bae259cdb008240a68d9f54f365",
-      "after": "5275938cdab831abff6d12d6747b6f82e3a01bae259cdb008240a68d9f54f365"
-    },
-    "room/okinawa-data.mjs": {
-      "before": "87f667b6997964e3612145462c4ead938cd9ec3c5c85664f8e3b3372eaebf31e",
-      "after": "87f667b6997964e3612145462c4ead938cd9ec3c5c85664f8e3b3372eaebf31e"
-    },
-    "room/okinawa.mjs": {
-      "before": "b8b7dba7798a8f14af5164d1afc75e06078b6303aefaf14606cac5f63e459b7c",
-      "after": "b8b7dba7798a8f14af5164d1afc75e06078b6303aefaf14606cac5f63e459b7c"
-    },
-    "room/photos/fukushuen.jpg": {
-      "before": "c3f26f91103da3d7de1dc7b3fe3c7918b589a755a10aafa45b304c455ede5ded",
-      "after": "c3f26f91103da3d7de1dc7b3fe3c7918b589a755a10aafa45b304c455ede5ded"
-    },
-    "room/photos/gokokuji.jpg": {
-      "before": "4db985b4edaafbc57f60c3ea2d5d62273c9feff322090d19b0f7377e329bf5d6",
-      "after": "4db985b4edaafbc57f60c3ea2d5d62273c9feff322090d19b0f7377e329bf5d6"
-    },
-    "room/photos/heiwa-dori.jpg": {
-      "before": "6ef5b7a3b39ce75da8a084429e0077f460f86a3bfce90507745fb95e697e2aa9",
-      "after": "6ef5b7a3b39ce75da8a084429e0077f460f86a3bfce90507745fb95e697e2aa9"
-    },
-    "room/photos/kokusai-dori.jpg": {
-      "before": "2dc6363b37066e8c5329b34ec425b4694355f63cafd580e3854d558f56fdfb93",
-      "after": "2dc6363b37066e8c5329b34ec425b4694355f63cafd580e3854d558f56fdfb93"
+    "room/photos/naminoue-beach.jpg": {
+      "before": "933988ac93d6e046746d582512a0159f160c72697cf1f5bbb5b3e9ce2e68081b",
+      "after": "933988ac93d6e046746d582512a0159f160c72697cf1f5bbb5b3e9ce2e68081b"
     },
     "room/photos/kume-shiseibyo.jpg": {
       "before": "b2581c8fd83aca9cca4623a135509fed59c83347b638f9529befde32d4b1687b",
       "after": "b2581c8fd83aca9cca4623a135509fed59c83347b638f9529befde32d4b1687b"
     },
-    "room/photos/makishi-market.jpg": {
-      "before": "9f2688b389393909997973af9ed34e6b2918146e29f2012d11386692ec19259a",
-      "after": "9f2688b389393909997973af9ed34e6b2918146e29f2012d11386692ec19259a"
+    "room/photos/naminoue-shrine.jpg": {
+      "before": "51bda6d884330927d3174497d933854a9458e47b01c39d8ca998ef5963bc0cbd",
+      "after": "51bda6d884330927d3174497d933854a9458e47b01c39d8ca998ef5963bc0cbd"
+    },
+    "room/photos/heiwa-dori.jpg": {
+      "before": "6ef5b7a3b39ce75da8a084429e0077f460f86a3bfce90507745fb95e697e2aa9",
+      "after": "6ef5b7a3b39ce75da8a084429e0077f460f86a3bfce90507745fb95e697e2aa9"
+    },
+    "room/photos/fukushuen.jpg": {
+      "before": "c3f26f91103da3d7de1dc7b3fe3c7918b589a755a10aafa45b304c455ede5ded",
+      "after": "c3f26f91103da3d7de1dc7b3fe3c7918b589a755a10aafa45b304c455ede5ded"
     },
     "room/photos/makishi-station.jpg": {
       "before": "9861aa11ac3f449e6ad8ef1db9e565792e50e222b0b6d14f487c34c32277974c",
       "after": "9861aa11ac3f449e6ad8ef1db9e565792e50e222b0b6d14f487c34c32277974c"
     },
-    "room/photos/naha-history-museum.jpg": {
-      "before": "9f1cf35f7a834e6f053c82a670d43d1426887b987ec0946599836845f9bec5b5",
-      "after": "9f1cf35f7a834e6f053c82a670d43d1426887b987ec0946599836845f9bec5b5"
+    "room/photos/tsuboya-museum.jpg": {
+      "before": "8de57704bf096907a66e3e83df0ba934b6e931ccb83419f5006ae4909f7c27ca",
+      "after": "8de57704bf096907a66e3e83df0ba934b6e931ccb83419f5006ae4909f7c27ca"
     },
-    "room/photos/naminoue-beach.jpg": {
-      "before": "933988ac93d6e046746d582512a0159f160c72697cf1f5bbb5b3e9ce2e68081b",
-      "after": "933988ac93d6e046746d582512a0159f160c72697cf1f5bbb5b3e9ce2e68081b"
+    "room/photos/gokokuji.jpg": {
+      "before": "4db985b4edaafbc57f60c3ea2d5d62273c9feff322090d19b0f7377e329bf5d6",
+      "after": "4db985b4edaafbc57f60c3ea2d5d62273c9feff322090d19b0f7377e329bf5d6"
     },
-    "room/photos/naminoue-shrine.jpg": {
-      "before": "51bda6d884330927d3174497d933854a9458e47b01c39d8ca998ef5963bc0cbd",
-      "after": "51bda6d884330927d3174497d933854a9458e47b01c39d8ca998ef5963bc0cbd"
+    "room/photos/kokusai-dori.jpg": {
+      "before": "2dc6363b37066e8c5329b34ec425b4694355f63cafd580e3854d558f56fdfb93",
+      "after": "2dc6363b37066e8c5329b34ec425b4694355f63cafd580e3854d558f56fdfb93"
+    },
+    "room/photos/makishi-market.jpg": {
+      "before": "9f2688b389393909997973af9ed34e6b2918146e29f2012d11386692ec19259a",
+      "after": "9f2688b389393909997973af9ed34e6b2918146e29f2012d11386692ec19259a"
     },
     "room/photos/sakurazaka-theater.jpg": {
       "before": "b2b89c73fdf5d4bb49b5b465c19a5b23e96aaf4a82020824ca99005a03227cfc",
       "after": "b2b89c73fdf5d4bb49b5b465c19a5b23e96aaf4a82020824ca99005a03227cfc"
     },
-    "room/photos/tsuboya-museum.jpg": {
-      "before": "8de57704bf096907a66e3e83df0ba934b6e931ccb83419f5006ae4909f7c27ca",
-      "after": "8de57704bf096907a66e3e83df0ba934b6e931ccb83419f5006ae4909f7c27ca"
-    },
-    "room/sea-physics.mjs": {
-      "before": "707b9bc83d429db72aa8d7cb02794e8891d126e61b9534f5756d974bd47622ea",
-      "after": "707b9bc83d429db72aa8d7cb02794e8891d126e61b9534f5756d974bd47622ea"
-    },
-    "room/sky-astro.mjs": {
-      "before": "39ec935c56e43ffc74f172414249ad28d9cdbffc0590a9e1ebfb58544526afa2",
-      "after": "39ec935c56e43ffc74f172414249ad28d9cdbffc0590a9e1ebfb58544526afa2"
-    },
-    "room/store-sim.mjs": {
-      "before": "e8b047f94ac63d8b813843576e2bc4a0a188fb1614920d272ad50349a375d8f3",
-      "after": "e8b047f94ac63d8b813843576e2bc4a0a188fb1614920d272ad50349a375d8f3"
-    },
-    "room/style.css": {
-      "before": "4b2a5bf0343deab237f2646bbb7a88334eb05c2aedb736e9ca1490cda077e3cf",
-      "after": "4b2a5bf0343deab237f2646bbb7a88334eb05c2aedb736e9ca1490cda077e3cf"
+    "room/photos/naha-history-museum.jpg": {
+      "before": "9f1cf35f7a834e6f053c82a670d43d1426887b987ec0946599836845f9bec5b5",
+      "after": "9f1cf35f7a834e6f053c82a670d43d1426887b987ec0946599836845f9bec5b5"
     },
     "room/vendor/three/LICENSE": {
       "before": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
@@ -2227,13 +233,45 @@
       "before": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751",
       "after": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
     },
-    "room/view-state.mjs": {
-      "before": "02e6e0d6e3a2859316acf6eaae4f2a49a3c17814a9dae06e6698856ef5cf2682",
-      "after": "02e6e0d6e3a2859316acf6eaae4f2a49a3c17814a9dae06e6698856ef5cf2682"
+    "posts/taiwan-stock-watch-20260514/index.html": {
+      "before": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c",
+      "after": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c"
     },
-    "sitemap.xml": {
-      "before": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b",
-      "after": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b"
+    "posts/ai-virtual-model-economy/index.html": {
+      "before": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
+      "after": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3"
+    },
+    "posts/page/1/index.html": {
+      "before": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf",
+      "after": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf"
+    },
+    "page/1/index.html": {
+      "before": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026",
+      "after": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026"
+    },
+    "categories/台股/index.html": {
+      "before": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9",
+      "after": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9"
+    },
+    "categories/台股/index.xml": {
+      "before": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d",
+      "after": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d"
+    },
+    "categories/ai-應用/index.html": {
+      "before": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a",
+      "after": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a"
+    },
+    "categories/ai-應用/index.xml": {
+      "before": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5",
+      "after": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5"
+    },
+    "categories/台股/page/1/index.html": {
+      "before": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17",
+      "after": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17"
+    },
+    "categories/ai-應用/page/1/index.html": {
+      "before": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85",
+      "after": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85"
     },
     "tags/00713/index.html": {
       "before": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2",
@@ -2243,45 +281,13 @@
       "before": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544",
       "after": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544"
     },
-    "tags/00713/page/1/index.html": {
-      "before": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9",
-      "after": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9"
+    "tags/高股息/index.html": {
+      "before": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078",
+      "after": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078"
     },
-    "tags/00878/index.html": {
-      "before": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44",
-      "after": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44"
-    },
-    "tags/00878/index.xml": {
-      "before": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713",
-      "after": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713"
-    },
-    "tags/00878/page/1/index.html": {
-      "before": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc",
-      "after": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc"
-    },
-    "tags/00919/index.html": {
-      "before": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869",
-      "after": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869"
-    },
-    "tags/00919/index.xml": {
-      "before": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2",
-      "after": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2"
-    },
-    "tags/00919/page/1/index.html": {
-      "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
-      "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
-    },
-    "tags/00929/index.html": {
-      "before": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454",
-      "after": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454"
-    },
-    "tags/00929/index.xml": {
-      "before": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7",
-      "after": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7"
-    },
-    "tags/00929/page/1/index.html": {
-      "before": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd",
-      "after": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd"
+    "tags/高股息/index.xml": {
+      "before": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482",
+      "after": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482"
     },
     "tags/2330/index.html": {
       "before": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876",
@@ -2291,54 +297,6 @@
       "before": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994",
       "after": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994"
     },
-    "tags/2330/page/1/index.html": {
-      "before": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65",
-      "after": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65"
-    },
-    "tags/ai-影響者/index.html": {
-      "before": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420",
-      "after": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420"
-    },
-    "tags/ai-影響者/index.xml": {
-      "before": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3",
-      "after": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3"
-    },
-    "tags/ai-影響者/page/1/index.html": {
-      "before": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0",
-      "after": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0"
-    },
-    "tags/etf/index.html": {
-      "before": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de",
-      "after": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de"
-    },
-    "tags/etf/index.xml": {
-      "before": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6",
-      "after": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6"
-    },
-    "tags/etf/page/1/index.html": {
-      "before": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462",
-      "after": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462"
-    },
-    "tags/index.html": {
-      "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
-      "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
-    },
-    "tags/index.xml": {
-      "before": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8",
-      "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
-    },
-    "tags/onlyfans/index.html": {
-      "before": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81",
-      "after": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81"
-    },
-    "tags/onlyfans/index.xml": {
-      "before": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250",
-      "after": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250"
-    },
-    "tags/onlyfans/page/1/index.html": {
-      "before": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74",
-      "after": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74"
-    },
     "tags/台積電/index.html": {
       "before": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2",
       "after": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2"
@@ -2346,10 +304,6 @@
     "tags/台積電/index.xml": {
       "before": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc",
       "after": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc"
-    },
-    "tags/台積電/page/1/index.html": {
-      "before": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0",
-      "after": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0"
     },
     "tags/商業模式/index.html": {
       "before": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef",
@@ -2359,9 +313,13 @@
       "before": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7",
       "after": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7"
     },
-    "tags/商業模式/page/1/index.html": {
-      "before": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c",
-      "after": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c"
+    "tags/00929/index.html": {
+      "before": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454",
+      "after": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454"
+    },
+    "tags/00929/index.xml": {
+      "before": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7",
+      "after": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7"
     },
     "tags/虛擬模特兒/index.html": {
       "before": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0",
@@ -2371,141 +329,717 @@
       "before": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1",
       "after": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1"
     },
-    "tags/虛擬模特兒/page/1/index.html": {
-      "before": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6",
-      "after": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6"
+    "tags/etf/index.html": {
+      "before": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de",
+      "after": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de"
     },
-    "tags/高股息/index.html": {
-      "before": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078",
-      "after": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078"
+    "tags/etf/index.xml": {
+      "before": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6",
+      "after": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6"
     },
-    "tags/高股息/index.xml": {
-      "before": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482",
-      "after": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482"
+    "tags/00878/index.html": {
+      "before": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44",
+      "after": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44"
+    },
+    "tags/00878/index.xml": {
+      "before": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713",
+      "after": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713"
+    },
+    "tags/ai-影響者/index.html": {
+      "before": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420",
+      "after": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420"
+    },
+    "tags/ai-影響者/index.xml": {
+      "before": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3",
+      "after": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3"
+    },
+    "tags/onlyfans/index.html": {
+      "before": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81",
+      "after": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81"
+    },
+    "tags/onlyfans/index.xml": {
+      "before": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250",
+      "after": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250"
+    },
+    "tags/00919/index.html": {
+      "before": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869",
+      "after": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869"
+    },
+    "tags/00919/index.xml": {
+      "before": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2",
+      "after": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2"
+    },
+    "tags/00713/page/1/index.html": {
+      "before": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9",
+      "after": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9"
     },
     "tags/高股息/page/1/index.html": {
       "before": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba",
       "after": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba"
     },
-    "taipei-mrt/index.html": {
-      "before": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a",
-      "after": "4caee2a7953011fba2a42681f00bcb607bbe342d5ec76c918dc6429c0804ee4a"
+    "tags/2330/page/1/index.html": {
+      "before": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65",
+      "after": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65"
     },
-    "taiwan-stock-chart.png": {
-      "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
-      "after": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f"
+    "tags/台積電/page/1/index.html": {
+      "before": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0",
+      "after": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0"
     },
-    "weekend/BUILD": {
-      "before": "2d21d06b643c279b5e9e259b787713c14e4daf6719a75339daf930ad1eeefd82",
-      "after": null
+    "tags/商業模式/page/1/index.html": {
+      "before": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c",
+      "after": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c"
     },
-    "weekend/app.js": {
-      "before": "7c6bed2692595d1a13b33b265672d573927d1005e05c6808864714894bd7d193",
-      "after": null
+    "tags/00929/page/1/index.html": {
+      "before": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd",
+      "after": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd"
     },
-    "weekend/data/events.json": {
-      "before": "a39c48110af48605b641088ce3fe028fb3c7e795987cf840df334b834e8653e0",
-      "after": null
+    "tags/虛擬模特兒/page/1/index.html": {
+      "before": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6",
+      "after": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6"
     },
-    "weekend/data/food.json": {
-      "before": "2656df82df5bb4aaf4f5887832091d3ba69c2e79eb2dafe7e6fb527cfe46542a",
-      "after": null
+    "tags/etf/page/1/index.html": {
+      "before": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462",
+      "after": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462"
     },
-    "weekend/data/meta.json": {
-      "before": "7acfdca199c96d640675ea618c0bd7b583625fc734427e4d79ef9f15fe9ee04f",
-      "after": null
+    "tags/00878/page/1/index.html": {
+      "before": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc",
+      "after": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc"
     },
-    "weekend/data/stations.json": {
-      "before": "99c8e78e2461a0fc79757e9fcacedb5eebfb0fc468862d5851a4bff220102631",
-      "after": null
+    "tags/ai-影響者/page/1/index.html": {
+      "before": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0",
+      "after": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0"
     },
-    "weekend/data/tt/20261017.json": {
-      "before": "6bfe33992bcb72b19b9eb9463d44fc35d179d42ef2c6766b12e8ef1b6248f7f0",
-      "after": null
+    "tags/onlyfans/page/1/index.html": {
+      "before": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74",
+      "after": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74"
     },
-    "weekend/data/tt/20261018.json": {
-      "before": "de35bb3d6c636fac39e574a47e9e969f368d265d418175554ad8c9c5525c5c80",
-      "after": null
+    "tags/00919/page/1/index.html": {
+      "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
+      "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
     },
-    "weekend/data/tt/20261024.json": {
-      "before": "09f8b69f7a436b5d27de46452427dfa6aa4ba47293d9d5d9983f38591fcdb412",
-      "after": null
+    "projects/previews/world.webp": {
+      "before": "8815d786c1d86f61f8b4621c0a03494c8dd615972a0124625b91eca37d090646",
+      "after": "8815d786c1d86f61f8b4621c0a03494c8dd615972a0124625b91eca37d090646"
     },
-    "weekend/data/tt/20261025.json": {
-      "before": "1a30184e11a038babacf5a3ba26f13487c21a1d06afb2f4944d32e003a960d44",
-      "after": null
+    "projects/previews/blog.webp": {
+      "before": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc",
+      "after": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc"
     },
-    "weekend/data/tt/20261031.json": {
-      "before": "de0054fa9172bbeb71526fa4c6a31d1ea84c96f3f727b602bfe12efff396e5aa",
-      "after": null
+    "projects/previews/ailab.webp": {
+      "before": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4",
+      "after": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4"
     },
-    "weekend/data/tt/20261101.json": {
-      "before": "5903004b52df04a05fcf57223dae5e1461bf786c06b73df91749fa7921b4a310",
-      "after": null
+    "projects/previews/room.poster.webp": {
+      "before": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0",
+      "after": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0"
     },
-    "weekend/data/tt/20261107.json": {
-      "before": "1b35592477e25186b101b853ae91db8d452c236201c130cffe80a30233b5174c",
-      "after": null
+    "projects/previews/blog.poster.webp": {
+      "before": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8",
+      "after": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8"
     },
-    "weekend/data/tt/20261108.json": {
-      "before": "b7d95bbe7f0d75ed070d4ea6144ee04a8ac89dce21034cdc8d3d838db3b83b34",
-      "after": null
+    "projects/previews/ailab.poster.webp": {
+      "before": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810",
+      "after": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810"
     },
-    "weekend/data/tt/20261114.json": {
-      "before": "d5bcd9d8348f477870c806fae6869a0927768eb9433c5bf7e66079bbec63cebe",
-      "after": null
+    "projects/previews/oracle.poster.webp": {
+      "before": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1",
+      "after": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1"
     },
-    "weekend/data/tt/20261115.json": {
-      "before": "0d35ca5bab3eb28ff8e8f4dad85f145bbc93c8772f007577377bc52acbb0bd24",
-      "after": null
+    "projects/previews/oracle.webp": {
+      "before": "22ac9dc921ac700eb0d73a8c305d34e05895b383a6181dda557a20e9e3646734",
+      "after": "22ac9dc921ac700eb0d73a8c305d34e05895b383a6181dda557a20e9e3646734"
     },
-    "weekend/data/tt/20261121.json": {
-      "before": "60c99907b876ff0cf8568e32e1e780e7a0f259366aa0d34ff5091a4b6fe46966",
-      "after": null
+    "projects/previews/ai-frontier.webp": {
+      "before": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c",
+      "after": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c"
     },
-    "weekend/data/tt/20261122.json": {
-      "before": "4e8e5a38cbc7c890c4bf21b482c86ac83f29ac5e6ba48a66e5b75892de59130d",
-      "after": null
+    "projects/previews/ai-frontier.poster.webp": {
+      "before": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85",
+      "after": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85"
     },
-    "weekend/data/tt/20261128.json": {
-      "before": "c19341dc5d97c30cba2faf85bd8f69ba83cd694569d1449b92dd398290419f4a",
-      "after": null
+    "projects/previews/emergence.poster.webp": {
+      "before": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530",
+      "after": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530"
     },
-    "weekend/data/tt/20261129.json": {
-      "before": "0cf6a1862681cb0dea415332077e6ab51159d9ce76a94290737723e9c7b246d7",
-      "after": null
+    "projects/previews/world.poster.webp": {
+      "before": "b0d1233cbf909c741d8c8afb70861f966d80e32246210a64a77846af800e924f",
+      "after": "b0d1233cbf909c741d8c8afb70861f966d80e32246210a64a77846af800e924f"
     },
-    "weekend/data/tt/20261205.json": {
-      "before": "9c3e7b2cdc43b62ea512b8a3d35a678d94417e3d83fbbf5d1cf9233ef1da42ec",
-      "after": null
+    "projects/previews/room.webp": {
+      "before": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274",
+      "after": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274"
     },
-    "weekend/data/tt/20261206.json": {
-      "before": "7c9dc5c933d3310ee2add44cd8fab8e3663bd5321f59c12900cb4ffea10d40ae",
-      "after": null
+    "projects/previews/taipei-mrt.poster.webp": {
+      "before": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417",
+      "after": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417"
     },
-    "weekend/data/tt/20261212.json": {
-      "before": "f303a34c714df90fa77d9862fad290aca79bcbe8afab2b6e33e50cc2147958bd",
-      "after": null
+    "projects/previews/emergence.webp": {
+      "before": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5",
+      "after": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5"
     },
-    "weekend/data/tt/20261213.json": {
-      "before": "82f636477846ebcf5e6b9922c0a3966d7de13a8bed8ef8450d452cdc54129fcc",
-      "after": null
+    "projects/previews/taipei-mrt.webp": {
+      "before": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5",
+      "after": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5"
     },
-    "weekend/index.html": {
-      "before": "5f2ac050967cc085df52b0104284e564bdc617534603d448e7298e8b3565f6db",
-      "after": null
+    "public/posts/index.html": {
+      "before": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e",
+      "after": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e"
     },
-    "weekend/planner.js": {
-      "before": "266f0536342cb8ebdbe7f1926e1e6c0c6364e57d7c014cee9182c76ba21bec2b",
-      "after": null
+    "public/posts/index.xml": {
+      "before": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e",
+      "after": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e"
     },
-    "weekend/style.css": {
-      "before": "3eccdad8ac28257c4066b06a336b9acc803a613913549bfd69fff7d7baacf768",
-      "after": null
+    "public/about/index.html": {
+      "before": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1",
+      "after": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1"
     },
-    "world-impact/app.js": {
-      "before": "b3693171560bc377c7aab0c56afdbb3aee6381cda6f185115a9898e7dbe0d75c",
-      "after": "b3693171560bc377c7aab0c56afdbb3aee6381cda6f185115a9898e7dbe0d75c"
+    "public/categories/index.html": {
+      "before": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362",
+      "after": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362"
+    },
+    "public/categories/index.xml": {
+      "before": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7",
+      "after": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7"
+    },
+    "public/tags/index.html": {
+      "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
+      "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
+    },
+    "public/tags/index.xml": {
+      "before": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8",
+      "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
+    },
+    "public/assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
+      "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
+      "after": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c"
+    },
+    "public/posts/taiwan-stock-watch-20260514/index.html": {
+      "before": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c",
+      "after": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c"
+    },
+    "public/posts/ai-virtual-model-economy/index.html": {
+      "before": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
+      "after": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3"
+    },
+    "public/posts/page/1/index.html": {
+      "before": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf",
+      "after": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf"
+    },
+    "public/page/1/index.html": {
+      "before": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026",
+      "after": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026"
+    },
+    "public/categories/台股/index.html": {
+      "before": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9",
+      "after": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9"
+    },
+    "public/categories/台股/index.xml": {
+      "before": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d",
+      "after": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d"
+    },
+    "public/categories/ai-應用/index.html": {
+      "before": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a",
+      "after": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a"
+    },
+    "public/categories/ai-應用/index.xml": {
+      "before": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5",
+      "after": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5"
+    },
+    "public/categories/台股/page/1/index.html": {
+      "before": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17",
+      "after": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17"
+    },
+    "public/categories/ai-應用/page/1/index.html": {
+      "before": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85",
+      "after": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85"
+    },
+    "public/tags/00713/index.html": {
+      "before": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2",
+      "after": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2"
+    },
+    "public/tags/00713/index.xml": {
+      "before": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544",
+      "after": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544"
+    },
+    "public/tags/高股息/index.html": {
+      "before": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078",
+      "after": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078"
+    },
+    "public/tags/高股息/index.xml": {
+      "before": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482",
+      "after": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482"
+    },
+    "public/tags/2330/index.html": {
+      "before": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876",
+      "after": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876"
+    },
+    "public/tags/2330/index.xml": {
+      "before": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994",
+      "after": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994"
+    },
+    "public/tags/台積電/index.html": {
+      "before": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2",
+      "after": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2"
+    },
+    "public/tags/台積電/index.xml": {
+      "before": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc",
+      "after": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc"
+    },
+    "public/tags/商業模式/index.html": {
+      "before": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef",
+      "after": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef"
+    },
+    "public/tags/商業模式/index.xml": {
+      "before": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7",
+      "after": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7"
+    },
+    "public/tags/00929/index.html": {
+      "before": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454",
+      "after": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454"
+    },
+    "public/tags/00929/index.xml": {
+      "before": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7",
+      "after": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7"
+    },
+    "public/tags/虛擬模特兒/index.html": {
+      "before": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0",
+      "after": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0"
+    },
+    "public/tags/虛擬模特兒/index.xml": {
+      "before": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1",
+      "after": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1"
+    },
+    "public/tags/etf/index.html": {
+      "before": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de",
+      "after": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de"
+    },
+    "public/tags/etf/index.xml": {
+      "before": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6",
+      "after": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6"
+    },
+    "public/tags/00878/index.html": {
+      "before": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44",
+      "after": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44"
+    },
+    "public/tags/00878/index.xml": {
+      "before": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713",
+      "after": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713"
+    },
+    "public/tags/ai-影響者/index.html": {
+      "before": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420",
+      "after": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420"
+    },
+    "public/tags/ai-影響者/index.xml": {
+      "before": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3",
+      "after": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3"
+    },
+    "public/tags/onlyfans/index.html": {
+      "before": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81",
+      "after": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81"
+    },
+    "public/tags/onlyfans/index.xml": {
+      "before": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250",
+      "after": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250"
+    },
+    "public/tags/00919/index.html": {
+      "before": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869",
+      "after": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869"
+    },
+    "public/tags/00919/index.xml": {
+      "before": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2",
+      "after": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2"
+    },
+    "public/tags/00713/page/1/index.html": {
+      "before": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9",
+      "after": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9"
+    },
+    "public/tags/高股息/page/1/index.html": {
+      "before": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba",
+      "after": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba"
+    },
+    "public/tags/2330/page/1/index.html": {
+      "before": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65",
+      "after": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65"
+    },
+    "public/tags/台積電/page/1/index.html": {
+      "before": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0",
+      "after": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0"
+    },
+    "public/tags/商業模式/page/1/index.html": {
+      "before": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c",
+      "after": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c"
+    },
+    "public/tags/00929/page/1/index.html": {
+      "before": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd",
+      "after": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd"
+    },
+    "public/tags/虛擬模特兒/page/1/index.html": {
+      "before": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6",
+      "after": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6"
+    },
+    "public/tags/etf/page/1/index.html": {
+      "before": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462",
+      "after": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462"
+    },
+    "public/tags/00878/page/1/index.html": {
+      "before": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc",
+      "after": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc"
+    },
+    "public/tags/ai-影響者/page/1/index.html": {
+      "before": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0",
+      "after": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0"
+    },
+    "public/tags/onlyfans/page/1/index.html": {
+      "before": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74",
+      "after": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74"
+    },
+    "public/tags/00919/page/1/index.html": {
+      "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
+      "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
+    },
+    "apps/oracle/style.css": {
+      "before": "c96d749f4ddc555ba6ac6ad42698c03798b623ab9afaeae2f1f107344b14ea28",
+      "after": "c96d749f4ddc555ba6ac6ad42698c03798b623ab9afaeae2f1f107344b14ea28"
+    },
+    "apps/oracle/app.js": {
+      "before": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d",
+      "after": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d"
+    },
+    "apps/oracle/index.html": {
+      "before": "dba0d3d68ec31a9cd85f4928a831f0b31314696e559ffeae43304680284527a7",
+      "after": "dba0d3d68ec31a9cd85f4928a831f0b31314696e559ffeae43304680284527a7"
+    },
+    "apps/world-taiwan/style.css": {
+      "before": "2666affe3c17e55c0cca8ac08395603e43b6a508ef558fc72daa0cb12de8d41a",
+      "after": "2666affe3c17e55c0cca8ac08395603e43b6a508ef558fc72daa0cb12de8d41a"
+    },
+    "apps/world-taiwan/app.js": {
+      "before": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc",
+      "after": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc"
+    },
+    "apps/world-taiwan/index.html": {
+      "before": "5349b45e95928e4fcbb49c7e6aee62d313adc7f28e2dd5d6e5b15d2860defbd6",
+      "after": "5349b45e95928e4fcbb49c7e6aee62d313adc7f28e2dd5d6e5b15d2860defbd6"
+    },
+    "apps/world/style.css": {
+      "before": "2dffd029afeb03eb7221d17e595b02d55e020b1da365a498534b7aff5eed7cb0",
+      "after": "2dffd029afeb03eb7221d17e595b02d55e020b1da365a498534b7aff5eed7cb0"
+    },
+    "apps/world/app.js": {
+      "before": "436364937e86129206c0e7df3817714c89f9c4612a22fc92fb1521c478f6bed2",
+      "after": "436364937e86129206c0e7df3817714c89f9c4612a22fc92fb1521c478f6bed2"
+    },
+    "apps/world/index.html": {
+      "before": "0dda6836b8092f0caa1f27ff4295fc3016e6585d633a4ccd79d213a52cdbbaa4",
+      "after": "0dda6836b8092f0caa1f27ff4295fc3016e6585d633a4ccd79d213a52cdbbaa4"
+    },
+    "apps/relief/style.css": {
+      "before": "a74007e2c0196bc62877d11dbe02562324a6e6bce0fb0f7e98ef54417472330f",
+      "after": "a74007e2c0196bc62877d11dbe02562324a6e6bce0fb0f7e98ef54417472330f"
+    },
+    "apps/relief/light.js": {
+      "before": "45f7269942989904477528413927fad94f1d8c2061ab2dbe893d58a6b97e0234",
+      "after": "45f7269942989904477528413927fad94f1d8c2061ab2dbe893d58a6b97e0234"
+    },
+    "apps/relief/app.js": {
+      "before": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d",
+      "after": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d"
+    },
+    "apps/relief/index.html": {
+      "before": "3caf7a58790a21055b2e220e229c0b50307c60e573523806de40e3b045ec2bb7",
+      "after": "3caf7a58790a21055b2e220e229c0b50307c60e573523806de40e3b045ec2bb7"
+    },
+    "apps/future/city.js": {
+      "before": "a397a603811897c0cc5e44e8e701b7964c670c2f54ed0d047e216e8e31500e82",
+      "after": "a397a603811897c0cc5e44e8e701b7964c670c2f54ed0d047e216e8e31500e82"
+    },
+    "apps/future/city.css": {
+      "before": "4e807ef875d626dfa7be1215ca7aaacf7ade851cf4183098a897a1c1487b2430",
+      "after": "4e807ef875d626dfa7be1215ca7aaacf7ade851cf4183098a897a1c1487b2430"
+    },
+    "apps/future/data.html": {
+      "before": "db04dca6858a92eeabd937f50ebc34947acd37ab0f2339a0224de3a1d002495d",
+      "after": "db04dca6858a92eeabd937f50ebc34947acd37ab0f2339a0224de3a1d002495d"
+    },
+    "apps/future/style.css": {
+      "before": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d",
+      "after": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d"
+    },
+    "apps/future/app.js": {
+      "before": "657341f5c276c591e52594c039790d43255b25144b690c61c40afd27075beef0",
+      "after": "657341f5c276c591e52594c039790d43255b25144b690c61c40afd27075beef0"
+    },
+    "apps/future/index.html": {
+      "before": "4d54b30c33314ca8759697667b7bbdb8465d0b4a3b9bd7ee4765ef206e35a578",
+      "after": "4d54b30c33314ca8759697667b7bbdb8465d0b4a3b9bd7ee4765ef206e35a578"
+    },
+    "apps/ailab/worker.js": {
+      "before": "24306888c67b6555202c3a4e8bbf8db655e73497be7069d6d2de5c15bc136dd5",
+      "after": "24306888c67b6555202c3a4e8bbf8db655e73497be7069d6d2de5c15bc136dd5"
+    },
+    "apps/ailab/style.css": {
+      "before": "f274c1ba2c22dbab94525611807d6cb49f227341f6a278ae6adbe1f569325bd6",
+      "after": "f274c1ba2c22dbab94525611807d6cb49f227341f6a278ae6adbe1f569325bd6"
+    },
+    "apps/ailab/app.js": {
+      "before": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0",
+      "after": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0"
+    },
+    "apps/ailab/index.html": {
+      "before": "a24e65b220a74818118e13bcf22cb62dee961863dc4cbc974f5f365adc715633",
+      "after": "a24e65b220a74818118e13bcf22cb62dee961863dc4cbc974f5f365adc715633"
+    },
+    "apps/ailab/s2t.js": {
+      "before": "3532febb891564d8b69c2672755caf8fe85ea549d2acc69eacc4ae2254679bec",
+      "after": "3532febb891564d8b69c2672755caf8fe85ea549d2acc69eacc4ae2254679bec"
+    },
+    "apps/ai-frontier/style.css": {
+      "before": "5f95866a5e4d51181e2eb00c6185f67f070681b95387640f55196ede288f394d",
+      "after": "5f95866a5e4d51181e2eb00c6185f67f070681b95387640f55196ede288f394d"
+    },
+    "apps/ai-frontier/app.js": {
+      "before": "8c9a965c673b068b237d33394d079265fd2ddc7371351b6d0aa8b8cdfb095df2",
+      "after": "8c9a965c673b068b237d33394d079265fd2ddc7371351b6d0aa8b8cdfb095df2"
+    },
+    "apps/ai-frontier/index.html": {
+      "before": "8e0372fadd5736e9dc8b981535a237b502dad12967650fc3e0efd56fa862d388",
+      "after": "8e0372fadd5736e9dc8b981535a237b502dad12967650fc3e0efd56fa862d388"
+    },
+    "apps/sound/scene.js": {
+      "before": "fe0e9011d07fb80c3fac98a2fd44d8bc88229b841df5c2a86945df99f4267b92",
+      "after": "fe0e9011d07fb80c3fac98a2fd44d8bc88229b841df5c2a86945df99f4267b92"
+    },
+    "apps/sound/style.css": {
+      "before": "1bd8b6d14f4aeed17b14fd4fe20d534d93594f8b21ebe4d4565d39cfa4191da6",
+      "after": "1bd8b6d14f4aeed17b14fd4fe20d534d93594f8b21ebe4d4565d39cfa4191da6"
+    },
+    "apps/sound/app.js": {
+      "before": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f",
+      "after": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f"
+    },
+    "apps/sound/audio.js": {
+      "before": "594f324e22e94e7a38da4e52f35d59ae30377be14c8d785e34e9c9877ae47fa8",
+      "after": "594f324e22e94e7a38da4e52f35d59ae30377be14c8d785e34e9c9877ae47fa8"
+    },
+    "apps/sound/index.html": {
+      "before": "5902c9c0f600bfebebe385cec409586de2045302a277667460cc52d61b46f38d",
+      "after": "5902c9c0f600bfebebe385cec409586de2045302a277667460cc52d61b46f38d"
+    },
+    "apps/oracle/data/history.json": {
+      "before": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25",
+      "after": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25"
+    },
+    "apps/oracle/data/board.json": {
+      "before": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e",
+      "after": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e"
+    },
+    "apps/oracle/data/latest.json": {
+      "before": "8a6ac00bab523de993988fe12b85866e9a3e42358c4a32253ca019fd532ab67b",
+      "after": "8a6ac00bab523de993988fe12b85866e9a3e42358c4a32253ca019fd532ab67b"
+    },
+    "apps/world-taiwan/assets/world.svg": {
+      "before": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8",
+      "after": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8"
+    },
+    "apps/world-taiwan/data/news.json": {
+      "before": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec",
+      "after": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec"
+    },
+    "apps/world/data/countries-110m.json": {
+      "before": "2516c915867c7baf18ddec727aec46c315541a07cfb3d79a6559b05d5e94eee8",
+      "after": "2516c915867c7baf18ddec727aec46c315541a07cfb3d79a6559b05d5e94eee8"
+    },
+    "apps/world/data/WORLD-ATLAS-LICENSE": {
+      "before": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31",
+      "after": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31"
+    },
+    "apps/world/vendor/topojson-client.min.js": {
+      "before": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89",
+      "after": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
+    },
+    "apps/world/vendor/leaflet.js": {
+      "before": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
+      "after": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+    },
+    "apps/world/vendor/LEAFLET-LICENSE": {
+      "before": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
+      "after": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb"
+    },
+    "apps/world/vendor/TOPOJSON-CLIENT-LICENSE": {
+      "before": "4c4d15b635e04e691825a76db7d33f7f2033b55669a7430011694f31e6c65999",
+      "after": "4c4d15b635e04e691825a76db7d33f7f2033b55669a7430011694f31e6c65999"
+    },
+    "apps/world/vendor/leaflet.css": {
+      "before": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+      "after": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6"
+    },
+    "apps/world/data/api/20261016.json": {
+      "before": "70ef56160b0df6c918b58fcff3f72d524d3f583c8157480f3c4fa025201e78be",
+      "after": "70ef56160b0df6c918b58fcff3f72d524d3f583c8157480f3c4fa025201e78be"
+    },
+    "apps/world/data/api/days.json": {
+      "before": "e26c267fb7416205f331f8e1290655c451bd7620de23da1eb7f256a3e36d13ff",
+      "after": "e26c267fb7416205f331f8e1290655c451bd7620de23da1eb7f256a3e36d13ff"
+    },
+    "apps/relief/vendor/maplibre-gl.js": {
+      "before": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1",
+      "after": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1"
+    },
+    "apps/relief/vendor/maplibre-gl.css": {
+      "before": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9",
+      "after": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9"
+    },
+    "apps/relief/vendor/astronomy.browser.min.js": {
+      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
+      "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
+    },
+    "apps/future/data/world.json": {
+      "before": "e6a57bb8bee186452fbfc95f7769efab6281238901b9d99366f68ac706ea7023",
+      "after": "e6a57bb8bee186452fbfc95f7769efab6281238901b9d99366f68ac706ea7023"
+    },
+    "apps/future/vendor/three/LICENSE": {
+      "before": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+      "after": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    "apps/future/vendor/three/build/three.core.js": {
+      "before": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+      "after": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    "apps/future/vendor/three/build/three.module.js": {
+      "before": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
+      "after": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/Pass.js": {
+      "before": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5",
+      "after": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/EffectComposer.js": {
+      "before": "4b8c855f28eed2570bed898adc0ab89c585a8a281ecb6d905c09d00697f9f50a",
+      "after": "4b8c855f28eed2570bed898adc0ab89c585a8a281ecb6d905c09d00697f9f50a"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/OutputPass.js": {
+      "before": "f5b81c96e76b6b28b4b3ba8c41c4aeb982b1e03f3d82883242d951b2ab082fa2",
+      "after": "f5b81c96e76b6b28b4b3ba8c41c4aeb982b1e03f3d82883242d951b2ab082fa2"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/MaskPass.js": {
+      "before": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3",
+      "after": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/RenderPass.js": {
+      "before": "fd91229aacc5830e3984b0f2bdefcf566163ea028f4c1f1ab233fa6665a133ac",
+      "after": "fd91229aacc5830e3984b0f2bdefcf566163ea028f4c1f1ab233fa6665a133ac"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/UnrealBloomPass.js": {
+      "before": "d92742959879b461f25348b2abddc7ca0d48527e7718340bcfa29fa771e2799a",
+      "after": "d92742959879b461f25348b2abddc7ca0d48527e7718340bcfa29fa771e2799a"
+    },
+    "apps/future/vendor/three/jsm/postprocessing/ShaderPass.js": {
+      "before": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d",
+      "after": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d"
+    },
+    "apps/future/vendor/three/jsm/controls/OrbitControls.js": {
+      "before": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
+      "after": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+    },
+    "apps/future/vendor/three/jsm/shaders/CopyShader.js": {
+      "before": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718",
+      "after": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718"
+    },
+    "apps/future/vendor/three/jsm/shaders/LuminosityHighPassShader.js": {
+      "before": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e",
+      "after": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e"
+    },
+    "apps/future/vendor/three/jsm/shaders/OutputShader.js": {
+      "before": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2",
+      "after": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2"
+    },
+    "apps/ailab/samples/sample-balls.jpg": {
+      "before": "a1effb699a24ffa1d2ea5b8ef4d8bd1818c77de01627e94c06b98ca65ec9c200",
+      "after": "a1effb699a24ffa1d2ea5b8ef4d8bd1818c77de01627e94c06b98ca65ec9c200"
+    },
+    "apps/ailab/samples/sample-valley.jpg": {
+      "before": "3c7946a0e072e11547661ed90c2c20c7c55f2e7b329c591a687a35270a442a83",
+      "after": "3c7946a0e072e11547661ed90c2c20c7c55f2e7b329c591a687a35270a442a83"
+    },
+    "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.mjs": {
+      "before": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
+      "after": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
+    },
+    "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.wasm": {
+      "before": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
+      "after": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39"
+    },
+    "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.js": {
+      "before": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
+      "after": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
+    },
+    "apps/ailab/vendor/VENDOR.txt": {
+      "before": "f7edb0e28e37187fee5d0f3991b7825df9caaf23e51a116e50b07a6df872eb0d",
+      "after": "f7edb0e28e37187fee5d0f3991b7825df9caaf23e51a116e50b07a6df872eb0d"
+    },
+    "apps/ailab/vendor/transformers.min.js": {
+      "before": "13746ae88695b62e431fc5ebe3beb10a080d2081406047670639ce8c10a9ba25",
+      "after": "13746ae88695b62e431fc5ebe3beb10a080d2081406047670639ce8c10a9ba25"
+    },
+    "apps/ailab/vendor/transformers.LICENSE.txt": {
+      "before": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "after": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "apps/ai-frontier/data/20261016.json": {
+      "before": "05b0b2005ad857fd6d7d1b5cb386eeb089f2dea32e6ecbbf25c271b799c7217c",
+      "after": "05b0b2005ad857fd6d7d1b5cb386eeb089f2dea32e6ecbbf25c271b799c7217c"
+    },
+    "apps/ai-frontier/data/20261014.json": {
+      "before": "fc56de94cabf04cee015c5e78cf26ac0c8ec3a40b0fed2a32a2f7015a8cc3ad0",
+      "after": "fc56de94cabf04cee015c5e78cf26ac0c8ec3a40b0fed2a32a2f7015a8cc3ad0"
+    },
+    "apps/ai-frontier/data/index.json": {
+      "before": "7b9377c07e12d4c863177cd3d6ad11539d58979d91a0e6e37b8879a796c5ea15",
+      "after": "7b9377c07e12d4c863177cd3d6ad11539d58979d91a0e6e37b8879a796c5ea15"
+    },
+    "apps/ai-frontier/data/20261013.json": {
+      "before": "717b7e1e5d43d2461ee52ec6ccff9fb52d67ac88ab6f05fbeddd293f11246ad8",
+      "after": "717b7e1e5d43d2461ee52ec6ccff9fb52d67ac88ab6f05fbeddd293f11246ad8"
+    },
+    "apps/ai-frontier/data/20261012.json": {
+      "before": "23dd661a2e4a88e2b1eb440a822197a4600452898381823f596d911f4a055a3d",
+      "after": "23dd661a2e4a88e2b1eb440a822197a4600452898381823f596d911f4a055a3d"
+    },
+    "apps/ai-frontier/data/20261017.json": {
+      "before": "0c30474db3c2239c2eec8b3a986442dfe97408b70e5f5b1314ec753ee65aa77f",
+      "after": "0c30474db3c2239c2eec8b3a986442dfe97408b70e5f5b1314ec753ee65aa77f"
+    },
+    "apps/ai-frontier/data/week-20261017.json": {
+      "before": "d1e4402e58e29f6fcd49d526f8f0961f345c0bb4343b36be2cb9372ef45c80fd",
+      "after": "d1e4402e58e29f6fcd49d526f8f0961f345c0bb4343b36be2cb9372ef45c80fd"
+    },
+    "apps/ai-frontier/data/20261015.json": {
+      "before": "e527e1016f22030f5b7381c70c89fc352abbfc57f659ecc3a7eddd2cd4656074",
+      "after": "e527e1016f22030f5b7381c70c89fc352abbfc57f659ecc3a7eddd2cd4656074"
+    },
+    "apps/sound/vendor/astronomy.browser.min.js": {
+      "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
+      "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
+    },
+    "world-impact/assets/world.webp": {
+      "before": "13fb62a54830e545f4207181611245d66b6b9f42e9226da08a85cf0bcf0c8662",
+      "after": "13fb62a54830e545f4207181611245d66b6b9f42e9226da08a85cf0bcf0c8662"
+    },
+    "world-impact/assets/THREE-LICENSE.txt": {
+      "before": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "after": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    "world-impact/assets/three.core.js": {
+      "before": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
+      "after": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    "world-impact/assets/world.png": {
+      "before": "f1ab7958e0790bd3fdd433450eb3e21a0e4f5e5ef6240d9ba08bd11b2b86ec96",
+      "after": "f1ab7958e0790bd3fdd433450eb3e21a0e4f5e5ef6240d9ba08bd11b2b86ec96"
+    },
+    "world-impact/assets/three.module.js": {
+      "before": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
+      "after": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
     },
     "world-impact/assets/BufferGeometryUtils.js": {
       "before": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797",
@@ -2519,41 +1053,9 @@
       "before": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f",
       "after": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f"
     },
-    "world-impact/assets/THREE-LICENSE.txt": {
-      "before": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
-      "after": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
-    },
-    "world-impact/assets/three.core.js": {
-      "before": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
-      "after": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
-    },
-    "world-impact/assets/three.module.js": {
-      "before": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
-      "after": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
-    },
     "world-impact/assets/world.glb": {
       "before": "1d8eaff46ae8eb9d0b7280e624ab75fd127481fb5fec6675405f34330c48e03a",
       "after": "1d8eaff46ae8eb9d0b7280e624ab75fd127481fb5fec6675405f34330c48e03a"
-    },
-    "world-impact/assets/world.png": {
-      "before": "f1ab7958e0790bd3fdd433450eb3e21a0e4f5e5ef6240d9ba08bd11b2b86ec96",
-      "after": "f1ab7958e0790bd3fdd433450eb3e21a0e4f5e5ef6240d9ba08bd11b2b86ec96"
-    },
-    "world-impact/assets/world.webp": {
-      "before": "13fb62a54830e545f4207181611245d66b6b9f42e9226da08a85cf0bcf0c8662",
-      "after": "13fb62a54830e545f4207181611245d66b6b9f42e9226da08a85cf0bcf0c8662"
-    },
-    "world-impact/events.json": {
-      "before": "856419081e07aed5d25cbf5678012f59d3e16cabf4cad9344b8f9fd9bcbf6a1d",
-      "after": "856419081e07aed5d25cbf5678012f59d3e16cabf4cad9344b8f9fd9bcbf6a1d"
-    },
-    "world-impact/index.html": {
-      "before": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f",
-      "after": "78540d291c6d8af7c71bed62bb22f6f05fe997cc1da50e4c037657368410de0f"
-    },
-    "world-impact/scene.js": {
-      "before": "d47e956ef686324868ef6a2b0eadfcc94383d038b11c986b25a8ad6ae35dabdc",
-      "after": "d47e956ef686324868ef6a2b0eadfcc94383d038b11c986b25a8ad6ae35dabdc"
     },
     "world-impact/source/README.md": {
       "before": "f1417ee6b43f892b51d13bfc1eb382e0727d78cbd30fd66f1e8b12db56afea3b",
@@ -2563,65 +1065,61 @@
       "before": "c35e79f15654b25664022326c76df212577bfbfd8b8ba70e33c58d6b7c06e1dc",
       "after": "c35e79f15654b25664022326c76df212577bfbfd8b8ba70e33c58d6b7c06e1dc"
     },
-    "world-impact/source/build_scene.py": {
-      "before": "fd988811d4f796cf6931a773e7c5cd4df3e5b680f5adad841a194577d600be92",
-      "after": "fd988811d4f796cf6931a773e7c5cd4df3e5b680f5adad841a194577d600be92"
+    "world-impact/source/source-checks.json": {
+      "before": "8262a14d22c73e658e7dd2e3b9c0818fc7c789e5a63fdf63a02f09b2b5dcbd42",
+      "after": "8262a14d22c73e658e7dd2e3b9c0818fc7c789e5a63fdf63a02f09b2b5dcbd42"
     },
     "world-impact/source/desktop-3d.png": {
       "before": "649cf205570e1c68b9d8f9c221c5c814a39cbfe79169c70246516ede9e69eff1",
       "after": "649cf205570e1c68b9d8f9c221c5c814a39cbfe79169c70246516ede9e69eff1"
     },
-    "world-impact/source/desktop.png": {
-      "before": "3ff1325c5c2590670fc59ae258c6bff3bc8f8d758b093eb40a83f87ba27cb5f9",
-      "after": "3ff1325c5c2590670fc59ae258c6bff3bc8f8d758b093eb40a83f87ba27cb5f9"
-    },
-    "world-impact/source/final-check.cjs": {
-      "before": "a4d28f194d5b9f306d3eb33ad2ebd3c261e8141329fd2aa06b34572e22b33856",
-      "after": "a4d28f194d5b9f306d3eb33ad2ebd3c261e8141329fd2aa06b34572e22b33856"
-    },
-    "world-impact/source/mobile-detail.png": {
-      "before": "548230ed5cf44928087243fe3ef97634318041322efcf42ef2ca8f5c35e093cc",
-      "after": "548230ed5cf44928087243fe3ef97634318041322efcf42ef2ca8f5c35e093cc"
-    },
-    "world-impact/source/mobile-performance.json": {
-      "before": "ba974e4c6672dba1134f9497aa5bf47adc035b2999444d8e68263fb03a650c11",
-      "after": "ba974e4c6672dba1134f9497aa5bf47adc035b2999444d8e68263fb03a650c11"
-    },
-    "world-impact/source/mobile.png": {
-      "before": "282e19f9a1b6dba71f9b69ebcaf3485dc74442e7232653015003fe4e52fd2228",
-      "after": "282e19f9a1b6dba71f9b69ebcaf3485dc74442e7232653015003fe4e52fd2228"
+    "world-impact/source/package.json": {
+      "before": "414e5856124b562b3b68ee6d925109871713cc2fb2050ef8fc857e873ee53666",
+      "after": "414e5856124b562b3b68ee6d925109871713cc2fb2050ef8fc857e873ee53666"
     },
     "world-impact/source/package-lock.json": {
       "before": "218a226ddbf8b6841f80eaf1f9b5d55a00ba82e0a054ed626d08ac90b4c51c20",
       "after": "218a226ddbf8b6841f80eaf1f9b5d55a00ba82e0a054ed626d08ac90b4c51c20"
     },
-    "world-impact/source/package.json": {
-      "before": "414e5856124b562b3b68ee6d925109871713cc2fb2050ef8fc857e873ee53666",
-      "after": "414e5856124b562b3b68ee6d925109871713cc2fb2050ef8fc857e873ee53666"
+    "world-impact/source/build_scene.py": {
+      "before": "fd988811d4f796cf6931a773e7c5cd4df3e5b680f5adad841a194577d600be92",
+      "after": "fd988811d4f796cf6931a773e7c5cd4df3e5b680f5adad841a194577d600be92"
     },
-    "world-impact/source/perf.cjs": {
-      "before": "96fdf86bd8f83ab7aad776bf1a8e45a31fece5a09e980d271f4e3fcc38942089",
-      "after": "96fdf86bd8f83ab7aad776bf1a8e45a31fece5a09e980d271f4e3fcc38942089"
+    "world-impact/source/mobile-detail.png": {
+      "before": "548230ed5cf44928087243fe3ef97634318041322efcf42ef2ca8f5c35e093cc",
+      "after": "548230ed5cf44928087243fe3ef97634318041322efcf42ef2ca8f5c35e093cc"
+    },
+    "world-impact/source/final-check.cjs": {
+      "before": "a4d28f194d5b9f306d3eb33ad2ebd3c261e8141329fd2aa06b34572e22b33856",
+      "after": "a4d28f194d5b9f306d3eb33ad2ebd3c261e8141329fd2aa06b34572e22b33856"
+    },
+    "world-impact/source/desktop.png": {
+      "before": "3ff1325c5c2590670fc59ae258c6bff3bc8f8d758b093eb40a83f87ba27cb5f9",
+      "after": "3ff1325c5c2590670fc59ae258c6bff3bc8f8d758b093eb40a83f87ba27cb5f9"
     },
     "world-impact/source/qa.cjs": {
       "before": "76095fe8e778b06fc2746a81cf6f9a46e79c237d5be16876e76531ec3bdc7fdd",
       "after": "76095fe8e778b06fc2746a81cf6f9a46e79c237d5be16876e76531ec3bdc7fdd"
     },
+    "world-impact/source/mobile.png": {
+      "before": "282e19f9a1b6dba71f9b69ebcaf3485dc74442e7232653015003fe4e52fd2228",
+      "after": "282e19f9a1b6dba71f9b69ebcaf3485dc74442e7232653015003fe4e52fd2228"
+    },
+    "world-impact/source/perf.cjs": {
+      "before": "96fdf86bd8f83ab7aad776bf1a8e45a31fece5a09e980d271f4e3fcc38942089",
+      "after": "96fdf86bd8f83ab7aad776bf1a8e45a31fece5a09e980d271f4e3fcc38942089"
+    },
     "world-impact/source/qa.json": {
       "before": "f2dc62e85b073d131697c840309331614374dd99af64db1fbc533737d0322308",
       "after": "f2dc62e85b073d131697c840309331614374dd99af64db1fbc533737d0322308"
-    },
-    "world-impact/source/source-checks.json": {
-      "before": "8262a14d22c73e658e7dd2e3b9c0818fc7c789e5a63fdf63a02f09b2b5dcbd42",
-      "after": "8262a14d22c73e658e7dd2e3b9c0818fc7c789e5a63fdf63a02f09b2b5dcbd42"
     },
     "world-impact/source/world.blend": {
       "before": "6a7963543742536b7a7e483c39996da055f05f2e05987beca0b7d4e472f1ccae",
       "after": "6a7963543742536b7a7e483c39996da055f05f2e05987beca0b7d4e472f1ccae"
     },
-    "world-impact/style.css": {
-      "before": "8d5f42b5e2bac4e37ca3cc4248b9274cf2adf0b263eab2dc176811205a276dbc",
-      "after": "8d5f42b5e2bac4e37ca3cc4248b9274cf2adf0b263eab2dc176811205a276dbc"
+    "world-impact/source/mobile-performance.json": {
+      "before": "ba974e4c6672dba1134f9497aa5bf47adc035b2999444d8e68263fb03a650c11",
+      "after": "ba974e4c6672dba1134f9497aa5bf47adc035b2999444d8e68263fb03a650c11"
     }
   }
 }
