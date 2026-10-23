@@ -1,8 +1,8 @@
 {
   "baseline_commit": "4f106fcf77c98ecbb25492cb0b4ba20b075ec9fd",
   "before_count": 247,
-  "after_count": 88,
-  "unchanged": 80,
+  "after_count": 6,
+  "unchanged": 1,
   "diff": {
     "added": [
       "favicon.ico",
@@ -22,12 +22,59 @@
       "apps/ai-frontier/data/week-20261017.json",
       "apps/ai-frontier/index.html",
       "apps/ai-frontier/style.css",
+      "apps/ailab/app.js",
+      "apps/ailab/index.html",
+      "apps/ailab/s2t.js",
+      "apps/ailab/samples/sample-balls.jpg",
+      "apps/ailab/samples/sample-valley.jpg",
+      "apps/ailab/style.css",
+      "apps/ailab/vendor/VENDOR.txt",
+      "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.js",
+      "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.mjs",
+      "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.wasm",
+      "apps/ailab/vendor/transformers.LICENSE.txt",
+      "apps/ailab/vendor/transformers.min.js",
+      "apps/ailab/worker.js",
+      "apps/future/app.js",
+      "apps/future/city.css",
+      "apps/future/city.js",
+      "apps/future/data.html",
+      "apps/future/data/world.json",
+      "apps/future/index.html",
+      "apps/future/style.css",
+      "apps/future/vendor/three/LICENSE",
+      "apps/future/vendor/three/build/three.core.js",
+      "apps/future/vendor/three/build/three.module.js",
+      "apps/future/vendor/three/jsm/controls/OrbitControls.js",
+      "apps/future/vendor/three/jsm/postprocessing/EffectComposer.js",
+      "apps/future/vendor/three/jsm/postprocessing/MaskPass.js",
+      "apps/future/vendor/three/jsm/postprocessing/OutputPass.js",
+      "apps/future/vendor/three/jsm/postprocessing/Pass.js",
+      "apps/future/vendor/three/jsm/postprocessing/RenderPass.js",
+      "apps/future/vendor/three/jsm/postprocessing/ShaderPass.js",
+      "apps/future/vendor/three/jsm/postprocessing/UnrealBloomPass.js",
+      "apps/future/vendor/three/jsm/shaders/CopyShader.js",
+      "apps/future/vendor/three/jsm/shaders/LuminosityHighPassShader.js",
+      "apps/future/vendor/three/jsm/shaders/OutputShader.js",
       "apps/oracle/app.js",
       "apps/oracle/data/board.json",
       "apps/oracle/data/history.json",
       "apps/oracle/data/latest.json",
       "apps/oracle/index.html",
       "apps/oracle/style.css",
+      "apps/relief/app.js",
+      "apps/relief/index.html",
+      "apps/relief/light.js",
+      "apps/relief/style.css",
+      "apps/relief/vendor/astronomy.browser.min.js",
+      "apps/relief/vendor/maplibre-gl.css",
+      "apps/relief/vendor/maplibre-gl.js",
+      "apps/sound/app.js",
+      "apps/sound/audio.js",
+      "apps/sound/index.html",
+      "apps/sound/scene.js",
+      "apps/sound/style.css",
+      "apps/sound/vendor/astronomy.browser.min.js",
       "apps/world-taiwan/app.js",
       "apps/world-taiwan/assets/world.svg",
       "apps/world-taiwan/data/news.json",
@@ -63,10 +110,16 @@
       "posts/taiwan-stock-watch-20260514/index.html",
       "projects/previews/ai-frontier.poster.webp",
       "projects/previews/ai-frontier.webp",
+      "projects/previews/ailab.poster.webp",
+      "projects/previews/ailab.webp",
       "projects/previews/blog.poster.webp",
       "projects/previews/blog.webp",
+      "projects/previews/emergence.poster.webp",
+      "projects/previews/emergence.webp",
       "projects/previews/oracle.poster.webp",
       "projects/previews/oracle.webp",
+      "projects/previews/room.poster.webp",
+      "projects/previews/room.webp",
       "projects/previews/taipei-mrt.poster.webp",
       "projects/previews/taipei-mrt.webp",
       "projects/previews/world.poster.webp",
@@ -130,6 +183,35 @@
       "public/tags/高股息/index.xml",
       "public/tags/高股息/page/1/index.html",
       "public/taiwan-stock-chart.png",
+      "room/assets/mini-store.glb",
+      "room/cruise-data.mjs",
+      "room/cruise-scene.mjs",
+      "room/index.html",
+      "room/main.mjs",
+      "room/okinawa-data.mjs",
+      "room/okinawa.mjs",
+      "room/photos/fukushuen.jpg",
+      "room/photos/gokokuji.jpg",
+      "room/photos/heiwa-dori.jpg",
+      "room/photos/kokusai-dori.jpg",
+      "room/photos/kume-shiseibyo.jpg",
+      "room/photos/makishi-market.jpg",
+      "room/photos/makishi-station.jpg",
+      "room/photos/naha-history-museum.jpg",
+      "room/photos/naminoue-beach.jpg",
+      "room/photos/naminoue-shrine.jpg",
+      "room/photos/sakurazaka-theater.jpg",
+      "room/photos/tsuboya-museum.jpg",
+      "room/sea-physics.mjs",
+      "room/sky-astro.mjs",
+      "room/store-sim.mjs",
+      "room/style.css",
+      "room/vendor/three/LICENSE",
+      "room/vendor/three/build/three.core.js",
+      "room/vendor/three/build/three.module.js",
+      "room/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "room/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "room/view-state.mjs",
       "sitemap.xml",
       "tags/00713/index.html",
       "tags/00713/index.xml",
@@ -173,9 +255,6 @@
     ],
     "changed": [
       "404.html",
-      "apps/future/city.css",
-      "apps/future/city.js",
-      "apps/future/index.html",
       "index.html",
       "projects/index.html"
     ]
@@ -187,7 +266,7 @@
     },
     "404.html": {
       "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
-      "after": "2efec30d6a21beecba5a76b475ac8010056c6a64e562fdab8f5c7e9b2e398c44"
+      "after": "3bb3e1816ac918d47174d74d97d3b09074c536573bbb44cba7c242a283c228a0"
     },
     "CNAME": {
       "before": "efd8978b9f1a3b098e228d73d1569fc3d5c72ba742822e5b7bb5211a79f3b4fb",
@@ -243,139 +322,139 @@
     },
     "apps/ailab/app.js": {
       "before": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0",
-      "after": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0"
+      "after": null
     },
     "apps/ailab/index.html": {
       "before": "a24e65b220a74818118e13bcf22cb62dee961863dc4cbc974f5f365adc715633",
-      "after": "a24e65b220a74818118e13bcf22cb62dee961863dc4cbc974f5f365adc715633"
+      "after": null
     },
     "apps/ailab/s2t.js": {
       "before": "3532febb891564d8b69c2672755caf8fe85ea549d2acc69eacc4ae2254679bec",
-      "after": "3532febb891564d8b69c2672755caf8fe85ea549d2acc69eacc4ae2254679bec"
+      "after": null
     },
     "apps/ailab/samples/sample-balls.jpg": {
       "before": "a1effb699a24ffa1d2ea5b8ef4d8bd1818c77de01627e94c06b98ca65ec9c200",
-      "after": "a1effb699a24ffa1d2ea5b8ef4d8bd1818c77de01627e94c06b98ca65ec9c200"
+      "after": null
     },
     "apps/ailab/samples/sample-valley.jpg": {
       "before": "3c7946a0e072e11547661ed90c2c20c7c55f2e7b329c591a687a35270a442a83",
-      "after": "3c7946a0e072e11547661ed90c2c20c7c55f2e7b329c591a687a35270a442a83"
+      "after": null
     },
     "apps/ailab/style.css": {
       "before": "f274c1ba2c22dbab94525611807d6cb49f227341f6a278ae6adbe1f569325bd6",
-      "after": "f274c1ba2c22dbab94525611807d6cb49f227341f6a278ae6adbe1f569325bd6"
+      "after": null
     },
     "apps/ailab/vendor/VENDOR.txt": {
       "before": "f7edb0e28e37187fee5d0f3991b7825df9caaf23e51a116e50b07a6df872eb0d",
-      "after": "f7edb0e28e37187fee5d0f3991b7825df9caaf23e51a116e50b07a6df872eb0d"
+      "after": null
     },
     "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.js": {
       "before": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
-      "after": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
+      "after": null
     },
     "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.mjs": {
       "before": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
-      "after": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9"
+      "after": null
     },
     "apps/ailab/vendor/ort-wasm-simd-threaded.jsep.wasm": {
       "before": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
-      "after": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39"
+      "after": null
     },
     "apps/ailab/vendor/transformers.LICENSE.txt": {
       "before": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "after": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      "after": null
     },
     "apps/ailab/vendor/transformers.min.js": {
       "before": "13746ae88695b62e431fc5ebe3beb10a080d2081406047670639ce8c10a9ba25",
-      "after": "13746ae88695b62e431fc5ebe3beb10a080d2081406047670639ce8c10a9ba25"
+      "after": null
     },
     "apps/ailab/worker.js": {
       "before": "24306888c67b6555202c3a4e8bbf8db655e73497be7069d6d2de5c15bc136dd5",
-      "after": "24306888c67b6555202c3a4e8bbf8db655e73497be7069d6d2de5c15bc136dd5"
+      "after": null
     },
     "apps/future/app.js": {
       "before": "657341f5c276c591e52594c039790d43255b25144b690c61c40afd27075beef0",
-      "after": "657341f5c276c591e52594c039790d43255b25144b690c61c40afd27075beef0"
+      "after": null
     },
     "apps/future/city.css": {
       "before": "4e807ef875d626dfa7be1215ca7aaacf7ade851cf4183098a897a1c1487b2430",
-      "after": "482bce39190ccdb8342746bed235e51c441a3d6edc5b9ed507497162705b5c45"
+      "after": null
     },
     "apps/future/city.js": {
       "before": "a397a603811897c0cc5e44e8e701b7964c670c2f54ed0d047e216e8e31500e82",
-      "after": "0b7275eba4b1f8cf1c67872d3e5999d15cfa4fb1ef23405607fa6dfe554381f6"
+      "after": null
     },
     "apps/future/data.html": {
       "before": "db04dca6858a92eeabd937f50ebc34947acd37ab0f2339a0224de3a1d002495d",
-      "after": "db04dca6858a92eeabd937f50ebc34947acd37ab0f2339a0224de3a1d002495d"
+      "after": null
     },
     "apps/future/data/world.json": {
       "before": "e6a57bb8bee186452fbfc95f7769efab6281238901b9d99366f68ac706ea7023",
-      "after": "e6a57bb8bee186452fbfc95f7769efab6281238901b9d99366f68ac706ea7023"
+      "after": null
     },
     "apps/future/index.html": {
       "before": "4d54b30c33314ca8759697667b7bbdb8465d0b4a3b9bd7ee4765ef206e35a578",
-      "after": "e2d390d529db969fe75b7488cc16f63cf3e7f49eb64e3b88d5c97ef1dff5e61f"
+      "after": null
     },
     "apps/future/style.css": {
       "before": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d",
-      "after": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d"
+      "after": null
     },
     "apps/future/vendor/three/LICENSE": {
       "before": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
-      "after": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+      "after": null
     },
     "apps/future/vendor/three/build/three.core.js": {
       "before": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
-      "after": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+      "after": null
     },
     "apps/future/vendor/three/build/three.module.js": {
       "before": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
-      "after": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+      "after": null
     },
     "apps/future/vendor/three/jsm/controls/OrbitControls.js": {
       "before": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c",
-      "after": "b97879c748170baadeb3fb84cea1ffdf4674e283dc06042f34e2acb95a76042c"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/EffectComposer.js": {
       "before": "4b8c855f28eed2570bed898adc0ab89c585a8a281ecb6d905c09d00697f9f50a",
-      "after": "4b8c855f28eed2570bed898adc0ab89c585a8a281ecb6d905c09d00697f9f50a"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/MaskPass.js": {
       "before": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3",
-      "after": "7cd08eee9d5d6f5578beaddbdcbe9c384f6873810af27f22ab7db3ceeb127aa3"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/OutputPass.js": {
       "before": "f5b81c96e76b6b28b4b3ba8c41c4aeb982b1e03f3d82883242d951b2ab082fa2",
-      "after": "f5b81c96e76b6b28b4b3ba8c41c4aeb982b1e03f3d82883242d951b2ab082fa2"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/Pass.js": {
       "before": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5",
-      "after": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/RenderPass.js": {
       "before": "fd91229aacc5830e3984b0f2bdefcf566163ea028f4c1f1ab233fa6665a133ac",
-      "after": "fd91229aacc5830e3984b0f2bdefcf566163ea028f4c1f1ab233fa6665a133ac"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/ShaderPass.js": {
       "before": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d",
-      "after": "e2500a5913b26bbf5148ceaae644c6edcff06a18b01494ee37bf856353d2ab9d"
+      "after": null
     },
     "apps/future/vendor/three/jsm/postprocessing/UnrealBloomPass.js": {
       "before": "d92742959879b461f25348b2abddc7ca0d48527e7718340bcfa29fa771e2799a",
-      "after": "d92742959879b461f25348b2abddc7ca0d48527e7718340bcfa29fa771e2799a"
+      "after": null
     },
     "apps/future/vendor/three/jsm/shaders/CopyShader.js": {
       "before": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718",
-      "after": "a33057d5ac91c43304c186ac0e8816e62bb2ed471d3a00ff3018dfd5c0389718"
+      "after": null
     },
     "apps/future/vendor/three/jsm/shaders/LuminosityHighPassShader.js": {
       "before": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e",
-      "after": "5044f780b6e6cf863947f64c36fe1587132f7fbe395ada863cd1e5f0388dcf1e"
+      "after": null
     },
     "apps/future/vendor/three/jsm/shaders/OutputShader.js": {
       "before": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2",
-      "after": "353479f77a8d7e2629d49ccac9fc2f5dbfdda5442e0adf867b00377a2fcb0cb2"
+      "after": null
     },
     "apps/oracle/app.js": {
       "before": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d",
@@ -403,55 +482,55 @@
     },
     "apps/relief/app.js": {
       "before": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d",
-      "after": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d"
+      "after": null
     },
     "apps/relief/index.html": {
       "before": "3caf7a58790a21055b2e220e229c0b50307c60e573523806de40e3b045ec2bb7",
-      "after": "3caf7a58790a21055b2e220e229c0b50307c60e573523806de40e3b045ec2bb7"
+      "after": null
     },
     "apps/relief/light.js": {
       "before": "45f7269942989904477528413927fad94f1d8c2061ab2dbe893d58a6b97e0234",
-      "after": "45f7269942989904477528413927fad94f1d8c2061ab2dbe893d58a6b97e0234"
+      "after": null
     },
     "apps/relief/style.css": {
       "before": "a74007e2c0196bc62877d11dbe02562324a6e6bce0fb0f7e98ef54417472330f",
-      "after": "a74007e2c0196bc62877d11dbe02562324a6e6bce0fb0f7e98ef54417472330f"
+      "after": null
     },
     "apps/relief/vendor/astronomy.browser.min.js": {
       "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
+      "after": null
     },
     "apps/relief/vendor/maplibre-gl.css": {
       "before": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9",
-      "after": "576b085fdd9487a65a19215328c1e086c07ce5bf6da09b666b3806d3d008dae9"
+      "after": null
     },
     "apps/relief/vendor/maplibre-gl.js": {
       "before": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1",
-      "after": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1"
+      "after": null
     },
     "apps/sound/app.js": {
       "before": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f",
-      "after": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f"
+      "after": null
     },
     "apps/sound/audio.js": {
       "before": "594f324e22e94e7a38da4e52f35d59ae30377be14c8d785e34e9c9877ae47fa8",
-      "after": "594f324e22e94e7a38da4e52f35d59ae30377be14c8d785e34e9c9877ae47fa8"
+      "after": null
     },
     "apps/sound/index.html": {
       "before": "5902c9c0f600bfebebe385cec409586de2045302a277667460cc52d61b46f38d",
-      "after": "5902c9c0f600bfebebe385cec409586de2045302a277667460cc52d61b46f38d"
+      "after": null
     },
     "apps/sound/scene.js": {
       "before": "fe0e9011d07fb80c3fac98a2fd44d8bc88229b841df5c2a86945df99f4267b92",
-      "after": "fe0e9011d07fb80c3fac98a2fd44d8bc88229b841df5c2a86945df99f4267b92"
+      "after": null
     },
     "apps/sound/style.css": {
       "before": "1bd8b6d14f4aeed17b14fd4fe20d534d93594f8b21ebe4d4565d39cfa4191da6",
-      "after": "1bd8b6d14f4aeed17b14fd4fe20d534d93594f8b21ebe4d4565d39cfa4191da6"
+      "after": null
     },
     "apps/sound/vendor/astronomy.browser.min.js": {
       "before": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6",
-      "after": "f41139a87941ea017ab902b954c9389fa27ea72083d7fab4971756d7769d14e6"
+      "after": null
     },
     "apps/world-taiwan/app.js": {
       "before": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc",
@@ -567,7 +646,7 @@
     },
     "index.html": {
       "before": "cae701ff32a76b7c547689286a3d631595cd615fddc5530dcd702314c6f9fe9d",
-      "after": "8b13e8cfec9c66744dc70c8b235a887607508e7baf418fa490659b1d56f1a912"
+      "after": "f0131988011b0529876d9c9d0d6c5fe12f2447ad298a1f9e8d38f1f8051e1482"
     },
     "index.xml": {
       "before": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935",
@@ -599,7 +678,7 @@
     },
     "projects/index.html": {
       "before": "c9b8f2973ca3f4639ce701a22bd6bdf6fd0dbb0239f5d091332a69f93cdd0e2d",
-      "after": "8b13e8cfec9c66744dc70c8b235a887607508e7baf418fa490659b1d56f1a912"
+      "after": "f0131988011b0529876d9c9d0d6c5fe12f2447ad298a1f9e8d38f1f8051e1482"
     },
     "projects/previews/ai-frontier.poster.webp": {
       "before": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85",
@@ -611,11 +690,11 @@
     },
     "projects/previews/ailab.poster.webp": {
       "before": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810",
-      "after": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810"
+      "after": null
     },
     "projects/previews/ailab.webp": {
       "before": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4",
-      "after": "ceb5e48a20854864fd5fb44784546c51a1e36d6397a4595a520dd7664ba168f4"
+      "after": null
     },
     "projects/previews/blog.poster.webp": {
       "before": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8",
@@ -627,11 +706,11 @@
     },
     "projects/previews/emergence.poster.webp": {
       "before": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530",
-      "after": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530"
+      "after": null
     },
     "projects/previews/emergence.webp": {
       "before": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5",
-      "after": "28bfdbd0261ea657bb9b650d5c5aba8337dfff5860d0610f173043ac23f5f4c5"
+      "after": null
     },
     "projects/previews/oracle.poster.webp": {
       "before": "41b4f0d72edff7bbd48d560779dc6c8591027597d2a863e8d86886833147b2e1",
@@ -643,11 +722,11 @@
     },
     "projects/previews/room.poster.webp": {
       "before": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0",
-      "after": "5e144757fefdbfcefd2f3a1985cbdc84b7223e63b4d89c95141cb5d4ae2a4aa0"
+      "after": null
     },
     "projects/previews/room.webp": {
       "before": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274",
-      "after": "b37a58c112514a45942c4c19bbc5871ed7d13b95cc6ec7758c68522d9effa274"
+      "after": null
     },
     "projects/previews/taipei-mrt.poster.webp": {
       "before": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417",
@@ -903,119 +982,119 @@
     },
     "room/assets/mini-store.glb": {
       "before": "793c1748fbd8bdcf65e8545900d665efadfe658d4f9b87c3f83918073c2c6d26",
-      "after": "793c1748fbd8bdcf65e8545900d665efadfe658d4f9b87c3f83918073c2c6d26"
+      "after": null
     },
     "room/cruise-data.mjs": {
       "before": "6864f2a50b7d19a17e3167a7446becfb28ab713aca239cb8b68fc607975b19fd",
-      "after": "6864f2a50b7d19a17e3167a7446becfb28ab713aca239cb8b68fc607975b19fd"
+      "after": null
     },
     "room/cruise-scene.mjs": {
       "before": "6baaa20e91674a5dfcb26ea9199f8b724ea2010201446845b425d3ef6a2c9a07",
-      "after": "6baaa20e91674a5dfcb26ea9199f8b724ea2010201446845b425d3ef6a2c9a07"
+      "after": null
     },
     "room/index.html": {
       "before": "ce3b0901b05a4fba3a93b38edd3ec8b9bcfdbd67ebb564f3aa1457e3e4e989dd",
-      "after": "ce3b0901b05a4fba3a93b38edd3ec8b9bcfdbd67ebb564f3aa1457e3e4e989dd"
+      "after": null
     },
     "room/main.mjs": {
       "before": "5275938cdab831abff6d12d6747b6f82e3a01bae259cdb008240a68d9f54f365",
-      "after": "5275938cdab831abff6d12d6747b6f82e3a01bae259cdb008240a68d9f54f365"
+      "after": null
     },
     "room/okinawa-data.mjs": {
       "before": "87f667b6997964e3612145462c4ead938cd9ec3c5c85664f8e3b3372eaebf31e",
-      "after": "87f667b6997964e3612145462c4ead938cd9ec3c5c85664f8e3b3372eaebf31e"
+      "after": null
     },
     "room/okinawa.mjs": {
       "before": "b8b7dba7798a8f14af5164d1afc75e06078b6303aefaf14606cac5f63e459b7c",
-      "after": "b8b7dba7798a8f14af5164d1afc75e06078b6303aefaf14606cac5f63e459b7c"
+      "after": null
     },
     "room/photos/fukushuen.jpg": {
       "before": "c3f26f91103da3d7de1dc7b3fe3c7918b589a755a10aafa45b304c455ede5ded",
-      "after": "c3f26f91103da3d7de1dc7b3fe3c7918b589a755a10aafa45b304c455ede5ded"
+      "after": null
     },
     "room/photos/gokokuji.jpg": {
       "before": "4db985b4edaafbc57f60c3ea2d5d62273c9feff322090d19b0f7377e329bf5d6",
-      "after": "4db985b4edaafbc57f60c3ea2d5d62273c9feff322090d19b0f7377e329bf5d6"
+      "after": null
     },
     "room/photos/heiwa-dori.jpg": {
       "before": "6ef5b7a3b39ce75da8a084429e0077f460f86a3bfce90507745fb95e697e2aa9",
-      "after": "6ef5b7a3b39ce75da8a084429e0077f460f86a3bfce90507745fb95e697e2aa9"
+      "after": null
     },
     "room/photos/kokusai-dori.jpg": {
       "before": "2dc6363b37066e8c5329b34ec425b4694355f63cafd580e3854d558f56fdfb93",
-      "after": "2dc6363b37066e8c5329b34ec425b4694355f63cafd580e3854d558f56fdfb93"
+      "after": null
     },
     "room/photos/kume-shiseibyo.jpg": {
       "before": "b2581c8fd83aca9cca4623a135509fed59c83347b638f9529befde32d4b1687b",
-      "after": "b2581c8fd83aca9cca4623a135509fed59c83347b638f9529befde32d4b1687b"
+      "after": null
     },
     "room/photos/makishi-market.jpg": {
       "before": "9f2688b389393909997973af9ed34e6b2918146e29f2012d11386692ec19259a",
-      "after": "9f2688b389393909997973af9ed34e6b2918146e29f2012d11386692ec19259a"
+      "after": null
     },
     "room/photos/makishi-station.jpg": {
       "before": "9861aa11ac3f449e6ad8ef1db9e565792e50e222b0b6d14f487c34c32277974c",
-      "after": "9861aa11ac3f449e6ad8ef1db9e565792e50e222b0b6d14f487c34c32277974c"
+      "after": null
     },
     "room/photos/naha-history-museum.jpg": {
       "before": "9f1cf35f7a834e6f053c82a670d43d1426887b987ec0946599836845f9bec5b5",
-      "after": "9f1cf35f7a834e6f053c82a670d43d1426887b987ec0946599836845f9bec5b5"
+      "after": null
     },
     "room/photos/naminoue-beach.jpg": {
       "before": "933988ac93d6e046746d582512a0159f160c72697cf1f5bbb5b3e9ce2e68081b",
-      "after": "933988ac93d6e046746d582512a0159f160c72697cf1f5bbb5b3e9ce2e68081b"
+      "after": null
     },
     "room/photos/naminoue-shrine.jpg": {
       "before": "51bda6d884330927d3174497d933854a9458e47b01c39d8ca998ef5963bc0cbd",
-      "after": "51bda6d884330927d3174497d933854a9458e47b01c39d8ca998ef5963bc0cbd"
+      "after": null
     },
     "room/photos/sakurazaka-theater.jpg": {
       "before": "b2b89c73fdf5d4bb49b5b465c19a5b23e96aaf4a82020824ca99005a03227cfc",
-      "after": "b2b89c73fdf5d4bb49b5b465c19a5b23e96aaf4a82020824ca99005a03227cfc"
+      "after": null
     },
     "room/photos/tsuboya-museum.jpg": {
       "before": "8de57704bf096907a66e3e83df0ba934b6e931ccb83419f5006ae4909f7c27ca",
-      "after": "8de57704bf096907a66e3e83df0ba934b6e931ccb83419f5006ae4909f7c27ca"
+      "after": null
     },
     "room/sea-physics.mjs": {
       "before": "707b9bc83d429db72aa8d7cb02794e8891d126e61b9534f5756d974bd47622ea",
-      "after": "707b9bc83d429db72aa8d7cb02794e8891d126e61b9534f5756d974bd47622ea"
+      "after": null
     },
     "room/sky-astro.mjs": {
       "before": "39ec935c56e43ffc74f172414249ad28d9cdbffc0590a9e1ebfb58544526afa2",
-      "after": "39ec935c56e43ffc74f172414249ad28d9cdbffc0590a9e1ebfb58544526afa2"
+      "after": null
     },
     "room/store-sim.mjs": {
       "before": "e8b047f94ac63d8b813843576e2bc4a0a188fb1614920d272ad50349a375d8f3",
-      "after": "e8b047f94ac63d8b813843576e2bc4a0a188fb1614920d272ad50349a375d8f3"
+      "after": null
     },
     "room/style.css": {
       "before": "4b2a5bf0343deab237f2646bbb7a88334eb05c2aedb736e9ca1490cda077e3cf",
-      "after": "4b2a5bf0343deab237f2646bbb7a88334eb05c2aedb736e9ca1490cda077e3cf"
+      "after": null
     },
     "room/vendor/three/LICENSE": {
       "before": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
-      "after": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+      "after": null
     },
     "room/vendor/three/build/three.core.js": {
       "before": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
-      "after": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+      "after": null
     },
     "room/vendor/three/build/three.module.js": {
       "before": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
-      "after": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+      "after": null
     },
     "room/vendor/three/examples/jsm/loaders/GLTFLoader.js": {
       "before": "67ac5551fdafa6e349bd80c8f8e5e39c136d6b2fb1ad647db9abb21dc86f9e4a",
-      "after": "67ac5551fdafa6e349bd80c8f8e5e39c136d6b2fb1ad647db9abb21dc86f9e4a"
+      "after": null
     },
     "room/vendor/three/examples/jsm/utils/BufferGeometryUtils.js": {
       "before": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751",
-      "after": "fda7e946b8e0b5ab39b779206589e7a1079a22eb24efb89d7223e03fdfb1f751"
+      "after": null
     },
     "room/view-state.mjs": {
       "before": "02e6e0d6e3a2859316acf6eaae4f2a49a3c17814a9dae06e6698856ef5cf2682",
-      "after": "02e6e0d6e3a2859316acf6eaae4f2a49a3c17814a9dae06e6698856ef5cf2682"
+      "after": null
     },
     "sitemap.xml": {
       "before": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b",

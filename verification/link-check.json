@@ -1,36 +1,23 @@
 {
+  "task": "TASK-SITE4",
   "status": "passed",
-  "project_cards": 6,
-  "work_links": 7,
+  "project_cards": 0,
+  "work_links": 0,
+  "navigation_links": 0,
+  "noindex_pages": [
+    "index.html",
+    "projects/index.html",
+    "404.html"
+  ],
   "local_links_exist": true,
   "checked_pages": [
     "index.html",
     "projects/index.html",
-    "404.html",
-    "apps/future/index.html",
-    "apps/future/data.html"
+    "404.html"
   ],
   "checked_local_targets": [
-    "apps/ailab/index.html",
-    "apps/future/app.js",
-    "apps/future/city.css",
-    "apps/future/city.js",
-    "apps/future/data.html",
-    "apps/future/index.html",
-    "apps/future/style.css",
-    "apps/relief/index.html",
-    "apps/sound/index.html",
     "favicon.ico",
-    "favicon.svg",
-    "index.html",
-    "projects/index.html",
-    "projects/previews/ailab.poster.webp",
-    "projects/previews/ailab.webp",
-    "projects/previews/emergence.poster.webp",
-    "projects/previews/emergence.webp",
-    "projects/previews/room.poster.webp",
-    "projects/previews/room.webp",
-    "room/index.html"
+    "favicon.svg"
   ],
   "external_links_checked": false
 }

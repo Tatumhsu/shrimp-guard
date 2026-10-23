@@ -1,15 +1,15 @@
 # Shrimp Guard
 
-公開互動作品網站：https://shrimp-guard.us.ci/
+公開網站：https://shrimp-guard.us.ci/
 
-首頁與 `/projects/` 都是作品入口，包含時光之城、光影台灣、此刻台灣的聲音、瀏覽器 AI 實驗室、Emergence World，以及航程風浪（含沖繩上岸）。
+目前候選已關閉公開內容：首頁與 `/projects/` 顯示「這個網站目前沒有公開內容。」，無連結且帶有 `noindex`。輸出僅保留這兩頁、中文 404、CNAME 與兩種 favicon；所有作品（包含 `/apps/future/`）、資料與預覽都已列入刪除。此修改尚未發佈。
 
 ## 建置與檢查
 
 網站透過 GitHub Pages 的既有 `gh-pages` 分支發佈。唯一候選輸出建置器是 `scripts/build_publication.py`；不要執行 Hugo 產生發佈輸出。
 
 - `publication/` 是不可手改的已發佈基準，內容由 `verification/baseline.json` 的 SHA-256 驗證。
-- `overlays/` 提供已審查的修改。`scripts/build_projects_entry.py` 同時產生首頁與作品頁。
+- `overlays/` 提供候選修改。`scripts/build_projects_entry.py` 同時產生首頁與 `/projects/` 的相同關閉公告。
 - `verification/remove.json` 指定退役路徑；每個刪除檔案都必須精確列在 `verification/allowlist.json` 的 `deleted`。退役內容留在 frozen baseline 作為比對依據，不會進入候選輸出。
 - `.github/workflows/publication.yml` 只驗證與上傳 review artifact，不會部署。
 
@@ -30,4 +30,4 @@ python3 -m http.server 8765 --directory public --bind 127.0.0.1
 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright BROWSER_EXECUTABLE=/path/to/chrome node scripts/browser-check.cjs
 ```
 
-本次精簡內容、驗證狀態與發佈交接見 [MERGE-NOTES.md](MERGE-NOTES.md)。原發佈安全與 rollback 流程見 [PUBLICATION-REVIEW.md](PUBLICATION-REVIEW.md)。Release 需另有授權；本次未 prepare、release 或 push。
+本次關閉內容、驗證狀態與發佈交接記錄於本機 ignored `.release/MERGE-NOTES.md`；瀏覽器檢查若可執行，新截圖存於 `.release/screenshots/site4-*.png`，不新增 untracked 發佈來源。原發佈安全與 rollback 流程見 [PUBLICATION-REVIEW.md](PUBLICATION-REVIEW.md)。Release 需另有授權；本次未 prepare、release 或 push。

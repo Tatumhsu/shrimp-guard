@@ -1,116 +1,30 @@
-"""Generate overlays/projects/index.html (作品入口) from the reviewed list below. Static HTML, no JavaScript; motion is CSS-only (motion-prompt names #074/#079/#081/#082/#086) and off under prefers-reduced-motion.
-Public cards show only purpose, access, status and update date; test results live in the release report.
-Run: python3 scripts/build_projects_entry.py"""
-from html import escape as e
-from pathlib import Path
+"""Generate identical, closed-site notices for / and /projects/.
 
-CHECKED = '2026-10-24'
-# group: ok 可使用 / dev 開發中 / old 舊版／暫停 (collapsed) / ask 待確認 (no open button)
-WORKS = [
-    {'c': 'live', 'g': 'ok', 'name': '時光之城', 'desc': '拖動年份到 2060，看未來台北隨 AI 預測演化；探索城市里程碑、切換日夜，展開一段時光旅行。', 'url': '/apps/future/', 'login': False, 'st': '互動作品・預測資料 10/19', 'date': '10/24'},
-    {'c': 'live', 'g': 'ok', 'name': '光影台灣', 'desc': '立體的台灣，山的光影跟此刻真實的太陽同步；拖動時間看日出與山影，找最早迎來曙光的山。', 'url': '/apps/relief/', 'login': False, 'st': '公開版', 'date': '10/21'},
-    {'c': 'live', 'g': 'ok', 'name': '此刻台灣的聲音', 'desc': '選一個地方，聽此刻的雨、風、海浪與蟲鳥鳴；天氣化成和弦、地震化成低鐘，全部由瀏覽器即時合成。建議戴耳機。', 'url': '/apps/sound/', 'login': False, 'st': '公開版', 'date': '10/21'},
-    {'c': 'ai', 'g': 'ok', 'name': '瀏覽器 AI 實驗室', 'pv': 'ailab', 'desc': 'AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', 'url': '/apps/ailab/', 'login': False, 'st': '運作中・第一次要下載模型', 'date': '10/17'},
-    {'c': 'ai', 'g': 'dev', 'name': 'Emergence World', 'pv': 'emergence', 'desc': '五位居民的持續運行小世界。', 'url': 'https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', 'login': False, 'st': '公開預覽', 'date': None},
-    {'c': 'game', 'g': 'ok', 'name': '航程風浪', 'pv': 'room', 'desc': '基隆—那霸示例航程：真實日夜與預報風浪的海面；沖繩上岸分頁整理那霸景點、美食與導航。', 'url': '/room/', 'links': [{'name': '沖繩上岸', 'url': '/room/#landing'}], 'login': False, 'st': '運作中', 'date': '10/11'},
-]
-GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
-CATS = [('live', '看台灣'), ('ai', 'AI 作品'), ('game', '遊戲與故事')]
-assert all(w['c'] in dict(CATS) for w in WORKS) and all((w['c'] == 'old') == (w['g'] == 'old') for w in WORKS)
-
-CSS = """
-:root{color-scheme:light dark;--bg:#fff;--card:#fff;--ink:#1d1e20;--ink2:#5b5e66;--ink3:#7d8087;--line:#e3e4e8;--chip:#f2f3f5;--ok:#1d7f46;--dev:#9a5c00;--old:#6c6f77;--ask:#5b43b0;--lock:#7a5000;--pub:#0a5f85}
-@media (prefers-color-scheme:dark){:root{--bg:#1d1e20;--card:#26272b;--ink:#dadadb;--ink2:#b0b2b7;--ink3:#8c8f96;--line:#38393e;--chip:#313237;--ok:#57c785;--dev:#e3a23a;--old:#a3a6ad;--ask:#ad98f2;--lock:#e5b864;--pub:#64bde4}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;line-height:1.55}
-.shell{max-width:1000px;margin:auto;padding:20px 16px 40px}
-nav.top{display:flex;justify-content:space-between;align-items:center}nav.top a{color:var(--ink);padding:10px 0;text-decoration:underline;text-underline-offset:4px}
-h1{font-size:clamp(28px,5vw,40px);margin:18px 0 6px}.intro{color:var(--ink2);margin:0;font-size:15px}
-.jump{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;gap:8px;flex-wrap:wrap;padding:10px 0;margin-top:12px;border-bottom:1px solid var(--line)}
-.jump a{display:inline-flex;align-items:center;min-height:44px;flex:none;font-size:14px;padding:7px 12px;border-radius:999px;background:var(--chip);color:var(--ink);text-decoration:none;white-space:nowrap}
-section{scroll-margin-top:120px}h2{font-size:18px;margin:26px 0 10px;padding-left:10px;border-left:4px solid var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.card.sub{border-style:dashed}
-.name{font-size:18px;font-weight:700;margin:0}.of{font-size:12.5px;color:var(--ink3);font-weight:400;margin-left:6px}
-.desc{font-size:14px;color:var(--ink2);margin:0}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
-.tags li{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--ink2)}
-.tags .pub{color:var(--pub)}.tags .lock{color:var(--lock)}.tags .ok{color:var(--ok)}.tags .dev{color:var(--dev)}.tags .old{color:var(--old)}.tags .ask{color:var(--ask)}.tags .test{color:var(--dev);font-weight:700}
-.st{font-size:13px;color:var(--ink2);margin:0}.st time{color:var(--ink3);margin-left:6px}
-.open{margin:2px 0 0;display:flex;flex-wrap:wrap;gap:4px 20px}.open a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding:8px 0;color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:4px}
-details{border:1px solid var(--line);border-radius:12px;background:var(--card)}
-summary{cursor:pointer;padding:14px 16px;font-size:15px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-summary::-webkit-details-marker{display:none}summary::after{content:"展開 ▾";font-size:13px;font-weight:500;color:var(--ink2)}details[open] summary::after{content:"收合 ▴"}
-details .grid{padding:0 12px 12px}
-footer{margin-top:28px;font-size:13px;color:var(--ink3);line-height:1.8}
-a:focus-visible,summary:focus-visible{outline:3px solid #6797c0;outline-offset:4px}
-@media(max-width:600px){.grid{grid-template-columns:1fr}}
-.pv{display:block;margin:-14px -16px 4px;border-radius:12px 12px 0 0;overflow:hidden;aspect-ratio:8/5;background:var(--chip)}
-.pv img{display:block;width:100%;height:100%;object-fit:cover}
-.progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--ok);transform-origin:0 50%;transform:scaleX(0);z-index:5}
-@media (prefers-reduced-motion:no-preference){
-  /* #081 hover lift: up 8 px, shadow blur 6→22 px, 0.3 s ease-out */
-  .card{transition:transform .3s cubic-bezier(.22,.9,.3,1),box-shadow .3s cubic-bezier(.22,.9,.3,1);box-shadow:0 2px 6px rgba(28,35,51,.08)}
-  .card:hover{transform:translateY(-8px);box-shadow:0 12px 22px rgba(28,35,51,.22)}
-  /* #082 image zoom on hover: fixed frame, picture to 1.06× over 0.5 s */
-  .pv img{transition:transform .5s cubic-bezier(.22,.9,.3,1)}.card:hover .pv img{transform:scale(1.06)}
-  /* #086 underline animation: grows from the left in 0.3 s */
-  .open a{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/30% 2px no-repeat;transition:background-size .3s ease-out}
-  .open a:hover,.open a:focus-visible{background-size:100% 2px}
-  @supports (animation-timeline:view()){
-    /* #074 fade-in on scroll: up from 30 px as each card enters */
-    .card{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
-    @keyframes rise{from{opacity:0;translate:0 30px}to{opacity:1;translate:0 0}}
-    /* #079 scroll progress bar */
-    .progress{animation:grow linear both;animation-timeline:scroll(root)}
-    @keyframes grow{to{transform:scaleX(1)}}
-  }
-}
-@media (prefers-reduced-motion:reduce){.progress{display:none}}
+Run: python3 scripts/build_projects_entry.py
 """
-LABEL = dict(GROUPS)
-
-
-def card(w):
-    tags = []
-    if w.get('url'):
-        tags.append(f'<li class="lock">{e(w.get("access", "需要登入"))}</li>' if w.get('login') else '<li class="pub">公開</li>')
-    if w.get('test'):
-        tags.append('<li class="test">測試資料</li>')
-    tags.append(f'<li class="{w["g"]}">{LABEL[w["g"]]}</li>')
-    of = f'<span class="of">{e(w["of"])}</span>' if w.get('of') else ''
-    pv = ''
-    if w.get('pv'):   # looping preview (motion-prompt idea: every item shows itself moving); still poster when reduced motion is asked
-        pv = (f'<picture class="pv"><source media="(prefers-reduced-motion: reduce)" srcset="/projects/previews/{w["pv"]}.poster.webp">'
-              f'<img src="/projects/previews/{w["pv"]}.webp" width="480" height="300" loading="lazy" decoding="async" alt="{e(w["name"])} 畫面預覽"></picture>')
-    out = [f'<article class="card{" sub" if w.get("sub") else ""}{" has-pv" if pv else ""}">', pv, f'<h3 class="name">{e(w["name"])}{of}</h3>', f'<p class="desc">{e(w["desc"])}</p>',
-           f'<ul class="tags">{"".join(tags)}</ul>', f'<p class="st">{e(w["st"])}<time>{"更新 " + e(w["date"]) if w.get("date") else "更新日期未確認"}</time></p>']
-    if w.get('url'):
-        label = e(w['btn']) if w.get('btn') else f"{'開啟預覽' if w['g'] == 'dev' else '開啟'} {e(w['name'])}"
-        links = [f'<a href="{e(w["url"])}">{label} →</a>']
-        links.extend(f'<a href="{e(link["url"])}">開啟 {e(link["name"])} →</a>' for link in w.get('links', []))
-        out.append(f'<p class="open">{"".join(links)}</p>')
-    out.append('</article>')
-    return ''.join(out)
+from pathlib import Path
 
 
 def build():
-    jump, body = [], []
-    for c, label in CATS:
-        items = sorted((w for w in WORKS if w['c'] == c), key=lambda w: w['g'] != 'ok')  # usable first, sub-pages stay after their parent
-        jump.append(f'<a href="#{c}">{label} {len(items)}</a>')
-        grid = f'<div class="grid">{"".join(card(w) for w in items)}</div>'
-        head = f'<h2>{label}</h2>'
-        if c == 'old':
-            grid = f'<details><summary>{len(items)} 項舊版、暫停與退役作品</summary>{grid}</details>'
-        body.append(f'<section id="{c}" aria-label="{label}">{head}{grid}</section>')
-    return ('<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>作品入口 · Shrimp Guard</title><meta name="description" content="Shrimp Guard 公開作品與目前狀態，免登入瀏覽。">'
-            '<link rel="icon" href="/favicon.ico"><link rel="icon" type="image/svg+xml" href="/favicon.svg">'
-            f'<style>{CSS}</style></head><body><div class="progress" aria-hidden="true"></div><div class="shell"><nav class="top" aria-label="網站導覽"><a href="/">Shrimp Guard</a><a href="/projects/">作品入口</a></nav>'
-            '<main><h1>作品入口</h1><p class="intro">這裡是免登入瀏覽的公開作品，依主題分類並標出目前狀態。</p>'
-            f'<nav class="jump" aria-label="分類">{"".join(jump)}</nav>{"".join(body)}</main>'
-            f'<footer>狀態核對日 {CHECKED}。公開作品免登入；資料日期請見各作品標示。</footer></div></body></html>\n')
+    return '''<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>網站目前沒有公開內容</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+:root{color-scheme:light dark}*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,"Noto Sans TC",sans-serif;line-height:1.7}
+main{max-width:600px;margin:15vh auto;padding:24px}
+h1{font-size:clamp(24px,5vw,32px)}
+</style>
+</head>
+<body><main><h1>這個網站目前沒有公開內容。</h1></main></body>
+</html>
+'''
 
 
 if __name__ == '__main__':
@@ -118,4 +32,4 @@ if __name__ == '__main__':
     for out in (root / 'index.html', root / 'projects' / 'index.html'):
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(build(), encoding='utf-8')
-    print('Home and projects:', sum(bool(w.get('url')) + len(w.get('links', [])) for w in WORKS), 'links', {c: sum(1 for w in WORKS if w['c'] == c) for c, _ in CATS})
+    print('Home and projects: identical closed-site notices, no public links.')

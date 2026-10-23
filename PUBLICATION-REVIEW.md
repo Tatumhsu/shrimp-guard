@@ -1,6 +1,6 @@
 # Publication safety handoff — 2026-10-08
 
-> 2026-10-24：此文件保留原發佈安全與 rollback 流程。最新待發佈網站內容與 QA 狀態以 [MERGE-NOTES.md](MERGE-NOTES.md) 為準：TASK-SITE2 已核准移除部落格與退役快照，首頁改為作品頁；下方歷史內容保留清單、數量與瀏覽器通過結果不代表本次候選狀態。
+> 2026-10-24：此文件保留原發佈安全與 rollback 流程。最新待發佈網站內容與 QA 狀態以本機 ignored `.release/MERGE-NOTES.md` 為準：TASK-SITE4 關閉全部公開內容，首頁與 `/projects/` 是無連結且帶有 noindex 的中文公告；輸出僅六檔（兩個公告頁、中文 404、CNAME、兩種 favicon），時光之城與所有其他作品均已列入候選刪除。尚未發佈；下方歷史內容、數量與瀏覽器通過結果不代表本次候選狀態。
 
 Local branch: `safety/publication-projects`; no push, PR, deployment, VPS access, domain, permission or security setting change performed.
 
