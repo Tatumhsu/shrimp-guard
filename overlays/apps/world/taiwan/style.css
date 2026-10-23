@@ -1,0 +1,89 @@
+/* 世界大事對台灣 — dark navy control room, matching the shrimp-guard app family */
+#taiwan-panel{
+  --bg:#0a1222; --panel:#0f1a2e; --panel2:#14223b; --ink:#e6ecf5; --ink2:#a9b6c9; --ink3:#728097; --rule:#22314d; --accent:#4cc9f0;
+  --us:#4f8cff; --china:#ff5a5f; --mideast:#ffb347; --europe:#b57bff; --russia:#ff8fb1; --japankorea:#3ddc97; --other:#9aa7bb; --tw:#38d6ff;
+  --f-display:"LXGW WenKai TC","Kaiti TC",serif;
+  --f-body:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+#taiwan-panel *{box-sizing:border-box}
+#taiwan-panel,#taiwan-panel{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#13254a 0,transparent 60%),var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;min-height:100vh}
+#taiwan-panel .app{max-width:1400px;margin:0 auto;padding:12px 16px 28px}
+#taiwan-panel a{color:var(--accent)}
+#taiwan-panel .top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 20px;border-bottom:1px solid var(--rule);padding-bottom:10px}
+#taiwan-panel .back{font-size:13px;color:var(--ink3);text-decoration:none}
+#taiwan-panel h1{font-family:var(--f-display);font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0;line-height:1.15}
+#taiwan-panel .sub{margin:2px 0 0;color:var(--ink2);font-size:13px}
+#taiwan-panel .tabs{display:flex;gap:4px;overflow-x:auto;max-width:100%;scrollbar-width:none}
+#taiwan-panel .tabs button{flex:none;color:var(--ink2);text-decoration:none;padding:8px 16px;border-radius:999px;font-size:15px;border:1px solid transparent;min-height:40px;display:flex;align-items:center}
+#taiwan-panel .tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);font-weight:700}
+#taiwan-panel .tabs button:not([aria-pressed="true"]):hover{border-color:var(--rule);color:var(--ink)}
+#taiwan-panel :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#taiwan-panel .stamp{font-family:var(--f-mono);font-size:12px;color:var(--ink3);text-align:right}
+#taiwan-panel .grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,1fr);grid-template-areas:"map news" "tw news";grid-template-rows:auto 1fr;align-items:start;gap:14px;margin-top:14px}
+#taiwan-panel .panel{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--rule);border-radius:14px;padding:14px}
+#taiwan-panel h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+#taiwan-panel .mapbox{grid-area:map}#taiwan-panel .newsbox{grid-area:news;display:flex;flex-direction:column;min-height:0}#taiwan-panel .twbox{grid-area:tw}
+#taiwan-panel .maphead,#taiwan-panel .newshead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#taiwan-panel .muted{color:var(--ink3);font-size:13px}
+#taiwan-panel .map{position:relative;width:100%;aspect-ratio:1000/390;border-radius:10px;overflow:hidden;background:radial-gradient(ellipse at 70% 50%,#10213f,#0a1426)}
+#taiwan-panel .map .land{position:absolute;inset:0;width:100%;height:100%;opacity:.38;filter:invert(55%) sepia(30%) saturate(500%) hue-rotate(185deg)}
+#taiwan-panel .map svg{position:absolute;inset:0;width:100%;height:100%}
+#taiwan-panel .hint{color:var(--ink3);font-size:12px;margin:8px 0 0}
+#taiwan-panel .arc{fill:none;stroke-width:1.6;stroke-dasharray:5 6;opacity:.85;animation:taiwan-panel-flow 2.4s linear infinite}
+@keyframes taiwan-panel-flow{to{stroke-dashoffset:-22}}
+@media (prefers-reduced-motion:reduce){#taiwan-panel .arc{animation:none}}
+#taiwan-panel .pin{cursor:pointer}
+#taiwan-panel .pin .halo{opacity:.25}
+#taiwan-panel .pin text{font-family:var(--f-body);font-weight:700;fill:var(--ink);paint-order:stroke;stroke:#0a1222;stroke-width:4px}
+#taiwan-panel .pin .n{font-family:var(--f-mono);font-size:13px;fill:#0a1222;stroke:none;font-weight:700}
+#taiwan-panel .pin.dim{opacity:.3}
+#taiwan-panel .pin:focus-visible circle.dot{stroke:#fff;stroke-width:3}
+#taiwan-panel .tw-label{font-family:var(--f-display);fill:var(--tw);paint-order:stroke;stroke:#0a1222;stroke-width:5px}
+#taiwan-panel .chip{background:transparent;color:var(--ink2);border:1px solid var(--rule);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;min-height:32px}
+#taiwan-panel .cards{display:flex;flex-direction:column;gap:10px;overflow:auto;max-height:calc(100vh - 180px);padding-right:2px}
+#taiwan-panel .card{border:1px solid var(--rule);background:rgba(10,18,34,.55);border-radius:12px;padding:12px;display:grid;grid-template-columns:44px 1fr;gap:4px 12px}
+#taiwan-panel .ico{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;grid-row:span 2}
+#taiwan-panel .ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#taiwan-panel .card h3{margin:0;font-size:16px;line-height:1.4}
+#taiwan-panel .meta{font-size:12px;color:var(--ink3);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+#taiwan-panel .rtag{font-weight:700}
+#taiwan-panel .sum{grid-column:1/-1;margin:4px 0 0;color:var(--ink2);font-size:14px}
+#taiwan-panel .impact{grid-column:1/-1;margin-top:6px;border-left:3px solid var(--accent);background:rgba(76,201,240,.07);padding:8px 10px;border-radius:0 8px 8px 0}
+#taiwan-panel .impact b{display:block;font-size:12px;color:var(--accent);letter-spacing:.05em}
+#taiwan-panel .impact p{margin:2px 0 0;font-size:14.5px}
+#taiwan-panel .tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#taiwan-panel .tag{font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:1px 9px;color:var(--ink2)}
+#taiwan-panel .srcs{grid-column:1/-1;margin:6px 0 0;padding:0;list-style:none;font-size:12.5px}
+#taiwan-panel .srcs li{margin-top:2px;color:var(--ink3)}
+#taiwan-panel .srcs a{text-decoration:none}#taiwan-panel .srcs a:hover{text-decoration:underline}
+#taiwan-panel .tw3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#taiwan-panel .twc{border:1px solid var(--rule);border-radius:12px;padding:12px;background:rgba(10,18,34,.55)}
+#taiwan-panel .twc .no{font-family:var(--f-mono);color:var(--tw);font-size:13px}
+#taiwan-panel .twc h3{margin:2px 0 4px;font-size:15.5px;line-height:1.4}
+#taiwan-panel .twc p{margin:0;color:var(--ink2);font-size:13.5px}
+#taiwan-panel .flag{width:22px;height:15px;border-radius:2px;background:linear-gradient(#fe0000,#fe0000);position:relative;display:inline-block}
+#taiwan-panel .flag::before{content:"";position:absolute;left:0;top:0;width:11px;height:7.5px;background:#000095}
+#taiwan-panel .flag::after{content:"";position:absolute;left:3.5px;top:1.5px;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px #fff}
+#taiwan-panel .empty{color:var(--ink3);padding:20px;text-align:center}
+#taiwan-panel .rawbox{margin-top:14px}#taiwan-panel .rawbox summary{cursor:pointer;color:var(--ink2);min-height:32px}
+#taiwan-panel .rawbox ol{font-size:13px;color:var(--ink2);padding-left:22px;columns:2;column-gap:28px}
+#taiwan-panel .rawbox li{break-inside:avoid;margin:4px 0}#taiwan-panel .rawbox li span{color:var(--ink3);font-size:12px}
+#taiwan-panel .foot{color:var(--ink3);font-size:12.5px;margin-top:14px;text-align:center}
+#taiwan-panel .foot p{margin:4px 0}
+@media (max-width:900px){
+  #taiwan-panel .grid{grid-template-columns:1fr;grid-template-areas:"map" "news" "tw"}
+  #taiwan-panel .cards{max-height:none;overflow:visible}
+  #taiwan-panel .tw3{grid-template-columns:1fr}
+  #taiwan-panel .rawbox ol{columns:1}
+  #taiwan-panel .stamp{text-align:left;width:100%}
+  #taiwan-panel .tabs{order:3;width:100%}
+}
+@media (max-width:520px){
+  #taiwan-panel .app{padding:10px 10px 24px}
+  #taiwan-panel .panel{padding:12px;border-radius:12px}
+  
+  #taiwan-panel .card{grid-template-columns:38px 1fr}#taiwan-panel .ico{width:38px;height:38px}
+}
+#taiwan-panel .srcs details summary{cursor:pointer;color:var(--ink2)}

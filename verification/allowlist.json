@@ -1,5 +1,32 @@
 {
-  "added": [],
-  "changed": [],
-  "deleted": []
+  "added": [
+    "apps/future/oracle/app.js",
+    "apps/future/oracle/data/board.json",
+    "apps/future/oracle/data/history.json",
+    "apps/future/oracle/data/latest.json",
+    "apps/future/oracle/style.css",
+    "apps/future/tabs.js",
+    "apps/shared/work-tabs.css",
+    "apps/shared/work-tabs.js",
+    "apps/world/tabs.js",
+    "apps/world/taiwan/app.js",
+    "apps/world/taiwan/assets/world.svg",
+    "apps/world/taiwan/data/news.json",
+    "apps/world/taiwan/style.css"
+  ],
+  "changed": [
+    "apps/future/city.css",
+    "apps/future/city.js",
+    "apps/future/index.html",
+    "apps/oracle/index.html",
+    "apps/world-taiwan/index.html",
+    "apps/world/app.js",
+    "apps/world/index.html",
+    "apps/world/style.css",
+    "projects/index.html"
+  ],
+  "deleted": [
+    "projects/previews/oracle.poster.webp",
+    "projects/previews/oracle.webp"
+  ]
 }

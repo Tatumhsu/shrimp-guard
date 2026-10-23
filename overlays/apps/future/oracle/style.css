@@ -1,0 +1,67 @@
+#oracle-panel {
+  --bg: #0d1117; --bg-2: #141b24; --bg-3: #1b2430; --line: #26303d; --fg: #e6edf3; --fg-2: #9aa7b4; --fg-3: #6b7784;
+  --accent: #f2b94b; --yes: #3fb950; --no: #f85149; --open: #58a6ff;
+  --c-intuition: #d2a8ff; --c-data: #58a6ff; --c-stats: #56d4dd; --c-baseline: #8b949e;
+  --radius: 12px; --gutter: 16px; --max: 1080px;
+  --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+#oracle-panel * { box-sizing: border-box; }
+#oracle-panel, #oracle-panel { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); line-height: 1.55; -webkit-text-size-adjust: 100%; }
+#oracle-panel { min-height: 100vh; overflow-x: hidden; }
+#oracle-panel a { color: var(--accent); text-decoration: none; }
+#oracle-panel a:hover { text-decoration: underline; }
+#oracle-panel .top { padding: 10px var(--gutter); font-size: 14px; border-bottom: 1px solid var(--line); }
+#oracle-panel .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 48px; }
+#oracle-panel h1 { font-size: clamp(28px, 4.5vw, 44px); margin: 4px 0 10px; letter-spacing: .01em; line-height: 1.2; }
+#oracle-panel h2 { font-size: 22px; margin: 0 0 6px; }
+#oracle-panel .hero { padding: 36px 0 20px; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+#oracle-panel .kicker { color: var(--accent); font-weight: 600; margin: 0; font-size: 14px; letter-spacing: .08em; }
+#oracle-panel .kicker span { color: var(--fg-3); font-weight: 400; margin-left: 10px; letter-spacing: 0; }
+#oracle-panel .lede { color: var(--fg-2); max-width: 64ch; margin: 0 0 18px; font-size: 16px; }
+#oracle-panel .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+#oracle-panel .stat { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; min-width: 0; }
+#oracle-panel .stat .v { font-size: 26px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+#oracle-panel .stat .k { color: var(--fg-3); font-size: 12px; margin-top: 4px; }
+#oracle-panel .muted { color: var(--fg-3); font-size: 14px; margin: 4px 0 14px; }
+#oracle-panel section { margin-bottom: 40px; }
+#oracle-panel .sec-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+#oracle-panel .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+#oracle-panel .filters button { background: var(--bg-2); border: 1px solid var(--line); color: var(--fg-2); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+#oracle-panel .filters button[aria-pressed="true"] { background: var(--accent); color: #1a1200; border-color: var(--accent); font-weight: 600; }
+#oracle-panel .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+#oracle-panel .card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+#oracle-panel .card.hidden, #oracle-panel .hrow.hidden { display: none; }
+#oracle-panel .card .q { font-size: 16px; font-weight: 600; margin: 0; overflow-wrap: anywhere; }
+#oracle-panel .tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; color: var(--fg-3); }
+#oracle-panel .tag { background: var(--bg-3); border-radius: 6px; padding: 2px 8px; color: var(--fg-2); }
+#oracle-panel .tag.yes { background: rgba(63,185,80,.18); color: var(--yes); }
+#oracle-panel .tag.no { background: rgba(248,81,73,.18); color: var(--no); }
+#oracle-panel .tag.open { background: rgba(88,166,255,.15); color: var(--open); }
+#oracle-panel .bars { display: flex; flex-direction: column; gap: 8px; }
+#oracle-panel .bar { display: grid; grid-template-columns: 56px 1fr 44px; gap: 8px; align-items: center; font-size: 13px; }
+#oracle-panel .bar .n { color: var(--fg-2); white-space: nowrap; }
+#oracle-panel .bar .t { height: 10px; background: var(--bg-3); border-radius: 5px; overflow: hidden; position: relative; }
+#oracle-panel .bar .t::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--fg-3); opacity: .6; }
+#oracle-panel .bar .f { height: 100%; border-radius: 5px; background: var(--c); }
+#oracle-panel .bar .p { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+#oracle-panel .bar .w { grid-column: 1 / -1; color: var(--fg-3); font-size: 12px; margin-top: -4px; overflow-wrap: anywhere; }
+#oracle-panel .bar.intuition { --c: var(--c-intuition); } #oracle-panel .bar.data { --c: var(--c-data); } #oracle-panel .bar.stats { --c: var(--c-stats); } #oracle-panel .bar.baseline { --c: var(--c-baseline); }
+#oracle-panel .card details summary { cursor: pointer; color: var(--fg-3); font-size: 12px; }
+#oracle-panel .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: var(--radius); }
+#oracle-panel table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 0; }
+#oracle-panel th, #oracle-panel td { padding: 10px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+#oracle-panel th:first-child, #oracle-panel td:first-child { text-align: left; }
+#oracle-panel th { color: var(--fg-3); font-weight: 500; font-size: 12px; background: var(--bg-2); }
+#oracle-panel tr:last-child td { border-bottom: 0; }
+#oracle-panel td .nm { font-weight: 600; }
+#oracle-panel td .ds { display: block; color: var(--fg-3); font-size: 12px; white-space: normal; max-width: 36ch; }
+#oracle-panel td.best { color: var(--accent); font-weight: 700; }
+#oracle-panel .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+#oracle-panel .hrow { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; display: grid; gap: 8px; }
+#oracle-panel .hrow .q { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+#oracle-panel .hrow .marks { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; }
+#oracle-panel .hrow .marks span { white-space: nowrap; }
+#oracle-panel .ok { color: var(--yes); } #oracle-panel .bad { color: var(--no); }
+#oracle-panel .empty { color: var(--fg-3); border: 1px dashed var(--line); border-radius: var(--radius); padding: 18px; text-align: center; }
+#oracle-panel footer { border-top: 1px solid var(--line); padding-top: 16px; color: var(--fg-3); font-size: 13px; }
+@media (max-width: 600px) { #oracle-panel .cat-col { display: none; } #oracle-panel h2 { font-size: 20px; } #oracle-panel .hero { padding-top: 24px; } }

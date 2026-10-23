@@ -4,21 +4,17 @@ Run: python3 scripts/build_projects_entry.py"""
 from html import escape as e
 from pathlib import Path
 
-CHECKED = '2026-10-21'
+CHECKED = '2026-10-23'
 # group: ok 可使用 / dev 開發中 / old 舊版／暫停 (collapsed) / ask 待確認 (no open button)
 WORKS = [
-    {'c': 'live', 'g': 'ok', 'name': '全球關注', 'pv': 'world', 'desc': '21 種語言的維基百科昨天最多人讀什麼？哪些話題全世界一起在看？世界地圖點各地看，AI 用中文解釋可能的原因。', 'url': '/apps/world/', 'login': False, 'st': '公開版・內容到 10/16', 'date': '10/21'},
-    {'c': 'live', 'g': 'ok', 'name': '時光之城', 'desc': '一座會隨年份演化的未來台北：拖動時間到 2060，城市依 AI 小隊每天更新的預測改變。', 'url': '/apps/future/', 'login': False, 'st': '公開版・預測到 10/19', 'date': '10/21'},
-    {'c': 'live', 'g': 'ok', 'name': '世界大事對台灣', 'desc': '每天把國際大新聞整理成對台灣的影響，世界地圖一眼看：油價、匯率、半導體、關稅、兩岸，每則附新聞來源；影響說明為 AI 推論，非投資建議。', 'url': '/apps/world-taiwan/', 'login': False, 'st': '公開版', 'date': '10/18'},
+    {'c': 'live', 'g': 'ok', 'name': '全球關注', 'pv': 'world', 'desc': '從 21 種語言的維基百科看全球共同關注，再切到「對台灣的影響」，閱讀國際新聞與生活、產業的關聯；每則附來源。', 'url': '/apps/world/', 'login': False, 'st': '公開快照・全球關注 10/16・台灣影響 10/18', 'date': '10/23'},
+    {'c': 'live', 'g': 'ok', 'name': '時光之城＋每日預言', 'desc': '拖動年份到 2060，看未來台北隨 AI 預測演化；切到「每日預言」，比較三位 AI 預測者的機率、已揭曉結果與準確度排行榜。', 'url': '/apps/future/', 'login': False, 'st': '公開快照・城市 10/19・每日預言 10/17', 'date': '10/23'},
     {'c': 'live', 'g': 'ok', 'name': '光影台灣', 'desc': '立體的台灣，山的光影跟此刻真實的太陽同步；拖動時間看日出與山影，找最早迎來曙光的山。', 'url': '/apps/relief/', 'login': False, 'st': '公開版', 'date': '10/21'},
     {'c': 'live', 'g': 'ok', 'name': '此刻台灣的聲音', 'desc': '選一個地方，聽此刻的雨、風、海浪與蟲鳥鳴；天氣化成和弦、地震化成低鐘，全部由瀏覽器即時合成。建議戴耳機。', 'url': '/apps/sound/', 'login': False, 'st': '公開版', 'date': '10/21'},
     {'c': 'ai', 'g': 'ok', 'name': 'AI 前沿日報', 'pv': 'ai-frontier', 'desc': '每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', 'url': '/apps/ai-frontier/', 'login': False, 'st': '公開版・內容到 10/18', 'date': '10/17'},
-    {'c': 'ai', 'g': 'ok', 'name': 'AI 預言家', 'pv': 'oracle', 'desc': '三位 AI 預測者（直覺派、數據派、統計派）加一條基準線，每天對台灣與世界的可驗證問題下注機率，隔天用公開資料自動對答案，長期累積準確率排行榜。', 'url': '/apps/oracle/', 'login': False, 'st': '公開版・內容到 10/18', 'date': '10/17'},
     {'c': 'ai', 'g': 'ok', 'name': '瀏覽器 AI 實驗室', 'pv': 'ailab', 'desc': 'AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', 'url': '/apps/ailab/', 'login': False, 'st': '運作中・第一次要下載模型', 'date': '10/17'},
     {'c': 'ai', 'g': 'dev', 'name': 'Emergence World', 'pv': 'emergence', 'desc': '五位居民的持續運行小世界。', 'url': 'https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', 'login': False, 'st': '公開預覽', 'date': None},
-    {'c': 'game', 'g': 'ok', 'name': '航程風浪', 'pv': 'room', 'desc': '基隆—那霸示例航程：真實日夜與預報風浪的海面。', 'url': '/room/', 'login': False, 'st': '運作中', 'date': '10/11'},
-    {'c': 'game', 'g': 'ok', 'name': '沖繩上岸', 'of': '航程風浪裡的分頁', 'desc': '依目前位置排序那霸景點與美食，附導航。', 'url': '/room/#landing', 'login': False, 'sub': True, 'st': '運作中', 'date': '10/11'},
-    {'c': 'game', 'g': 'dev', 'name': '離港前60分鐘', 'desc': '原創手機港町探索遊戲，三種結局，可重新遊玩。目前僅限擁有者開啟。', 'url': 'https://harbor-sixty-minute-game.windy-maple-0615.chatgpt.site', 'login': True, 'access': '僅擁有者 ChatGPT 帳號', 'btn': '擁有者預覽', 'st': '可玩測試版・私人存取', 'date': '10/13'},
+    {'c': 'game', 'g': 'ok', 'name': '航程風浪', 'pv': 'room', 'desc': '基隆—那霸示例航程：真實日夜與預報風浪的海面；沖繩上岸分頁整理那霸景點、美食與導航。', 'url': '/room/', 'links': [{'name': '沖繩上岸', 'url': '/room/#landing'}], 'login': False, 'st': '運作中', 'date': '10/11'},
     {'c': 'tools', 'g': 'ok', 'name': 'Shrimp Guard 部落格', 'pv': 'blog', 'desc': 'AI 應用趨勢與台股觀察文章。', 'url': '/', 'login': False, 'st': '可瀏覽', 'date': '05/14'},
 ]
 GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
@@ -32,9 +28,9 @@ CSS = """
 .shell{max-width:1000px;margin:auto;padding:20px 16px 40px}
 nav.top{display:flex;justify-content:space-between;align-items:center}nav.top a{color:var(--ink);padding:10px 0;text-decoration:underline;text-underline-offset:4px}
 h1{font-size:clamp(28px,5vw,40px);margin:18px 0 6px}.intro{color:var(--ink2);margin:0;font-size:15px}
-.jump{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin-top:12px;border-bottom:1px solid var(--line)}
-.jump a{flex:none;font-size:14px;padding:7px 12px;border-radius:999px;background:var(--chip);color:var(--ink);text-decoration:none;white-space:nowrap}
-section{scroll-margin-top:60px}h2{font-size:18px;margin:26px 0 10px;padding-left:10px;border-left:4px solid var(--ink)}
+.jump{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;gap:8px;flex-wrap:wrap;padding:10px 0;margin-top:12px;border-bottom:1px solid var(--line)}
+.jump a{display:inline-flex;align-items:center;min-height:44px;flex:none;font-size:14px;padding:7px 12px;border-radius:999px;background:var(--chip);color:var(--ink);text-decoration:none;white-space:nowrap}
+section{scroll-margin-top:120px}h2{font-size:18px;margin:26px 0 10px;padding-left:10px;border-left:4px solid var(--ink)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .card.sub{border-style:dashed}
@@ -44,7 +40,7 @@ section{scroll-margin-top:60px}h2{font-size:18px;margin:26px 0 10px;padding-left
 .tags li{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--ink2)}
 .tags .pub{color:var(--pub)}.tags .lock{color:var(--lock)}.tags .ok{color:var(--ok)}.tags .dev{color:var(--dev)}.tags .old{color:var(--old)}.tags .ask{color:var(--ask)}.tags .test{color:var(--dev);font-weight:700}
 .st{font-size:13px;color:var(--ink2);margin:0}.st time{color:var(--ink3);margin-left:6px}
-.open{margin:2px 0 0}.open a{display:inline-block;padding:8px 0;color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.open{margin:2px 0 0;display:flex;flex-wrap:wrap;gap:4px 20px}.open a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding:8px 0;color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:4px}
 details{border:1px solid var(--line);border-radius:12px;background:var(--card)}
 summary{cursor:pointer;padding:14px 16px;font-size:15px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
 summary::-webkit-details-marker{display:none}summary::after{content:"展開 ▾";font-size:13px;font-weight:500;color:var(--ink2)}details[open] summary::after{content:"收合 ▴"}
@@ -94,7 +90,9 @@ def card(w):
            f'<ul class="tags">{"".join(tags)}</ul>', f'<p class="st">{e(w["st"])}<time>{"更新 " + e(w["date"]) if w.get("date") else "更新日期未確認"}</time></p>']
     if w.get('url'):
         label = e(w['btn']) if w.get('btn') else f"{'開啟預覽' if w['g'] == 'dev' else '開啟'} {e(w['name'])}"
-        out.append(f'<p class="open"><a href="{e(w["url"])}">{label} →</a></p>')
+        links = [f'<a href="{e(w["url"])}">{label} →</a>']
+        links.extend(f'<a href="{e(link["url"])}">開啟 {e(link["name"])} →</a>' for link in w.get('links', []))
+        out.append(f'<p class="open">{"".join(links)}</p>')
     out.append('</article>')
     return ''.join(out)
 
@@ -112,13 +110,13 @@ def build():
     return ('<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>作品入口 · Shrimp Guard</title><meta name="description" content="Shrimp Guard 公開作品與目前狀態，免登入瀏覽。">'
             f'<style>{CSS}</style></head><body><div class="progress" aria-hidden="true"></div><div class="shell"><nav class="top" aria-label="網站導覽"><a href="/">Shrimp Guard</a><a href="/">返回主站</a></nav>'
-            '<main><h1>作品入口</h1><p class="intro">這裡是免登入瀏覽的公開作品，依主題分類並標出目前狀態；另保留「離港前60分鐘」的擁有者預覽，標示「僅擁有者 ChatGPT 帳號」，訪客無法開啟。</p>'
+            '<main><h1>作品入口</h1><p class="intro">這裡是免登入瀏覽的公開作品，依主題分類並標出目前狀態。</p>'
             f'<nav class="jump" aria-label="分類">{"".join(jump)}</nav>{"".join(body)}</main>'
-            f'<footer>狀態核對日 {CHECKED}。公開作品免登入；「僅擁有者 ChatGPT 帳號」僅限作品擁有者登入預覽。</footer></div></body></html>\n')
+            f'<footer>狀態核對日 {CHECKED}。公開作品免登入；資料日期請見各作品標示。</footer></div></body></html>\n')
 
 
 if __name__ == '__main__':
     out = Path(__file__).resolve().parents[1] / 'overlays' / 'projects' / 'index.html'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(build(), encoding='utf-8')
-    print(out, sum(1 for w in WORKS if w.get('url')), 'links', {c: sum(1 for w in WORKS if w['c'] == c) for c, _ in CATS})
+    print(out, sum(bool(w.get('url')) + len(w.get('links', [])) for w in WORKS), 'links', {c: sum(1 for w in WORKS if w['c'] == c) for c, _ in CATS})
