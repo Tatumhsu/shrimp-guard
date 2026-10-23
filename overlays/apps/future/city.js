@@ -556,3 +556,14 @@ return { setActive(value) {
   }
 } };
 }
+
+// This page now has one city view; pause rendering/audio while the document is hidden.
+const cityRoot = document.getElementById('city-panel');
+initCity(cityRoot).then(lifecycle => {
+  const updateVisibility = () => lifecycle?.setActive(!document.hidden);
+  document.addEventListener('visibilitychange', updateVisibility);
+  updateVisibility();
+}).catch(() => {
+  const loading = cityRoot.querySelector('#loading');
+  if (loading) loading.textContent = '城市讀取失敗，請重新整理，或返回作品入口。';
+});

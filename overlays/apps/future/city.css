@@ -1,3 +1,4 @@
+html,body{margin:0;height:100%;overflow:hidden;background:#020611}
 /* 時光之城 — full-bleed canvas, glassy HUD. The scene is always dark-skied at night, so the HUD uses light-on-glass in every theme. */
 #city-panel{
   --glass:rgba(10,16,30,.58); --glass2:rgba(18,26,46,.78); --line:rgba(170,200,255,.18); --ink:#eef3ff; --ink2:#b8c4dc; --ink3:#8090ad; --hot:#ffb36b;
@@ -7,7 +8,7 @@
 @media (prefers-color-scheme:light){#city-panel:not([data-theme="dark"]){--glass:rgba(10,16,30,.55)}}
 #city-panel *{box-sizing:border-box}
 #city-panel [hidden]{display:none!important}
-#city-panel,#city-panel{margin:0;height:100%;overflow:hidden;background:#020611;color:var(--ink);font-family:var(--f-body)}
+#city-panel{margin:0;height:100%;overflow:hidden;background:#020611;color:var(--ink);font-family:var(--f-body)}
 #city-panel #scene{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
 #city-panel a{color:inherit}
 #city-panel button{font:inherit;color:inherit}
@@ -101,3 +102,30 @@
 }
 @media (prefers-reduced-motion:reduce){#city-panel .toast{animation:none}}
 #city-panel .statlab{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--ink3);margin-bottom:2px}
+
+/* Standalone city: retain accessible controls and mobile HUD spacing. */
+#city-panel{height:100dvh;min-width:0;isolation:isolate}
+#city-panel :focus-visible{outline:3px solid #ffb454;outline-offset:-3px}
+.city-message{position:fixed;z-index:20;inset:0;margin:0;padding:24px;background:#020611;color:#eef3ff}
+.city-message a{color:inherit}
+#city-panel .seg button,#city-panel .icon,#city-panel .play,#city-panel .ok,#city-panel .close{min-width:44px;min-height:44px;height:auto}
+#city-panel .back{display:inline-flex;align-items:center;min-height:44px}
+#city-panel .more a,#city-panel #nogl a{display:inline-flex;align-items:center;min-width:44px;min-height:44px}
+#city-panel #slider{min-height:44px}
+/* Dense timeline dots remain visual markers; a full-size selector opens every milestone. */
+#city-panel .ticks{pointer-events:none}
+#city-panel .milestone-select{max-width:100%;min-width:44px;min-height:44px;background:#101c30;color:#eef3ff;border:1px solid #52627a;border-radius:8px;font:inherit;font-size:13px;padding:4px 8px}
+#city-panel .track{padding-top:0}
+#city-panel .ticks{top:-8px}
+#city-panel .statwrap{margin-bottom:6px}
+#city-panel .milestone-label{display:block;margin-bottom:8px}
+@media(max-width:760px){
+  #city-panel .tools{top:auto;bottom:calc(var(--city-hud-height,260px) + 12px);left:12px;right:12px;gap:6px;flex-wrap:wrap}
+  #city-panel .seg button{padding:6px 10px}
+  #city-panel .toasts{top:auto;bottom:calc(var(--city-hud-height,260px) + 68px)!important}
+  #city-panel .hud-bottom{padding-left:12px;padding-right:12px}
+  #city-panel .timebar{gap:8px;flex-wrap:wrap}
+  #city-panel .track{flex-basis:100%;order:-1}
+  #city-panel .year{font-size:54px}
+  #city-panel h1{font-size:26px}
+}

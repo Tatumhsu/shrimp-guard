@@ -1,48 +1,193 @@
 {
   "baseline_commit": "4f106fcf77c98ecbb25492cb0b4ba20b075ec9fd",
   "before_count": 247,
-  "after_count": 258,
-  "unchanged": 236,
+  "after_count": 88,
+  "unchanged": 80,
   "diff": {
     "added": [
-      "apps/future/oracle/app.js",
-      "apps/future/oracle/data/board.json",
-      "apps/future/oracle/data/history.json",
-      "apps/future/oracle/data/latest.json",
-      "apps/future/oracle/style.css",
-      "apps/future/tabs.js",
-      "apps/shared/work-tabs.css",
-      "apps/shared/work-tabs.js",
-      "apps/world/tabs.js",
-      "apps/world/taiwan/app.js",
-      "apps/world/taiwan/assets/world.svg",
-      "apps/world/taiwan/data/news.json",
-      "apps/world/taiwan/style.css"
+      "favicon.ico",
+      "favicon.svg"
     ],
     "deleted": [
+      ".hugo_build.lock",
+      "about/index.html",
+      "apps/ai-frontier/app.js",
+      "apps/ai-frontier/data/20261012.json",
+      "apps/ai-frontier/data/20261013.json",
+      "apps/ai-frontier/data/20261014.json",
+      "apps/ai-frontier/data/20261015.json",
+      "apps/ai-frontier/data/20261016.json",
+      "apps/ai-frontier/data/20261017.json",
+      "apps/ai-frontier/data/index.json",
+      "apps/ai-frontier/data/week-20261017.json",
+      "apps/ai-frontier/index.html",
+      "apps/ai-frontier/style.css",
+      "apps/oracle/app.js",
+      "apps/oracle/data/board.json",
+      "apps/oracle/data/history.json",
+      "apps/oracle/data/latest.json",
+      "apps/oracle/index.html",
+      "apps/oracle/style.css",
+      "apps/world-taiwan/app.js",
+      "apps/world-taiwan/assets/world.svg",
+      "apps/world-taiwan/data/news.json",
+      "apps/world-taiwan/index.html",
+      "apps/world-taiwan/style.css",
+      "apps/world/app.js",
+      "apps/world/data/WORLD-ATLAS-LICENSE",
+      "apps/world/data/api/20261016.json",
+      "apps/world/data/api/days.json",
+      "apps/world/data/countries-110m.json",
+      "apps/world/index.html",
+      "apps/world/style.css",
+      "apps/world/vendor/LEAFLET-LICENSE",
+      "apps/world/vendor/TOPOJSON-CLIENT-LICENSE",
+      "apps/world/vendor/leaflet.css",
+      "apps/world/vendor/leaflet.js",
+      "apps/world/vendor/topojson-client.min.js",
+      "assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css",
+      "categories/ai-應用/index.html",
+      "categories/ai-應用/index.xml",
+      "categories/ai-應用/page/1/index.html",
+      "categories/index.html",
+      "categories/index.xml",
+      "categories/台股/index.html",
+      "categories/台股/index.xml",
+      "categories/台股/page/1/index.html",
+      "index.xml",
+      "page/1/index.html",
+      "posts/ai-virtual-model-economy/index.html",
+      "posts/index.html",
+      "posts/index.xml",
+      "posts/page/1/index.html",
+      "posts/taiwan-stock-watch-20260514/index.html",
+      "projects/previews/ai-frontier.poster.webp",
+      "projects/previews/ai-frontier.webp",
+      "projects/previews/blog.poster.webp",
+      "projects/previews/blog.webp",
       "projects/previews/oracle.poster.webp",
-      "projects/previews/oracle.webp"
+      "projects/previews/oracle.webp",
+      "projects/previews/taipei-mrt.poster.webp",
+      "projects/previews/taipei-mrt.webp",
+      "projects/previews/world.poster.webp",
+      "projects/previews/world.webp",
+      "public/404.html",
+      "public/about/index.html",
+      "public/assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css",
+      "public/categories/ai-應用/index.html",
+      "public/categories/ai-應用/index.xml",
+      "public/categories/ai-應用/page/1/index.html",
+      "public/categories/index.html",
+      "public/categories/index.xml",
+      "public/categories/台股/index.html",
+      "public/categories/台股/index.xml",
+      "public/categories/台股/page/1/index.html",
+      "public/index.html",
+      "public/index.xml",
+      "public/page/1/index.html",
+      "public/posts/ai-virtual-model-economy/index.html",
+      "public/posts/index.html",
+      "public/posts/index.xml",
+      "public/posts/page/1/index.html",
+      "public/posts/taiwan-stock-watch-20260514/index.html",
+      "public/sitemap.xml",
+      "public/tags/00713/index.html",
+      "public/tags/00713/index.xml",
+      "public/tags/00713/page/1/index.html",
+      "public/tags/00878/index.html",
+      "public/tags/00878/index.xml",
+      "public/tags/00878/page/1/index.html",
+      "public/tags/00919/index.html",
+      "public/tags/00919/index.xml",
+      "public/tags/00919/page/1/index.html",
+      "public/tags/00929/index.html",
+      "public/tags/00929/index.xml",
+      "public/tags/00929/page/1/index.html",
+      "public/tags/2330/index.html",
+      "public/tags/2330/index.xml",
+      "public/tags/2330/page/1/index.html",
+      "public/tags/ai-影響者/index.html",
+      "public/tags/ai-影響者/index.xml",
+      "public/tags/ai-影響者/page/1/index.html",
+      "public/tags/etf/index.html",
+      "public/tags/etf/index.xml",
+      "public/tags/etf/page/1/index.html",
+      "public/tags/index.html",
+      "public/tags/index.xml",
+      "public/tags/onlyfans/index.html",
+      "public/tags/onlyfans/index.xml",
+      "public/tags/onlyfans/page/1/index.html",
+      "public/tags/台積電/index.html",
+      "public/tags/台積電/index.xml",
+      "public/tags/台積電/page/1/index.html",
+      "public/tags/商業模式/index.html",
+      "public/tags/商業模式/index.xml",
+      "public/tags/商業模式/page/1/index.html",
+      "public/tags/虛擬模特兒/index.html",
+      "public/tags/虛擬模特兒/index.xml",
+      "public/tags/虛擬模特兒/page/1/index.html",
+      "public/tags/高股息/index.html",
+      "public/tags/高股息/index.xml",
+      "public/tags/高股息/page/1/index.html",
+      "public/taiwan-stock-chart.png",
+      "sitemap.xml",
+      "tags/00713/index.html",
+      "tags/00713/index.xml",
+      "tags/00713/page/1/index.html",
+      "tags/00878/index.html",
+      "tags/00878/index.xml",
+      "tags/00878/page/1/index.html",
+      "tags/00919/index.html",
+      "tags/00919/index.xml",
+      "tags/00919/page/1/index.html",
+      "tags/00929/index.html",
+      "tags/00929/index.xml",
+      "tags/00929/page/1/index.html",
+      "tags/2330/index.html",
+      "tags/2330/index.xml",
+      "tags/2330/page/1/index.html",
+      "tags/ai-影響者/index.html",
+      "tags/ai-影響者/index.xml",
+      "tags/ai-影響者/page/1/index.html",
+      "tags/etf/index.html",
+      "tags/etf/index.xml",
+      "tags/etf/page/1/index.html",
+      "tags/index.html",
+      "tags/index.xml",
+      "tags/onlyfans/index.html",
+      "tags/onlyfans/index.xml",
+      "tags/onlyfans/page/1/index.html",
+      "tags/台積電/index.html",
+      "tags/台積電/index.xml",
+      "tags/台積電/page/1/index.html",
+      "tags/商業模式/index.html",
+      "tags/商業模式/index.xml",
+      "tags/商業模式/page/1/index.html",
+      "tags/虛擬模特兒/index.html",
+      "tags/虛擬模特兒/index.xml",
+      "tags/虛擬模特兒/page/1/index.html",
+      "tags/高股息/index.html",
+      "tags/高股息/index.xml",
+      "tags/高股息/page/1/index.html",
+      "taiwan-stock-chart.png"
     ],
     "changed": [
+      "404.html",
       "apps/future/city.css",
       "apps/future/city.js",
       "apps/future/index.html",
-      "apps/oracle/index.html",
-      "apps/world-taiwan/index.html",
-      "apps/world/app.js",
-      "apps/world/index.html",
-      "apps/world/style.css",
+      "index.html",
       "projects/index.html"
     ]
   },
   "files": {
     ".hugo_build.lock": {
       "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "after": null
     },
     "404.html": {
       "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
-      "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
+      "after": "2efec30d6a21beecba5a76b475ac8010056c6a64e562fdab8f5c7e9b2e398c44"
     },
     "CNAME": {
       "before": "efd8978b9f1a3b098e228d73d1569fc3d5c72ba742822e5b7bb5211a79f3b4fb",
@@ -50,51 +195,51 @@
     },
     "about/index.html": {
       "before": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1",
-      "after": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1"
+      "after": null
     },
     "apps/ai-frontier/app.js": {
       "before": "8c9a965c673b068b237d33394d079265fd2ddc7371351b6d0aa8b8cdfb095df2",
-      "after": "8c9a965c673b068b237d33394d079265fd2ddc7371351b6d0aa8b8cdfb095df2"
+      "after": null
     },
     "apps/ai-frontier/data/20261012.json": {
       "before": "23dd661a2e4a88e2b1eb440a822197a4600452898381823f596d911f4a055a3d",
-      "after": "23dd661a2e4a88e2b1eb440a822197a4600452898381823f596d911f4a055a3d"
+      "after": null
     },
     "apps/ai-frontier/data/20261013.json": {
       "before": "717b7e1e5d43d2461ee52ec6ccff9fb52d67ac88ab6f05fbeddd293f11246ad8",
-      "after": "717b7e1e5d43d2461ee52ec6ccff9fb52d67ac88ab6f05fbeddd293f11246ad8"
+      "after": null
     },
     "apps/ai-frontier/data/20261014.json": {
       "before": "fc56de94cabf04cee015c5e78cf26ac0c8ec3a40b0fed2a32a2f7015a8cc3ad0",
-      "after": "fc56de94cabf04cee015c5e78cf26ac0c8ec3a40b0fed2a32a2f7015a8cc3ad0"
+      "after": null
     },
     "apps/ai-frontier/data/20261015.json": {
       "before": "e527e1016f22030f5b7381c70c89fc352abbfc57f659ecc3a7eddd2cd4656074",
-      "after": "e527e1016f22030f5b7381c70c89fc352abbfc57f659ecc3a7eddd2cd4656074"
+      "after": null
     },
     "apps/ai-frontier/data/20261016.json": {
       "before": "05b0b2005ad857fd6d7d1b5cb386eeb089f2dea32e6ecbbf25c271b799c7217c",
-      "after": "05b0b2005ad857fd6d7d1b5cb386eeb089f2dea32e6ecbbf25c271b799c7217c"
+      "after": null
     },
     "apps/ai-frontier/data/20261017.json": {
       "before": "0c30474db3c2239c2eec8b3a986442dfe97408b70e5f5b1314ec753ee65aa77f",
-      "after": "0c30474db3c2239c2eec8b3a986442dfe97408b70e5f5b1314ec753ee65aa77f"
+      "after": null
     },
     "apps/ai-frontier/data/index.json": {
       "before": "7b9377c07e12d4c863177cd3d6ad11539d58979d91a0e6e37b8879a796c5ea15",
-      "after": "7b9377c07e12d4c863177cd3d6ad11539d58979d91a0e6e37b8879a796c5ea15"
+      "after": null
     },
     "apps/ai-frontier/data/week-20261017.json": {
       "before": "d1e4402e58e29f6fcd49d526f8f0961f345c0bb4343b36be2cb9372ef45c80fd",
-      "after": "d1e4402e58e29f6fcd49d526f8f0961f345c0bb4343b36be2cb9372ef45c80fd"
+      "after": null
     },
     "apps/ai-frontier/index.html": {
       "before": "8e0372fadd5736e9dc8b981535a237b502dad12967650fc3e0efd56fa862d388",
-      "after": "8e0372fadd5736e9dc8b981535a237b502dad12967650fc3e0efd56fa862d388"
+      "after": null
     },
     "apps/ai-frontier/style.css": {
       "before": "5f95866a5e4d51181e2eb00c6185f67f070681b95387640f55196ede288f394d",
-      "after": "5f95866a5e4d51181e2eb00c6185f67f070681b95387640f55196ede288f394d"
+      "after": null
     },
     "apps/ailab/app.js": {
       "before": "54224015029b129a8f60959a05ea6f24820135027b0374a177a44376015d23a0",
@@ -154,11 +299,11 @@
     },
     "apps/future/city.css": {
       "before": "4e807ef875d626dfa7be1215ca7aaacf7ade851cf4183098a897a1c1487b2430",
-      "after": "bf9d63b39672f01f0d4096018cb266f5ddad7654eacf8ca70bc73288f15f2be4"
+      "after": "482bce39190ccdb8342746bed235e51c441a3d6edc5b9ed507497162705b5c45"
     },
     "apps/future/city.js": {
       "before": "a397a603811897c0cc5e44e8e701b7964c670c2f54ed0d047e216e8e31500e82",
-      "after": "57844c7339a0d2d5db3f56b727ab73a789bc66b831eae1372d5522ea3eb685df"
+      "after": "0b7275eba4b1f8cf1c67872d3e5999d15cfa4fb1ef23405607fa6dfe554381f6"
     },
     "apps/future/data.html": {
       "before": "db04dca6858a92eeabd937f50ebc34947acd37ab0f2339a0224de3a1d002495d",
@@ -170,35 +315,11 @@
     },
     "apps/future/index.html": {
       "before": "4d54b30c33314ca8759697667b7bbdb8465d0b4a3b9bd7ee4765ef206e35a578",
-      "after": "4c3d248df504626e7841bca1bd30c74282f78851ba15cdadae28ec4420be4e1d"
-    },
-    "apps/future/oracle/app.js": {
-      "before": null,
-      "after": "db5b3c86a552b4a6708d9aac4ac8a99e52307d38d1f1c4e55bd279e0863ef155"
-    },
-    "apps/future/oracle/data/board.json": {
-      "before": null,
-      "after": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e"
-    },
-    "apps/future/oracle/data/history.json": {
-      "before": null,
-      "after": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25"
-    },
-    "apps/future/oracle/data/latest.json": {
-      "before": null,
-      "after": "f8035b6df53e76d644eff1843513252c8319c8a551a496a1f7d02517ecc9f739"
-    },
-    "apps/future/oracle/style.css": {
-      "before": null,
-      "after": "5c1adc6e33d8c4e4c9bcff9a8326a3f2ebc5a10f19654dc7e2280df4b2af8585"
+      "after": "e2d390d529db969fe75b7488cc16f63cf3e7f49eb64e3b88d5c97ef1dff5e61f"
     },
     "apps/future/style.css": {
       "before": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d",
       "after": "0422f67750256de6730dfff7b1b74d346b3f26f20ea1d10a4b94917704c3b36d"
-    },
-    "apps/future/tabs.js": {
-      "before": null,
-      "after": "6fe479731cd1998b8c06b1f59767f6dfae31e9a71c9c9eb456fe85a58fed27c2"
     },
     "apps/future/vendor/three/LICENSE": {
       "before": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
@@ -258,27 +379,27 @@
     },
     "apps/oracle/app.js": {
       "before": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d",
-      "after": "4c99d2b5710039f0b8699059d89b5fb77129753cd11438893591249926b48a2d"
+      "after": null
     },
     "apps/oracle/data/board.json": {
       "before": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e",
-      "after": "cc9ad814e1ba0586d226548bc46337e7df7fdac7e4483b993cb952430f77ec4e"
+      "after": null
     },
     "apps/oracle/data/history.json": {
       "before": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25",
-      "after": "5597f846f75b62870c0081ff050706bccd975526c3249ce98bd6bad92f177e25"
+      "after": null
     },
     "apps/oracle/data/latest.json": {
       "before": "8a6ac00bab523de993988fe12b85866e9a3e42358c4a32253ca019fd532ab67b",
-      "after": "8a6ac00bab523de993988fe12b85866e9a3e42358c4a32253ca019fd532ab67b"
+      "after": null
     },
     "apps/oracle/index.html": {
       "before": "dba0d3d68ec31a9cd85f4928a831f0b31314696e559ffeae43304680284527a7",
-      "after": "544d67903dd4e4ac45d8eb76850fab2f1d745ea504031c0fa2a4c08afa49021d"
+      "after": null
     },
     "apps/oracle/style.css": {
       "before": "c96d749f4ddc555ba6ac6ad42698c03798b623ab9afaeae2f1f107344b14ea28",
-      "after": "c96d749f4ddc555ba6ac6ad42698c03798b623ab9afaeae2f1f107344b14ea28"
+      "after": null
     },
     "apps/relief/app.js": {
       "before": "32b5616b63969a49fd68d936d776564d8ac0d192fa80b58b193d66b31686bc8d",
@@ -308,14 +429,6 @@
       "before": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1",
       "after": "be9633c4d870e26fb37f1cfe5c5a77181667114003ea16207ac7850d8da8add1"
     },
-    "apps/shared/work-tabs.css": {
-      "before": null,
-      "after": "442f7dafe0e9ddb04c4a535d106f8ffc339a67f9b31175b5bb6fa692343b0032"
-    },
-    "apps/shared/work-tabs.js": {
-      "before": null,
-      "after": "6b1658b94ac231215bbc9ad75b06ef2f4bbd7cab393cb47144126d267480c6ad"
-    },
     "apps/sound/app.js": {
       "before": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f",
       "after": "c7470b44f6ff3185cfbe11710e0896027ea5522bfed629fae393136629247d1f"
@@ -342,171 +455,159 @@
     },
     "apps/world-taiwan/app.js": {
       "before": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc",
-      "after": "298b352a0f1b6151f9215042e2cec2099c79e4a44e97279f197424d20f69b6dc"
+      "after": null
     },
     "apps/world-taiwan/assets/world.svg": {
       "before": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8",
-      "after": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8"
+      "after": null
     },
     "apps/world-taiwan/data/news.json": {
       "before": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec",
-      "after": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec"
+      "after": null
     },
     "apps/world-taiwan/index.html": {
       "before": "5349b45e95928e4fcbb49c7e6aee62d313adc7f28e2dd5d6e5b15d2860defbd6",
-      "after": "910c839b0875a86126c5779b592925ebde96046348b07b2ae28415fc49550fa6"
+      "after": null
     },
     "apps/world-taiwan/style.css": {
       "before": "2666affe3c17e55c0cca8ac08395603e43b6a508ef558fc72daa0cb12de8d41a",
-      "after": "2666affe3c17e55c0cca8ac08395603e43b6a508ef558fc72daa0cb12de8d41a"
+      "after": null
     },
     "apps/world/app.js": {
       "before": "436364937e86129206c0e7df3817714c89f9c4612a22fc92fb1521c478f6bed2",
-      "after": "be92a82205931aba6242be7ce92a2956d357daccae3bc697ef5c705b1b425c23"
+      "after": null
     },
     "apps/world/data/WORLD-ATLAS-LICENSE": {
       "before": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31",
-      "after": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31"
+      "after": null
     },
     "apps/world/data/api/20261016.json": {
       "before": "70ef56160b0df6c918b58fcff3f72d524d3f583c8157480f3c4fa025201e78be",
-      "after": "70ef56160b0df6c918b58fcff3f72d524d3f583c8157480f3c4fa025201e78be"
+      "after": null
     },
     "apps/world/data/api/days.json": {
       "before": "e26c267fb7416205f331f8e1290655c451bd7620de23da1eb7f256a3e36d13ff",
-      "after": "e26c267fb7416205f331f8e1290655c451bd7620de23da1eb7f256a3e36d13ff"
+      "after": null
     },
     "apps/world/data/countries-110m.json": {
       "before": "2516c915867c7baf18ddec727aec46c315541a07cfb3d79a6559b05d5e94eee8",
-      "after": "2516c915867c7baf18ddec727aec46c315541a07cfb3d79a6559b05d5e94eee8"
+      "after": null
     },
     "apps/world/index.html": {
       "before": "0dda6836b8092f0caa1f27ff4295fc3016e6585d633a4ccd79d213a52cdbbaa4",
-      "after": "4536a69b790f41a2faa5052b2ad9cdd3e175a35ac96cc83ecfd77b11c162f387"
+      "after": null
     },
     "apps/world/style.css": {
       "before": "2dffd029afeb03eb7221d17e595b02d55e020b1da365a498534b7aff5eed7cb0",
-      "after": "df36773996457ea0e837ae7a1e9ba0a68c8550580cc470e80e8d05c63c44d06f"
-    },
-    "apps/world/tabs.js": {
-      "before": null,
-      "after": "584949984c53f83a61cdf5a298a96dbbf7b3932904ec10ca359ebf4c828bbdc0"
-    },
-    "apps/world/taiwan/app.js": {
-      "before": null,
-      "after": "ea546eba4a45e768722db512d574161be994aa5b6cc8c0362f74be1c1b1f1937"
-    },
-    "apps/world/taiwan/assets/world.svg": {
-      "before": null,
-      "after": "1c2906fba103edcff5020ea720fb58e00c0401d54434552b06d9dde5061116d8"
-    },
-    "apps/world/taiwan/data/news.json": {
-      "before": null,
-      "after": "c52587f5589f49a1ee104ff6cf99df60cb811b58a6579126e5ec859c5bd39eec"
-    },
-    "apps/world/taiwan/style.css": {
-      "before": null,
-      "after": "aa28cf3fd68c7472003bdf9a36a8ee22be7d110724249af153ac9e495fbdd963"
+      "after": null
     },
     "apps/world/vendor/LEAFLET-LICENSE": {
       "before": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
-      "after": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb"
+      "after": null
     },
     "apps/world/vendor/TOPOJSON-CLIENT-LICENSE": {
       "before": "4c4d15b635e04e691825a76db7d33f7f2033b55669a7430011694f31e6c65999",
-      "after": "4c4d15b635e04e691825a76db7d33f7f2033b55669a7430011694f31e6c65999"
+      "after": null
     },
     "apps/world/vendor/leaflet.css": {
       "before": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
-      "after": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6"
+      "after": null
     },
     "apps/world/vendor/leaflet.js": {
       "before": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
-      "after": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+      "after": null
     },
     "apps/world/vendor/topojson-client.min.js": {
       "before": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89",
-      "after": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
+      "after": null
     },
     "assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
       "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
-      "after": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c"
+      "after": null
     },
     "categories/ai-應用/index.html": {
       "before": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a",
-      "after": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a"
+      "after": null
     },
     "categories/ai-應用/index.xml": {
       "before": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5",
-      "after": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5"
+      "after": null
     },
     "categories/ai-應用/page/1/index.html": {
       "before": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85",
-      "after": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85"
+      "after": null
     },
     "categories/index.html": {
       "before": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362",
-      "after": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362"
+      "after": null
     },
     "categories/index.xml": {
       "before": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7",
-      "after": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7"
+      "after": null
     },
     "categories/台股/index.html": {
       "before": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9",
-      "after": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9"
+      "after": null
     },
     "categories/台股/index.xml": {
       "before": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d",
-      "after": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d"
+      "after": null
     },
     "categories/台股/page/1/index.html": {
       "before": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17",
-      "after": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17"
+      "after": null
+    },
+    "favicon.ico": {
+      "before": null,
+      "after": "3f22c11992559bedc03c4bfdef593e6e007052119d6192ee43d551ffd217a28b"
+    },
+    "favicon.svg": {
+      "before": null,
+      "after": "cebf40948a7512891f722f3181d35da624aa83c090bb8f1712a3eac6e703fbeb"
     },
     "index.html": {
       "before": "cae701ff32a76b7c547689286a3d631595cd615fddc5530dcd702314c6f9fe9d",
-      "after": "cae701ff32a76b7c547689286a3d631595cd615fddc5530dcd702314c6f9fe9d"
+      "after": "8b13e8cfec9c66744dc70c8b235a887607508e7baf418fa490659b1d56f1a912"
     },
     "index.xml": {
       "before": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935",
-      "after": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935"
+      "after": null
     },
     "page/1/index.html": {
       "before": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026",
-      "after": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026"
+      "after": null
     },
     "posts/ai-virtual-model-economy/index.html": {
       "before": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
-      "after": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3"
+      "after": null
     },
     "posts/index.html": {
       "before": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e",
-      "after": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e"
+      "after": null
     },
     "posts/index.xml": {
       "before": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e",
-      "after": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e"
+      "after": null
     },
     "posts/page/1/index.html": {
       "before": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf",
-      "after": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf"
+      "after": null
     },
     "posts/taiwan-stock-watch-20260514/index.html": {
       "before": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c",
-      "after": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c"
+      "after": null
     },
     "projects/index.html": {
       "before": "c9b8f2973ca3f4639ce701a22bd6bdf6fd0dbb0239f5d091332a69f93cdd0e2d",
-      "after": "4ba0cea2f2a3ff5f85a1e45c9d73aad653d5876c23b9692a7a7a8d5e08ab67c8"
+      "after": "8b13e8cfec9c66744dc70c8b235a887607508e7baf418fa490659b1d56f1a912"
     },
     "projects/previews/ai-frontier.poster.webp": {
       "before": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85",
-      "after": "1bb9f694fa838ae0b938dd3d0b75797cf8de00274d6e936a04c3a9cfa3585e85"
+      "after": null
     },
     "projects/previews/ai-frontier.webp": {
       "before": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c",
-      "after": "35585691d7b85511123b321d7e6721f8eb1e93fc8869514182c66a36f867f07c"
+      "after": null
     },
     "projects/previews/ailab.poster.webp": {
       "before": "314f3eb9908fa81e1802a1ae488310f438e54a1c70d5b6b7c8d3728b3aba8810",
@@ -518,11 +619,11 @@
     },
     "projects/previews/blog.poster.webp": {
       "before": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8",
-      "after": "89206ae174c309fd5ff821718bbb9b8782e97b42a9a1b25aee3b87ca005053e8"
+      "after": null
     },
     "projects/previews/blog.webp": {
       "before": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc",
-      "after": "eb98e9403b17049fe1f4a45db43ad0c6664acf149324724be6ae725302becedc"
+      "after": null
     },
     "projects/previews/emergence.poster.webp": {
       "before": "94cfdf8f1c0d67b132ecba20210ccfae7059bf92cb4861994e894b2805cf5530",
@@ -550,255 +651,255 @@
     },
     "projects/previews/taipei-mrt.poster.webp": {
       "before": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417",
-      "after": "bb976c638468c23174c3890a3d98358356ed5deecb3d777a3475945c589bf417"
+      "after": null
     },
     "projects/previews/taipei-mrt.webp": {
       "before": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5",
-      "after": "c86926dc4295696421f43973ebf3fa690c5e1ada2b5790c76253a9e3a19327b5"
+      "after": null
     },
     "projects/previews/world.poster.webp": {
       "before": "b0d1233cbf909c741d8c8afb70861f966d80e32246210a64a77846af800e924f",
-      "after": "b0d1233cbf909c741d8c8afb70861f966d80e32246210a64a77846af800e924f"
+      "after": null
     },
     "projects/previews/world.webp": {
       "before": "8815d786c1d86f61f8b4621c0a03494c8dd615972a0124625b91eca37d090646",
-      "after": "8815d786c1d86f61f8b4621c0a03494c8dd615972a0124625b91eca37d090646"
+      "after": null
     },
     "public/404.html": {
       "before": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac",
-      "after": "f2eccc06c70ceb72fcfc3f36e16431e56799acb60bf3f23fd79f9c4e9c6927ac"
+      "after": null
     },
     "public/about/index.html": {
       "before": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1",
-      "after": "ff2f524c65060c9cecce1ceafa60be87c3b4c19d7ed5ee223bbfc95fd705dab1"
+      "after": null
     },
     "public/assets/css/stylesheet.a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c.css": {
       "before": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c",
-      "after": "a1a1b118b3e83435265dc39da18e54244bcc0e5481d1d034aadc0c899c51e15c"
+      "after": null
     },
     "public/categories/ai-應用/index.html": {
       "before": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a",
-      "after": "5fdc7aa1acac17c6cbd7922eda712b45c46a51f1a0cc970b8d5c8dea5601637a"
+      "after": null
     },
     "public/categories/ai-應用/index.xml": {
       "before": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5",
-      "after": "a1ccaa4b68da44d1854d5155c7e4f3c33e31b76192392a0124ea49459d3d7cf5"
+      "after": null
     },
     "public/categories/ai-應用/page/1/index.html": {
       "before": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85",
-      "after": "fb65eb8e62b0f77f596cfd1d88030d2ca3c990114ed1174c5f2fcf2f1c1abb85"
+      "after": null
     },
     "public/categories/index.html": {
       "before": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362",
-      "after": "1143e33a628b4647c8415efa69127a2b18b469b1f4db21c211d44d96db3e3362"
+      "after": null
     },
     "public/categories/index.xml": {
       "before": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7",
-      "after": "2a027c02c742561b1f43395cb85d45a7f4cae38024dd6b9bd6a1cf86d20eddf7"
+      "after": null
     },
     "public/categories/台股/index.html": {
       "before": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9",
-      "after": "01c2a4074088b876c214c97cf1198130aa12b69438cbcb7ab87538f6f08a73b9"
+      "after": null
     },
     "public/categories/台股/index.xml": {
       "before": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d",
-      "after": "84a095fe8c45b1d2d4c5c04584e20a96df09049e6790689c0b637033d3a5f38d"
+      "after": null
     },
     "public/categories/台股/page/1/index.html": {
       "before": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17",
-      "after": "f39013a80b2cd1530459a46e8070b45c12bd458b0dacb1fc20046138ed6c1e17"
+      "after": null
     },
     "public/index.html": {
       "before": "9ed9b6dc6086740e09c09403b7148a833c90aed35c9164d54fc36fed5f454409",
-      "after": "9ed9b6dc6086740e09c09403b7148a833c90aed35c9164d54fc36fed5f454409"
+      "after": null
     },
     "public/index.xml": {
       "before": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935",
-      "after": "3feb1b9defddc64f6600a77fa5396459c806705445335daa2c813708aec93935"
+      "after": null
     },
     "public/page/1/index.html": {
       "before": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026",
-      "after": "a726d9ec56f3da4cc024a233bbd2efb4808332fd84b9dac82da27d53bcbcc026"
+      "after": null
     },
     "public/posts/ai-virtual-model-economy/index.html": {
       "before": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3",
-      "after": "dbea302977d7e0b7348781b15ba04118c1a12c1ce6cd0ba9f4f62ed8f7f281f3"
+      "after": null
     },
     "public/posts/index.html": {
       "before": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e",
-      "after": "341a4e16fb44f7b0f32217017a21ac3c2f1b8eb061ebcd3cd37a0f6b11e3774e"
+      "after": null
     },
     "public/posts/index.xml": {
       "before": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e",
-      "after": "e1d46fafb89e91ee4fb0ffe2a63e3e6eda59abc4c49771af9ab7113ff2b29c7e"
+      "after": null
     },
     "public/posts/page/1/index.html": {
       "before": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf",
-      "after": "6893a4d54f4e439feb5d5d78b414cc6e375f5e0fbdb87673d87ef6c85ea0bedf"
+      "after": null
     },
     "public/posts/taiwan-stock-watch-20260514/index.html": {
       "before": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c",
-      "after": "bbe984de84ab436041869b4e718a7e8e995d893dbad90f0938d3c695a3968f9c"
+      "after": null
     },
     "public/sitemap.xml": {
       "before": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b",
-      "after": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b"
+      "after": null
     },
     "public/tags/00713/index.html": {
       "before": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2",
-      "after": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2"
+      "after": null
     },
     "public/tags/00713/index.xml": {
       "before": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544",
-      "after": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544"
+      "after": null
     },
     "public/tags/00713/page/1/index.html": {
       "before": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9",
-      "after": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9"
+      "after": null
     },
     "public/tags/00878/index.html": {
       "before": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44",
-      "after": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44"
+      "after": null
     },
     "public/tags/00878/index.xml": {
       "before": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713",
-      "after": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713"
+      "after": null
     },
     "public/tags/00878/page/1/index.html": {
       "before": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc",
-      "after": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc"
+      "after": null
     },
     "public/tags/00919/index.html": {
       "before": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869",
-      "after": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869"
+      "after": null
     },
     "public/tags/00919/index.xml": {
       "before": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2",
-      "after": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2"
+      "after": null
     },
     "public/tags/00919/page/1/index.html": {
       "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
-      "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
+      "after": null
     },
     "public/tags/00929/index.html": {
       "before": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454",
-      "after": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454"
+      "after": null
     },
     "public/tags/00929/index.xml": {
       "before": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7",
-      "after": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7"
+      "after": null
     },
     "public/tags/00929/page/1/index.html": {
       "before": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd",
-      "after": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd"
+      "after": null
     },
     "public/tags/2330/index.html": {
       "before": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876",
-      "after": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876"
+      "after": null
     },
     "public/tags/2330/index.xml": {
       "before": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994",
-      "after": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994"
+      "after": null
     },
     "public/tags/2330/page/1/index.html": {
       "before": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65",
-      "after": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65"
+      "after": null
     },
     "public/tags/ai-影響者/index.html": {
       "before": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420",
-      "after": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420"
+      "after": null
     },
     "public/tags/ai-影響者/index.xml": {
       "before": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3",
-      "after": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3"
+      "after": null
     },
     "public/tags/ai-影響者/page/1/index.html": {
       "before": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0",
-      "after": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0"
+      "after": null
     },
     "public/tags/etf/index.html": {
       "before": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de",
-      "after": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de"
+      "after": null
     },
     "public/tags/etf/index.xml": {
       "before": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6",
-      "after": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6"
+      "after": null
     },
     "public/tags/etf/page/1/index.html": {
       "before": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462",
-      "after": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462"
+      "after": null
     },
     "public/tags/index.html": {
       "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
-      "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
+      "after": null
     },
     "public/tags/index.xml": {
       "before": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8",
-      "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
+      "after": null
     },
     "public/tags/onlyfans/index.html": {
       "before": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81",
-      "after": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81"
+      "after": null
     },
     "public/tags/onlyfans/index.xml": {
       "before": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250",
-      "after": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250"
+      "after": null
     },
     "public/tags/onlyfans/page/1/index.html": {
       "before": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74",
-      "after": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74"
+      "after": null
     },
     "public/tags/台積電/index.html": {
       "before": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2",
-      "after": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2"
+      "after": null
     },
     "public/tags/台積電/index.xml": {
       "before": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc",
-      "after": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc"
+      "after": null
     },
     "public/tags/台積電/page/1/index.html": {
       "before": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0",
-      "after": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0"
+      "after": null
     },
     "public/tags/商業模式/index.html": {
       "before": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef",
-      "after": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef"
+      "after": null
     },
     "public/tags/商業模式/index.xml": {
       "before": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7",
-      "after": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7"
+      "after": null
     },
     "public/tags/商業模式/page/1/index.html": {
       "before": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c",
-      "after": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c"
+      "after": null
     },
     "public/tags/虛擬模特兒/index.html": {
       "before": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0",
-      "after": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0"
+      "after": null
     },
     "public/tags/虛擬模特兒/index.xml": {
       "before": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1",
-      "after": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1"
+      "after": null
     },
     "public/tags/虛擬模特兒/page/1/index.html": {
       "before": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6",
-      "after": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6"
+      "after": null
     },
     "public/tags/高股息/index.html": {
       "before": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078",
-      "after": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078"
+      "after": null
     },
     "public/tags/高股息/index.xml": {
       "before": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482",
-      "after": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482"
+      "after": null
     },
     "public/tags/高股息/page/1/index.html": {
       "before": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba",
-      "after": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba"
+      "after": null
     },
     "public/taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
-      "after": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f"
+      "after": null
     },
     "room/assets/mini-store.glb": {
       "before": "793c1748fbd8bdcf65e8545900d665efadfe658d4f9b87c3f83918073c2c6d26",
@@ -918,163 +1019,163 @@
     },
     "sitemap.xml": {
       "before": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b",
-      "after": "dbf2f9008eae415095e599263832d737631a53ea74dd8573c8c95acb03d1285b"
+      "after": null
     },
     "tags/00713/index.html": {
       "before": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2",
-      "after": "df341163a8d414c5d1dd953158c2e149669da7d64a8a40e433c9fc20dbbcdfd2"
+      "after": null
     },
     "tags/00713/index.xml": {
       "before": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544",
-      "after": "e73709fd950c22627b6622a4890b3315498798626751b7ae900e1b665b6a3544"
+      "after": null
     },
     "tags/00713/page/1/index.html": {
       "before": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9",
-      "after": "4a1a11b1c83f604ccf29977267777df40e2394befe83261d8284a8b12838d2b9"
+      "after": null
     },
     "tags/00878/index.html": {
       "before": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44",
-      "after": "72ace8219c4c4a8ee8f07782e17585aa273b9e167be44ece8c959e8b90fcea44"
+      "after": null
     },
     "tags/00878/index.xml": {
       "before": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713",
-      "after": "a48555f4d5770630fd6be13e09d79d0bad88eabeb70937a66934eb0305da1713"
+      "after": null
     },
     "tags/00878/page/1/index.html": {
       "before": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc",
-      "after": "fbf054758f2c50a63a1ef8de571d5ee6f663fbf204f39be5807e6df9c81ae2bc"
+      "after": null
     },
     "tags/00919/index.html": {
       "before": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869",
-      "after": "89d3017598c32e8eeb79cbf7a5ea9478499605bf5204b57324b59abcb9e8a869"
+      "after": null
     },
     "tags/00919/index.xml": {
       "before": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2",
-      "after": "194f9cdc95a18751f5e9d489a2ef8f1b22c2fb255b26e4abe4cf38b1fc87eba2"
+      "after": null
     },
     "tags/00919/page/1/index.html": {
       "before": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb",
-      "after": "1899a0631ea946e1e4d02b9c9fe7fe320a9aaf48d703e33699e19f78409e06cb"
+      "after": null
     },
     "tags/00929/index.html": {
       "before": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454",
-      "after": "a9ebdf87fd8113351d624e981359139954f4a9ab8097ecb5a299062ca7891454"
+      "after": null
     },
     "tags/00929/index.xml": {
       "before": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7",
-      "after": "2041cbcef69934145d89125ec0e3e673383aa42f07f1d4bcd1894fb1fbf77fe7"
+      "after": null
     },
     "tags/00929/page/1/index.html": {
       "before": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd",
-      "after": "7f265326afc994974fc668b92602cbae7b960dbc2a42ebb66887c017f846d7cd"
+      "after": null
     },
     "tags/2330/index.html": {
       "before": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876",
-      "after": "ca9a523ccd3f2cdaf903d3dd786085c5dd5a4551bbb686a52056bd488ee73876"
+      "after": null
     },
     "tags/2330/index.xml": {
       "before": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994",
-      "after": "0cb8eb37d373b4e22d3ad5c867de258e4c9266250a00a99ab5a5cbd215941994"
+      "after": null
     },
     "tags/2330/page/1/index.html": {
       "before": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65",
-      "after": "3e205121a20b5d37b96ae54a1934ca363590ef4bc97bf335ea2a5cd1c5002c65"
+      "after": null
     },
     "tags/ai-影響者/index.html": {
       "before": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420",
-      "after": "789a8b58b9b092073780541d02d46a50853aa07fe733a5c61d866d26840b2420"
+      "after": null
     },
     "tags/ai-影響者/index.xml": {
       "before": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3",
-      "after": "8578840ab77e51cf14e496c4460db24d8faad0c42941aae980e2d773f91e85e3"
+      "after": null
     },
     "tags/ai-影響者/page/1/index.html": {
       "before": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0",
-      "after": "6142b0c3135875ac3fa88c117d28658069369a4806722d6c472bc16c7e29bab0"
+      "after": null
     },
     "tags/etf/index.html": {
       "before": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de",
-      "after": "2589ae1f57b5b05b9cb73b33efaedb7f8746b5db4010266a79b3e33694a701de"
+      "after": null
     },
     "tags/etf/index.xml": {
       "before": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6",
-      "after": "2884e2ada23e086be440f87b84717c7e5430205b01d22c59432b8e403d1254b6"
+      "after": null
     },
     "tags/etf/page/1/index.html": {
       "before": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462",
-      "after": "4bdf27d171d001a99e1a8a732459f45e9d06f123190dba75850101bbe7802462"
+      "after": null
     },
     "tags/index.html": {
       "before": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3",
-      "after": "1ebf7a3d261e5184820b91dbd235f377288c909d4a13bc9e61e482618c8f3fb3"
+      "after": null
     },
     "tags/index.xml": {
       "before": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8",
-      "after": "5a22ef6cd34bff7b7481d24d5c097cbfcbb08cabec92c0bcb41bdb4b5db038e8"
+      "after": null
     },
     "tags/onlyfans/index.html": {
       "before": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81",
-      "after": "02418a1743d96658b45d61fff706647f12e34c6fd3806695792b24fdba3eff81"
+      "after": null
     },
     "tags/onlyfans/index.xml": {
       "before": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250",
-      "after": "584874357cc3bd4ae0bec7635af6b30a7ffb094e99c40588b558994090985250"
+      "after": null
     },
     "tags/onlyfans/page/1/index.html": {
       "before": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74",
-      "after": "cd47171189dd0c8aee99a3b0e1507b0d4625be42a8611f0937ff99c598d73f74"
+      "after": null
     },
     "tags/台積電/index.html": {
       "before": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2",
-      "after": "1c60db5c5de5562e90e32ed3610d94147d7aced2a76a05b2e9f21097a92f38e2"
+      "after": null
     },
     "tags/台積電/index.xml": {
       "before": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc",
-      "after": "252f09bd3152a73166e3a3caeeff0468e18a13a9ad5f8ea253be272ef49354cc"
+      "after": null
     },
     "tags/台積電/page/1/index.html": {
       "before": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0",
-      "after": "d085472130129ed5a1cdb2c5afb372529ec8da6cb7da0952c38e3e88aea6abf0"
+      "after": null
     },
     "tags/商業模式/index.html": {
       "before": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef",
-      "after": "fd2d7f1974c38202eaeaa58ae4157e80e750235e9cb59c5eb4dd5c17f241ffef"
+      "after": null
     },
     "tags/商業模式/index.xml": {
       "before": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7",
-      "after": "7eeefa469cc34af90a3ad892d5952d2f8f74a0e50d1423a35c5c565c5ba515a7"
+      "after": null
     },
     "tags/商業模式/page/1/index.html": {
       "before": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c",
-      "after": "3e243497c0dab089c2f4133d9989b550c7fe8fda22ef79f7284762b0534d364c"
+      "after": null
     },
     "tags/虛擬模特兒/index.html": {
       "before": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0",
-      "after": "a1421c8b8a9fabbb7575f6a2c244f0d8bfc1bcb6e613cce499cc8df2f81f53b0"
+      "after": null
     },
     "tags/虛擬模特兒/index.xml": {
       "before": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1",
-      "after": "bcb52160aadf6bb33b8c0e936e32c59b453482174172837edcd4e8c1587041c1"
+      "after": null
     },
     "tags/虛擬模特兒/page/1/index.html": {
       "before": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6",
-      "after": "f1175faefaca995a1082de140fff76da804b8b653e451717e2dda733ea1498e6"
+      "after": null
     },
     "tags/高股息/index.html": {
       "before": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078",
-      "after": "3539b39a9ae41b5a6868fb5a171cc7942bc91e60c5a2c1e5cf41260c62dd4078"
+      "after": null
     },
     "tags/高股息/index.xml": {
       "before": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482",
-      "after": "3211ec1f46423aa4c0dae2566f12c46edeaa932c1b419b9ac0f1833bf8c9a482"
+      "after": null
     },
     "tags/高股息/page/1/index.html": {
       "before": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba",
-      "after": "5c88b9766c3d363c5bfed18aff7d7b29780a1b0ddb76f752e9353d154c5d56ba"
+      "after": null
     },
     "taiwan-stock-chart.png": {
       "before": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f",
-      "after": "f9bf4897fdcbb86215b8c0b68cf36a7b0d911813a60decb52d1c5c8598c1118f"
+      "after": null
     }
   }
 }

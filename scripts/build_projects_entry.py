@@ -4,21 +4,18 @@ Run: python3 scripts/build_projects_entry.py"""
 from html import escape as e
 from pathlib import Path
 
-CHECKED = '2026-10-23'
+CHECKED = '2026-10-24'
 # group: ok 可使用 / dev 開發中 / old 舊版／暫停 (collapsed) / ask 待確認 (no open button)
 WORKS = [
-    {'c': 'live', 'g': 'ok', 'name': '全球關注', 'pv': 'world', 'desc': '從 21 種語言的維基百科看全球共同關注，再切到「對台灣的影響」，閱讀國際新聞與生活、產業的關聯；每則附來源。', 'url': '/apps/world/', 'login': False, 'st': '公開快照・全球關注 10/16・台灣影響 10/18', 'date': '10/23'},
-    {'c': 'live', 'g': 'ok', 'name': '時光之城＋每日預言', 'desc': '拖動年份到 2060，看未來台北隨 AI 預測演化；切到「每日預言」，比較三位 AI 預測者的機率、已揭曉結果與準確度排行榜。', 'url': '/apps/future/', 'login': False, 'st': '公開快照・城市 10/19・每日預言 10/17', 'date': '10/23'},
+    {'c': 'live', 'g': 'ok', 'name': '時光之城', 'desc': '拖動年份到 2060，看未來台北隨 AI 預測演化；探索城市里程碑、切換日夜，展開一段時光旅行。', 'url': '/apps/future/', 'login': False, 'st': '互動作品・預測資料 10/19', 'date': '10/24'},
     {'c': 'live', 'g': 'ok', 'name': '光影台灣', 'desc': '立體的台灣，山的光影跟此刻真實的太陽同步；拖動時間看日出與山影，找最早迎來曙光的山。', 'url': '/apps/relief/', 'login': False, 'st': '公開版', 'date': '10/21'},
     {'c': 'live', 'g': 'ok', 'name': '此刻台灣的聲音', 'desc': '選一個地方，聽此刻的雨、風、海浪與蟲鳥鳴；天氣化成和弦、地震化成低鐘，全部由瀏覽器即時合成。建議戴耳機。', 'url': '/apps/sound/', 'login': False, 'st': '公開版', 'date': '10/21'},
-    {'c': 'ai', 'g': 'ok', 'name': 'AI 前沿日報', 'pv': 'ai-frontier', 'desc': '每天整理 Hugging Face 熱門論文與模型、GitHub 新爆紅的 AI 開源專案，由 Claude 寫成中文解說：重點、為什麼重要、限制在哪，還有當天的趨勢總覽。', 'url': '/apps/ai-frontier/', 'login': False, 'st': '公開版・內容到 10/18', 'date': '10/17'},
     {'c': 'ai', 'g': 'ok', 'name': '瀏覽器 AI 實驗室', 'pv': 'ailab', 'desc': 'AI 直接在你的瀏覽器裡跑：照片變立體 3D、語音轉中文字、照片物件辨識。照片和聲音都不會上傳。建議用電腦開。', 'url': '/apps/ailab/', 'login': False, 'st': '運作中・第一次要下載模型', 'date': '10/17'},
     {'c': 'ai', 'g': 'dev', 'name': 'Emergence World', 'pv': 'emergence', 'desc': '五位居民的持續運行小世界。', 'url': 'https://emergence-world-preview.httpsmulticlawmoltidworkersdevcmolt32c002a10b29b0e3ad3.workers.dev/', 'login': False, 'st': '公開預覽', 'date': None},
     {'c': 'game', 'g': 'ok', 'name': '航程風浪', 'pv': 'room', 'desc': '基隆—那霸示例航程：真實日夜與預報風浪的海面；沖繩上岸分頁整理那霸景點、美食與導航。', 'url': '/room/', 'links': [{'name': '沖繩上岸', 'url': '/room/#landing'}], 'login': False, 'st': '運作中', 'date': '10/11'},
-    {'c': 'tools', 'g': 'ok', 'name': 'Shrimp Guard 部落格', 'pv': 'blog', 'desc': 'AI 應用趨勢與台股觀察文章。', 'url': '/', 'login': False, 'st': '可瀏覽', 'date': '05/14'},
 ]
 GROUPS = [('ok', '可使用'), ('dev', '開發中'), ('old', '舊版／暫停')]  # status, shown as a tag on each card
-CATS = [('live', '看世界'), ('ai', 'AI 作品'), ('game', '遊戲與故事'), ('tools', '文章')]
+CATS = [('live', '看台灣'), ('ai', 'AI 作品'), ('game', '遊戲與故事')]
 assert all(w['c'] in dict(CATS) for w in WORKS) and all((w['c'] == 'old') == (w['g'] == 'old') for w in WORKS)
 
 CSS = """
@@ -84,8 +81,8 @@ def card(w):
     of = f'<span class="of">{e(w["of"])}</span>' if w.get('of') else ''
     pv = ''
     if w.get('pv'):   # looping preview (motion-prompt idea: every item shows itself moving); still poster when reduced motion is asked
-        pv = (f'<picture class="pv"><source media="(prefers-reduced-motion: reduce)" srcset="previews/{w["pv"]}.poster.webp">'
-              f'<img src="previews/{w["pv"]}.webp" width="480" height="300" loading="lazy" decoding="async" alt="{e(w["name"])} 畫面預覽"></picture>')
+        pv = (f'<picture class="pv"><source media="(prefers-reduced-motion: reduce)" srcset="/projects/previews/{w["pv"]}.poster.webp">'
+              f'<img src="/projects/previews/{w["pv"]}.webp" width="480" height="300" loading="lazy" decoding="async" alt="{e(w["name"])} 畫面預覽"></picture>')
     out = [f'<article class="card{" sub" if w.get("sub") else ""}{" has-pv" if pv else ""}">', pv, f'<h3 class="name">{e(w["name"])}{of}</h3>', f'<p class="desc">{e(w["desc"])}</p>',
            f'<ul class="tags">{"".join(tags)}</ul>', f'<p class="st">{e(w["st"])}<time>{"更新 " + e(w["date"]) if w.get("date") else "更新日期未確認"}</time></p>']
     if w.get('url'):
@@ -109,14 +106,16 @@ def build():
         body.append(f'<section id="{c}" aria-label="{label}">{head}{grid}</section>')
     return ('<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>作品入口 · Shrimp Guard</title><meta name="description" content="Shrimp Guard 公開作品與目前狀態，免登入瀏覽。">'
-            f'<style>{CSS}</style></head><body><div class="progress" aria-hidden="true"></div><div class="shell"><nav class="top" aria-label="網站導覽"><a href="/">Shrimp Guard</a><a href="/">返回主站</a></nav>'
+            '<link rel="icon" href="/favicon.ico"><link rel="icon" type="image/svg+xml" href="/favicon.svg">'
+            f'<style>{CSS}</style></head><body><div class="progress" aria-hidden="true"></div><div class="shell"><nav class="top" aria-label="網站導覽"><a href="/">Shrimp Guard</a><a href="/projects/">作品入口</a></nav>'
             '<main><h1>作品入口</h1><p class="intro">這裡是免登入瀏覽的公開作品，依主題分類並標出目前狀態。</p>'
             f'<nav class="jump" aria-label="分類">{"".join(jump)}</nav>{"".join(body)}</main>'
             f'<footer>狀態核對日 {CHECKED}。公開作品免登入；資料日期請見各作品標示。</footer></div></body></html>\n')
 
 
 if __name__ == '__main__':
-    out = Path(__file__).resolve().parents[1] / 'overlays' / 'projects' / 'index.html'
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(build(), encoding='utf-8')
-    print(out, sum(bool(w.get('url')) + len(w.get('links', [])) for w in WORKS), 'links', {c: sum(1 for w in WORKS if w['c'] == c) for c, _ in CATS})
+    root = Path(__file__).resolve().parents[1] / 'overlays'
+    for out in (root / 'index.html', root / 'projects' / 'index.html'):
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(build(), encoding='utf-8')
+    print('Home and projects:', sum(bool(w.get('url')) + len(w.get('links', [])) for w in WORKS), 'links', {c: sum(1 for w in WORKS if w['c'] == c) for c, _ in CATS})

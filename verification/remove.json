@@ -1,4 +1,27 @@
 [
+  ".hugo_build.lock",
+  "about/",
+  "apps/ai-frontier/",
+  "apps/oracle/",
+  "apps/world-taiwan/",
+  "apps/world/",
+  "assets/css/",
+  "categories/",
+  "index.xml",
+  "page/",
+  "posts/",
+  "projects/previews/ai-frontier.poster.webp",
+  "projects/previews/ai-frontier.webp",
+  "projects/previews/blog.poster.webp",
+  "projects/previews/blog.webp",
   "projects/previews/oracle.poster.webp",
-  "projects/previews/oracle.webp"
+  "projects/previews/oracle.webp",
+  "projects/previews/taipei-mrt.poster.webp",
+  "projects/previews/taipei-mrt.webp",
+  "projects/previews/world.poster.webp",
+  "projects/previews/world.webp",
+  "public/",
+  "sitemap.xml",
+  "tags/",
+  "taiwan-stock-chart.png"
 ]

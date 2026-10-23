@@ -1,21 +1,15 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>時光之城＋每日預言</title><meta name="robots" content="noindex,nofollow">
-<meta name="description" content="一座會隨年份演化的未來台北：拖動時間到 2060，城市依 AI 小隊的預測改變；每日預言比較三位 AI 預測者的機率與準確度。">
+<title>時光之城</title><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="一座會隨年份演化的未來台北：拖動時間到 2060，城市依 AI 小隊的預測改變。">
 <meta name="theme-color" content="#020611">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="city.css">
 <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js"}}</script>
-<link rel="stylesheet" href="oracle/style.css">
-<link rel="stylesheet" href="../shared/work-tabs.css">
 </head>
-<body class="merged-future">
-<nav class="work-tabs" role="tablist" aria-label="作品分頁">
-  <a id="tab-city" role="tab" href="#city" aria-controls="city-panel" aria-selected="true">未來城市</a>
-  <a id="tab-oracle" role="tab" href="#oracle" aria-controls="oracle-panel" aria-selected="false" tabindex="-1">每日預言</a>
-</nav>
-<section id="city-panel" class="work-panel" role="tabpanel" aria-labelledby="tab-city" tabindex="0">
+<body>
+<main id="city-panel">
 <canvas id="scene" aria-label="未來台北的 3D 城市，隨年份演化"></canvas>
 <div id="labels" aria-hidden="true"></div>
 
@@ -53,7 +47,7 @@
 
 <section id="info" class="info" hidden>
   <h2>這座城市怎麼變的？</h2>
-  <p>每一個變化都綁著一個里程碑。AI 小隊（Claude 搜尋新聞與研究、Grok 看 X 上的討論、Codex 審查）每天更新各里程碑「最可能發生的年份」與 80% 區間：
+  <p>每一個變化都綁著一個里程碑。此作品使用 2026-10-19 的預測資料，呈現各里程碑「最可能發生的年份」與 80% 區間：
     預測年份是變化走到一半的時候，區間越寬，變化越緩慢。</p>
   <ul>
     <li>車燈從橘轉白：電動車過半　・　青綠車燈：無人計程車</li>
@@ -70,46 +64,7 @@
 </div>
 <div id="loading" class="loading">建造城市中…</div>
 <div id="nogl" class="loading" hidden>你的瀏覽器不支援 3D 畫面。<a href="data.html">改看預測資料 →</a></div>
-</section>
-<section id="oracle-panel" class="work-panel" role="tabpanel" aria-labelledby="tab-oracle" tabindex="0" hidden>
-<div class="top"><a href="/projects/">← 作品入口</a></div>
-<main class="wrap">
-  <header class="hero">
-    <p class="kicker">每日預言 <span id="oracle-hero-date"></span></p>
-    <h1>每天下注，隔天對答案。</h1>
-    <p class="lede">三位 Claude 預測者（直覺派、數據派、統計派）加上一條不用 AI 的基準線，每天對台灣與世界的可驗證問題給出機率；隔天用公開資料自動打分數，長期累積誰最準。</p>
-    <div class="stats" id="oracle-hero-stats"></div>
-  </header>
-
-  <section id="oracle-today">
-    <p class="muted">公開快照：以下保留原出題日期與待揭曉狀態。</p>
-    <div class="sec-head">
-      <h2>今天的預測</h2>
-      <div class="filters" id="oracle-filters" role="group" aria-label="分類篩選"></div>
-    </div>
-    <p class="muted" id="oracle-today-meta"></p>
-    <div class="cards" id="oracle-cards"></div>
-  </section>
-
-  <section id="oracle-board">
-    <h2>排行榜</h2>
-    <p class="muted">Brier 分數 = 平均 (機率 − 實際結果)²，<b>越低越準</b>：全部答對且百分之百肯定是 0，每題都說 50% 是 0.25，完全答反是 1。「命中率」只看是否站對 50% 那一邊。</p>
-    <div class="table-wrap"><table id="oracle-board-table"><thead><tr><th>預測者</th><th>Brier</th><th>命中率</th><th>題數</th><th class="cat-col">天氣</th><th class="cat-col">海象風力</th><th class="cat-col">地震</th><th class="cat-col">世界關注</th></tr></thead><tbody></tbody></table></div>
-    <p class="muted" id="oracle-board-note"></p>
-  </section>
-
-  <section id="oracle-history">
-    <h2>過去的結果</h2>
-    <p class="muted">✓ ＝ 該預測者站在對的一邊（機率 ≥ 50% 且結果為「是」，或 &lt; 50% 且結果為「否」）。</p>
-    <div id="oracle-history-list"></div>
-    <div id="oracle-pending-list"></div>
-  </section>
-
-  <footer>
-    <p>資料來源：<a href="https://open-meteo.com/">Open-Meteo</a>（預報、歷史、海象）、<a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">USGS 地震 GeoJSON</a>、<a href="https://api.wikimedia.org/wiki/Feed_API">Wikimedia Featured feed</a>。預測由 Claude（headless）產生，僅供觀察 AI 校準度之用，不是天氣或防災資訊。</p>
-  </footer>
 </main>
-</section>
-<noscript><p class="work-message">請開啟 JavaScript 以使用互動分頁。<a href="/projects/">返回作品入口</a></p></noscript>
-<script type="module" src="tabs.js"></script>
+<noscript><p class="city-message">請開啟 JavaScript 以觀看互動城市。<a href="/projects/">返回作品入口</a></p></noscript>
+<script type="module" src="city.js"></script>
 </body></html>
